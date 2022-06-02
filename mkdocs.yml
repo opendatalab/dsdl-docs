@@ -1,0 +1,6 @@
+site_name: DSDL中文文档
+theme: 
+  name: material
+nav:
+  - Home: index.md
+  - About: specification.md
