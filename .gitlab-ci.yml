@@ -16,10 +16,11 @@ test:
 pages:
   stage: deploy
   script:
-    - mkdocs build --strict --verbose
     - mkdir public
     - cp -r docs public
     - cp -r mkdocs.yml public
+    - cd public
+    - mkdocs build --strict --verbose
   
   artifacts:
     paths:
