@@ -6,19 +6,23 @@ before_script:
 test:
   stage: test
   script:
-  - mkdocs build --strict --verbose --site-dir test
+    - mkdocs build --strict --verbose --site-dir test
   artifacts:
     paths:
-    - test
+      - test
   rules:
     - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
 
 pages:
   stage: deploy
   script:
-  - mkdocs build --strict --verbose
+    - mkdocs build --strict --verbose
+    - mkdir public
+    - cp -r docs public
+    - cp -r mkdocs.yml public
+  
   artifacts:
     paths:
-    - public
+      - public
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
