@@ -20,7 +20,7 @@ pages:
     #- cp -r docs public
     #- cp mkdocs.yml public
     #- cd public
-    - mkdocs build --strict --verbose
+    - mkdocs build --strict --verbose --site-dir public
   artifacts:
     paths:
       - public
