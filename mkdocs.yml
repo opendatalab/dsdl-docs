@@ -30,7 +30,7 @@ theme:
 
 #主页导航
 nav:
-  - 语言特性: overview.md
+  - 语言特性: index.md
   - 语言定义: dsdl-spec.md
   - 实例演示: task-def.md
   - 安装部署: install.md
