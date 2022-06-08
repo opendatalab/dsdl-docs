@@ -61,16 +61,16 @@ plugins:
 
       nav_translations:
         en:
-          语言特性: overview
-          语言定义: language
-          快速入门: get started
-          基本数据类型: basic types
-          结构类: struct classes
-          非结构化对象类: unstructured object classes
-          链接库: libraries
-          实例演示: example
-          计算机视觉: CV
-          安装部署: install
-          使用教程: tutorial
+          语言特性: Overview
+          语言定义: Language
+          快速入门: Get Started
+          基本数据类型: Basic Types
+          结构类: Struct Classes
+          非结构化对象类: Unstructured Object Classes
+          链接库: Libraries
+          实例演示: Example
+          计算机视觉: Computer Vision
+          安装部署: Install
+          使用教程: Tutorial
 
 
