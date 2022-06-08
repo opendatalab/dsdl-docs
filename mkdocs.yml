@@ -30,9 +30,47 @@ theme:
 
 #主页导航
 nav:
-  - 语言特性: index.md
-  - 语言定义: dsdl-spec.md
-  - 实例演示: task-def.md
+  - 语言特性: overview.md
+  - 语言定义: 
+    - 快速入门: lang/get_started.md
+    - 基本数据类型: lang/basic_types.md
+    - 结构类: lang/structs.md
+    - 非结构化对象类: lang/unstructured_objs.md
+    - 链接库: lang/libraries.md
+  - 实例演示: 
+    - 计算机视觉: examples/cv.md
   - 安装部署: install.md
   - 使用教程: tutorial.md
+
+plugins:
+  - search:
+      lang: 
+        - en
+        - zh
+  - i18n:
+      default_language: zh
+      languages:
+        en: 
+          name: English
+          build: true
+          site_name: DSDL Document
+        zh: 
+          name: 中文
+          build: true
+          site_name: DSDL中文文档
+
+      nav_translations:
+        en:
+          语言特性: overview
+          语言定义: language
+          快速入门: get started
+          基本数据类型: basic types
+          结构类: struct classes
+          非结构化对象类: unstructured object classes
+          链接库: libraries
+          实例演示: example
+          计算机视觉: CV
+          安装部署: install
+          使用教程: tutorial
+
 
