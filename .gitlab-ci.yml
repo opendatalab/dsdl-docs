@@ -6,7 +6,7 @@ before_script:
 test:
   stage: test
   script:
-    - mkdocs build --strict --verbose --site-dir test
+    - mkdocs build --verbose --site-dir test
   artifacts:
     paths:
       - test
