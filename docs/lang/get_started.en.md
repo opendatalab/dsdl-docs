@@ -1,5 +1,3 @@
-(get_started)=
-
 # Get Started
 
 In DSDL, a data set is described by a *data set description file*. 
