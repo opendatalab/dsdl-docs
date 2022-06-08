@@ -1,4 +1,4 @@
-# dsdl-docs-cn
+# dsdl-docs
 
-数据集描述语言（Data Set Description Language, DSDL）中文文档
+数据集描述语言（Data Set Description Language, DSDL）规范文档
 
