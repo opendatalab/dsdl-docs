@@ -30,7 +30,7 @@ theme:
 
 #主页导航
 nav:
-  - 语言特性: overview.md
+  - 语言特性: index.md
   - 语言定义: 
     - 快速入门: lang/get_started.md
     - 基本数据类型: lang/basic_types.md
