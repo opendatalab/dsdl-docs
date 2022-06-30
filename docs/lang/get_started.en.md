@@ -72,10 +72,8 @@ The data set description file can be in either JSON or YAML format.
             - { image: "xyz/0002.jpg", label: "dog" }
 ```
 
-```{note}
 Both JSON and YAML formats can express **exactly the same** data structure. 
 Due to YAML's more concise form and that it allows comments, we will use YAML as the default format in later examples of this document, which can be easily translated into JSON format.
-```
 
 At the top level, the file consists of four parts:
 
@@ -84,8 +82,9 @@ At the top level, the file consists of four parts:
 - **defs section** provides global definitions, *e.g.* user-defined types;
 - **data section** describes the data contained in the data set.
 
-```{note}
-- The property names with a prefix ``$`` are reserved by DSDL for special meaning. 
-- DSDL version (the property with name ``$dsdl-version`` in the header) must be explicitly specified. It is crucial for the DSDL interpreter to know the language version in order to interpret the description correctly.
-- The definition for common types are often provided in standard or extended libraries. In most cases, users don't need to define their own types. In this example, we define ``ImageClassificationSample`` just for the purpose of illustration and being self-contained.
-```
+> **Note**: 
+>
+> * The property names with a prefix ``$`` are reserved by DSDL for special meaning. 
+>
+> - DSDL version (the property with name ``$dsdl-version`` in the header) must be explicitly specified. It is crucial for the DSDL interpreter to know the language version in order to interpret the description correctly.
+> - The definition for common types are often provided in standard or extended libraries. In most cases, users don't need to define their own types. In this example, we define ``ImageClassificationSample`` just for the purpose of illustration and being self-contained.

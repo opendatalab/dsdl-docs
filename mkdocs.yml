@@ -34,8 +34,8 @@ nav:
   - 语言定义: 
     - 快速入门: lang/get_started.md
     - 基本数据类型: lang/basic_types.md
-    - 结构类: lang/structs.md
     - 非结构化对象类: lang/unstructured_objs.md
+    - 结构类: lang/structs.md
     - 链接库: lang/libraries.md
   - 实例演示: 
     - 计算机视觉: examples/cv.md
@@ -65,8 +65,8 @@ plugins:
           语言定义: Language
           快速入门: Get Started
           基本数据类型: Basic Types
-          结构类: Struct Classes
           非结构化对象类: Unstructured Object Classes
+          结构类: Struct Classes
           链接库: Libraries
           实例演示: Example
           计算机视觉: Computer Vision

@@ -35,11 +35,10 @@ ImageClassificationSample:
         label: Label[dom=MyClassDom]
 ```
 
-
-```{note}
-This library file should be placed in the default library path so the system can find it. 
-One can also supply additional library paths by setting an environment variable ``DSDL_LIBRARY_PATH``.
-```
+> **Note**: 
+>
+> * This library file should be placed in the default library path so the system can find it. 
+> * One can also supply additional library paths by setting an environment variable ``DSDL_LIBRARY_PATH``.
 
 Then the data set description can be simplified by importing the library, as follows:
 
@@ -60,9 +59,7 @@ data:
 
 Here, we use an ``$import`` directive in the header section. The content of ``$import`` should be a list, which means that one can import multiple files. 
 
-```{note}
-When multiple library files being imported contain definitions of the same name, then the definition imported later will overwrite previous ones. In this case, the interpreter should raise a warning. 
-```
+> **Note**: When multiple library files being imported contain definitions of the same name, then the definition imported later will overwrite previous ones. In this case, the interpreter should raise a warning. 
 
 ## Better Practice of Using Libraries
 
@@ -139,6 +136,6 @@ data:
 
 Since ``MyClassDom`` is a specific definition only used in this dataset. Hence, it is fine to define it in the description file itself as a customized definition, while importing common classes from a library.
 
-```{note}
-The library ``visualrecog`` is an example just for illustration. Along with DSDL, we provide a standard library named ``cv`` that contains a rich collection of definitions related to computer vision, including various types and commonly used class domains, etc. 
-```
+> **Note**:
+>
+> The library ``visualrecog`` is an example just for illustration. Along with DSDL, we provide a standard library named ``cv`` that contains a rich collection of definitions related to computer vision, including various types and commonly used class domains, etc. 
