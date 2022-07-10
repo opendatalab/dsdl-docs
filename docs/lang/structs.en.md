@@ -18,7 +18,7 @@ ImageClassificationSample:
 
 This class definition is a JSON object, with the following properties:
 
-- ``$kind``: its value must be ``"struct"``, indicating that it is defining a struct class. 
+- ``$defs``: its value must be ``"struct"``, indicating that it is defining a struct class. 
 - ``$fields``: its value must be a JSON object containing a set of properties, each corresponding to a field. In particular, for each property of ``$field``, the key will be considered as the field name, while the value is the specification of the corresponding field. The field specification can be given in two ways:
     - **Just the type name**: just give the type name of the field (if that type involves parameters, then the parameters will be set in the default way).
     - **With parameters**: one can also specify certain type parameters using a JSON object, which contains a ``$type`` property to specify the type name, and other properties to specify the settings of type parameters. See thet ``label`` field specification above.
@@ -45,9 +45,6 @@ ObjectDetectionSample:
 ```
 
 Here, the structs of class ``LocalObjectEntry`` are embedded into the struct of class ``ObjectDetectionSample``. 
-
-
-(parametric_class)=
 
 ## Parametric struct classes
 
@@ -76,7 +73,7 @@ ObjectDetectionSample:
 
 Here, we introduce a property ``$params`` in struct class definition. When the ``$params`` property is explicitly given and non-empty, then the corresponding struct class is **parametric**. Note that when a parametric class is used, its parameters must be given in order to make it into a **concrete class**. 
 
-Particularly, in the ``LocalObjectEntry`` class above, we introduce a **class parameter** ``cdom``, which are used in specifying the ``domain`` attribute of ``label``. Note that when a class parameter is used, it should be enclosed by {}. 
+Particularly, in the ``LocalObjectEntry`` class above, we introduce a **class parameter** ``cdom``, which are used in specifying the ``domain`` attribute of ``label``. Note that when a class parameter is used, it should be enclosed by `[]`. 
 Then, the class ``ObjectDetectionSample`` is also defined as a parametric struct class with a parameter ``cdom``, and the parameter is used when specifying the type of ``objects``. 
 
 With such class definitions, we can write the set of data samples as follows:

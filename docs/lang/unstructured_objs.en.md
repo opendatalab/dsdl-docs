@@ -64,7 +64,6 @@ class UnstructuredObject(ABC):
         pass
 ```
 
-
-```{note}
-Note here that this ``load`` method accepts an file-like object, which is already open, instead of a file path. The design is based on the "Separation of Concerns" principle: it is the responsibility of the data system to interpret the object locator and construct a file reader accordingly. A specific subclass of ``UnstructuredObject`` only needs to care about how to load, interpret, and validate the object given a file reader. 
-```
+> **Note**:
+>
+> Note here that this ``load`` method accepts an file-like object, which is already open, instead of a file path. The design is based on the "Separation of Concerns" principle: it is the responsibility of the data system to interpret the object locator and construct a file reader accordingly. A specific subclass of ``UnstructuredObject`` only needs to care about how to load, interpret, and validate the object given a file reader. 

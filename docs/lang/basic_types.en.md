@@ -2,12 +2,10 @@
 
 **Basic types** are the types for basic elements in DSDL. The instances of basic types serve as the basic building blocks of a data set description. 
 
-```{note}
-The underlying language, namely JSON and YAML, provides several primitive literals, such as boolean, number, string. 
-While using such literals to express values, DSDL maintains its own basic types. 
-It is important to note that association between DSDL basic types and JSON primitive types is NOT one-to-one. 
-Different DSDL basic types can adopt the same primitive type for expressing their values. For example, object locators and labels are of different types (``Loc`` and ``Label`` in this example) in DSDL, but they both use strings for expressing values.
-```
+> **Note**: The underlying language, namely JSON and YAML, provides several primitive literals, such as boolean, number, string. 
+> While using such literals to express values, DSDL maintains its own basic types. 
+> It is important to note that association between DSDL basic types and JSON primitive types is **NOT** one-to-one. 
+> Different DSDL basic types can adopt the same primitive type for expressing their values. For example, object locators and labels are of different types (``Loc`` and ``Label`` in this example) in DSDL, but they both use strings for expressing values.
 
 ## Generic basic types
 
@@ -42,9 +40,7 @@ In practice, labels in different classification domains are different. DSDL intr
 
 For a class domain with a multi-level class hierarchy, the class label can be expressed as a dot-delimited path, such as ``"MyDom::animal.dog.hound"`` or ``"MyDom[3.2.5]"``.
 
-```{note}
-We are working on unifying class systems for specific areas. The efforts would result in a standard classification domain. We reserve the domain name ``std`` for this.
-```
+> **Note**: We are working on unifying class systems for specific areas. The efforts would result in a standard classification domain. We reserve the domain name ``std`` for this.
 
 ## Loc: object locator type
 
