@@ -41,6 +41,9 @@ nav:
     - 计算机视觉: examples/cv.md
   - 安装部署: install.md
   - 使用教程: tutorial.md
+  - DSDL模板: 
+    - 计算机视觉: template/cv.md
+    - 自然语言处理: template/nlp.md
 
 plugins:
   - search:
