@@ -51,7 +51,7 @@ plugins:
         - en
         - zh
   - i18n:
-      default_language: zh
+      default_language: en
       languages:
         en: 
           name: English
