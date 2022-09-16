@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+         <loc>.</loc>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/"/>
+         
+    </url>
+    <url>
+         <loc>install/</loc>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/install/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/install/"/>
+         
+    </url>
+    <url>
+         <loc>overview/</loc>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/overview/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/overview/"/>
+         
+    </url>
+    <url>
+         <loc>tutorial/</loc>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/tutorial/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/tutorial/"/>
+         
+    </url>
+    <url>
+         <loc>examples/cv/</loc>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/examples/cv/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/examples/cv/"/>
+         
+    </url>
+    <url>
+         <loc>lang/basic_types/</loc>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/lang/basic_types/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/lang/basic_types/"/>
+         
+    </url>
+    <url>
+         <loc>lang/get_started/</loc>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/lang/get_started/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/lang/get_started/"/>
+         
+    </url>
+    <url>
+         <loc>lang/libraries/</loc>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/lang/libraries/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/lang/libraries/"/>
+         
+    </url>
+    <url>
+         <loc>lang/structs/</loc>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/lang/structs/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/lang/structs/"/>
+         
+    </url>
+    <url>
+         <loc>lang/unstructured_objs/</loc>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/lang/unstructured_objs/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/lang/unstructured_objs/"/>
+         
+    </url>
+    <url>
+         <loc>template/cv/</loc>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/template/cv/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/template/cv/"/>
+         
+    </url>
+    <url>
+         <loc>template/nlp/</loc>
+         <lastmod>2022-09-16</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="en/template/nlp/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="zh/template/nlp/"/>
+         
+    </url>
+</urlset>
