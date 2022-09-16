@@ -22,7 +22,7 @@ DSDL(Data Set Description Language)是新一代人工智能数据集描述语言
 
 ## 文档
 
-[DSDL入门文档](xxx.html)
+[DSDL入门文档](https://opendatalab.github.io/dsdl-docs/)
 
 ## 开源许可证
 
