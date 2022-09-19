@@ -12,7 +12,7 @@ DSDL (Data Set Description Language) is a new generation of AI data set descript
   This language aims to provide a unified representation standard for data in multiple fields of artificial intelligence, rather than being designed for a single field or task. It should be able to express data sets with different modalities and structures in a consistent format.
 
 - **Portable**
-  Write once, distribute everywhere. \\
+  Write once, distribute everywhere. 
 
   Dataset descriptions can be widely distributed and exchanged, and used in different environments without modification of the source files. The achievement of this goal is crucial for creating an open and thriving ecosystem. To this end, we need to carefully examine the details of the design, and remove unnecessary dependencies on specific assumptions about the underlying facilities or organizations.
 
