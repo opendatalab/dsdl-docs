@@ -1,29 +1,30 @@
 [English](./README.md) | 简体中文
 
-## 简介
+## Introduction
 
-DSDL(Data Set Description Language)是新一代人工智能数据集描述语言, 旨在解决AI数据集格式不统一导致的使用不方便问题。最终目标是在未来做到不同任务、不同模态数据间互通互联，推动人工智能进一步发展。
+DSDL (Data Set Description Language) is a new generation of AI data set description language, which aims to solve the problem of inconvenient use caused by the non-uniform format of AI data sets. The ultimate goal is to achieve interoperability between different tasks and different modal data in the future to promote the further development of AI.
 
 <details open>
-<summary>语言特性</summary>
+<summary> Design Goals </summary>
+  The design of DSDL is driven by three goals, namely generic, portable, extensible. We refer to these three goals together as GPE.
 
-- **通用性**
-  该语言主要目的是提供一种统一表示的标准，可以覆盖各个领域的人工智能数据，而不是基于特定的一种任务或者某个领域设计。该语言应该可以用一致的格式来表达不同模态和结构的数据。
+- **Generic**
+  This language aims to provide a unified representation standard for data in multiple fields of artificial intelligence, rather than being designed for a single field or task. It should be able to express data sets with different modalities and structures in a consistent format.
 
-- **便携性**
-  写完无需修改，随处分发。
+- **Portable**
+  Write once, distribute everywhere. \\
 
-  数据集描述可以被广泛的分发和交换，不需要修改就可以在各种环境下使用。这一目标的实现对于建立开发繁荣生态至关重要。为此我们需要仔细检查实现细节，使其对底层设施或组织无感知，从而去除基于特定假设的无必要依赖。
+  Dataset descriptions can be widely distributed and exchanged, and used in different environments without modification of the source files. The achievement of this goal is crucial for creating an open and thriving ecosystem. To this end, we need to carefully examine the details of the design, and remove unnecessary dependencies on specific assumptions about the underlying facilities or organizations.
 
-- **可拓展性**
-  在不需要修改核心标准的情况下可以拓展表述的边界。对于C++或者Python等编程语言，应用边界可以通过使用链接库或者软件包得以显著拓展，而核心语法可以在很长的时间内保持稳定。基于链接库和包，可以形成丰富的生态系统，使对应语言可以长时间保持活跃度和发展。
+- **Extensible**
+  One should be able to extend the boundary of expression without modifying the core standard. For a programming language such as C++ or Python, its application boundaries can be significantly extended by libraries or packages, while the core language remains stable over a long period. Such libraries and packages form a rich ecosystem, making the language stay alive for a very long time.
 
 </details>
 
-## 文档
+## Documentation
 
-[DSDL入门文档](https://opendatalab.github.io/dsdl-docs/)
+[DSDL Specification and Tutorials](https://opendatalab.github.io/dsdl-docs/)
 
-## 开源许可证
+## License
 
-该项目采用 [Apache 2.0 开源许可证](LICENSE)。
+This project is released under the [Apache 2.0 license](LICENSE)。
