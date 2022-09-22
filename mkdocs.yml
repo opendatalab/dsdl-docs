@@ -39,11 +39,11 @@ nav:
     - 链接库: lang/libraries.md
   - 实例演示: 
     - 计算机视觉: examples/cv.md
-  - 安装部署: install.md
-  - 任务模板: 
-    - 计算机视觉: template/cv.md
-    - 自然语言处理: template/nlp.md
-  - 使用教程: tutorial.md
+#  - 安装部署: install.md
+#  - 任务模板: 
+#    - 计算机视觉: template/cv.md
+#    - 自然语言处理: template/nlp.md
+#  - 使用教程: tutorial.md
 
 plugins:
   - search:
