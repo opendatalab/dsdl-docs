@@ -37,6 +37,7 @@ nav:
     - 非结构化对象类: lang/unstructured_objs.md
     - 结构类: lang/structs.md
     - 类别域: lang/class_dom.md
+    - 数据模块: lang/data_section.md
     - 链接库: lang/libraries.md
   - 实例演示: 
     - 计算机视觉: examples/cv.md
@@ -72,6 +73,7 @@ plugins:
           非结构化对象类: Unstructured Object Classes
           结构类: Struct Classes
           类别域: Class Domain
+          数据模块: Data Section
           链接库: Libraries
           实例演示: Example
           计算机视觉: Computer Vision
