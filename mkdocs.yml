@@ -41,8 +41,10 @@ nav:
     - 计算机视觉: examples/cv.md
   - 安装部署: install.md
   - 任务模板: 
-    - 计算机视觉: template/cv.md
-    - 自然语言处理: template/nlp.md
+    - 计算机视觉: 
+      - 图像分类: template/cv/cv_classification.md
+      - 目标检测: template/cv/cv_detection.md
+    - 自然语言处理: template/nlp/nlp.md
   - 使用教程: tutorial.md
 
 plugins:
@@ -77,5 +79,7 @@ plugins:
           使用教程: Tutorial
           任务模板: Task Template
           自然语言处理: Natural Language Processing
+          图像分类: Image Classification
+          目标检测: Object Detection
 
 
