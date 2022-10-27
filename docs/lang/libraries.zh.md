@@ -1,10 +1,10 @@
-## 2.5 库
+## 2.7 库
 
 尽管我们已经试图去简化了DSDL的设计，但是要学习如何在DSDL中定义类仍然需要一些努力。然而我们明白大多数AI研究者或开发者都不想再学习另一门语言。因此我们引入了库的概念来进一步简化数据集描述的过程。
 
-### 2.5.1 定义与导入一个库
+### 2.7.1 定义与导入一个库
 
-我们在*get_started*部分定义的类`ImageClassification`是比较通用，可以应用在其他的数据集中的。因此我们可以将它提取到一个**库文件**当中，从而数据集描述文件可以直接导入它。
+我们在[get_started](get_started.zh.md)部分定义的类`ImageClassification`是比较通用，可以应用在其他的数据集中的。因此我们可以将它提取到一个**库文件**当中，从而数据集描述文件可以直接导入它。
 
 总的来讲，一个**库文件**是一个YAML或JSON文件，文件中提供了一些类的定义。
 
@@ -35,7 +35,7 @@ ImageClassificationSample:
 
 > **注意**：
 >
-> + 这个库文件应该被放在默认的库的路径中，从而系统可以找到它。
+> + 这个库文件应该被放在默认的库的路径(`dsdl_library`)中，从而系统可以找到它。
 > + 用户还可以通过设置环境变量`DSDL_LIBRARY_PATH`来设置额外的库路径。
 
 然后数据集描述文件可以通过导入库来简化，具体描述如下：
@@ -50,6 +50,7 @@ meta:
     dataset-version: "1.0.0"
 data:
     sample-type: ImageClassificationSample
+    sample-path: $local
     samples:
         - { image: "xyz/0001.jpg", label: "cat" }
         - { image: "xyz/0002.jpg", label: "dog" }
@@ -59,7 +60,7 @@ data:
 
 > **注意**：当导入了多个库文件，并且这些库文件中包含了名称相同的若干的定义，则后导入的定义会覆盖先导入的定义。如果发生了这种情况，解析器会报出警告信息。
 
-### 2.5.2 如何更好地使用库
+### 2.7.2 如何更好地使用库
 
 下面提供了定义DSDL库的一些建议：
 
@@ -124,7 +125,8 @@ defs:
             - fish
             - tiger
 data:
-    sample-type: ImageClassificationSample
+    sample-type: ImageClassificationSample[cdom=MyClassDom]
+    sample-path: $local
     samples:
         - { image: "xyz/0001.jpg", label: "cat" }
         - { image: "xyz/0002.jpg", label: "dog" }

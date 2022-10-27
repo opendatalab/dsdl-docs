@@ -6,7 +6,7 @@ Hence, we introduce libraries to further simplify the process of data set descri
 
 ## Define and import a library
 
-Consider the example in {ref}`get_started`, the part that defines the class ``ImageClassificationSample`` is quite generic and can be used in many data sets. Hence, we can extract it to a **library file**, while the data set description file can just import it. 
+Consider the example in [get_started](get_started.en.md), the part that defines the class `ImageClassificationSample` is quite generic and can be used in many data sets. Hence, we can extract it to a **library file**, while the data set description file can just import it. 
 
 In general, a **library file** is a file in YAML or JSON format that provides a collection of definitions. 
 

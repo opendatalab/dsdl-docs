@@ -36,6 +36,7 @@
     },
     "data": {
         "sample-type": "ImageClassificationSample",
+        "sample-path": "$local",
         "samples": [
             { "image": "xyz/0001.jpg", "label": "cat" },
             { "image": "xyz/0002.jpg", "label": "dog" }
@@ -67,6 +68,7 @@ defs:
             label: Label[dom=MyClassDom]
 data:
     sample-type: ImageClassificationSample
+    sample-path: $local
     samples:
         - { image: "xyz/0001.jpg", label: "cat" }
         - { image: "xyz/0002.jpg", label: "dog" }
@@ -80,7 +82,7 @@ JSON和YAML格式的数据集描述文件都可以**准确地描述相同的**�
 
 + **header**：指明了当前的数据集描述文件需要被如何解析；
 + **meta section**：提供了当前数据集的一些元信息；
-+ **defs section**：提供了一些全局的定义，比如：用户定义的类别；
++ **defs section**：提供了一些全局的定义，比如：用户定义的类别域（class domain）和结构体（struct）；
 + **data section**：描述了数据集中的样本数据
 
 > **注意**：
