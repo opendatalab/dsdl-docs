@@ -22,50 +22,50 @@
     </tr>
     <tr>
       <th width="25%" >ImageNet-21K</th>
-      <td width="20%" align="center">:heavy_check_mark:</td>
-      <td width="20%" align="center">:heavy_check_mark:</td>
+      <td width="20%" align="center">Y</td>
+      <td width="20%" align="center">Y</td>
       <td width="20%" align="center"></td>
     </tr>
     <tr>
       <th width="25%" >ImageNet-1K</th>
-      <td width="20%" align="center">:heavy_check_mark:</td>
-      <td width="20%" align="center">:heavy_check_mark:</td>
+      <td width="20%" align="center">Y</td>
+      <td width="20%" align="center">Y</td>
       <td width="20%" align="center"></td>
     </tr>
     <tr>
       <th width="25%" >CIFAR10</th>
-      <td width="20%" align="center">:heavy_check_mark:</td>
-      <td width="20%" align="center">:heavy_check_mark:</td>
+      <td width="20%" align="center">Y</td>
+      <td width="20%" align="center">Y</td>
       <td width="20%" align="center"></td>
     </tr>
     <tr>
       <th width="25%" >CIFAR100</th>
-      <td width="20%" align="center">:heavy_check_mark:</td>
-      <td width="20%" align="center">:heavy_check_mark:</td>
-      <td width="20%" align="center">:heavy_check_mark:</td>
+      <td width="20%" align="center">Y</td>
+      <td width="20%" align="center">Y</td>
+      <td width="20%" align="center">Y</td>
     </tr>
     <tr>
       <th width="25%" >MNIST</th>
-      <td width="20%" align="center">:heavy_check_mark:</td>
-      <td width="20%" align="center">:heavy_check_mark:</td>
+      <td width="20%" align="center">Y</td>
+      <td width="20%" align="center">Y</td>
       <td width="20%" align="center"></td>
     </tr>
     <tr>
       <th width="25%" >Fashion-MNIST</th>
-      <td width="20%" align="center">:heavy_check_mark:</td>
-      <td width="20%" align="center">:heavy_check_mark:</td>
+      <td width="20%" align="center">Y</td>
+      <td width="20%" align="center">Y</td>
       <td width="20%" align="center"></td>
     </tr>
     <tr>
       <th width="25%" >Caltech-256</th>
-      <td width="20%" align="center">:heavy_check_mark:</td>
-      <td width="20%" align="center">:heavy_check_mark:</td>
+      <td width="20%" align="center">Y</td>
+      <td width="20%" align="center">Y</td>
       <td width="20%" align="center"></td>
     </tr>
     <tr>
       <th width="25%" >Oxford Flowers-102</th>
-      <td width="20%" align="center">:heavy_check_mark:</td>
-      <td width="20%" align="center">:heavy_check_mark:</td>
+      <td width="20%" align="center">Y</td>
+      <td width="20%" align="center">Y</td>
       <td width="20%" align="center"></td>
     </tr>
   </table>

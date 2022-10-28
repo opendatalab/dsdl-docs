@@ -30,25 +30,25 @@
     </tr>
     <tr>
       <th width="15%" >VOC</th>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center"></td>
-      <td width="8%" align="center"></td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center">Y</td>
     </tr>
     <tr>
       <th width="15%" >COCO</th>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
@@ -60,69 +60,69 @@
     </tr>
     <tr>
       <th width="15%" >KITTI</th>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
     </tr>
     <tr>
       <th width="15%" >OpenImages</th>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
     </tr>
     <tr>
       <th width="15%" >Objects365</th>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
     </tr>
     <tr>
       <th width="15%" >ILSVRC2015</th>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
     </tr>
     <tr>
       <th width="15%" >LVIS</th>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
-      <td width="8%" align="center">:heavy_check_mark:</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center"></td>
