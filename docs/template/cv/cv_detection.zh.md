@@ -281,11 +281,11 @@ data:
     sample-type: ObjectDetectionSample[cdom=VOCClassDom]
     sample-path: $local
     samples: 
-      - media: "media/000000000000.jpg"
-        annotations:
+      - image: "media/000000000000.jpg"
+        objects:
           - {bbox: [4.0, 36.0, 496.0, 298.0], category: 12}
-      - media: "media/000000000002.jpg"
-        annotations:
+      - image: "media/000000000002.jpg"
+        objects:
           - {bbox: [440.0, 161.0, 60.0, 81.0], category: 14}   
           - {bbox: [97.0, 159.0, 121.0, 67.0], category: 14}
           - {bbox: [443.0, 116.0, 57.0, 101.0], category: 15}
