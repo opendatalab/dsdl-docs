@@ -109,13 +109,17 @@ ClassificationSample:
     $optional: ['label']
 ```
 在模板中的一些字段的含义如下所示：
+
   - $dsdl-version: 描述了该文件对应的dsdl版本
   - ClassificationSample: 定义了分类任务的样本格式，其包含了四个属性：
+
     - $def: 表示ClassificationSample是一个struct(结构体类)
     - $params: 定义了形参，在这里即class domain
     - $fields: 结构体类所包含的属性，对于分类任务，具体包括:
+
       - image 图片路径
       - label 类别信息
+      
     - $optional: 用来涵盖结构体类的属性中的可选属性，这里只定义了一个字段即label，表示单个样本，label的存在是可选的，另外也可以将数据集的特有字段涵盖在$optional字段里
 
 对于模板中提到的类别域cdom，我们在模板库[dsdl-sdk repo](https://gitlab.shlab.tech/research/dataset_standard/dsdl-sdk/-/tree/feature-types/dsdl/dsdl_library)中也提供了常见任务的类别域，这里给出cifar10数据集的class domain作为示例：
@@ -137,6 +141,7 @@ Cifar10ImageClassificationClassDom:
         - truck
 ```  
 上面的文件中给出了Cifar10ImageClassificationClassDom的定义，具体包含下列字段：
+
 - $def: 描述了Cifar10ImageClassificationClassDom的类型，这里即class_domain
 - classes: 描述了该类别域中所包含的类别及其顺序，在cifar10数据集中，则依次为airplane、automobile等等
 
