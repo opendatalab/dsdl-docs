@@ -215,17 +215,23 @@ ObjectDetectionSample:
         objects: List[etype=LocalObjectEntry[cdom=$cdom]]
 ```
 在检测模板中的一些字段含义如下：
+
   - $dsdl-version: 描述了该文件对应的dsdl版本
   - LocalObjectEntry: 定义了标注框的描述方式的嵌套结构体，包含四个字段: 
+
     - $def: struct, 表示这是一个结构体类型
     - $params: 定义了形参，在这里即class domain
     - $fields: 结构体类所包含的属性，具体包括:
+
       - bbox 标注框的位置
       - label 标注框的类别
+      
   - ObjectDetectionSample: 定义了检测任务sample的结构体，包含四个字段:
+
     - $def: struct, 表示这是一个结构体类型
     - $params: 定义了形参，在这里即class domain
     - $fields: 结构体类所包含的属性，具体包括:
+
       - image 图片的路径
       - objects 标注信息，检测任务中，为前面的LocalObjectEntry构成的一个列表
 
@@ -259,6 +265,7 @@ VOCClassDom:
 ```
 
 上面的文件中给出了VOCClassDom的定义，具体包含下列字段：
+
 - $def: 描述了VOCClassDom的类型，这里即class_domain
 - classes: 描述了该类别域中所包含的类别及其顺序，在VOC数据集中，则依次为horse、person等等
 
