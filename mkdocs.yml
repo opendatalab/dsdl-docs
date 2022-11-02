@@ -1,4 +1,7 @@
 site_name: DSDL中文文档
+site_author: OpenDataLab
+site_description: >-
+  基于新一代AI数据集标注语言DSDL（Data Set Description Language），打通AI数据鸿沟，便捷高效使用数据
 
 #高亮配置
 markdown_extensions:
@@ -13,6 +16,12 @@ markdown_extensions:
 #提示框配置
 theme:
   name: material
+  # custom_dir: overrides
+  custom_dir: !ENV [THEME_DIR, "material"]
+  language: zh
+  features:
+    - navigation.tabs
+    # - navigation.instant
   icon:
     admonition:
       note: octicons/tag-16
@@ -30,24 +39,32 @@ theme:
 
 #主页导航
 nav:
-  - 语言特性: overview.md
-  - 语言定义: 
-    - 快速入门: lang/get_started.md
-    - 基本数据类型: lang/basic_types.md
-    - 非结构化对象类: lang/unstructured_objs.md
-    - 结构类: lang/structs.md
-    - 类别域: lang/class_dom.md
-    - 数据模块: lang/data_section.md
-    - 链接库: lang/libraries.md
-  - 实例演示: 
-    - 计算机视觉: examples/cv.md
-  - 安装部署: install.md
+  - 主页: index.md
+  - 入门指南: 
+    - 相关介绍: getting_started/introduction.md
+    - 数据集使用:
+      - 安装: getting_started/install.md
+      - 数据集下载: getting_started/install.md
+      - 数据集可视化: getting_started/install.md
+    - 安装: getting_started/install.md
+
   - 任务模板: 
     - 计算机视觉: 
       - 图像分类: template/cv/cv_classification.md
       - 目标检测: template/cv/cv_detection.md
-    - 自然语言处理: template/nlp/nlp.md
-  - 使用教程: tutorial.md
+  - DSDL教程:
+    - 语言特性: dsdl_language/overview.md
+    - 语言定义: 
+      - 快速入门: dsdl_language/lang/get_started.md
+      - 基本数据类型: dsdl_language/lang/basic_types.md
+      - 非结构化对象类: dsdl_language/lang/unstructured_objs.md
+      - 结构类: dsdl_language/lang/structs.md
+      - 类别域: dsdl_language/lang/class_dom.md
+      - 数据模块: dsdl_language/lang/data_section.md
+      - 链接库: dsdl_language/lang/libraries.md
+    - 实例演示: 
+      - 计算机视觉: dsdl_language/examples/cv.md
+  - API接口文档: api_reference/index.md
 
 plugins:
   - search:
@@ -55,7 +72,7 @@ plugins:
         - en
         - zh
   - i18n:
-      default_language: en
+      default_language: zh
       languages:
         en: 
           name: English
@@ -68,9 +85,10 @@ plugins:
 
       nav_translations:
         en:
+          主页: Home
           语言特性: Overview
           语言定义: Language
-          快速入门: Get Started
+          入门指南: Get Started
           基本数据类型: Basic Types
           非结构化对象类: Unstructured Object Classes
           结构类: Struct Classes
@@ -87,3 +105,20 @@ plugins:
           目标检测: Object Detection
 
 
+# extra:
+#   alternate:
+
+#     # Switch to English
+#     - name: English
+#       link: <your-site>/en/
+#       lang: en
+
+#     # Switch to German
+#     - name: Deutsch
+#       link: <your-site>/de/
+#       lang: de
+
+#     # Switch to Japanese
+#     - name: 日本語
+#       link: <your-site>/ja/
+#       lang: ja
