@@ -41,18 +41,25 @@ theme:
 nav:
   - 主页: index.md
   - 入门指南: 
-    - 相关介绍: getting_started/introduction.md
-    - 数据集使用:
-      - 安装: getting_started/install.md
-      - 数据集下载: getting_started/install.md
-      - 数据集可视化: getting_started/install.md
-    - 安装: getting_started/install.md
-
-  - 任务模板: 
-    - 计算机视觉: 
-      - 图像分类: template/cv/cv_classification.md
-      - 目标检测: template/cv/cv_detection.md
-  - DSDL教程:
+    - 整体介绍: getting_started/overview.md
+    - 安装部署: getting_started/install.md
+    - 实例演示: 
+      - 计算机视觉: dsdl_language/examples/cv.md
+  - 用户教程:
+    - 整体介绍: tutorials/overview.md
+    - 数据集下载: to_be_filled.md
+    - 数据集格式转换:
+      - 主流格式转换为DSDL格式: to_be_filled.md
+      - DSDL格式转换为主流格式: to_be_filled.md
+    - 自定义数据集: to_be_filled.md
+    - DSDL数据集使用:
+      - 框架DataLoader撰写: to_be_filled.md
+      - OpenMMLab训练: to_be_filled.md
+      - 其他框架训练: to_be_filled.md
+    - 数据集可视化: to_be_filled.md
+    - 数据集分析: to_be_filled.md
+    - ODL-CLI使用教程: to_be_filled.md
+  - DSDL规范文档:
     - 语言特性: dsdl_language/overview.md
     - 语言定义: 
       - 快速入门: dsdl_language/lang/get_started.md
@@ -62,6 +69,10 @@ nav:
       - 类别域: dsdl_language/lang/class_dom.md
       - 数据模块: dsdl_language/lang/data_section.md
       - 链接库: dsdl_language/lang/libraries.md
+    - 任务模板: 
+      - 计算机视觉: 
+        - 图像分类: template/cv/cv_classification.md
+        - 目标检测: template/cv/cv_detection.md 
     - 实例演示: 
       - 计算机视觉: dsdl_language/examples/cv.md
   - API接口文档: api_reference/index.md
@@ -88,7 +99,9 @@ plugins:
           主页: Home
           语言特性: Overview
           语言定义: Language
-          入门指南: Get Started
+          整体介绍: overview
+          入门指南: Getting Started
+          用户教程: Tutorials
           基本数据类型: Basic Types
           非结构化对象类: Unstructured Object Classes
           结构类: Struct Classes
