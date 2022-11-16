@@ -17,7 +17,7 @@ markdown_extensions:
 theme:
   name: material
   # custom_dir: overrides
-  custom_dir: !ENV [THEME_DIR, "material"]
+  custom_dir: !ENV [THEME_DIR, "site"]
   language: zh
   features:
     - navigation.tabs
@@ -41,10 +41,12 @@ theme:
 nav:
   - 主页: index.md
   - 入门指南: 
-    - 整体介绍: getting_started/overview.md
+    - 整体介绍: getting_started/install.md
     - 安装部署: getting_started/install.md
     - 实例演示: 
-      - 计算机视觉: dsdl_language/examples/cv.md
+      - 计算机视觉: 
+        - 图像分类: getting_started/Detection.md
+        - 目标检测: getting_started/Detection.md
   - 用户教程:
     - 整体介绍: tutorials/overview.md
     - 数据集下载: to_be_filled.md
