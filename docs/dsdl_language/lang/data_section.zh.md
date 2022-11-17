@@ -80,11 +80,13 @@ data:
 ```
 在`samples.json`中存放我们具体的数据，示例如下：
 ```json5
-[
-  {"image": "xyz/0001.jpg", "label": "cat"}, 
-  {"image": "xyz/0002.jpg", "label": "dog"}, 
-  {"image": "xyz/0003.jpg", "label": "dog"}, 
-  {"image": "xyz/0004.jpg", "label": "tiger"},
-  ...
-]
+{
+    "samples":[
+        {"image": "xyz/0001.jpg", "label": "cat"}, 
+        {"image": "xyz/0002.jpg", "label": "dog"}, 
+        {"image": "xyz/0003.jpg", "label": "dog"}, 
+        {"image": "xyz/0004.jpg", "label": "tiger"},
+        ...
+    ]
+}
 ```

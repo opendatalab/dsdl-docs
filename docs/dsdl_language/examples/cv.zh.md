@@ -30,6 +30,7 @@ ImageClassificationSample:
 ```yaml
 data:
     sample-type: ImageClassificationSample[cdom=MyClassDom]
+    sample-path: $local
     samples:
         - { image: "xyz/0001.jpg", label: "cat" }
         - { image: "xyz/0002.jpg", label: "dog" }
@@ -67,6 +68,7 @@ ObjectDetectionSample:
 ```yaml
 data:
     sample-type: ObjectDetectionSample[cdom=MyClassDom]
+    sample-path: $local
     samples:
         - image: "xyz/0001.jpg"
             objects: 
@@ -104,6 +106,7 @@ SceneAndObjectSample:
 ```yaml
 data:
     sample-type: SceneAndObjectSample[scenedom=SceneDom, objectdom=ObjectDom]
+    sample-path: $local
     samples:
         - image: "xyz/0001.jpg"
             sclabel: "street"
@@ -139,6 +142,7 @@ ImageSegmentationSample:
 ```yaml
 data:
     sample-type: ImageSegmentationSample[cdom=MyClassDom]
+    sample-path: $local
     samples:
         - { image: "imgs/0001.jpg", labelmap: "maps/0001.ppm" }
         - { image: "imgs/0002.jpg", labelmap: "maps/0002.ppm" }
