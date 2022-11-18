@@ -117,8 +117,8 @@ ClassificationSample:
     - $params: 定义了形参，在这里即class domain
     - $fields: 结构体类所包含的属性，对于分类任务，具体包括:
 
-      - image 图片路径
-      - label 类别信息
+        - image 图片路径
+        - label 类别信息
       
     - $optional: 用来涵盖结构体类的属性中的可选属性，这里只定义了一个字段即label，表示单个样本，label的存在是可选的，另外也可以将数据集的特有字段涵盖在$optional字段里
 

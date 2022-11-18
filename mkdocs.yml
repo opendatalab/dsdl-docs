@@ -3,7 +3,7 @@ site_author: OpenDataLab
 site_description: >-
   基于新一代AI数据集标注语言DSDL（Data Set Description Language），打通AI数据鸿沟，便捷高效使用数据
 
-#高亮配置
+#高亮配置, mkdown公式拓展
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -12,6 +12,12 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences 
   - pymdownx.details
+  - pymdownx.arithmatex
+
+#java公式拓展
+extra_javascript:
+  - mathjax-config.js
+  - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 #提示框配置
 theme:
@@ -64,6 +70,7 @@ nav:
       - 任务模板: 
         - 图像分类: tutorials/define_label/template/cv/cv_classification.md
         - 目标检测: tutorials/define_label/template/cv/cv_detection.md 
+        - 图像分割: tutorials/define_label/template/cv/cv_segmentation.md 
     - ODL-CLI使用教程: tutorials/ODL-CLI.md
   - DSDL规范文档:
     - 语言特性: dsdl_language/overview.md

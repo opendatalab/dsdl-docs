@@ -3,11 +3,48 @@
 为了制定目标检测任务数据集描述文件的模板，我们对主流的目标检测任务数据集进行了调研，分析其任务的目的和常见标注信息所包含的字段，从中整理出共享字段和独立字段，并在此基础上制定检测任务数据集描述文件的通用模板。
 # 1. 任务调研
 ## 1.1 任务定义
-目标检测任务是指在图像中用矩形框的形式检测出物体的位置，并识别其所属类别。
+目标检测任务是指在图像中用矩形框的形式检测出物体的位置，并识别其所属类别。其示意图(该图片和标注信息来自coco数据集)如下所示：
+
+![img](img/det_example.png)
+
+## 1.2 评价指标：
+
+目标检测最常用的评价指标就是AP（**A**verage **P**recision），此外还有一些基于AP衍生的指标，这些指标的含义如下：
+
+- **AP**
+
+PR曲线中和横坐标轴围成区域的面积。
+
+- **11-point interpolation**
+
+为了简化AP计算，有时候采用11-point计算方法（如VOC数据集的metric），相当于计算recall=[0, 0.1, 0.2, ... , 1]这11个点处precision值的平均值（某处不存在的话取右侧最大值），计算公式如下：
+
+$$ AP= {1\over11} \sum_{
+\begin{subarray}{l}
+   i\in\{0, 0.1, 0.2 ..., 1\}\\
+\end{subarray}} \rho_{interp}(r) $$
+
+$$ \rho_{interp}(r) = \max_{
+\begin{subarray}{l}
+   \tilde{r}:\tilde{r}\geq r
+\end{subarray}} \rho(\tilde{r}) $$
+
+- **mAP**
+
+所有的类别的AP求平均
+
+- **mAP@0.5 和 mAP@0.5~0.95**
+
+这里的0.5和0.95都是前文介绍混淆矩阵提到的阈值，也就是在不同阈值下进行的AP计算。mAP@0.5也就是阈值等于0.5的时候所计算的mAP，mAP@0.5~0.95则表示阈值从0.5到0.95分别计算mAP，然后在求平均。voc数据集中采用的是mAP@0.5，通常也叫AP_50, coco数据集中采用的是mAP@0.5~0.95，通常简称为mAP。（相同的检测器，mAP一般低于AP_50）
+
+- **mAP_s，mAP_m，mAP_l**
+
+这里的s、m、l代表的是物体尺寸，是coco的metric会把box分为不同尺寸，来查看模型对不同尺寸box的检测效果。
+
 <a id="table-1"></a>
 
-## 1.2 主流数据集调研： 
-我们调研了10个主流检测数据集，其中包含了COCO、VOC等常见数据集。为了使得模板更加通用，同时也具备拓展能力，我们着重关注各个数据集之间的共性和特性，此外，调研过程会遇到一些名称不同，但是实际含义相同或类似的字段，这些字段我们也视为同一字段，并统一去命名，比如image_id字段一般表示图片的路径或者id，他是图片的唯一标识；label_id则表示图片的类别，可以用数字表示，也可以用字符串表示；bbox则表示一个目标边界框的坐标。完整的字段调研结果如下表所示： 
+## 1.3 主流数据集调研： 
+我们调研了10个主流检测数据集，其中包含了COCO、VOC等常见数据集。为了使得模板更加通用，同时也具备拓展能力，我们着重关注各个数据集之间的共性和特性，此外，调研过程会遇到一些名称不同，但是实际含义相同或类似的字段，这些字段我们也视为同一字段，并统一去称呼，比如image_id字段一般表示图片的路径或者id，他是图片的唯一标识；label_id则表示图片的类别，可以用数字表示，也可以用字符串表示；bbox则表示一个目标边界框的坐标。完整的字段调研结果如下表所示： 
 <table border="4" >
         <tr>
       <th rowspan="2" align=center colspan="1" align=center>目标检测数据集</th>
@@ -212,7 +249,7 @@ ObjectDetectionSample:
     $params: ['cdom']
     $fields:
         image: Image
-        objects: List[etype=LocalObjectEntry[cdom=$cdom]]
+        objects: List[LocalObjectEntry[cdom=$cdom]]
 ```
 在检测模板中的一些字段含义如下：
 
@@ -223,8 +260,8 @@ ObjectDetectionSample:
     - $params: 定义了形参，在这里即class domain
     - $fields: 结构体类所包含的属性，具体包括:
 
-      - bbox 标注框的位置
-      - label 标注框的类别
+        - bbox 标注框的位置
+        - label 标注框的类别
       
   - ObjectDetectionSample: 定义了检测任务sample的结构体，包含四个字段:
 
@@ -232,8 +269,8 @@ ObjectDetectionSample:
     - $params: 定义了形参，在这里即class domain
     - $fields: 结构体类所包含的属性，具体包括:
 
-      - image 图片的路径
-      - objects 标注信息，检测任务中，为前面的LocalObjectEntry构成的一个列表
+        - image 图片的路径
+        - objects 标注信息，检测任务中，为前面的LocalObjectEntry构成的一个列表
 
 对于模板中提到的类别域cdom，我们在模板库[dsdl-sdk repo](https://gitlab.shlab.tech/research/dataset_standard/dsdl-sdk/-/tree/feature-types/dsdl/dsdl_library)中也提供了常见任务的类别域，这里给出VOC数据集的class domain作为示例：
 ```yaml
@@ -290,13 +327,13 @@ data:
     samples: 
       - image: "media/000000000000.jpg"
         objects:
-          - {bbox: [4.0, 36.0, 496.0, 298.0], category: 12}
+          - {bbox: [4.0, 36.0, 496.0, 298.0], label: 12}
       - image: "media/000000000002.jpg"
         objects:
-          - {bbox: [440.0, 161.0, 60.0, 81.0], category: 14}   
-          - {bbox: [97.0, 159.0, 121.0, 67.0], category: 14}
-          - {bbox: [443.0, 116.0, 57.0, 101.0], category: 15}
-          - {bbox: [104.0, 113.0, 65.0, 106.0], category: 15}
+          - {bbox: [440.0, 161.0, 60.0, 81.0], label: 14}   
+          - {bbox: [97.0, 159.0, 121.0, 67.0], label: 14}
+          - {bbox: [443.0, 116.0, 57.0, 101.0], label: 15}
+          - {bbox: [104.0, 113.0, 65.0, 106.0], label: 15}
       ...
 ```
 上面的描述文件中，首先定义了dsdl的版本信息，然后import了两个模板文件，包括任务模板和类别域模板，接着用meta和data字段来描述自己的数据集，具体的字段说明如下所示：  
