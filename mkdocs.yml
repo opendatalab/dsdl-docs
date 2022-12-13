@@ -49,7 +49,11 @@ nav:
   - 入门指南: 
     - 整体介绍: getting_started/overview.md
     - 安装部署: getting_started/install.md
-    - 快速上手: getting_started/quick_start.md
+    - 快速上手: 
+      - 1.计算机视觉-图像分类: getting_started/quick_start_ex1.md 
+      - 2.计算机视觉-目标检测: getting_started/quick_start_ex2.md
+      - 3.计算机视觉-语义分割: getting_started/quick_start_ex3.md
+
   - 用户教程:
     - 整体介绍: tutorials/overview.md
     - 数据集下载: tutorials/dataset_download.md

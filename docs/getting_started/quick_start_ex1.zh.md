@@ -1,16 +1,16 @@
-# 快速入门
+# 计算机视觉-图像分类任务
 
-该文档将以一个数据集为例（这里暂时以VOC2007为例），跑通整个DSDL流程。
-
+本教程将使用经典`CAFAR-10`手写识别数据集为例，演示数据处理及模型训练全流程。
 
 ## 数据集下载
 
 ```
-dsdl get opendatalab/VOC2017
+odl-cli get 
 ```
 
 这里将对DSDL标注进行下载，下载后文件目录如下：
-
+<details>
+<summary>dsdl-voc目录结构</summary>
 ```
 VOC2007-dsdl/
 ├── doms/              
@@ -26,9 +26,12 @@ VOC2007-dsdl/
    ├── test.yaml
    └── test_samples.json
 ```
+</details>
+
 
 如果对原始数据集进行同步下载，其文件目录如下：
-
+<details>
+<summary>voc数据集目录结构</summary>
 ```
 VOC2007/                      # 原始数据集文件夹
 ├── Annotations/              # 里面存放的是每张图片打完标签所对应的XML文件
@@ -63,6 +66,7 @@ VOC2007/                      # 原始数据集文件夹
    ├── 000032.png             # 某张图片的媒体文件 
    └── ...
 ```
+</details>
 
 
 ## 数据集解析
