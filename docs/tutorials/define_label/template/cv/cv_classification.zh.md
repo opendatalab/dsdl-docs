@@ -7,7 +7,13 @@
 
 <a id="table-1"></a>
 
-## 1.2 主流数据集调研
+## 1.2 评价指标
+
+任务的评价指标一般有两个：top-5的准确率和top-1的准确率，准确率=（正确分类图片个数）/（所有图片个数）。top-5准确率指的是前5个得分最高的预测类别里有一个是正确的，就算这个样本被正确分类了，而top-1准确率计算时必须要满足预测分数最高的预测类别是正确的，才算这个样本被正确分类了。
+
+<img src='images/classification/fig1.png'>
+
+## 1.3 主流数据集调研
 我们调研了10个主流分类数据集，其中包含了ImageNet-1K、MNIST、CIFAR10等常见数据集。为了使得模板更加通用，同时也具备拓展能力，我们着重关注各个数据集之间的共性和特性，此外，调研过程会遇到一些名称不同，但是实际含义相同或类似的字段，这些字段我们也视为同一字段，并统一去命名，比如image_id字段一般表示图片的路径或者id，他是图片的唯一标识；label_id则表示图片的类别，可以用数字表示，也可以用字符串表示。完整的字段调研结果如下表所示：
   <table border="4" >
     <tr>
@@ -96,7 +102,7 @@
 
 # 2. 模板展示
 
-根据上述的[调研结果](#table-1)，我们知道对于分类任务，一个样本最重要的属性是图片的id(或路径)以及图片的类别，因此我们在分类任务结构体（结构体的概念请参考[DSDL入门文档-语言定义-结构体](https://opendatalab.github.io/dsdl-docs/zh/lang/structs/#24)部分）的$fields属性中定义了image和label两个字段；其次，不同的数据集所蕴含的类别是各不相同的，所以在sample中需要有一个形参，来对类别域进行限定（在dsdl中，我们将类别域描述为class domain，或者cdom，具体可以参考[DSDL入门文档-语言定义-类别域](https://opendatalab.github.io/dsdl-docs/zh/lang/basic_types/#223-label)中更详细的定义）；最后，我们考虑到对于一些无监督或半监督分类任务，可能部分样本不包含类别信息，所以我们设计了$optional字段，并将label字段涵盖进去，同时一些数据集特有的字段也可以包含到$optional字段当中。基于上述考虑，我们制定了分类任务的模板，如下所示：
+根据上述的[调研结果](#table-1)，我们知道对于分类任务，一个样本最重要的属性是图片的id(或路径)以及图片的类别，因此我们在分类任务结构体（结构体的概念请参考[DSDL入门文档-语言定义-结构体](https://opendatalab.github.io/dsdl-docs/zh/lang/structs/#24)部分）的fields 属性中定义了image和label两个字段；其次，不同的数据集所蕴含的类别是各不相同的，所以在sample中需要有一个形参，来对类别域进行限定（在dsdl中，我们将类别域描述为class domain，或者cdom，具体可以参考[DSDL入门文档-语言定义-类别域](https://opendatalab.github.io/dsdl-docs/zh/lang/basic_types/#223-label)中更详细的定义）；最后，我们考虑到对于一些无监督或半监督分类任务，可能部分样本不包含类别信息，所以我们设计了$optional字段，并将label字段涵盖进去，同时一些数据集特有的字段也可以包含到$optional字段当中。基于上述考虑，我们制定了分类任务的模板，如下所示：
 ```yaml
 $dsdl-version: "0.5.0"
 
@@ -148,30 +154,31 @@ Cifar10ImageClassificationClassDom:
 这一章节介绍的分类任务模板和cdom模板都可以在我们的模板库[dsdl-sdk repo](https://gitlab.shlab.tech/research/dataset_standard/dsdl-sdk/-/tree/feature-types/dsdl/dsdl_library)中找到，其他任务类型和类别域的模板也欢迎大家尝试使用。
 
 # 3. 使用说明
-在这个章节介绍一下如何通过import的方式来引用我们的模板。假设现在有一个数据集，其任务类型为图像分类，同时类别域和cifar10相同，则可以通过import分类任务模板和cifar10的类别域，然后在此基础上来描述自己的数据集, 举例如下：
+
+在这个章节介绍一下如何通过import的方式来引用我们的模板。以cifar10数据集为例，首先是描述cifar10数据集中所有样本的模板train.yaml，举例如下：
+
 ```yaml
 $dsdl-version: "0.5.0"
 
 $import:
-    - task/classification-template
-    - class/cifar10-class-dom
+    - ../defs/class-dom
+    - ../defs/classification-cifar10
 
 meta:
-    dataset_name: "Cifar10"
-    sub_dataset_name: "train"
-    
+    name: "cifar10"
+    subdata-name: "train"
+
 data:
-    sample-type: ClassificationSample[cdom=Cifar10ImageClassificationClassDom]
+    sample-type: Cifar10Sample[cdom=Cifar10ImageClassificationClassDom]
     sample-path: $local
-    samples: 
-        - image: "media/000000000004.png"
-          label: bird
-        - image: "media/000000000001.png"
-          label: truck
-        - image: "media/000000000000.png"
-          label: frog
+    samples:
+      - image: "images/000000000000.png"
+        label: frog
+      - image: "images/000000000001.png"
+        label: truck
         ...
 ```
+
 上面的描述文件中，首先定义了dsdl的版本信息，然后import了两个模板文件，包括任务模板和类别域模板，接着用meta和data字段来描述自己的数据集，具体的字段说明如下所示：  
 
 - $dsdl-version: dsdl版本信息
