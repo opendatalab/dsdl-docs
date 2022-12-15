@@ -22,7 +22,7 @@ extra_javascript:
 #提示框配置
 theme:
   name: material
-  # custom_dir: overrides
+  custom_dir: overrides
   custom_dir: !ENV [THEME_DIR, "site"]
   language: zh
   features:
@@ -53,30 +53,23 @@ nav:
       - 1.计算机视觉-图像分类: getting_started/quick_start_ex1.md 
       - 2.计算机视觉-目标检测: getting_started/quick_start_ex2.md
       - 3.计算机视觉-语义分割: getting_started/quick_start_ex3.md
-
   - 用户教程:
-    - 整体介绍: tutorials/overview.md
+    - 教程介绍: tutorials/overview.md
     - 数据集下载: tutorials/dataset_download.md
-    - 数据集可视化: tutorials/visualization.md
-    - 数据集分析和统计信息: tutorials/analysis_statistic.md
-    - DSDL数据集训练:
-      - 与OpenMMLab对接: tutorials/training/OpenMMLab_DataLoader.md
-      - 与其他框架对接: tutorials/training/Others_DataLoader.md
-    - 数据集格式转换:
-      - 主流格式与DSDL格式互转脚本: tutorials/transfer/converter_scipt.md
-      - 用户自定义数据集转换脚本:
-        - SDK介绍: tutorials/transfer/SDK_doc.md
-        - 实例演示:
-          - 图像分类: tutorials/transfer/Classification.md
-          - 目标检测: tutorials/transfer/Detection.md
-    - 自定义数据集: 
-      - 基本介绍: tutorials/define_label/intro_labeling.md
-      - 任务模板: 
-        - 图像分类: tutorials/define_label/template/cv/cv_classification.md
-        - 目标检测: tutorials/define_label/template/cv/cv_detection.md 
-        - 图像分割: tutorials/define_label/template/cv/cv_segmentation.md 
-    - ODL-CLI使用教程: tutorials/ODL-CLI.md
-  - DSDL规范文档:
+    - 数据集分析: tutorials/dataset_analysis.md
+    - 模型训练:
+      - OpenMMLab: tutorials/training/dataloader_openmmlab.md
+      - Pytorch: tutorials/training/dataloader_pytorch.md
+      - Tensorflow: tutorials/training/dataloader_tensorflow.md
+    - 模型推理: tutorials/training/model_training.md
+    - 数据/模型分析: 
+      - 基本介绍: tutorials/analysis/result_analysis.md
+    - 数据集分发: tutorials/dataset_distribution.md
+    - 高阶教程:
+      - 自定义DSDL数据集: tutorials/advanced/dsdl_define.md
+      - DSDL数据集格式转换: tutorials/advanced/dsdl_convert.md
+      - DSDL DataLoader开发: tutorials/advanced/dsdl_dataloader.md
+  - DSDL语言教程:
     - 语言特性: dsdl_language/overview.md
     - 语言定义: 
       - 快速入门: dsdl_language/lang/get_started.md
@@ -88,8 +81,13 @@ nav:
       - 链接库: dsdl_language/lang/libraries.md
     - 实例演示: 
       - 计算机视觉: dsdl_language/examples/cv.md
+  - DSDL任务模板: 
+    - 计算机视觉:
+      - 图像分类: dsdl_template/cv/cv_classification.md
+      - 目标检测: dsdl_template/cv/cv_detection.md 
+      - 图像分割: dsdl_template/cv/cv_segmentation.md
+      - 关键点检测: dsdl_template/cv/cv_keypoint_detection.md 
   - API接口文档: api_reference/index.md
-
 plugins:
   - search:
       lang: 

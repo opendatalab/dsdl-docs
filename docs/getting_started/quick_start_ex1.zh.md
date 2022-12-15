@@ -5,7 +5,7 @@
 ## 数据集下载
 
 ```
-odl-cli get 
+odl-cli get CIFAR-10
 ```
 
 这里将对DSDL标注进行下载，下载后文件目录如下：
