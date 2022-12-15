@@ -7,18 +7,24 @@
 ## **1. 数据集下载**
 
 ```
-dsdl get voc2007
+odl-cli get PascalVOC2007-detection
 ```
-出现如下提示，说明数据集已经下载完成
+
+出现如下日志，说明数据集已经下载完成。
+
 ```
-xxx
+preparing...
+start download...
+Download |██████████████████████████████████████████████████| 100.0%, Eta 0 secondsd 1 secondss
+Download Complete
+register local dataset...
 ```
 
 如果想了解数据集具体结构，可以切换到下载路径进行查看：
 
-原始数据集目录组织如下：
+原始数据集目录结构如下：
 <details>
-<summary>dsdl-voc目录结构</summary>
+<summary>voc数据集原始目录结构</summary>
 ```
 VOC2007/                      # 原始数据集文件夹
 ├── Annotations/              # 里面存放的是每张图片打完标签所对应的XML文件
@@ -55,43 +61,38 @@ VOC2007/                      # 原始数据集文件夹
 ```
 </details>
 
-对应的DSDL标准化文件如下：   
+对应的DSDL标准化文件的目录结构如下：   
 
 <details>
 <summary>dsdl-voc目录结构</summary>
 ```
-VOC2007-dsdl/
-├── doms/              
-│  ├── object-detection.yaml       # struct定义文件
-│  └── VOC2007ClassDom.yaml        # VOC数据集的类别域
-├── train/                         # 训练集
-│  ├── train.yaml                  # 训练的yaml文件
-│  └── train_samples.json          # 训练集sample的json文件
-├── val/                           # 验证集
+dsdl-voc2007/
+├── defs/                          
+│  ├── object-detection-def.yaml              # 任务类型的定义
+│  └── class-dom.yaml                         # 数据集的类别域
+├── set-train/                                # 训练集
+│  ├── train.yaml                             # 训练的yaml文件
+│  └── train_samples.json                     # 训练集sample的json文件
+├── set-val/                                  # 验证集
 │  ├── val.yaml
-│  └── val_samples.json  
-└── test/                          # 测试集
-   ├── test.yaml
-   └── test_samples.json
+│  └── val_samples.json          
+├── set-test/                                 # 测试集
+│  ├── test.yaml
+│  └── test_samples.json    
+├── config.py                                 # 数据集读取路径等config文件
+└── README.md                                 # 数据集简介
 ```
 </details>
-PS: 如想了解DSDL，看查看[DSDL教程]()进行学习。
+PS: 如想了解DSDL，可查看[DSDL教程]()进行学习。
 
 
-## **2.数据集查看**
+## **2. 数据集准备**
 
-## **3.数据集配置**
+在下载好数据集之后，需要对数据集进行一定的配置和检验，方便后续使用dsdl配套的工具链。
 
-## **4.模型训练**
+### **2.1 数据集配置**
 
-## **5.模型推理**
-
-## **6.结果可视化**
-
-
-### 配置文件修改，设置读取路径
-
-创建配置文件 `config.py`，内容如下（目前只支持读取阿里云OSS数据与本地数据）：
+由于DSDL数据集采用标注和媒体文件分离的策略，所以在使用之前需要对配置文件进行修改（指config.py文件中的路径定位配置），config.py文件的主要内容如下所示：
 
 ```python
 local = dict(
@@ -108,315 +109,271 @@ ali_oss = dict(
     working_dir="the relative path of your media dir in the bucket")
 ```
 
-在 `config.py`中，列举了所有支持的媒体文件读取方式，根据实际情况选择并配置文件路径等信息：
+在 `config.py`中，列举了所支持的媒体文件读取方式，根据实际情况选择并配置文件路径等信息：
 
 1. 本地读取： `local`中的参数 `working_dir`（本地数据所在的目录）
+
 2. 阿里云OSS读取： `ali_oss`中的参数（阿里云OSS的配置 `access_key_secret`, `endpoint`, `access_key_id`；桶名称 `bucket_name`，数据在桶中的目录 `working_dir`）
 
-## 数据集可视化
 
-可视化功能展示
+### **2.2 数据集检验**（待修改）
+
+（！check命令后续应该会移植到odl-cli中）  
+
+dsdl 支持对数据集进行简单的check，确认可以使用下游的工具链。注意，**检验操作并非必须，我们建议用户针对自己生成的dsdl数据集采用check命令进行检验**。
+
+check 命令如下所示：
 
 ```shell
-dsdl view -y <yaml-name>.yaml -c <config.py> -l ali-oss -n 10 -r -v -f Label BBox Attributes
+dsdl check -y {path_to_yaml_file} -c {path_to_config.py} -l local -t detection -o ./
+```
+部分参数的含义如下：
+
+    -l 为指定位置，可以选择使用 ali-oss 或 local
+    -t 为指定当前yaml的任务类别，当前支持的任务类别有（detection，segmentation，classification）
+    -o 为输出的文件夹，包含图片和md文档
+
+check的结果保存在输出文件夹下的log/output.md中。
+
+### **2.3 数据集分析**
+
+odl-cli支持多种数据集分析指令，这里主要给一下info和select的使用案例
+
+- **info** 查看数据集meta信息即部分统计信息
+```
+odl-cli info PascalVOC2007-detection
+```
+meta信息：
+```
+# dataset info
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Authors      | Mark Everingham (Leeds) · Luc van Gool (Zurich) · Chris Williams (Edinburgh) · John Winn (MSR Cambridge) · Andrew Zisserman (Oxford) |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Dataset Name | PascalVOC2007-detection                                                                                                              |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| HomePage     | http://host.robots.ox.ac.uk/pascal/VOC/voc2007/index.html                                                                            |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| LICENSE      | N/A                                                                                                                                  |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Modality     | Images                                                                                                                               |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Task         | ObjectDetection                                                                                                                      |
++--------------+--------------------------------------------------------------------------------------------------------------------------------------+
+```
+统计信息（部分）：
+```
+# train split statistics
++-----------------+--------------+-----------------+
+| Category Name   | Image Nums   | Instance Nums   |
++=================+==============+=================+
+| aeroplane       | 113          | 156             |
++-----------------+--------------+-----------------+
+| bicycle         | 122          | 202             |
++-----------------+--------------+-----------------+
+| bird            | 182          | 294             |
++-----------------+--------------+-----------------+
+| boat            | 87           | 208             |
++-----------------+--------------+-----------------+
+| bottle          | 153          | 338             |
+...
 ```
 
+- **select** 对数据集进行筛选
+比如想筛选PascalVOC2007-detection数据集中训练集中类别包含dog的5张图片，则可以使用如下命令：
+```shell
+odl-cli select PascalVOC2007-detection --split train --filter "len(list_filter(objects,x->struct_extract(x,'category')=='dog')) > 0" --limit 5
+```
+结果如下：
+```shell
+                                               media                                            objects
+0  {'image': 'JPEGImages/000036.jpg', 'image_shap...  [{'bbox': [27, 79, 292, 265], 'category': 'dog...
+1  {'image': 'JPEGImages/000078.jpg', 'image_shap...  [{'bbox': [15, 75, 460, 337], 'category': 'dog...
+2  {'image': 'JPEGImages/000112.jpg', 'image_shap...  [{'bbox': [70, 174, 207, 154], 'category': 'do...
+3  {'image': 'JPEGImages/000140.jpg', 'image_shap...  [{'bbox': [107, 146, 279, 154], 'category': 'd...
+4  {'image': 'JPEGImages/000171.jpg', 'image_shap...  [{'bbox': [1, 290, 127, 117], 'category': 'dog...
 
+```
 
-## 数据集分析
+更多指令欢迎参考odl-cli[官网教程]().
 
-1. 调用方法：
+## **3. 模型训练和推理**
+
+这里使用mmdetection框架进行模型的训练和推理，并默认用户已经安装好了mmdetection框架，如果尚未安装的用户可以参考mmdetection的官网进行安装，目前mmlab2.0(对应mmdet 3.x版本)已经支持DSDL数据集，具体安装步骤请参考[安装文档](https://mmdetection.readthedocs.io/zh_CN/3.x/get_started.html).
+
+### **3.1 修改配置文件**
+
+mmdet 框架目前支持dsdl数据集的训练，VOC数据集的配置参数位于仓库的configs/dsdl/voc.py路径，用户只需要修改和dsdl路径相关的几行即可开始训练，比如，如果用户的数据存放路径如下所示
+
+```shell
+mmdetection
+├── ...
+├── data
+│   ├── VOC2007
+│   ├── VOC2007-dsdl
+│   └── ...
+└── ...
+```
+
+则相关的配置可以按如下进行设置：
+
+```python
+
+# dataset settings
+dataset_type = 'DSDLDetDataset'
+data_root = 'data/'                                 # 存放数据集的根目录
+img_prefix = "VOC2007"                              # 原始数据集的路径
+train_ann = "VOC2007-dsdl/set-train/train.yaml"     # 训练的yaml文件
+val_ann = "VOC2007-dsdl/set-val/val.yaml"           # 验证集的yaml文件
+
+```
+
+完整的配置文件如下所示，用户也可以根据自身的需求对其它配置进行修改。
 
 <details>
-<summary>调用命令</summary>
+<summary>dsdl-voc完整训练配置</summary>
 
-   ```Python
-   dsdl check -y xxx.yaml -c config.py -l ali-oss -t detection -p ./ -o ./
+```python
+_base_ = [
+    '../_base_/models/faster-rcnn_r50_fpn.py',
+    '../_base_/schedules/schedule_1x.py', 
+    '../_base_/default_runtime.py'
+]
 
-   ### -y 为输入的yaml文件
-   ### -c 为数据集的读取配置（记录了数据集在阿里云/本地的位置），主要形式如下：
-   local = dict(
-       type="LocalFileReader",
-       working_dir="local path of your media",
-   )
+# dataset settings
+dataset_type = 'DSDLDetDataset'
+data_root = 'data/'
+img_prefix = "VOC2007"
+train_ann = "VOC2007-dsdl/set-train/train.yaml"
+val_ann = "VOC2007-dsdl/set-val/val.yaml"
 
-   ali_oss = dict(
-       type="AliOSSFileReader",
-       access_key_secret="your secret key of aliyun oss",
-       endpoint="your endpoint of aliyun oss",
-       access_key_id="your access key of aliyun oss",
-       bucket_name="your bucket name of aliyun oss",
-       working_dir="the relative path of your media dir in the bucket")
-   ### -l 为指定位置，可以选择使用 ali-oss 或 local
-   ### -t 为指定当前yaml的任务类别，当前支持的任务类别有（detection，segmentation，classification）
-   ### -p yaml文件导入的库文件所在的路径地址
-   ### -o 为输出的文件夹，包含图片和md文档，注意打包下载
-   ```
-</details>
+attribute_cfg = dict(
+    ignore_train= {
+        "difficult": (True, 1)
+    }
+)
 
+file_client_args = dict(backend='disk')
 
-2. 报告样式：
-
-  报告分为3个部分：
-
-- parser检查结果：结果包括了parse结果是否成功，如果不成功，则可以查看具体的报错信息
-
-* samples实例化检查结果：其中报告说明了当前数据集共有样本个数，正常样本个数，警告样本个数，错误样本个数，并提供了异常样本的具体信息日志。
-* 可视化结果：需要肉眼观察可视化结果是否正确，比如bbox位置是否正确，标签内容是否正确等，在图片下面展示了可视化过程中的日志内容，比如是可视化成功还是失败，以及失败日志等。
-
-
-## 数据集训练
-
-与OpenMMDetection的对接训练。
-
-### 修改config文件
-
-**faster_rcnn_r101_fpn_voc2007_dsdl_format.py**
-
-<details>
-<summary>MMDetection Config文件</summary>
-
-```Python
-model = dict(
-    type='FasterRCNN',
-    backbone=dict(
-        type='ResNet',
-        depth=101,
-        num_stages=4,
-        out_indices=(0, 1, 2, 3),
-        frozen_stages=1,
-        norm_cfg=dict(type='BN', requires_grad=True),
-        norm_eval=True,
-        style='pytorch',
-        init_cfg=dict(type='Pretrained', checkpoint='torchvision://resnet101')),
-    neck=dict(
-        type='FPN',
-        in_channels=[256, 512, 1024, 2048],
-        out_channels=256,
-        num_outs=5),
-    rpn_head=dict(
-        type='RPNHead',
-        in_channels=256,
-        feat_channels=256,
-        anchor_generator=dict(
-            type='AnchorGenerator',
-            scales=[8],
-            ratios=[0.5, 1.0, 2.0],
-            strides=[4, 8, 16, 32, 64]),
-        bbox_coder=dict(
-            type='DeltaXYWHBBoxCoder',
-            target_means=[0.0, 0.0, 0.0, 0.0],
-            target_stds=[1.0, 1.0, 1.0, 1.0]),
-        loss_cls=dict(
-            type='CrossEntropyLoss', use_sigmoid=True, loss_weight=1.0),
-        loss_bbox=dict(type='L1Loss', loss_weight=1.0)),
-    roi_head=dict(
-        type='StandardRoIHead',
-        bbox_roi_extractor=dict(
-            type='SingleRoIExtractor',
-            roi_layer=dict(type='RoIAlign', output_size=7, sampling_ratio=0),
-            out_channels=256,
-            featmap_strides=[4, 8, 16, 32]),
-        bbox_head=dict(
-            type='Shared2FCBBoxHead',
-            in_channels=256,
-            fc_out_channels=1024,
-            roi_feat_size=7,
-            num_classes=20,
-            bbox_coder=dict(
-                type='DeltaXYWHBBoxCoder',
-                target_means=[0.0, 0.0, 0.0, 0.0],
-                target_stds=[0.1, 0.1, 0.2, 0.2]),
-            reg_class_agnostic=False,
-            loss_cls=dict(
-                type='CrossEntropyLoss', use_sigmoid=False, loss_weight=1.0),
-            loss_bbox=dict(type='L1Loss', loss_weight=1.0))),
-    train_cfg=dict(
-        rpn=dict(
-            assigner=dict(
-                type='MaxIoUAssigner',
-                pos_iou_thr=0.7,
-                neg_iou_thr=0.3,
-                min_pos_iou=0.3,
-                match_low_quality=True,
-                ignore_iof_thr=-1),
-            sampler=dict(
-                type='RandomSampler',
-                num=256,
-                pos_fraction=0.5,
-                neg_pos_ub=-1,
-                add_gt_as_proposals=False),
-            allowed_border=-1,
-            pos_weight=-1,
-            debug=False),
-        rpn_proposal=dict(
-            nms_pre=2000,
-            max_per_img=1000,
-            nms=dict(type='nms', iou_threshold=0.7),
-            min_bbox_size=0),
-        rcnn=dict(
-            assigner=dict(
-                type='MaxIoUAssigner',
-                pos_iou_thr=0.5,
-                neg_iou_thr=0.5,
-                min_pos_iou=0.5,
-                match_low_quality=False,
-                ignore_iof_thr=-1),
-            sampler=dict(
-                type='RandomSampler',
-                num=512,
-                pos_fraction=0.25,
-                neg_pos_ub=-1,
-                add_gt_as_proposals=True),
-            pos_weight=-1,
-            debug=False)),
-    test_cfg=dict(
-        rpn=dict(
-            nms_pre=1000,
-            max_per_img=1000,
-            nms=dict(type='nms', iou_threshold=0.7),
-            min_bbox_size=0),
-        rcnn=dict(
-            score_thr=0.05,
-            nms=dict(type='nms', iou_threshold=0.5),
-            max_per_img=100)))
-
-checkpoint_config = dict(interval=1)
-file_client_args = dict(backend='petrel')
-log_config = dict(interval=50, hooks=[dict(type='TextLoggerHook')])
-custom_hooks = [dict(type='NumClassCheckHook')]
-dist_params = dict(backend='nccl')
-log_level = 'INFO'
-load_from = None
-resume_from = None
-workflow = [('train', 1)]
-opencv_num_threads = 0
-mp_start_method = 'fork'
-auto_scale_lr = dict(enable=True, base_batch_size=16)
-optimizer = dict(type='SGD', lr=0.02, momentum=0.9, weight_decay=0.0001)
-optimizer_config = dict(grad_clip=None)
-lr_config = dict(
-    policy='step',
-    warmup='linear',
-    warmup_iters=500,
-    warmup_ratio=0.001,
-    step=[8, 11])
-runner = dict(type='EpochBasedRunner', max_epochs=12)
-num_classes = 20
-dataset_type = 'DSDLDetectionDataset'
-img_norm_cfg = dict(
-    mean=[123.675, 116.28, 103.53], std=[58.395, 57.12, 57.375], to_rgb=True)
-# 修改data_root为s3路径
 train_pipeline = [
-    dict(type='LoadImageFromDSDL', file_client_args=file_client_args, data_root='s3://open_dataset_original/PASCALVOC2007/public_datalist_17/VOCdevkit/VOC2007/'),
+    dict(type='LoadImageFromFile', file_client_args=file_client_args),
     dict(type='LoadAnnotations', with_bbox=True),
-    dict(type='Resize', img_scale=(1333, 800), keep_ratio=True),
-    dict(type='RandomFlip', flip_ratio=0.5),
-    dict(
-        type='Normalize',
-        mean=[123.675, 116.28, 103.53],
-        std=[58.395, 57.12, 57.375],
-        to_rgb=True),
-    dict(type='Pad', size_divisor=32),
-    dict(type='DefaultFormatBundle'),
-    dict(type='Collect', keys=['img', 'gt_bboxes', 'gt_labels'])
+    dict(type='Resize', scale=(1333, 800), keep_ratio=True),
+    dict(type='RandomFlip', prob=0.5),
+    dict(type='PackDetInputs')
 ]
-# 修改data_root为s3路径
 test_pipeline = [
-    dict(type='LoadImageFromDSDL', file_client_args=file_client_args, data_root='s3://open_dataset_original/PASCALVOC2007/public_datalist_17/VOCdevkit/VOC2007/'),
+    dict(type='LoadImageFromFile', file_client_args=file_client_args),
+    dict(type='Resize', scale=(1333, 800), keep_ratio=True),
+    # If you don't have a gt annotation, delete the pipeline
+    dict(type='LoadAnnotations', with_bbox=True),
     dict(
-        type='MultiScaleFlipAug',
-        img_scale=(1333, 800),
-        flip=False,
-        transforms=[
-            dict(type='Resize', keep_ratio=True),
-            dict(type='RandomFlip'),
-            dict(
-                type='Normalize',
-                mean=[123.675, 116.28, 103.53],
-                std=[58.395, 57.12, 57.375],
-                to_rgb=True),
-            dict(type='Pad', size_divisor=32),
-            dict(type='ImageToTensor', keys=['img']),
-            dict(type='Collect', keys=['img'])
-        ])
+        type='PackDetInputs',
+        meta_keys=('img_id', 'img_path', 'ori_shape', 'img_shape',
+                   'scale_factor', 'instances'))
 ]
+train_dataloader = dict(
+    batch_size=2,
+    num_workers=2,
+    persistent_workers=True,
+    sampler=dict(type='DefaultSampler', shuffle=True),
+    batch_sampler=dict(type='AspectRatioBatchSampler'),
+    dataset=dict(
+        type=dataset_type,
+        attribute_cfg=attribute_cfg,
+        data_root=data_root,
+        ann_file=train_ann,
+        data_prefix=dict(img_path=img_prefix),
+        filter_cfg=dict(filter_empty_gt=True, min_size=32),
+        pipeline=train_pipeline))
+val_dataloader = dict(
+    batch_size=1,
+    num_workers=2,
+    persistent_workers=True,
+    drop_last=False,
+    sampler=dict(type='DefaultSampler', shuffle=False),
+    dataset=dict(
+        type=dataset_type,
+        attribute_cfg=attribute_cfg,
+        data_root=data_root,
+        ann_file=val_ann,
+        data_prefix=dict(img_path=img_prefix),
+        test_mode=True,
+        pipeline=test_pipeline))
+test_dataloader = val_dataloader
 
-# 主要修改这个路径
-train_yaml_07 = '/mnt/lustre/ouyanglinke/mmdetection/work_dir/VOC2007_dsdl/train/train.yaml'
-val_yaml_07 = '/mnt/lustre/ouyanglinke/mmdetection/work_dir/VOC2007_dsdl/val/val.yaml'
-test_yaml = '/mnt/lustre/ouyanglinke/mmdetection/work_dir/VOC2007_dsdl/test/test.yaml'
-ignore_cfg = dict(Continue=dict(), Ignore=dict(difficult=(True, 1)))
-dsdl_library_path = "/mnt/lustre/ouyanglinke/mmdetection/work_dir/VOC2007_dsdl/train/"
-local = dict(type="LocalFileReader", working_dir="/mnt/lustre/ouyanglinke/mmdetection/work_dir/VOC2007_dsdl/")
-data = dict(
-    samples_per_gpu=1,
-    workers_per_gpu=32,
-    train=dict(
-            type='DSDLDetectionDataset',
-            ann_file=train_yaml_07,
-            location_config=local,
-            pipeline=train_pipeline,
-            dsdl_library_path=dsdl_library_path),
-    val=dict(
-        type='DSDLDetectionDataset',
-        ann_file=val_yaml_07,
-        location_config=local,
-        pipeline=test_pipeline,
-        dsdl_library_path=dsdl_library_path),
-    test=dict(
-        type='DSDLDetectionDataset',
-        ann_file=test_yaml,
-        location_config=local,
-        pipeline=test_pipeline,
-        dsdl_library_path=dsdl_library_path))
-evaluation = dict(interval=1, metric='mAP')
-gpu_ids = [0]
-work_dir = './work_dirs/voc_dsdl_test'
-auto_resume = False
+val_evaluator = dict(type='CocoMetric', metric='bbox')
+# val_evaluator = dict(type='VOCMetric', metric='mAP', eval_mode='11points')
+test_evaluator = val_evaluator
+
+gpu_ids = range(0, 8)
+
 ```
+
 </details>
 
 
-### 开始训练
 
-打开terminal运行：
+### **3.2 模型训练**
 
-```Shell
-conda activate openmmlab    # 安装了dsdl和mmdetection的conda环境
-srun -p bigdata_s2 --quotatype=auto --gres=gpu:1 python tools/train.py configs/dsdl_detection/faster_rcnn_r101_fpn_voc2007_dsdl_format.py 
+- 单卡训练
+
+```shell
+python tools/train.py {path_to_config_file}
 ```
 
-最终结果精度：AP50: 0.6680, mAP: 0.6680
+- 集群训练
+
+```shell
+./tools/slurm_train.sh {partition} {job_name} {config_file} {work_dir} {gpu_nums}
+```
+
+### **3.3 模型推理**
+
+```shell
+python tools/test.py {path_to_config_file} {path_to_checkpoint_file}
+```
+
+## **4. 结果可视化**（待补充）
 
 
-## 补充内容
-
-### DSDL文件解释
+## **附录 DSDL文件解释**
 
 DSDL数据集包含以下几个重要的文件：
 
-* struct的定义文件（在这个例子里文件名为object-detetction.yaml）：这个文件主要是对struct做一个明确的定义，可以有sample的结构体和标注的结构体等，需指明包含了哪些field，每个field的类型。
-* 类别域（在这个例子为VOC2007ClassDom.yaml）：里面包含了类别列表，对应category的序号（从1开始排序）
-* samples文件（在这个例子里分别分为train.yaml和train_samples.json)
+- struct的定义文件（在这个例子里文件名为object-detection-def.yaml）：这个文件主要是对struct做一个明确的定义，可以有sample的结构体和标注的结构体等，需指明包含了哪些field，每个field的类型。
 
-  * train.yaml主要是指明引用哪个struct模板和类别域文件，并且指明数据类型和存放路径，另外还有一些meta信息
-  * train_samples.json里保存了实际的samples信息，其组织结构必须和之前定义的结构体匹配
+- 类别域（在这个例子为VOCClassDom.yaml）：里面包含了类别列表，对应category的序号（从1开始排序）
 
-#### object-detection.yaml
+- samples文件（在这个例子里分别分为train.yaml和train_samples.json)
 
-这个文件主要是定义struct的yaml文件，里面的字段名称可以根据原始数据集进行一个修改和适应（尽量保留原始数据集的字段名称和结构），但是字段类型一定要使用可识别的数据类型（可识别的数据类型详见：https://opendatalab.github.io/dsdl-docs/zh/lang/basic_types/）
+    - train.yaml主要是指明引用哪个struct模板和类别域文件，并且指明数据类型和存放路径，另外还有一些meta信息
+
+    - train_samples.json里保存了实际的samples信息，其组织结构必须和之前定义的结构体匹配
+
+### object-detection-def.yaml
+
+这个文件主要是定义struct的yaml文件，里面的字段名称可以根据原始数据集进行一个修改和适应（尽量保留原始数据集的字段名称和结构），但是字段类型一定要使用可识别的数据类型（可识别的数据类型详见[官方文档](https://opendatalab.github.io/dsdl-docs/zh/lang/basic_types/)）
 
 ```YAML
 $dsdl-version: "0.5.0"
 
-LocalObjectEntry:                                
-    $def: struct                                 
+ImageMedia:
+    $fields:
+        image: Image 
+        image_shape: ImageShape
+        depth: Int
+        folder: Str
+        source: Dict
+        owner: Dict
+        segmented: Bool
+        
+LocalObjectEntry:                                    
+    $def: struct                                     
     $params: ["cdom"]
-    $fields:                                    
-        _bbox: BBox
-        _category: Label[dom=$cdom]                                       
-        pose: Str  
+    $fields:                                        
+        bbox: BBox
+        category: Label[dom=$cdom]                                             
+        pose: Str      
         truncated: Bool
         difficult: Bool
 
@@ -424,41 +381,46 @@ ObjectDetectionSample:
     $def: struct
     $params: ["cdom"]
     $fields:
-        media_path: Image
-        folder: Str
-        source: Dict
-        owner: Dict
-        height: Int
-        width: Int
-        depth: Int
-        segmented: Bool
-        _objects: List[etype=LocalObjectEntry[cdom=$cdom]]
+        media: ImageMedia
+        objects: List[etype=LocalObjectEntry[cdom=$cdom]] 
 ```
 
 **字段含义解释及对应关系：**
 
 （没有提到的字段都是与原数据集同名对应的字段，另外，命名中以下划线开头的一般都是我们自适应的字段，即原数据集没有的字段）
 
-* 在ObjectDetectionSample中：
+- 在ObjectDetectionSample中：
 
-  * media_path：该字段是我们自适应的字段，用于储存图像的相对路径，主要从原始数据集的filename字段转化而来
-  * _objects：该字段对应原始数据集的object字段，以List的形式存储具体bounding box的标注信息
-  * source：对应原始数据集的source字段，为一个字典形式，里面的keys分别对应原始数据集里的source字段下的database、annotation、image、flickerid字段
-  * owner：对应原始数据集的owner字段，为一个字典形式，里面的keys分别对应原始数据集里的owner字段下的flickerid和name字段
-  * width、height、depth：是原始数据集的size字段下的
-* 在LocalObjectEntry中：
+    - media：该字段为保存的媒体文件的信息，类型为定义的struct：ImageMedia
 
-  * _bbox：对应原数据集的bndbox字段，但转化为bbox标准，即[x,y,w,h]
-  * _category：是该目标的类别对应的类别标号，对应的是原数据集的name字段，类别标号可以参见下面的VOC2007ClassDom.yaml
+    - objects：该字段对应原始数据集的object字段，以List的形式存储具体bounding box的标注信息
 
-#### VOC2007ClassDom.yaml
+- 在ImageMedia中：
+
+    - image：用于储存图像的相对路径，主要从原始数据集的filename字段转化而来
+
+    - source：对应原始数据集的source字段，为一个字典形式，里面的keys分别对应原始数据集里的source字段下的database、annotation、image、flickerid字段。
+
+    - owner：对应原始数据集的owner字段，为一个字典形式，里面的keys分别对应原始数据集里的owner字段下的flickerid和name字段。
+
+    - image_shape、depth：对应原始数据集的size字段
+
+- 在LocalObjectEntry中：
+
+    - bbox：对应原数据集的bndbox字段，但转化为bbox标准，即[x,y,w,h]
+
+    - category：是该目标的类别对应的类别标号，对应的是原数据集的name字段，类别标号可以参见下面的VOCClassDom.yaml
+
+    - pose，truncated，difficult：这个标注框的一些属性
+
+### class-dom.yaml
 
 这是一个类别定义的Dom文档。
 
 ```YAML
 $dsdl-version: "0.5.0"
 
-VOC2007ClassDom:
+VOCClassDom:
     $def: class_domain
     classes:
         - aeroplane                   # 对应category为1
@@ -483,7 +445,7 @@ VOC2007ClassDom:
         - tvmonitor
 ```
 
-#### train.yaml
+### train.yaml
 
 这个文档引用了之前定义的两个文档，并且指引了具体的sample路径（test.yaml和val.yaml类似，只是修改对应sample-path和sub_dataset_name字段）
 
@@ -491,44 +453,49 @@ VOC2007ClassDom:
 $dsdl-version: "0.5.0"
 
 $import:
-    - VOC2007ClassDom
-    - object-detection
+    - ../defs/class-domain
+    - ../defs/object-detection-def
 
 meta:
-  dataset_name: "VOC2007"
-  sub_dataset_name: "train"
+   dataset_name: "VOC2007"
+   sub_dataset_name: "train"
+   task_type: "SemanticSementation"
+   dataset_homepage: "http://host.robots.ox.ac.uk/pascal/VOC/voc2007/index.html"
+   dataset_publisher: "University of Leeds | ETHZ, Zurich | University of Edinburgh |Microsoft Research Cambridge | University of Oxford"
+   OpenDataLab_address: "https://opendatalab.com/PASCAL_VOC2007/download"
 
 data:
-    sample-type: ObjectDetectionSample[cdom=VOC2007ClassDom]
+    sample-type: ObjectDetectionSample[cdom=VOCClassDom]
     sample-path: train_samples.json
 ```
 
-#### train_samples.json
+### train_samples.json
 
 train_samples.json需要我们写脚本从原始数据集转换来，注意，里面的字段需要和之前定义的struct对应，最终样式如下：
 
 ```JSON
 {"samples": [
     {
-        "_media_path": "JPEGImages/000001.jpg",
-        "folder": "VOC2007",
-        "source": {
-            "database": "The VOC2007 Database", 
-            "annotation": "PASCAL VOC2007",
-            "flickrid": "341012865"
-        },
-        "owner":{
-            "flickrid": "Fried Camels",
-            "name": "Jinky the Fruit Bat"
-        },
-        "height": 640, 
-        "width": 480,
-        "depth": 3,
-        "segmented": 0,
-        "_objects": [
+         "media": {
+                "_media_path": "JPEGImages/000001.jpg",
+                "folder": "VOC2007",
+                "source": {
+                    "database": "The VOC2007 Database", 
+                    "annotation": "PASCAL VOC2007",
+                    "flickrid": "341012865"
+                },
+                "owner":{
+                    "flickrid": "Fried Camels",
+                    "name": "Jinky the Fruit Bat"
+            },
+            "image_shape": [640, 480]
+            "depth": 3,
+            "segmented": 0,
+            },
+        "objects": [
             {
-                "_bbox": [120.24, 0.32, 359.76, 596.04], 
-                "_category": 1, 
+                "bbox": [120.24, 0.32, 359.76, 596.04], 
+                "category": 1, 
                 "pose": "Left", 
                 "truncated": 1, 
                 "difficult": 0   
