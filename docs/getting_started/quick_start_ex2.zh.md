@@ -83,12 +83,27 @@ dsdl-voc2007/
 └── README.md                                 # 数据集简介
 ```
 </details>
-PS: 如想了解DSDL，可查看[DSDL教程]()进行学习。
+PS: 如想了解DSDL，可查看[DSDL教程](../dsdl_language/overview.zh.md)进行学习。
 
 
 ## **2. 数据集准备**
 
 在下载好数据集之后，需要对数据集进行一定的配置和检验，方便后续使用dsdl配套的工具链。
+<font color='red'>
+考虑将config.py和.dsdl整合过渡，临时两个都使用
+
+- config的目的：原始媒体数据、dsdl标注结果分离，即便用户把不同数据存在不同的存储上，也无需修改dsdl yaml文件，仅需修改对应的config文件即可
+
+- 当前方案：    
+    + odl-cli在.dsdl/dsdl.json中配置数据集存储信息    
+    + 训练和使用dsdl数据集时，目前使用config.py配置数据集存储信息  
+
+odl-cli工具目前是直接将【原始媒体数据】和【dsdl标注文件】同时下载，所以下载的storage路径可以自动生成。  
+但需考虑几个额外情况：  
+（1）没有odl-cli，用户应该也可以使用dsdl数据集，例如用户在ceph上已经有原始的VOC2007数据集，没有必要额外下载，用户要在s1/s2集群上训练，只需要在s1/s2集群上下载dsdl文件即可。  
+（2）odl-cli下载的数据只有【dsdl标注】文件，媒体数据已经存储在其他  
+</font>
+
 
 ### **2.1 数据集配置**
 
@@ -118,7 +133,7 @@ ali_oss = dict(
 
 ### **2.2 数据集检验**（待修改）
 
-（！check命令后续应该会移植到odl-cli中）  
+<font color='red'>check命令整合到odl-cli中 </font>  
 
 dsdl 支持对数据集进行简单的check，确认可以使用下游的工具链。注意，**检验操作并非必须，我们建议用户针对自己生成的dsdl数据集采用check命令进行检验**。
 
@@ -140,10 +155,13 @@ check的结果保存在输出文件夹下的log/output.md中。
 odl-cli支持多种数据集分析指令，这里主要给一下info和select的使用案例
 
 - **info** 查看数据集meta信息即部分统计信息
+
 ```
 odl-cli info PascalVOC2007-detection
 ```
+
 meta信息：
+
 ```
 # dataset info
 +--------------+--------------------------------------------------------------------------------------------------------------------------------------+
@@ -161,6 +179,12 @@ meta信息：
 +--------------+--------------------------------------------------------------------------------------------------------------------------------------+
 ```
 统计信息（部分）：
+
+<font color='red'> 
+Image Nums/Instance Nums增加占比，例如aeroplane中113 --> 113（xx.xx%）
+默认字母排序，可以通过 --sort==ascent/descend进行排序展示。
+</font>
+
 ```
 # train split statistics
 +-----------------+--------------+-----------------+
@@ -178,8 +202,11 @@ meta信息：
 ...
 ```
 
-- **select** 对数据集进行筛选
-比如想筛选PascalVOC2007-detection数据集中训练集中类别包含dog的5张图片，则可以使用如下命令：
+- **select** 对数据集进行筛选  
+
+例如筛选出PascalVOC2007-detection训练集中图像为dog类别的5张图片： 
+<font>需要针对select命令进行优化，当前过于复杂</font>
+
 ```shell
 odl-cli select PascalVOC2007-detection --split train --filter "len(list_filter(objects,x->struct_extract(x,'category')=='dog')) > 0" --limit 5
 ```
@@ -198,7 +225,7 @@ odl-cli select PascalVOC2007-detection --split train --filter "len(list_filter(o
 
 ## **3. 模型训练和推理**
 
-这里使用mmdetection框架进行模型的训练和推理，并默认用户已经安装好了mmdetection框架，如果尚未安装的用户可以参考mmdetection的官网进行安装，目前mmlab2.0(对应mmdet 3.x版本)已经支持DSDL数据集，具体安装步骤请参考[安装文档](https://mmdetection.readthedocs.io/zh_CN/3.x/get_started.html).
+这里使用mmdetection框架进行模型的训练和推理，并默认用户已经安装好了mmdetection框架，如果尚未安装的用户可以参考mmdetection的官网进行安装，目前mmlab2.0(对应mmdet 3.x版本)已经支持DSDL数据集，具体安装步骤请参考[MMDetection安装文档](https://mmdetection.readthedocs.io/zh_CN/3.x/get_started.html).
 
 ### **3.1 修改配置文件**
 
@@ -336,7 +363,7 @@ python tools/test.py {path_to_config_file} {path_to_checkpoint_file}
 ## **4. 结果可视化**（待补充）
 
 
-## **附录 DSDL文件解释**
+## **附录. DSDL文件解释**
 
 DSDL数据集包含以下几个重要的文件：
 
