@@ -1,20 +1,26 @@
 # 图像分类任务
-为了制定图像分类任务数据集描述文件的模板，我们对主流的分类任务数据集进行了调研，分析其任务的目的和常见标注信息所包含的字段，从中整理出通用共享和独立字段，并在此基础上制定分类任务数据集描述文件的通用模板。
-# 1. 任务调研
 
-## 1.1 任务定义
-  图像分类任务的定义可以用一句话来总结，即按照一定的标准将图像划分为不同的类别。
+我们通过对图像分类任务进行调研，总结该任务中数据集描述字段信息，从而制定出图像分类任务DSDL模板，供大家参考使用。
 
-<a id="table-1"></a>
+## 1. 任务调研
 
-## 1.2 评价指标
+### 1.1 任务定义
+  图像分类是指给定一张输入图像，输出其语义类别。
 
-任务的评价指标一般有两个：top-5的准确率和top-1的准确率，准确率=（正确分类图片个数）/（所有图片个数）。top-5准确率指的是前5个得分最高的预测类别里有一个是正确的，就算这个样本被正确分类了，而top-1准确率计算时必须要满足预测分数最高的预测类别是正确的，才算这个样本被正确分类了。
+
+### 1.2 评价指标
+
+任务的评价指标一般有两个：$top-5$的准确率和$top-1$的准确率，$准确率 = \frac{正确分类图片数量}{所有图片数量}$。$top-5$准确率指的是前$5$个得分最高的预测类别里有一个是正确的，即为当前样本被正确分类，而$top-1$准确率必须保证分数最高的预测类别是正确的，才算当前样本被正确分类。
 
 <img src='https://user-images.githubusercontent.com/69186975/207549088-26bf0afb-26bd-4065-9a7e-fd28b6acc8a2.png'>
 
-## 1.3 主流数据集调研
-我们调研了10个主流分类数据集，其中包含了ImageNet-1K、MNIST、CIFAR10等常见数据集。为了使得模板更加通用，同时也具备拓展能力，我们着重关注各个数据集之间的共性和特性，此外，调研过程会遇到一些名称不同，但是实际含义相同或类似的字段，这些字段我们也视为同一字段，并统一去命名，比如image_id字段一般表示图片的路径或者id，他是图片的唯一标识；label_id则表示图片的类别，可以用数字表示，也可以用字符串表示。完整的字段调研结果如下表所示：
+### 1.3 主流数据集调研
+
+我们对$10$个主流分类数据集进行调研，主要对当前任务数据集描述文件（主要是标注字段）进行分析汇总，相同含义的标注字段会以统一命名进行展示，汇总信息如下表所示：
+
+
+<a id="table-1"></a>
+
   <table border="4" >
     <tr>
       <th rowspan="2" align=center colspan="1" align=center>图像分类数据集</th>
@@ -30,7 +36,7 @@
       <th width="25%" >ImageNet-21K</th>
       <td width="20%" align="center">Y</td>
       <td width="20%" align="center">Y</td>
-      <td width="20%" align="center"></td>
+      <td width="20%" align="center" style="color:red">ImageNet有层级结构，基于WordNet。 @致远修正</td>
     </tr>
     <tr>
       <th width="25%" >ImageNet-1K</th>
@@ -76,7 +82,7 @@
     </tr>
   </table>
 
-经过整理，分类任务的共享字段和独立字段如下表所示：
+对图像分类任务的共享字段和独立字段进一步整理，如下表所示：
 <table border="4" >
     <tr>
       <th align=center >字段类型</th>
@@ -100,9 +106,12 @@
 
 <a id="table-2"></a>
 
-# 2. 模板展示
+## 2. 模板展示
 
-根据上述的[调研结果](#table-1)，我们知道对于分类任务，一个样本最重要的属性是图片的id(或路径)以及图片的类别，因此我们在分类任务结构体（结构体的概念请参考[DSDL入门文档-语言定义-结构体](https://opendatalab.github.io/dsdl-docs/zh/lang/structs/#24)部分）的fields 属性中定义了image和label两个字段；其次，不同的数据集所蕴含的类别是各不相同的，所以在sample中需要有一个形参，来对类别域进行限定（在dsdl中，我们将类别域描述为class domain，或者cdom，具体可以参考[DSDL入门文档-语言定义-类别域](https://opendatalab.github.io/dsdl-docs/zh/lang/basic_types/#223-label)中更详细的定义）；最后，我们考虑到对于一些无监督或半监督分类任务，可能部分样本不包含类别信息，所以我们设计了$optional字段，并将label字段涵盖进去，同时一些数据集特有的字段也可以包含到$optional字段当中。基于上述考虑，我们制定了分类任务的模板，如下所示：
+根据上述调研，图像分类任务中，每个样本有两个最重要的属性：图像文件及对应的语义标签，由此我们定义图像分类模板如下：
+
+
+#### **`image-classfication.yaml`**
 ```yaml
 $dsdl-version: "0.5.0"
 
@@ -114,21 +123,27 @@ ClassificationSample:
         label: Label[dom=$cdom]
     $optional: ['label']
 ```
-在模板中的一些字段的含义如下所示：
+模板中各字段的含义如下（详细学习请参考[DSDL语言教程](../../dsdl_language/overview.zh.md)）：
 
-  - $dsdl-version: 描述了该文件对应的dsdl版本
-  - ClassificationSample: 定义了分类任务的样本格式，其包含了四个属性：
+  - $dsdl-version: 当前文件对应的dsdl版本号
+  - ClassificationSample: 分类任务的样本名
 
-    - $def: 表示ClassificationSample是一个struct(结构体类)
-    - $params: 定义了形参，在这里即class domain
-    - $fields: 结构体类所包含的属性，对于分类任务，具体包括:
-
+    - $def: 类型定义，当前表示ClassificationSample是一个结构体类
+    - $params: 形参定义，可在data/samples中转入具体参数，这里给类别便签提供形参
+    - $fields: 结构体类所包含的属性，包括:
         - image 图片路径
         - label 类别信息
-      
-    - $optional: 用来涵盖结构体类的属性中的可选属性，这里只定义了一个字段即label，表示单个样本，label的存在是可选的，另外也可以将数据集的特有字段涵盖在$optional字段里
+    - $optional: field中可选属性，这里只定义了一个字段即label，表示样本中label的存在是可选的，具体data/sample中可为空（如半监督图像部分样本无标签）
 
-对于模板中提到的类别域cdom，我们在模板库[dsdl-sdk repo](https://gitlab.shlab.tech/research/dataset_standard/dsdl-sdk/-/tree/feature-types/dsdl/dsdl_library)中也提供了常见任务的类别域，这里给出cifar10数据集的class domain作为示例：
+
+
+## 3. 使用示例
+
+我们以CIFAR-10数据集为例，展示图像分类数据集DSDL描述文件具体内容。
+
+### 3.1 DSDL语法描述类别信息
+
+#### **`cifar10-class-dom.yaml`**
 ```yaml
 $dsdl-version: "0.5.0"
 
@@ -145,37 +160,43 @@ Cifar10ImageClassificationClassDom:
         - horse
         - ship
         - truck
-```  
-上面的文件中给出了Cifar10ImageClassificationClassDom的定义，具体包含下列字段：
+```
 
-- $def: 描述了Cifar10ImageClassificationClassDom的类型，这里即class_domain
-- classes: 描述了该类别域中所包含的类别及其顺序，在cifar10数据集中，则依次为airplane、automobile等等
+<details><summary>类别域定义说明</summary>
+
+```
+上面的文件中给出了Cifar10ImageClassificationClassDom的定义，具体包含下列字段：  
+
+- $def: 描述了Cifar10ImageClassificationClassDom的类型，这里即class_domain  
+- classes: 描述了该类别域中所包含的类别及其顺序，在cifar10数据集中，则依次为airplane、automobile等等  
 
 这一章节介绍的分类任务模板和cdom模板都可以在我们的模板库[dsdl-sdk repo](https://gitlab.shlab.tech/research/dataset_standard/dsdl-sdk/-/tree/feature-types/dsdl/dsdl_library)中找到，其他任务类型和类别域的模板也欢迎大家尝试使用。
 
-# 3. 使用说明
+```
+</details>
 
-在这个章节介绍一下如何通过import的方式来引用我们的模板。以cifar10数据集为例，首先是描述cifar10数据集中所有样本的模板train.yaml，举例如下：
 
+### 3.2 数据集yaml文件定义
+#### **`train.yaml`**
 ```yaml
 $dsdl-version: "0.5.0"
 
 $import:
-    - ../defs/class-dom
-    - ../defs/classification-cifar10
+    - cifar10-class-dom  
+    - image-classfication
 
 meta:
     name: "cifar10"
     subdata-name: "train"
 
 data:
-    sample-type: Cifar10Sample[cdom=Cifar10ImageClassificationClassDom]
+    sample-type: ClassificationSample[cdom=Cifar10ImageClassificationClassDom]
     sample-path: $local
     samples:
       - image: "images/000000000000.png"
-        label: frog
+        label: "frog"
       - image: "images/000000000001.png"
-        label: truck
+        label: "truck"
         ...
 ```
 
