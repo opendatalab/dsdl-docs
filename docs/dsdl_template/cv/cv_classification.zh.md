@@ -1,22 +1,22 @@
 # 图像分类任务
 
-我们通过对图像分类任务进行调研，总结该任务中数据集描述字段信息，从而制定出图像分类任务DSDL模板，供大家参考使用。
+我们通过对图像分类任务进行调研，并总结数据集描述中的字段信息，从而制定出图像分类任务DSDL模板，供大家参考使用。
 
 ## 1. 任务调研
 
 ### 1.1 任务定义
-  图像分类是指给定一张输入图像，输出其语义类别。
 
+图像分类是指给定一张输入图像，输出其语义类别。
+
+<font color='red'> 补充示意图，几张图排成一行，下边是对应类别的文本，具体几张看排版，图片直接从ImageNet挑选吧，随便搜可能会有版权问题</font>
 
 ### 1.2 评价指标
 
-任务的评价指标一般有两个：$top-5$的准确率和$top-1$的准确率，$准确率 = \frac{正确分类图片数量}{所有图片数量}$。$top-5$准确率指的是前$5$个得分最高的预测类别里有一个是正确的，即为当前样本被正确分类，而$top-1$准确率必须保证分数最高的预测类别是正确的，才算当前样本被正确分类。
-
-<img src='https://user-images.githubusercontent.com/69186975/207549088-26bf0afb-26bd-4065-9a7e-fd28b6acc8a2.png'>
+任务的评价指标一般有两个：$top-5$的准确率和$top-1$的准确率，$top-1$准确率 $= \frac{正确分类图片数量}{所有图片数量}$。$top-5$准确率指的是前$5$个得分最高的预测类别里有一个是正确的，即为当前样本被正确分类，而$top-1$准确率必须保证分数最高的预测类别是正确的，才算当前样本被正确分类。
 
 ### 1.3 主流数据集调研
 
-我们对$10$个主流分类数据集进行调研，主要对当前任务数据集描述文件（主要是标注字段）进行分析汇总，相同含义的标注字段会以统一命名进行展示，汇总信息如下表所示：
+我们对$10$个主流分类数据集进行调研，对相关数据集描述文件（主要是标注字段）进行分析汇总，相同含义的标注字段会以统一命名进行展示，汇总信息如下表所示：
 
 
 <a id="table-1"></a>
@@ -82,25 +82,30 @@
     </tr>
   </table>
 
-对图像分类任务的共享字段和独立字段进一步整理，如下表所示：
+对共享字段和独立字段进行汇总，得到下表：
 <table border="4" >
     <tr>
       <th align=center >字段类型</th>
       <th align=center >字段名称</th>
       <th align=center >含义</th>
+      <th align=center >示例</th>
     </tr>
     <tr>
       <th rowspan="2">共享字段</th>
       <th>image_id</th>
-      <td>定位到唯一图片，比如用图片名或者图片路径表示</td>
+      <td>图片唯一标识，如图片路径</td>
+      <td>"images/0001.jpg"</td>
     <tr>
       <th>label_id</th>
-      <td>图片所属的类别，类型为int表示为单标签，类型为List[int]表示多标签</td>
+      <td>图片所属类别</td>
+      <td>"cat", "dog",...</td>
     <tr>
       <th rowspan="1">独立字段</th>
       <th>superclass</th>
-      <td>图片所属类别的父类别，比如"dog"的父类可能是"animal"</td>
+      <td>label_id父类标签</td>
+      <td>animla ("animal.cat", "animal.dog")</td>
     </tr>
+    
 </table>
 可以看到，如果要描述一个分类数据集的样本，image_id和label_id是最基础的字段，同时，也会有类似superclass的特有字段。  
 
@@ -108,10 +113,11 @@
 
 ## 2. 模板展示
 
-根据上述调研，图像分类任务中，每个样本有两个最重要的属性：图像文件及对应的语义标签，由此我们定义图像分类模板如下：
+根据上述调研，图像分类任务中，每个样本有两个最重要的属性：**图像**及对应的**语义标签**，由此我们定义图像分类模板如下：
 
 
-#### **`image-classfication.yaml`**
+<code>image-classfication.yaml</code>
+
 ```yaml
 $dsdl-version: "0.5.0"
 
@@ -135,15 +141,18 @@ ClassificationSample:
         - label 类别信息
     - $optional: field中可选属性，这里只定义了一个字段即label，表示样本中label的存在是可选的，具体data/sample中可为空（如半监督图像部分样本无标签）
 
+<!--
+!!! note "注意：上述模板fields字段中定义了重要的标注字段，filed的属性名 image/label用户可以随意定义，实际上就是语言中的变量，但图片路径和类别信息必须使用DSDL中的Image、Label类型"
+-->
 
-
-## 3. 使用示例
+## 3. 完整示例
 
 我们以CIFAR-10数据集为例，展示图像分类数据集DSDL描述文件具体内容。
 
 ### 3.1 DSDL语法描述类别信息
 
-#### **`cifar10-class-dom.yaml`**
+<code>cifar10-class-dom.yaml</code>
+
 ```yaml
 $dsdl-version: "0.5.0"
 
@@ -162,22 +171,16 @@ Cifar10ImageClassificationClassDom:
         - truck
 ```
 
-<details><summary>类别域定义说明</summary>
-
-```
 上面的文件中给出了Cifar10ImageClassificationClassDom的定义，具体包含下列字段：  
 
-- $def: 描述了Cifar10ImageClassificationClassDom的类型，这里即class_domain  
+- $def: 描述了Cifar10ImageClassificationClassDom的dsdl类型，这里即class_domain  
 - classes: 描述了该类别域中所包含的类别及其顺序，在cifar10数据集中，则依次为airplane、automobile等等  
 
-这一章节介绍的分类任务模板和cdom模板都可以在我们的模板库[dsdl-sdk repo](https://gitlab.shlab.tech/research/dataset_standard/dsdl-sdk/-/tree/feature-types/dsdl/dsdl_library)中找到，其他任务类型和类别域的模板也欢迎大家尝试使用。
-
-```
-</details>
 
 
 ### 3.2 数据集yaml文件定义
-#### **`train.yaml`**
+<code>train.yaml</code>
+
 ```yaml
 $dsdl-version: "0.5.0"
 
@@ -203,10 +206,12 @@ data:
 上面的描述文件中，首先定义了dsdl的版本信息，然后import了两个模板文件，包括任务模板和类别域模板，接着用meta和data字段来描述自己的数据集，具体的字段说明如下所示：  
 
 - $dsdl-version: dsdl版本信息
-- $import: 模板导入信息，这里导入分类任务模板和cifar10的class domain，也就是章节[2. 模板展示](#table-2)中展示的两部分内容
+- $import: 模板导入信息，这里导入分类任务模板和cifar10的class domain，也就是[2. 模板展示](#table-2)中展示的两部分内容
 - meta: 主要展示数据集的一些元信息，比如数据集名称，创建者等等，用户可以自己添加想要备注的其它信息
 - data: data的内容就是按照前面定义好的结构所保存的样本信息，具体如下：  
 
     - sample-type: 数据的类型定义，在这里用的是从分类任务模板中导入的ClassificationSample类，同时指定了采用的cdom为Cifar10ImageClassificationClassDom
     - sample-path: samples的存放路径，如果实际是一个路径，则samples的内容从该文件读取，如果是$local（这个例子），则从本文件的data.samples字段中直接读取
     - samples: 保存数据集的样本信息，注意只有在sample-path是$local的时候该字段才会生效，否则samples会优先从sample-path中的路径去读取
+
+!!! note "提示：若当前数据集图像数目较多，将所有标注信息存储在yaml文件里会导致后续数据加载速度过慢。此时用户可以通过提供外部文件，例如train.yaml中的sample-path: train.json 将数据存放到可高效读取的文件中"
