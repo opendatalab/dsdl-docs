@@ -13,9 +13,10 @@ odl-cli get PascalVOC2007-detection
 出现如下日志，说明数据集已经下载完成。
 
 ```
+saving to {your home path}/.dsdl/datasets/PascalVOC2007-detection
 preparing...
 start download...
-Download |██████████████████████████████████████████████████| 100.0%, Eta 0 secondsd 1 secondss
+Download |██████████████████████████████████████████████████| 100.0%, Eta 0 seconds
 Download Complete
 register local dataset...
 ```
@@ -107,7 +108,21 @@ odl-cli工具目前是直接将【原始媒体数据】和【dsdl标注文件】
 
 ### **2.1 数据集配置**
 
-由于DSDL数据集采用标注和媒体文件分离的策略，所以在使用之前需要对配置文件进行修改（指config.py文件中的路径定位配置），config.py文件的主要内容如下所示：
+在dsdl中为了数据集方便分发，我们提出了【媒体数据】和【标注文件】分离这一设计理念，这样即便用户把不同数据保存在不同的存储上，也无需修改dsdl yaml文件，仅需修改对应的config文件即可，这里的数据集配置也主要是指对config文件的适配，结合实际情况，有以下两种情况：
+
+1. 在默认情况下，用户通过odl-cli获取的dsdl数据集，同时包含【原始媒体数据】和【dsdl标注文件】，此时配置文件已经根据odl-cli的配置自动生成，用户不需要手动修改；
+2. 对于本地或者远端已经拥有下载好的【原始媒体数据】，同时还希望使用dsdl相关配套工具的用户，可以只下载对应数据集的【dsdl标注文件】，同时修改其中的`config.py`文件即可；
+
+在 `config.py`中，列举了所支持的媒体文件读取方式，根据实际情况选择并配置文件路径等信息：
+
+1. 本地读取： `local`中的参数 `working_dir`（本地数据所在的目录）
+
+2. 阿里云OSS读取： `ali_oss`中的参数（阿里云OSS的配置 `access_key_secret`, `endpoint`, `access_key_id`；桶名称 `bucket_name`，数据在桶中的目录 `working_dir`）
+
+完整的config.py文件示例如下：
+
+<details>
+<summary>dsdl config 文件示例</summary>
 
 ```python
 local = dict(
@@ -123,12 +138,7 @@ ali_oss = dict(
     bucket_name="your bucket name of aliyun oss",
     working_dir="the relative path of your media dir in the bucket")
 ```
-
-在 `config.py`中，列举了所支持的媒体文件读取方式，根据实际情况选择并配置文件路径等信息：
-
-1. 本地读取： `local`中的参数 `working_dir`（本地数据所在的目录）
-
-2. 阿里云OSS读取： `ali_oss`中的参数（阿里云OSS的配置 `access_key_secret`, `endpoint`, `access_key_id`；桶名称 `bucket_name`，数据在桶中的目录 `working_dir`）
+</details>
 
 
 ### **2.2 数据集检验**（待修改）
@@ -225,20 +235,27 @@ odl-cli select PascalVOC2007-detection --split train --filter "len(list_filter(o
 
 ## **3. 模型训练和推理**
 
-这里使用mmdetection框架进行模型的训练和推理，并默认用户已经安装好了mmdetection框架，如果尚未安装的用户可以参考mmdetection的官网进行安装，目前mmlab2.0(对应mmdet 3.x版本)已经支持DSDL数据集，具体安装步骤请参考[MMDetection安装文档](https://mmdetection.readthedocs.io/zh_CN/3.x/get_started.html).
+这里使用mmdetection框架进行模型的训练和推理，并默认用户已经安装好了mmdetection框架，如果尚未安装的用户可以参考mmdetection的官网进行安装，目前mmlab2.0(对应mmdet 3.x版本)已经支持DSDL数据集，这里介绍如果安装3.x版本的mmdet，更多信息以及相关的依赖安装请参考[MMDetection安装文档](https://mmdetection.readthedocs.io/zh_CN/3.x/get_started.html).
+
+```shell
+git clone https://gitlab.shlab.tech/research/dataset_standard/openmmlab-dsdl/mmdetection-dsdl -b dev
+cd mmdetection
+pip install -v -e .
+```
 
 ### **3.1 修改配置文件**
 
-mmdet 框架目前支持dsdl数据集的训练，VOC数据集的配置参数位于仓库的configs/dsdl/voc.py路径，用户只需要修改和dsdl路径相关的几行即可开始训练，比如，如果用户的数据存放路径如下所示
+mmdet 框架目前支持dsdl数据集的训练，VOC数据集的配置文件为configs/dsdl/voc2007.py，用户只需要修改和dsdl路径相关的几行即可开始训练，比如，如果用户的数据集是通过odl-cli命令获取的，则在默认情况下，数据集应该存放在home目录下的.dsdl/datasets路径下，数据集的结构如下所示：
 
 ```shell
-mmdetection
+PascalVOC2007-detection
+├── JPEGImages
 ├── ...
-├── data
-│   ├── VOC2007
-│   ├── VOC2007-dsdl
-│   └── ...
-└── ...
+└── yml
+    ├── defs
+    ├── set-test
+    ├── set-train
+    └── set-val
 ```
 
 则相关的配置可以按如下进行设置：
@@ -247,14 +264,12 @@ mmdetection
 
 # dataset settings
 dataset_type = 'DSDLDetDataset'
-data_root = 'data/'                                 # 存放数据集的根目录
-img_prefix = "VOC2007"                              # 原始数据集的路径
-train_ann = "VOC2007-dsdl/set-train/train.yaml"     # 训练的yaml文件
-val_ann = "VOC2007-dsdl/set-val/val.yaml"           # 验证集的yaml文件
-
+data_root = '{your home path}/.dsdl/datasets/PascalVOC2007-detection'           # 存放数据集的根目录
+train_ann = "yml/set-train/train.yaml"                           # 训练的yaml文件
+val_ann = "yml/set-val/val.yaml"                                 # 验证集的yaml文件
 ```
 
-完整的配置文件如下所示，用户也可以根据自身的需求对其它配置进行修改。
+完整的配置文件如下所示，用户也可以根据自身的需求对其它参数进行修改。
 
 <details>
 <summary>dsdl-voc完整训练配置</summary>
@@ -262,16 +277,17 @@ val_ann = "VOC2007-dsdl/set-val/val.yaml"           # 验证集的yaml文件
 ```python
 _base_ = [
     '../_base_/models/faster-rcnn_r50_fpn.py',
-    '../_base_/schedules/schedule_1x.py', 
     '../_base_/default_runtime.py'
 ]
 
+# model setting
+model = dict(roi_head=dict(bbox_head=dict(num_classes=20)))
+
 # dataset settings
-dataset_type = 'DSDLDetDataset'
-data_root = 'data/'
-img_prefix = "VOC2007"
-train_ann = "VOC2007-dsdl/set-train/train.yaml"
-val_ann = "VOC2007-dsdl/set-val/val.yaml"
+dataset_type = "DSDLDetDataset"
+data_root = "/nvme/wufan/.dsdl/datasets/PascalVOC2007-detection"
+train_ann = "yml/set-train/train.yaml"
+val_ann = "yml/set-test/test.yaml"
 
 attribute_cfg = dict(
     ignore_train= {
@@ -284,19 +300,19 @@ file_client_args = dict(backend='disk')
 train_pipeline = [
     dict(type='LoadImageFromFile', file_client_args=file_client_args),
     dict(type='LoadAnnotations', with_bbox=True),
-    dict(type='Resize', scale=(1333, 800), keep_ratio=True),
+    dict(type='Resize', scale=(1000, 600), keep_ratio=True),
     dict(type='RandomFlip', prob=0.5),
     dict(type='PackDetInputs')
 ]
 test_pipeline = [
     dict(type='LoadImageFromFile', file_client_args=file_client_args),
-    dict(type='Resize', scale=(1333, 800), keep_ratio=True),
-    # If you don't have a gt annotation, delete the pipeline
+    dict(type='Resize', scale=(1000, 600), keep_ratio=True),
+    # avoid bboxes being resized
     dict(type='LoadAnnotations', with_bbox=True),
     dict(
         type='PackDetInputs',
-        meta_keys=('img_id', 'img_path', 'ori_shape', 'img_shape',
-                   'scale_factor', 'instances'))
+        meta_keys=('img_id', 'img_path', 'ori_shape', 'img_shape', 'scale_factor', 'instances')
+        )
 ]
 train_dataloader = dict(
     batch_size=2,
@@ -309,9 +325,10 @@ train_dataloader = dict(
         attribute_cfg=attribute_cfg,
         data_root=data_root,
         ann_file=train_ann,
-        data_prefix=dict(img_path=img_prefix),
-        filter_cfg=dict(filter_empty_gt=True, min_size=32),
-        pipeline=train_pipeline))
+        filter_cfg=dict(filter_empty_gt=True, min_size=32, bbox_min_size=32),
+        pipeline=train_pipeline)
+)
+
 val_dataloader = dict(
     batch_size=1,
     num_workers=2,
@@ -323,14 +340,45 @@ val_dataloader = dict(
         attribute_cfg=attribute_cfg,
         data_root=data_root,
         ann_file=val_ann,
-        data_prefix=dict(img_path=img_prefix),
         test_mode=True,
         pipeline=test_pipeline))
 test_dataloader = val_dataloader
 
-val_evaluator = dict(type='CocoMetric', metric='bbox')
+# Pascal VOC2007 uses `11points` as default evaluate mode, while PASCAL
+# VOC2012 defaults to use 'area'.
 # val_evaluator = dict(type='VOCMetric', metric='mAP', eval_mode='11points')
+val_evaluator = dict(type='CocoMetric', metric='bbox')
 test_evaluator = val_evaluator
+
+# training schedule, voc dataset is repeated 3 times, in
+# `_base_/datasets/voc0712.py`, so the actual epoch = 4 * 3 = 12
+max_epochs = 4
+train_cfg = dict(
+    type='EpochBasedTrainLoop', max_epochs=max_epochs, val_interval=1)
+val_cfg = dict(type='ValLoop')
+test_cfg = dict(type='TestLoop')
+
+# learning rate
+param_scheduler = [
+    dict(
+        type='MultiStepLR',
+        begin=0,
+        end=max_epochs,
+        by_epoch=True,
+        milestones=[3],
+        gamma=0.1)
+]
+
+# optimizer
+optim_wrapper = dict(
+    type='OptimWrapper',
+    optimizer=dict(type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0001))
+
+# Default setting for scaling LR automatically
+#   - `enable` means enable scaling LR automatically
+#       or not by default.
+#   - `base_batch_size` = (8 GPUs) x (2 samples per GPU).
+auto_scale_lr = dict(enable=False, base_batch_size=16)
 
 gpu_ids = range(0, 8)
 
@@ -354,12 +402,33 @@ python tools/train.py {path_to_config_file}
 ./tools/slurm_train.sh {partition} {job_name} {config_file} {work_dir} {gpu_nums}
 ```
 
+当出现如下日志时，表示训练正在进行中：
+
+```shell
+2022/12/13 19:00:05 - mmengine - INFO - Checkpoints will be saved to /nvme/wufan/project/mmlab2.x/work_dirs/voc_dsdl.
+2022/12/13 19:00:12 - mmengine - INFO - Epoch(train) [1][  50/3104]  lr: 1.0000e-02  eta: 0:26:28  time: 0.1285  data_time: 0.0040  memory: 2581  loss: 0.7176  loss_rpn_cls: 0.1582  loss_rpn_bbox: 0.0301  loss_cls: 0.3771  acc: 92.1875  loss_bbox: 0.1522
+2022/12/13 19:00:18 - mmengine - INFO - Epoch(train) [1][ 100/3104]  lr: 1.0000e-02  eta: 0:25:32  time: 0.1204  data_time: 0.0024  memory: 2581  loss: 0.5537  loss_rpn_cls: 0.0577  loss_rpn_bbox: 0.0220  loss_cls: 0.2768  acc: 87.8906  loss_bbox: 0.1972
+2022/12/13 19:00:24 - mmengine - INFO - Epoch(train) [1][ 150/3104]  lr: 1.0000e-02  eta: 0:25:12  time: 0.1210  data_time: 0.0025  memory: 2581  loss: 0.6777  loss_rpn_cls: 0.0885  loss_rpn_bbox: 0.0340  loss_cls: 0.3201  acc: 92.6758  loss_bbox: 0.2350
+...
+```
 ### **3.3 模型推理**
 
 ```shell
 python tools/test.py {path_to_config_file} {path_to_checkpoint_file}
 ```
 
+推理结果如下：
+
+```shell
+2022/12/21 11:07:13 - mmengine - INFO - Load checkpoint from work_dirs/voc2007/epoch_4.pth
+2022/12/21 11:07:15 - mmengine - INFO - Epoch(test) [  50/4952]    eta: 0:02:17  time: 0.0280  data_time: 0.0028  memory: 348
+... 
+2022/12/21 11:09:15 - mmengine - INFO - Epoch(test) [4950/4952]    eta: 0:00:00  time: 0.0246  data_time: 0.0009  memory: 360  
+2022/12/21 11:09:15 - mmengine - INFO - Converting ground truth to coco format...
+2022/12/21 11:09:16 - mmengine - INFO - Evaluating bbox...
+2022/12/21 11:09:25 - mmengine - INFO - bbox_mAP_copypaste: 0.454 0.757 0.479 0.123 0.340 0.536
+2022/12/21 11:09:25 - mmengine - INFO - Epoch(test) [4952/4952]  coco/bbox_mAP: 0.4540  coco/bbox_mAP_50: 0.7570  coco/bbox_mAP_75: 0.4790  coco/bbox_mAP_s: 0.1230  coco/bbox_mAP_m: 0.3400  coco/bbox_mAP_l: 0.5360
+```
 ## **4. 结果可视化**（待补充）
 
 
