@@ -1,14 +1,21 @@
 # 关键点检测（姿态估计）任务
 
-为了制定关键点检测（姿态估计）任务数据集描述文件的模板，我们对主流的关键点检测（姿态估计）任务数据集进行了调研，分析其任务的目的和常见标注信息所包含的字段，从中整理出通用共享和独立字段，并在此基础上制定关键点检测（姿态估计）任务数据集描述文件的通用模板。
-
 # 1. 任务调研
 
 ## 1.1 任务定义
 
 关键点检测任务目标是标出物体的关键部位，姿态估计任务目标是对物体（通常是人和动物）的姿态（即关键点和关键点之间的连接关系）进行估计。关键点检测和姿态估计通常合在一起讨论，原因是对于人体和动物等其身体部位之间的连接关系是固定的，得到了人体关键点的检测结果，就可以得到姿态估计的结果(是否有姿态估计取决于是否有关键点之间的连接关系)。
 
-<img src="https://user-images.githubusercontent.com/69186975/207551881-39a4c458-674c-4304-9669-9b74d860bc97.png">
+<center>
+    <img src="images/pose_keypoint/fig3.png"/>
+    <br>
+    <div style="border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">
+        图片取自：Deep High-Resolution Representation Learning for Human Pose Estimation, CVPR19
+  	</div>
+</center>
 
 ## 1.2 评价指标
 
@@ -16,11 +23,29 @@
 
 与目标检测mAP计算方式最大的不同在于，目标检测中衡量实例之间的相似度时使用的是检测框之间的IOU，而在关键点检测中，衡量实例相似度使用的是物体关键点之间的OKS距离，OKS的计算方式如下：
 
-<img src="https://user-images.githubusercontent.com/69186975/207551967-4f5fba61-4ca9-412d-9b48-e1e2e1646e1b.png">
+<center>
+    <img src="images/pose_keypoint/fig1.png"/>
+    <br>
+    <div style="border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">
+        图片取自：https://cocodataset.org/#keypoints-eval
+  	</div>
+</center>
 
 OKS代表的是一个物体其所有关键点检测结果（prediction）和真实标注（ground truth）之间的相似度，di代表第i个检测出的关键点和真实标注的欧氏距离，s是物体的像素面积，k代表第i种关键点（例如鼻子）的归一化因子，是对已有数据集中所有物体的同种关键点（例如数据集种所有人的鼻子关键点）计算得到的，值越大，代表数据集中这个关键点标注越差即这个关键点越难检测，值越小代表这个关键点标注越好，即这个关键点检测难度较小。有了OKS距离之后，可以计算得到不同OKS阈值下的AP指标。COCO的关键点检测指标如下图所示，与目标检测类似定义：
 
-<img src="https://user-images.githubusercontent.com/69186975/207552061-09d5d7a9-c92e-46a4-b6aa-2dac1fe601f3.png">
+<center>
+    <img src="images/pose_keypoint/fig2.png"/>
+    <br>
+    <div style="border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">
+        图片取自：https://cocodataset.org/#keypoints-eval
+  	</div>
+</center>
 
 ## 1.3 主流数据集调研
 
@@ -36,7 +61,7 @@ OKS代表的是一个物体其所有关键点检测结果（prediction）和真�
 | 动物 | 动物姿态估计/关键点检测 (animal keypoint) | Animal-Pose, AP-10K, Horse-10, MacaquePose, Vinegar Fly, Desert Locust, Grévy’s Zebra, ATRW |
     
     
-我们调研了10个主流姿态估计/关键点检测数据集，涵盖了所有以上不同类型的数据集。为了使得模板更加通用，同时也具备拓展能力，我们着重关注各个数据集之间的共性和特性，此外，调研过程会遇到一些名称不同，但是实际含义相同或类似的字段，这些字段我们也视为同一字段，并统一去命名，比如image_id字段一般表示图片的路径或者id，他是图片的唯一标识；label_id则表示图片的类别，可以用数字表示，也可以用字符串表示。完整的字段调研结果如下表所示：
+我们调研了10个主流姿态估计/关键点检测数据集，涵盖了所有以上不同类型的数据集。完整的字段调研结果如下表所示：
 
 <table border="4" >
     <tr>
@@ -62,28 +87,28 @@ OKS代表的是一个物体其所有关键点检测结果（prediction）和真�
     </tr>
     <tr>
       <th> COCO </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔  </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y  </th>
       <th>   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
       <th>   </th>
     </tr>
     <tr>
       <th> MPII </th>
-      <th> ✔ </th>
+      <th> Y </th>
       <th>   </th>
       <th>   </th>
       <th>   </th>
@@ -93,9 +118,9 @@ OKS代表的是一个物体其所有关键点检测结果（prediction）和真�
       <th>   </th>
       <th>   </th>
       <th>   </th>
-      <th> ✔ </th>
-      <th> ✔  </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y  </th>
+      <th> Y </th>
       <th>   </th>
       <th>   </th>
       <th>   </th>
@@ -104,176 +129,176 @@ OKS代表的是一个物体其所有关键点检测结果（prediction）和真�
     </tr>
     <tr>
       <th> AIC </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
       <th>  </th>
-      <th> ✔ </th>
-      <th> ✔  </th>
+      <th> Y </th>
+      <th> Y  </th>
       <th>   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
       <th>   </th>
     </tr>
     <tr>
       <th> CrowdPose </th>
-      <th> ✔ </th>
-      <th> ✔   </th>
-      <th> ✔   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y   </th>
+      <th> Y   </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
       <th>  </th>
-      <th> ✔ </th>
-      <th> ✔  </th>
+      <th> Y </th>
+      <th> Y  </th>
       <th>   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
       <th> crowd index  </th>
     </tr>
     <tr>
       <th> COCO-WholeBody </th>
-      <th> ✔ </th>
-      <th> ✔   </th>
-      <th> ✔   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y   </th>
+      <th> Y   </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
       <th>  </th>
-      <th> ✔ </th>
-      <th> ✔  </th>
+      <th> Y </th>
+      <th> Y  </th>
       <th>   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
       <th> face valid/kpts/bbox, right hand valid/kpts/bbox, left hand valid/kpts/bbox, foot valid/kpts </th>
     </tr>
     <tr>
       <th> Halpe </th>
-      <th> ✔ </th>
-      <th> ✔   </th>
-      <th> ✔   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y   </th>
+      <th> Y   </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
       <th>  </th>
-      <th> ✔ </th>
+      <th> Y </th>
       <th>  </th>
       <th>  </th>
-      <th> ✔ </th>
-      <th> ✔  </th>
+      <th> Y </th>
+      <th> Y  </th>
       <th>   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y </th>
       <th>   </th>
       <th>   </th>
       <th> Hoi  </th>
     </tr>
     <tr>
       <th> 300W </th>
-      <th> ✔ </th>
-      <th> ✔   </th>
-      <th> ✔   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y   </th>
+      <th> Y   </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
       <th>  </th>
-      <th> ✔ </th>
-      <th> ✔  </th>
-      <th> ✔  </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y  </th>
+      <th> Y  </th>
+      <th> Y </th>
+      <th> Y </th>
       <th>   </th>
       <th>   </th>
       <th>   </th>
     </tr>
     <tr>
       <th> OneHand10K </th>
-      <th> ✔ </th>
-      <th> ✔   </th>
-      <th> ✔   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y   </th>
+      <th> Y   </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
       <th>  </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔  </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y  </th>
       <th>   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔  </th>
-      <th> ✔  </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y  </th>
+      <th> Y  </th>
       <th>   </th>
     </tr>
     <tr>
       <th> DeepFashion </th>
-      <th> ✔ </th>
+      <th> Y </th>
       <th>    </th>
       <th>    </th>
       <th>   </th>
-      <th> ✔  </th>
+      <th> Y  </th>
       <th>   </th>
       <th>   </th>
       <th>  </th>
-      <th> ✔ </th>
+      <th> Y </th>
       <th>  </th>
-      <th> ✔ </th>
-      <th> ✔  </th>
+      <th> Y </th>
+      <th> Y  </th>
       <th>   </th>
-      <th> ✔ </th>
+      <th> Y </th>
       <th>  </th>
-      <th> ✔  </th>
+      <th> Y  </th>
       <th>   </th>
       <th>  variation </th>
     </tr>
     <tr>
       <th> AnimalPose </th>
-      <th> ✔ </th>
+      <th> Y </th>
       <th>    </th>
       <th>    </th>
       <th>   </th>
-      <th> ✔  </th>
+      <th> Y  </th>
       <th>   </th>
       <th>   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
+      <th> Y </th>
+      <th> Y </th>
       <th>  </th>
-      <th> ✔ </th>
-      <th> ✔  </th>
+      <th> Y </th>
+      <th> Y  </th>
       <th>   </th>
-      <th> ✔ </th>
-      <th> ✔ </th>
-      <th> ✔  </th>
-      <th> ✔  </th>
+      <th> Y </th>
+      <th> Y </th>
+      <th> Y  </th>
+      <th> Y  </th>
       <th>     </th>
     </tr>
 </table>
 
 
-经过整理，关键点检测/姿态估计任务的共享字段和独立字段如下表所示，除此之外还总结了这些数据集中包含的一些特殊字段：
+经过整理，关键点检测/姿态估计任务的字段可以分为两种：一种是不同数据集共有的共享字段，一种是不同数据集不同的独立字段。关键点检测/姿态估计任务的共享字段和独立字段如下表所示：
 
 <table border="4" >
     <tr>
@@ -294,7 +319,7 @@ OKS代表的是一个物体其所有关键点检测结果（prediction）和真�
       <td>表示某个关键点是否可见，使用整数来标识</td>
     </tr>
     <tr>
-      <th rowspan="13">独立字段</th>
+      <th rowspan="22">独立字段</th>
       <th>height/width</th>
       <td>图像的原始尺寸（长和宽）</td>
     <tr>
@@ -345,40 +370,39 @@ OKS代表的是一个物体其所有关键点检测结果（prediction）和真�
       <td>关键点之间的连接关系</td>
     </tr>
     <tr>
-      <th rowspan="9">特殊字段</th>
       <th>scale</th>
-      <td>MPII中特殊字段，表示目标框的缩放比例，MPII中由于目标框是正方形，scale*200px可以还原得到目标框的边长</td>
+      <td>MPII中字段，表示目标框的缩放比例，MPII中由于目标框是正方形，scale*200px可以还原得到目标框的边长</td>
     <tr>
       <th>person</th>
-      <td>MPII中特殊字段，代表图片中人的个数</td>
+      <td>MPII中字段，代表图片中人的个数</td>
     <tr>
       <th>torsoangle</th>
-      <td>MPII中特殊字段，代表人体躯干的偏转角度</td>
+      <td>MPII中字段，代表人体躯干的偏转角度</td>
     <tr>
       <th>face/hand/foot valid</th>
-      <td>COCO-WholeBody中特殊字段，代表是否有脸/手/脚的标注，值为0或者1</td>
+      <td>COCO-WholeBody中字段，代表是否有脸/手/脚的标注，值为0或者1</td>
     <tr>
       <th>face/hand/foot kpts</th>
-      <td>COCO-WholeBody中特殊字段，表示脸/手/脚的关键点标注，为一组坐标点</td>
+      <td>COCO-WholeBody中字段，表示脸/手/脚的关键点标注，为一组坐标点</td>
     <tr>
       <th>face/hand bbox</th>
-      <td>COCO-WholeBody中特殊字段，表示脸/手的矩形框标注，表示为矩形框[x,y,h,w]</td>
+      <td>COCO-WholeBody中字段，表示脸/手的矩形框标注，表示为矩形框[x,y,h,w]</td>
     <tr>
       <th>Hoi</th>
-      <td>Halpe中特殊字段，使用整型表示，代表的是人体和其他物体发生交互的种类（例如0代表拿起，1代表坐，等等）</td>
+      <td>Halpe中字段，使用整型表示，代表的是人体和其他物体发生交互的种类（例如0代表拿起，1代表坐，等等）</td>
     <tr>
       <th>Variation</th>
-      <td>DeepFashion中特殊字段，使用整型表示，代表的是任务的姿态</td>
+      <td>DeepFashion中字段，使用整型表示，代表的是任务的姿态</td>
     </tr>
     
 </table>
 
 
-综上所述，需要描述一个关键点检测数据集，最基础的字段包括image_id, keypoints, visible这四个字段，此外还需要包含一些独立字段作为补充，特殊字段用户自行添加修改。
+综上所述，需要描述一个关键点检测数据集，最基础的字段包括image_id, keypoints, visible这三个字段，数据集独立字段用户自行添加修改。
 
 ## 2. 模板展示
 
-根据上述的调研结果，我们知道对于关键点检测/姿态估计任务，一个样本最重要的属性是图片的id(或路径)、每个目标的关键点标注和位置以及类别，以及关键点是否可见这个属性，考虑到每张图片可能包含多个物体，可能有多个关键点标注，我们定义了一个嵌套结构体KeyPointLocalObject，用来表述单个目标的关键点标注的信息（即类别和关键点）。在关键点检测/姿态估计任务结构体的$fields 属性中定义了image和annotations两个字段，其中annotations字段则为多个KeyPointLocalObject结构体构成的列表（列表为空表示图片中没有关键点标注的物体）；其次，与分类相同，不同的数据集所蕴含的类别是各不相同的，所以在sample中需要有一个形参，来对类别域进行限定（在dsdl中，我们将类别域描述为class domain，或者cdom，具体可以参考[DSDL入门文档-语言定义-类别域](https://opendatalab.github.io/dsdl-docs/zh/lang/basic_types/#223-label)中更详细的定义）。最后，考虑到模板需要具有的代表性和可扩展性，在所有的属性中，有一些属性是可选的，也就是某个数据集的描述文件不一定会有这些属性，然而有一些属性是必须的。基于上述考虑，我们制定了关键点检测/姿态估计任务的模板，如下所示：
+根据上述的调研结果，我们知道对于关键点检测/姿态估计任务，一个样本最重要的属性是图片的id(或路径)、每个目标的关键点标注，以及关键点是否可见这个属性，考虑到每张图片可能包含多个物体，可能有多个关键点标注，我们定义了一个嵌套结构体KeyPointLocalObject，用来表述单个目标的关键点标注的信息（即类别和关键点）。在关键点检测/姿态估计任务结构体的$fields 属性中定义了image和annotations两个字段，其中annotations字段则为多个KeyPointLocalObject结构体构成的列表（列表为空表示图片中没有关键点标注的物体）。最后，考虑到模板需要具有的代表性和可扩展性，在所有的属性中，有一些属性是必须的，其他一些特定数据集中的独立字段是可选的。基于上述考虑，我们制定了关键点检测/姿态估计任务的模板，如下所示：
 
 ```yaml
 KeypointClassDom:
@@ -467,6 +491,8 @@ KeyPointSample:
         image_id: Int
         annotations: List[etype=KeyPointLocalObject[cdom0=$cdom0, cdom1=$cdom1]]
 ```
+
+可以看出，COCO2017Keypoints数据集的模板除了关键点检测任务模板中的必须字段外（keypoints， visible， 以及image_id），还有许多数据集特有的独立字段
 
 在检测模板中的一些字段含义如下：
   - $dsdl-version: 描述了该文件对应的dsdl版本。
