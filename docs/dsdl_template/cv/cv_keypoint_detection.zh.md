@@ -7,7 +7,7 @@
 关键点检测任务目标是标出物体的关键部位，姿态估计任务目标是对物体（通常是人和动物）的姿态（即关键点和关键点之间的连接关系）进行估计。关键点检测和姿态估计通常合在一起讨论，原因是对于人体和动物等其身体部位之间的连接关系是固定的，得到了人体关键点的检测结果，就可以得到姿态估计的结果(是否有姿态估计取决于是否有关键点之间的连接关系)。
 
 <center>
-    <img src="images/keypoint_detection/fig3.png"/>
+    ![img](images/keypoint_detection/fig3.png)
     <br>
     <div style="border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -24,7 +24,7 @@
 与目标检测mAP计算方式最大的不同在于，目标检测中衡量实例之间的相似度时使用的是检测框之间的IOU，而在关键点检测中，衡量实例相似度使用的是物体关键点之间的OKS距离，OKS的计算方式如下：
 
 <center>
-    <img src="images/keypoint_detection/fig1.png"/>
+    ![img](images/keypoint_detection/fig1.png)
     <br>
     <div style="border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -37,7 +37,7 @@
 OKS代表的是一个物体其所有关键点检测结果（prediction）和真实标注（ground truth）之间的相似度，di代表第i个检测出的关键点和真实标注的欧氏距离，s是物体的像素面积，k代表第i种关键点（例如鼻子）的归一化因子，是对已有数据集中所有物体的同种关键点（例如数据集种所有人的鼻子关键点）计算得到的，值越大，代表数据集中这个关键点标注越差即这个关键点越难检测，值越小代表这个关键点标注越好，即这个关键点检测难度较小。有了OKS距离之后，可以计算得到不同OKS阈值下的AP指标。COCO的关键点检测指标如下图所示，与目标检测类似定义：
 
 <center>
-    <img src="images/keypoint_detection/fig2.png"/>
+    ![img](images/keypoint_detection/fig2.png)
     <br>
     <div style="border-bottom: 1px solid #d9d9d9;
     display: inline-block;
