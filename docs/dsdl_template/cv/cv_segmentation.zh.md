@@ -14,7 +14,7 @@
 
 三种图像分割的可视化结果如下图所示 ( 图片取自CVPR2019的论文: [Panoptic Segmentation](https://arxiv.org/pdf/1801.00868.pdf) )：
 
-![img](img/seg_example.png)
+![img](images/segmentation/seg_example.png)
 
 ## 1.2 评价指标：
 
@@ -59,7 +59,7 @@ $$ PQ = \underbrace{{{\sum_{(p,g)\in TP} {IoU(p,g)}}\over{\lvert TP \rvert}}}_{\
 
 ### 1.3.1 语义分割数据集调研
 
-我们调研了voc，cityscapes和ADE20K三个数据集的语义分割任务，结果如下：
+我们调研了VOC，CityScapes和ADE20K三个数据集的语义分割任务，结果如下：
 
 <table border="4" >
         <tr>
@@ -118,7 +118,7 @@ $$ PQ = \underbrace{{{\sum_{(p,g)\in TP} {IoU(p,g)}}\over{\lvert TP \rvert}}}_{\
 
 ### 1.3.2 实例分割数据集调研
 
-我们调研了voc, coco, cityscapes, ade20k这四个数据集的实例分割任务，结果如下：
+我们调研了VOC, COCO, CityScapes, ADE20K这四个数据集的实例分割任务，结果如下：
 
 <table border="4" >
     <tr>
@@ -369,26 +369,26 @@ segmentation_map的常见情况有以下几种：
 1. 基本形式：  
     这种情况下，segmentation_map是单通道，其像素值是int类型，对于语义分割来说，segmentation_map的每个位置的像素就是这个位置的语义类别，对于实例分割来说，segmentation_map的每个位置就是这个位置的实例类别。voc数据集的语义分割和实例分割任务就是采用的这种方案：
 
-    ![img](img/voc.png)
+    ![img](images/segmentation/voc.png)
 
 2. 通过某种映射得到语义类别或实例类别：  
-    这种情况下，分割map可能是单通道也可能是多通道，而语义类别或者实例类别需要通过一定的关系进行计算，比如在cityscapes、ade20k、coco panoptic中，都有这种计算关系：  
-    - cityscapes:
+    这种情况下，分割map可能是单通道也可能是多通道，而语义类别或者实例类别需要通过一定的关系进行计算，比如在CityScapes、ADE20K、COCO Panoptic中，都有这种计算关系：  
+    - CityScapes:
 
-      ![img](img/cityscapes.png)
+      ![img](images/segmentation/cityscapes.png)
 
-    - ade20k:
+    - AED20K:
 
-      ![img](img/ade20k.png)
+      ![img](images/segmentation/ade20k.png)
 
-    - coco_panoptic:
+    - COCO Panoptic:
 
-      ![img](img/coco_pan.png)
+      ![img](images/segmentation/coco_pan.png)
 
 3. 实例分割有多个分割map（一个实例一个map）:  
     有时候实例分割任务中，一张图片会提供多个实例map，每个实例一张map，map为单通道，且只有0，x两种像素，0表示这个位置为背景，x则表示这个位置是该实例，并且其语义类别为x，比如在ade20k中：  
 
-    ![img](img/multi_map.png)
+    ![img](images/segmentation/multi_map.png)
 
 <a id="table-2"></a>
 
@@ -396,7 +396,7 @@ segmentation_map的常见情况有以下几种：
 
 根据上面的调研，可以初步梳理出来分割任务标注类型的几种情况，大致的分类如下所示：
 
-![img](img/tree.png)
+![img](images/segmentation/tree.png)
 
 基于此可以进行模板制定。
 

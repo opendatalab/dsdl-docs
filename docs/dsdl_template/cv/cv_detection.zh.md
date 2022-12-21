@@ -6,7 +6,7 @@
 目标检测任务是指给定一张输入图像，判别图像中目标位置（通常用边界框表示）和语义类别，示意图如下：
 ：
 
-![img](img/det_example.png)
+![img](images/detection/det_example.png)
 
 ## 1.2 评价指标：
 
