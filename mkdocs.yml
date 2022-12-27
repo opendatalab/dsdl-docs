@@ -50,9 +50,9 @@ nav:
     - 整体介绍: getting_started/overview.md
     - 安装部署: getting_started/install.md
     - 快速上手: 
-      - 1.计算机视觉-图像分类: getting_started/quick_start_ex1.md 
-      - 2.计算机视觉-目标检测: getting_started/quick_start_ex2.md
-      - 3.计算机视觉-语义分割: getting_started/quick_start_ex3.md
+      # - 1.计算机视觉-图像分类: getting_started/quick_start_ex1.md 
+      - 1.计算机视觉-目标检测: getting_started/quick_start_ex2.md
+      # - 3.计算机视觉-语义分割: getting_started/quick_start_ex3.md
   - 用户教程:
     - 教程介绍: tutorials/overview.md
     - 数据集下载: tutorials/dataset_download.md
@@ -66,8 +66,11 @@ nav:
       - 基本介绍: tutorials/analysis/result_analysis.md
     - 数据集分发: tutorials/dataset_distribution.md
     - 高阶教程:
-      - 自定义DSDL数据集: tutorials/advanced/dsdl_define.md
-      - DSDL数据集格式转换: tutorials/advanced/dsdl_convert.md
+      - 高阶教程介绍: tutorials/advanced/overview.md
+      - DSDL数据集标准化:
+        - 自定义DSDL数据集: tutorials/advanced/dsdl_define.md
+        - DSDL数据集格式转换: tutorials/advanced/dsdl_convert.md
+        - DSDL数据集验证: tutorials/advanced/dsdl_check.md
       - DSDL DataLoader开发: tutorials/advanced/dsdl_dataloader.md
   - DSDL语言教程:
     - 语言特性: dsdl_language/overview.md
@@ -86,7 +89,8 @@ nav:
       - 图像分类: dsdl_template/cv/cv_classification.md
       - 目标检测: dsdl_template/cv/cv_detection.md 
       - 图像分割: dsdl_template/cv/cv_segmentation.md
-      - 关键点检测: dsdl_template/cv/cv_keypoint_detection.md 
+      - 关键点检测: dsdl_template/cv/cv_keypoint_detection.md
+      - 目标跟踪: dsdl_template/cv/cv_object_tracking.md
   - API接口文档: api_reference/index.md
 plugins:
   - search:

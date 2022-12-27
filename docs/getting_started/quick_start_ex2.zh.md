@@ -1,8 +1,6 @@
-
 # 计算机视觉-目标检测任务
 
-本教程将使用`PASCAL VOC 2007`检测数据集为例，演示数据处理及模型训练全流程。
-
+本教程将使用 `PASCAL VOC 2007`检测数据集为例，演示数据处理及模型训练全流程。
 
 ## **1. 数据集下载**
 
@@ -24,6 +22,7 @@ register local dataset...
 如果想了解数据集具体结构，可以切换到下载路径进行查看：
 
 原始数据集目录结构如下：
+
 <details>
 <summary>voc数据集原始目录结构</summary>
 ```
@@ -62,13 +61,13 @@ VOC2007/                      # 原始数据集文件夹
 ```
 </details>
 
-对应的DSDL标准化文件的目录结构如下：   
+对应的DSDL标准化文件的目录结构如下：
 
 <details>
 <summary>dsdl-voc目录结构</summary>
 ```
 dsdl-voc2007/
-├── defs/                          
+├── defs/                    
 │  ├── object-detection-def.yaml              # 任务类型的定义
 │  └── class-dom.yaml                         # 数据集的类别域
 ├── set-train/                                # 训练集
@@ -76,47 +75,45 @@ dsdl-voc2007/
 │  └── train_samples.json                     # 训练集sample的json文件
 ├── set-val/                                  # 验证集
 │  ├── val.yaml
-│  └── val_samples.json          
+│  └── val_samples.json    
 ├── set-test/                                 # 测试集
 │  ├── test.yaml
-│  └── test_samples.json    
+│  └── test_samples.json  
 ├── config.py                                 # 数据集读取路径等config文件
 └── README.md                                 # 数据集简介
 ```
 </details>
 PS: 如想了解DSDL，可查看[DSDL教程](../dsdl_language/overview.zh.md)进行学习。
 
-
 ## **2. 数据集准备**
 
 在下载好数据集之后，需要对数据集进行一定的配置和检验，方便后续使用dsdl配套的工具链。
+
 <font color='red'>
 考虑将config.py和.dsdl整合过渡，临时两个都使用
 
 - config的目的：原始媒体数据、dsdl标注结果分离，即便用户把不同数据存在不同的存储上，也无需修改dsdl yaml文件，仅需修改对应的config文件即可
+- 当前方案：
 
-- 当前方案：    
-    + odl-cli在.dsdl/dsdl.json中配置数据集存储信息    
-    + 训练和使用dsdl数据集时，目前使用config.py配置数据集存储信息  
+  + odl-cli在.dsdl/dsdl.json中配置数据集存储信息
+  + 训练和使用dsdl数据集时，目前使用config.py配置数据集存储信息
 
-odl-cli工具目前是直接将【原始媒体数据】和【dsdl标注文件】同时下载，所以下载的storage路径可以自动生成。  
-但需考虑几个额外情况：  
-（1）没有odl-cli，用户应该也可以使用dsdl数据集，例如用户在ceph上已经有原始的VOC2007数据集，没有必要额外下载，用户要在s1/s2集群上训练，只需要在s1/s2集群上下载dsdl文件即可。  
-（2）odl-cli下载的数据只有【dsdl标注】文件，媒体数据已经存储在其他  
+odl-cli工具目前是直接将【原始媒体数据】和【dsdl标注文件】同时下载，所以下载的storage路径可以自动生成。
+但需考虑几个额外情况：
+（1）没有odl-cli，用户应该也可以使用dsdl数据集，例如用户在ceph上已经有原始的VOC2007数据集，没有必要额外下载，用户要在s1/s2集群上训练，只需要在s1/s2集群上下载dsdl文件即可。
+（2）odl-cli下载的数据只有【dsdl标注】文件，媒体数据已经存储在其他
 </font>
-
 
 ### **2.1 数据集配置**
 
 在dsdl中为了数据集方便分发，我们提出了【媒体数据】和【标注文件】分离这一设计理念，这样即便用户把不同数据保存在不同的存储上，也无需修改dsdl yaml文件，仅需修改对应的config文件即可，这里的数据集配置也主要是指对config文件的适配，结合实际情况，有以下两种情况：
 
 1. 在默认情况下，用户通过odl-cli获取的dsdl数据集，同时包含【原始媒体数据】和【dsdl标注文件】，此时配置文件已经根据odl-cli的配置自动生成，用户不需要手动修改；
-2. 对于本地或者远端已经拥有下载好的【原始媒体数据】，同时还希望使用dsdl相关配套工具的用户，可以只下载对应数据集的【dsdl标注文件】，同时修改其中的`config.py`文件即可；
+2. 对于本地或者远端已经拥有下载好的【原始媒体数据】，同时还希望使用dsdl相关配套工具的用户，可以只下载对应数据集的【dsdl标注文件】，同时修改其中的 `config.py`文件即可；
 
 在 `config.py`中，列举了所支持的媒体文件读取方式，根据实际情况选择并配置文件路径等信息：
 
 1. 本地读取： `local`中的参数 `working_dir`（本地数据所在的目录）
-
 2. 阿里云OSS读取： `ali_oss`中的参数（阿里云OSS的配置 `access_key_secret`, `endpoint`, `access_key_id`；桶名称 `bucket_name`，数据在桶中的目录 `working_dir`）
 
 完整的config.py文件示例如下：
@@ -138,29 +135,10 @@ ali_oss = dict(
     bucket_name="your bucket name of aliyun oss",
     working_dir="the relative path of your media dir in the bucket")
 ```
+
 </details>
 
-
-### **2.2 数据集检验**（待修改）
-
-<font color='red'>check命令整合到odl-cli中 </font>  
-
-dsdl 支持对数据集进行简单的check，确认可以使用下游的工具链。注意，**检验操作并非必须，我们建议用户针对自己生成的dsdl数据集采用check命令进行检验**。
-
-check 命令如下所示：
-
-```shell
-dsdl check -y {path_to_yaml_file} -c {path_to_config.py} -l local -t detection -o ./
-```
-部分参数的含义如下：
-
-    -l 为指定位置，可以选择使用 ali-oss 或 local
-    -t 为指定当前yaml的任务类别，当前支持的任务类别有（detection，segmentation，classification）
-    -o 为输出的文件夹，包含图片和md文档
-
-check的结果保存在输出文件夹下的log/output.md中。
-
-### **2.3 数据集分析**
+### **2.2 数据集分析**
 
 odl-cli支持多种数据集分析指令，这里主要给一下info和select的使用案例
 
@@ -188,6 +166,7 @@ meta信息：
 | Task         | ObjectDetection                                                                                                                      |
 +--------------+--------------------------------------------------------------------------------------------------------------------------------------+
 ```
+
 统计信息（部分）：
 
 <font color='red'> 
@@ -212,15 +191,17 @@ Image Nums/Instance Nums增加占比，例如aeroplane中113 --> 113（xx.xx%）
 ...
 ```
 
-- **select** 对数据集进行筛选  
+- **select** 对数据集进行筛选
 
-例如筛选出PascalVOC2007-detection训练集中图像为dog类别的5张图片： 
-<font>需要针对select命令进行优化，当前过于复杂</font>
+例如筛选出PascalVOC2007-detection训练集中图像为dog类别的5张图片：
+<font color='red'>需要针对select命令进行优化，当前过于复杂 </font>
 
 ```shell
 odl-cli select PascalVOC2007-detection --split train --filter "len(list_filter(objects,x->struct_extract(x,'category')=='dog')) > 0" --limit 5
 ```
+
 结果如下：
+
 ```shell
                                                media                                            objects
 0  {'image': 'JPEGImages/000036.jpg', 'image_shap...  [{'bbox': [27, 79, 292, 265], 'category': 'dog...
@@ -386,8 +367,6 @@ gpu_ids = range(0, 8)
 
 </details>
 
-
-
 ### **3.2 模型训练**
 
 - 单卡训练
@@ -396,10 +375,22 @@ gpu_ids = range(0, 8)
 python tools/train.py {path_to_config_file}
 ```
 
+比如：
+
+```
+python tools/train.py config/dsdl/voc2007.py
+```
+
 - 集群训练
 
 ```shell
 ./tools/slurm_train.sh {partition} {job_name} {config_file} {work_dir} {gpu_nums}
+```
+
+比如：
+
+```bash
+bash tools/slurm_train.sh bigdata_s2 test_job config/dsdl/voc2007.py work_dir/voc2007 8
 ```
 
 当出现如下日志时，表示训练正在进行中：
@@ -411,10 +402,17 @@ python tools/train.py {path_to_config_file}
 2022/12/13 19:00:24 - mmengine - INFO - Epoch(train) [1][ 150/3104]  lr: 1.0000e-02  eta: 0:25:12  time: 0.1210  data_time: 0.0025  memory: 2581  loss: 0.6777  loss_rpn_cls: 0.0885  loss_rpn_bbox: 0.0340  loss_cls: 0.3201  acc: 92.6758  loss_bbox: 0.2350
 ...
 ```
+
 ### **3.3 模型推理**
 
 ```shell
 python tools/test.py {path_to_config_file} {path_to_checkpoint_file}
+```
+
+比如：
+
+```
+python tools/test.py config/dsdl/voc2007.py work_dirs/voc2007/epoch_4.pth
 ```
 
 推理结果如下：
@@ -429,22 +427,19 @@ python tools/test.py {path_to_config_file} {path_to_checkpoint_file}
 2022/12/21 11:09:25 - mmengine - INFO - bbox_mAP_copypaste: 0.454 0.757 0.479 0.123 0.340 0.536
 2022/12/21 11:09:25 - mmengine - INFO - Epoch(test) [4952/4952]  coco/bbox_mAP: 0.4540  coco/bbox_mAP_50: 0.7570  coco/bbox_mAP_75: 0.4790  coco/bbox_mAP_s: 0.1230  coco/bbox_mAP_m: 0.3400  coco/bbox_mAP_l: 0.5360
 ```
-## **4. 结果可视化**（待补充）
 
+## **4. 结果可视化**（待补充）
 
 ## **附录. DSDL文件解释**
 
 DSDL数据集包含以下几个重要的文件：
 
 - struct的定义文件（在这个例子里文件名为object-detection-def.yaml）：这个文件主要是对struct做一个明确的定义，可以有sample的结构体和标注的结构体等，需指明包含了哪些field，每个field的类型。
-
 - 类别域（在这个例子为VOCClassDom.yaml）：里面包含了类别列表，对应category的序号（从1开始排序）
-
 - samples文件（在这个例子里分别分为train.yaml和train_samples.json)
 
-    - train.yaml主要是指明引用哪个struct模板和类别域文件，并且指明数据类型和存放路径，另外还有一些meta信息
-
-    - train_samples.json里保存了实际的samples信息，其组织结构必须和之前定义的结构体匹配
+  - train.yaml主要是指明引用哪个struct模板和类别域文件，并且指明数据类型和存放路径，另外还有一些meta信息
+  - train_samples.json里保存了实际的samples信息，其组织结构必须和之前定义的结构体匹配
 
 ### object-detection-def.yaml
 
@@ -462,14 +457,14 @@ ImageMedia:
         source: Dict
         owner: Dict
         segmented: Bool
-        
-LocalObjectEntry:                                    
-    $def: struct                                     
+  
+LocalObjectEntry:                              
+    $def: struct                               
     $params: ["cdom"]
-    $fields:                                        
+    $fields:                                  
         bbox: BBox
-        category: Label[dom=$cdom]                                             
-        pose: Str      
+        category: Label[dom=$cdom]                                       
+        pose: Str  
         truncated: Bool
         difficult: Bool
 
@@ -485,29 +480,23 @@ ObjectDetectionSample:
 
 （没有提到的字段都是与原数据集同名对应的字段，另外，命名中以下划线开头的一般都是我们自适应的字段，即原数据集没有的字段）
 
-- 在ObjectDetectionSample中：
+在ObjectDetectionSample中：
 
-    - media：该字段为保存的媒体文件的信息，类型为定义的struct：ImageMedia
+- media：该字段为保存的媒体文件的信息，类型为定义的struct：ImageMedia
+- objects：该字段对应原始数据集的object字段，以List的形式存储具体bounding box的标注信息
 
-    - objects：该字段对应原始数据集的object字段，以List的形式存储具体bounding box的标注信息
+在ImageMedia中：
 
-- 在ImageMedia中：
+- image：用于储存图像的相对路径，主要从原始数据集的filename字段转化而来
+- source：对应原始数据集的source字段，为一个字典形式，里面的keys分别对应原始数据集里的source字段下的database、annotation、image、flickerid字段。
+- owner：对应原始数据集的owner字段，为一个字典形式，里面的keys分别对应原始数据集里的owner字段下的flickerid和name字段。
+- image_shape、depth：对应原始数据集的size字段
 
-    - image：用于储存图像的相对路径，主要从原始数据集的filename字段转化而来
+在LocalObjectEntry中：
 
-    - source：对应原始数据集的source字段，为一个字典形式，里面的keys分别对应原始数据集里的source字段下的database、annotation、image、flickerid字段。
-
-    - owner：对应原始数据集的owner字段，为一个字典形式，里面的keys分别对应原始数据集里的owner字段下的flickerid和name字段。
-
-    - image_shape、depth：对应原始数据集的size字段
-
-- 在LocalObjectEntry中：
-
-    - bbox：对应原数据集的bndbox字段，但转化为bbox标准，即[x,y,w,h]
-
-    - category：是该目标的类别对应的类别标号，对应的是原数据集的name字段，类别标号可以参见下面的VOCClassDom.yaml
-
-    - pose，truncated，difficult：这个标注框的一些属性
+- bbox：对应原数据集的bndbox字段，但转化为bbox标准，即[x,y,w,h]
+- category：是该目标的类别对应的类别标号，对应的是原数据集的name字段，类别标号可以参见下面的VOCClassDom.yaml
+- pose，truncated，difficult：这个标注框的一些属性
 
 ### class-dom.yaml
 
