@@ -8,11 +8,9 @@
 
 目标跟踪任务是指在图像中用矩形框的形式检测出物体的位置，并识别出具体的实例，通过一个特殊识别ID对其进行跟踪。分为单目标跟踪和多目标跟踪，有的数据集还会对每个实例的类别进行标注。其示意图如下所示：
 
-| ![img](https://user-images.githubusercontent.com/113978928/209530768-6649565a-bfb3-4fe3-8180-c2cbbafea34f.png) | ![img](https://user-images.githubusercontent.com/113978928/209531549-33aa66ce-0d9e-488e-81fc-d9ba60f3bdbc.png) |
+| ![gif](https://user-images.githubusercontent.com/113978928/209652879-91183966-40f0-43cd-82da-7b9ff84d3a7f.gif) | ![gif](https://user-images.githubusercontent.com/113978928/209652898-3b9b9a5a-a301-4bfd-8650-4842259d4eb6.gif) |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| ![img](https://user-images.githubusercontent.com/113978928/209530832-6df11287-08bb-4b8a-9583-382f3ffc6890.png) | ![img](https://user-images.githubusercontent.com/113978928/209530837-ba9b8648-78c0-42d8-87d6-aeccb2abfa28.png) |
-
-    图1 上面两张图像来自于MOT17，下面两张图像来自于GOT-10k
+| 图1 GOT10k 单目标跟踪                                                                                        | 图2 MOT17 多目标跟踪                                                                                         |
 
 ### 1.2 评价指标
 
@@ -20,19 +18,19 @@
 
 * **成功率（Success Rate/IOU Rate/AOS）**
 
-成功值（ **success** ）计算是计算预测框与Ground Truth的真值框的区域内像素的交并比。成功率（ **Success Rate** ）即在success一定阈值之下，成功个数的比例。由于阈值不同，成功率也会相应变化，因此就有了成功率曲线（ **Success rate plot** ）。通常我们会看到论文中有一个 **AUC** （Area under curve）分数，这个分数实际上计算的是成功率曲线下的面积，达成的效果就相当于考虑到了**不同阈值下**的成功率分数。有的论文也会直接指定阈值（如0.5）。其实当成功率曲线足够光滑，取0.5对应的成功率分数和计算成功率的AUC分数是一样的（中值定理）。
+成功值（ **success** ）计算是计算预测框与标注框的区域内像素的交并比。成功率（ **Success Rate** ）即在success一定阈值之下，成功个数的比例。在不同的阈值下，成功率也会相应变化，以阈值为x，成功率为y，可作出成功率曲线（ **Success rate plot** ）。**AUC** （Area under curve）分数即为成功率曲线下的面积。有的论文也会直接指定阈值（如0.5）。
 
 * **精确度**（**Precision）**
 
-精确度是追踪成功的个数比例，计算预测框中心点与Ground Truth框的中心点的欧氏距离，通常阈值为20像素，即它们的欧氏距离在20像素之内就视为追踪成功。
+精确度是追踪成功的个数比例。为了计算追踪成功的个数，需要计算预测框中心点与标注框的中心点的之间欧氏距离，通常阈值为20像素，即它们的欧氏距离在20像素之内就视为追踪成功。
 
 * **归一化精确度（Normalized Precision）**
 
-考虑到Ground Truth框的尺度大小，将*Precision* 进行归一化，得到 *Norm. Prec* 。即判断预测框与Ground Truth框中心点的欧氏距离与Ground Truth框斜边的比例。最终用于检测tracker的是归一化精度曲线取值在[0, 0.5] 之间的AUC（Area under curve）。
+考虑到标注框的尺度大小将影响对精确度的判断（比如，对于较小的标注框，预测框和标注框的中心点相隔20像素，两者的交并比已经下降到一个非常低的值），因此，将精确度（Precision)根据标注框大小进行了归一化，得到了归一化精确度（**Normalized Precision**）。
 
 ### 1.3 主流数据集调研
 
-我们对10个目标检测数据集进行调研，对相关数据集描述文件（主要是标注字段）进行分析汇总，相同含义的标注字段会以统一命名进行展示，汇总信息如下表所示：
+我们对4个目标检测数据集进行调研，对相关数据集描述文件（主要是标注字段）进行分析汇总，相同含义的标注字段会以统一命名进行展示，汇总信息如下表所示：
 
 <table border="4" >
         <tr>
@@ -57,7 +55,7 @@
     </tr>
     <tr>
       <th width="15%" >TrackingNet</th>
-      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center"></td>
       <td width="8%" align="center">Y</td>
       <td width="8%" align="center"></td>
       <td width="8%" align="center">Y</td>
@@ -185,7 +183,7 @@
 
 ## 2. 模板展示
 
-目标跟踪任务是目标检测任务的拓展，也包含嵌套结构体（其详细定义可以参考[DSDL入门文档-语言定义-嵌套结构体](http://research.pages.shlab.tech/dataset_standard/dsdl-docs/zh/lang/structs/#242)）和类别域（class domain，或者cdom，具体可以参考[DSDL入门文档-语言定义-类别域](https://opendatalab.github.io/dsdl-docs/zh/lang/basic_types/#223-label)），但与之不同的是：根据上述的调研结果，我们知道对于目标跟踪任务重要的属性包括frame_id、media_path、instance_id、bbox和category，而这些属性分别属于 **三个层级的结构体** ，第一层是视频，第二层是视频帧（即图片），第三层是标注。因此我们需要定义三层的嵌套结构体，用来详细描述每个样本的信息。
+目标跟踪任务是目标检测任务的拓展，也包含嵌套结构体（其详细定义可以参考[DSDL入门文档-语言定义-嵌套结构体](../../dsdl_language/lang/structs.md)）和类别域（class domain，或者cdom，具体可以参考[DSDL入门文档-语言定义-类别域](../../dsdl_language/lang/class_dom.zh.md)），但与之不同的是：根据上述的调研结果，我们知道对于目标跟踪任务重要的属性包括frame_id、media_path、instance_id、bbox和category，而这些属性分别属于 **三个层级的结构体** ，第一层是视频，第二层是视频帧（即图片），第三层是标注。因此我们需要定义三层的嵌套结构体，用来详细描述每个样本的信息。
 
 基于上述考虑，我们制定了目标跟踪任务的模板，如下所示：
 
@@ -350,10 +348,10 @@ data:
 上面的描述文件中，首先定义了dsdl的版本信息，然后import了之前定义的数据集模板文件，包括任务模板，由于该数据集没有类别信息，因此不需要制定和import类别域模板。接着用meta和data字段来描述自己的数据集，具体的字段说明如下所示：
 
 - $dsdl-version: dsdl版本信息
-- $import: 模板导入信息，这里导入检测任务模板和VOC的class domain，也就是[2. 模板展示](#table-2)中展示的两部分内容
+- $import: 模板导入信息，这里导入检测任务模板和TrackingNet的class domain
 - meta: 主要展示数据集的一些元信息，比如数据集名称，创建者等等，用户可以自己添加想要备注的其它信息
 - data: data的内容就是按照前面定义好的结构所保存的样本信息，具体如下：
-  - sample-type: 数据的类型定义，在这里用的是从检测任务模板中导入的ObjectDetectionSample类，同时指定了采用的cdom为VOCClassDom
+  - sample-type: 数据的类型定义，在这里用的是从检测任务模板中导入的VideoFrame类，同时指定了采用的cdom为TrackingNetClassDom
   - sample-path: samples的存放路径，如果实际是一个路径，则samples的内容从该文件读取，如果是$local（这个例子），则从本文件的data.samples字段中直接读取
 
 **train_samples.json**
