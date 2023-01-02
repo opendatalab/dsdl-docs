@@ -91,6 +91,7 @@ nav:
       - 图像分割: dsdl_template/cv/cv_segmentation.md
       - 关键点检测: dsdl_template/cv/cv_keypoint_detection.md
       - 目标跟踪: dsdl_template/cv/cv_object_tracking.md
+      - 旋转目标检测: dsdl_template/cv/cv_rotated_detection.md 
   - API接口文档: api_reference/index.md
 plugins:
   - search:
