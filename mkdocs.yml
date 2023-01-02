@@ -131,6 +131,9 @@ plugins:
           自然语言处理: Natural Language Processing
           图像分类: Image Classification
           目标检测: Object Detection
+          DSDL语言教程: DSDL Specification
+          DSDL任务模板: DSDL Task Template
+          API接口文档: API Docs
 
 
 # extra:
