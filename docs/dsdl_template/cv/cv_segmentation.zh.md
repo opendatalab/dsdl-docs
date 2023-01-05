@@ -259,8 +259,8 @@ $$ PQ = \underbrace{{{\sum_{(p,g)\in TP} {IoU(p,g)}}\over{\lvert TP \rvert}}}_{\
 <table border="4" >
     <tr>
       <th rowspan="2" align=center colspan="1" align=center>实例分割数据集</th>
-      <th colspan="1" align=center>共享字段</th>
-      <th colspan="10" align=center>独立字段</th>
+      <th colspan="2" align=center>共享字段</th>
+      <th colspan="9" align=center>独立字段</th>
     </tr>
     <tr>
       <th>image_id</th>
@@ -315,16 +315,16 @@ $$ PQ = \underbrace{{{\sum_{(p,g)\in TP} {IoU(p,g)}}\over{\lvert TP \rvert}}}_{\
       <th align="center" >含义</th>
     </tr>
     <tr>
-      <th rowspan="1">共享字段</th>
+      <th rowspan="2">共享字段</th>
       <th>image_id</th>
       <td>定位到唯一图片，比如用图片名或者图片路径表示</td>
     </tr>
     <tr>
-      <th rowspan="11">独立字段</th>
       <th>segmentation_map</th>
       <td>分割图中的像素值到语义id/实例id的映射关系</td>
     </tr>
     <tr>
+      <th rowspan="10">独立字段</th>
       <th>pixel_mapping*</th>
       <td>分割图，语义分割任务就是语义分割mask</td>
     </tr>
