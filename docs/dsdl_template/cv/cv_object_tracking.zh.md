@@ -6,7 +6,7 @@
 
 ### 1.1 任务定义
 
-目标跟踪任务是指在图像中用矩形框的形式检测出物体的位置，并识别出具体的实例，通过一个特殊识别ID对其进行跟踪。分为单目标跟踪和多目标跟踪，有的数据集还会对每个实例的类别进行标注。其示意图如下所示：
+目标跟踪任务是指在图像中检测出物体的位置，并识别出具体的实例，通过一个特殊识别ID对其进行跟踪。分为单目标跟踪和多目标跟踪，有的数据集还会对每个实例的类别进行标注。其示意图如下所示：
 
 | ![gif](https://user-images.githubusercontent.com/113978928/209652879-91183966-40f0-43cd-82da-7b9ff84d3a7f.gif) | ![gif](https://user-images.githubusercontent.com/113978928/209652898-3b9b9a5a-a301-4bfd-8650-4842259d4eb6.gif) |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
@@ -18,7 +18,7 @@
 
 * **成功率（Success Rate/IOU Rate/AOS）**
 
-成功值（ **success** ）计算是计算预测框与标注框的区域内像素的交并比。成功率（ **Success Rate** ）即在success一定阈值之下，成功个数的比例。在不同的阈值下，成功率也会相应变化，以阈值为x，成功率为y，可作出成功率曲线（ **Success rate plot** ）。**AUC** （Area under curve）分数即为成功率曲线下的面积。有的论文也会直接指定阈值（如0.5）。
+成功值 (**success**)计算是计算预测框与标注框的区域内像素的交并比。成功率 (**Success Rate**)即在success一定阈值之下，成功个数的比例。在不同的阈值下，成功率也会相应变化，以阈值为x，成功率为y，可作出成功率曲线 (**Success rate plot)**。**AUC**(Area under curve)分数即为成功率曲线下的面积。有的论文也会直接指定阈值，由于中值定理，最常用的阈值是0.5。
 
 * **精确度**（**Precision）**
 
@@ -26,7 +26,7 @@
 
 * **归一化精确度（Normalized Precision）**
 
-考虑到标注框的尺度大小将影响对精确度的判断（比如，对于较小的标注框，预测框和标注框的中心点相隔20像素，两者的交并比已经下降到一个非常低的值），因此，将精确度（Precision)根据标注框大小进行了归一化，得到了归一化精确度（**Normalized Precision**）。
+考虑到标注框的尺度大小将影响对精确度的判断（比如，对于较小的标注框，预测框和标注框的中心点相隔20像素，两者的交并比已经下降到一个非常低的值），因此，将精确度 (Precision)根据标注框大小进行了归一化，得到了归一化精确度 (Normalized Precision)。
 
 ### 1.3 主流数据集调研
 
@@ -130,7 +130,7 @@
     <tr>
       <th rowspan="5">共享字段</th>
       <th>instance_id</th>
-      <td>物体编号，同一物体在整个视频片段中具有唯一的编号</td>
+      <td>目标编号，同一目标在整个视频片段中具有唯一的编号</td>
     <tr>
       <th>bbox</th>
       <td>定位单个目标的矩形框，比如用[xmin, ymin, xmax, ymax]表示</td>
@@ -179,7 +179,7 @@
     </tr>
 </table>
 
-可以看到，如果要描述一个检测数据集的样本，instance id、bbox、media_path和frame id是最基础的字段，此外还包含了各种描述边界框信息的特殊字段。
+可以看到，如果要描述一个检测数据集的样本，instance_id、bbox、media_path和frame_id是最基础的字段，此外还包含了各种描述边界框信息的特殊字段。
 
 ## 2. 模板展示
 
@@ -204,7 +204,7 @@ FrameSample:
     $def: struct
     $params: ["cdom"]
     $fields:
-        frame_id: Int
+        frame_id: UniqueID
         media_path: Image
         objects: List[etype=LocalObjectEntry[cdom=$cdom]]
 
@@ -230,7 +230,7 @@ VideoFrame:
   * $def: struct, 表示这是一个结构体类型
   * $params: 定义了形参，在这里即class domain
   * $fields: 结构体类所包含的属性，具体包括:
-    * frame_id：视频帧序号
+    * frame_id：视频帧序号，类型为UniqueID，如有多个层级包含UniqueID，可指定参数id_type，比如UniqueID[id_type='frame']
     * media_path：视频帧的路径
     * objects：标注信息，为前面的标注框结构体构成的一个列表
 * VideoFrame：定义了一个视频sample的结构体，包含四个字段
@@ -279,7 +279,7 @@ ObjectTrackingSample:
     $def: struct
     $params: ["cdom"]
     $fields:
-        frame_id: Int
+        frame_id: UniqueID
         _media_path: Image
         _image_shape: ImageShape
         _objects: List[LocalObjectEntry[cdom=cdom]]
@@ -300,7 +300,7 @@ VideoFrame:
 * 在LocalObjectEntry中：
   * _bbox：对应原数据集的bndbox字段，但转化为bbox标准，即[x,y,w,h]
 * 在ObjectTrackingSample中：
-  * frame_id：帧号
+  * frame_id：视频帧序号，类型为UniqueID
   * _media_path：该字段是我们自适应的字段，用于储存图像的相对路径，主要从原始数据集的filename字段转化而来
   * _image_shape：图片的宽高
   * _objects：该字段对应原始数据集的object字段，以List的形式存储具体bounding box的标注信息
@@ -309,7 +309,7 @@ VideoFrame:
   * _folder: 主要是标识视频来自于哪个文件夹，因为训练集一共分了12个文件夹
   * _videoframes：以列表的形式存储了视频的每一帧的信息
 
-值得注意的是，由于该数据集没有类别信息，因此其实可以不需要category字段，另外，因为是单目标跟踪，instance_id字段也可以省略。
+值得注意的是，由于该数据集没有类别信息，因此其实可以不需要category字段，另外，因为是单目标跟踪，instance_id字段也可以省略。但为了保证示例的完整性，在此皆保留。
 
 **class-dom.yaml**
 
@@ -345,14 +345,14 @@ data:
     sample-path: train_samples.json
 ```
 
-上面的描述文件中，首先定义了dsdl的版本信息，然后import了之前定义的数据集模板文件，包括任务模板，由于该数据集没有类别信息，因此不需要制定和import类别域模板。接着用meta和data字段来描述自己的数据集，具体的字段说明如下所示：
+上面的描述文件中，首先定义了dsdl的版本信息，然后import了之前定义的数据集模板文件，包括任务模板和类别域模板。接着用meta和data字段来描述自己的数据集，具体的字段说明如下所示：
 
 - $dsdl-version: dsdl版本信息
 - $import: 模板导入信息，这里导入检测任务模板和TrackingNet的class domain
 - meta: 主要展示数据集的一些元信息，比如数据集名称，创建者等等，用户可以自己添加想要备注的其它信息
 - data: data的内容就是按照前面定义好的结构所保存的样本信息，具体如下：
-  - sample-type: 数据的类型定义，在这里用的是从检测任务模板中导入的VideoFrame类，同时指定了采用的cdom为TrackingNetClassDom
-  - sample-path: samples的存放路径，如果实际是一个路径，则samples的内容从该文件读取，如果是$local（这个例子），则从本文件的data.samples字段中直接读取
+  - sample-type: 数据的类型定义，在这里用的是从目标跟踪任务模板中导入的VideoFrame类，同时指定了采用的cdom为TrackingNetClassDom
+  - sample-path: samples的存放路径，如果实际是一个路径，则samples的内容从该文件读取，如果是$local，则从本文件的data.samples字段中直接读取
 
 **train_samples.json**
 
@@ -365,7 +365,7 @@ data:
         "_folder": "TRAIN_0",
         "_videoframes": [
             {
-                "frame_id": 0,
+                "frame_id": “0”,
                 "_media_path": "TRAIN_0/frames/0-6LB4FqxoE_0/0.jpg",
                 "_image_shape": [360, 480],
                 "_objects": [
@@ -379,7 +379,7 @@ data:
             },
             ...
         ]
-        },
-        ...  
+     },
+     ...  
 ]}
 ```
