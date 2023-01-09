@@ -45,23 +45,6 @@ theme:
 
 #主页导航
 nav:
-<<<<<<< HEAD
-  - 语言特性: overview.md
-  - 语言定义: 
-    - 快速入门: lang/get_started.md
-    - 基本数据类型: lang/basic_types.md
-    - 非结构化对象类: lang/unstructured_objs.md
-    - 结构类: lang/structs.md
-    - 链接库: lang/libraries.md
-  - 实例演示: 
-    - 计算机视觉: examples/cv.md
-#  - 安装部署: install.md
-#  - 任务模板: 
-#    - 计算机视觉: template/cv.md
-#    - 自然语言处理: template/nlp.md
-#  - 使用教程: tutorial.md
-
-=======
   - 主页: index.md
   - 入门指南: 
     - 整体介绍: getting_started/overview.md
@@ -110,7 +93,6 @@ nav:
       - 目标跟踪: dsdl_template/cv/cv_object_tracking.md
       - 旋转目标检测: dsdl_template/cv/cv_rotated_detection.md 
   - API接口文档: api_reference/index.md
->>>>>>> 20c05287554ca6addbf07ee7f5697e40f6f2be3a
 plugins:
   - search:
       lang: 
