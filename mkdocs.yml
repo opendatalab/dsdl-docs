@@ -1,6 +1,9 @@
 site_name: DSDL中文文档
+site_author: OpenDataLab
+site_description: >-
+  基于新一代AI数据集标注语言DSDL（Data Set Description Language），打通AI数据鸿沟，便捷高效使用数据
 
-#高亮配置
+#高亮配置, mkdown公式拓展
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -9,10 +12,22 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences 
   - pymdownx.details
+  - pymdownx.arithmatex
+
+#java公式拓展
+extra_javascript:
+  - mathjax-config.js
+  - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 #提示框配置
 theme:
   name: material
+  custom_dir: overrides
+  custom_dir: !ENV [THEME_DIR, "site"]
+  language: zh
+  features:
+    - navigation.tabs
+    # - navigation.instant
   icon:
     admonition:
       note: octicons/tag-16
@@ -30,6 +45,7 @@ theme:
 
 #主页导航
 nav:
+<<<<<<< HEAD
   - 语言特性: overview.md
   - 语言定义: 
     - 快速入门: lang/get_started.md
@@ -45,13 +61,63 @@ nav:
 #    - 自然语言处理: template/nlp.md
 #  - 使用教程: tutorial.md
 
+=======
+  - 主页: index.md
+  - 入门指南: 
+    - 整体介绍: getting_started/overview.md
+    - 安装部署: getting_started/install.md
+    - 快速上手: 
+      # - 1.计算机视觉-图像分类: getting_started/quick_start_ex1.md 
+      - 1.计算机视觉-目标检测: getting_started/quick_start_ex2.md
+      # - 3.计算机视觉-语义分割: getting_started/quick_start_ex3.md
+  - 用户教程:
+    - 教程介绍: tutorials/overview.md
+    - 数据集下载: tutorials/dataset_download.md
+    - 数据集分析: tutorials/dataset_analysis.md
+    - 模型训练:
+      - OpenMMLab: tutorials/training/dataloader_openmmlab.md
+      - Pytorch: tutorials/training/dataloader_pytorch.md
+      - Tensorflow: tutorials/training/dataloader_tensorflow.md
+    - 模型推理: tutorials/training/model_training.md
+    - 数据/模型分析: 
+      - 基本介绍: tutorials/analysis/result_analysis.md
+    - 数据集分发: tutorials/dataset_distribution.md
+    - 高阶教程:
+      - 高阶教程介绍: tutorials/advanced/overview.md
+      - DSDL数据集标准化:
+        - 自定义DSDL数据集: tutorials/advanced/dsdl_define.md
+        - DSDL数据集格式转换: tutorials/advanced/dsdl_convert.md
+        - DSDL数据集验证: tutorials/advanced/dsdl_check.md
+      - DSDL DataLoader开发: tutorials/advanced/dsdl_dataloader.md
+  - DSDL语言教程:
+    - 语言特性: dsdl_language/overview.md
+    - 语言定义: 
+      - 快速入门: dsdl_language/lang/get_started.md
+      - 基本数据类型: dsdl_language/lang/basic_types.md
+      - 非结构化对象类: dsdl_language/lang/unstructured_objs.md
+      - 结构类: dsdl_language/lang/structs.md
+      - 类别域: dsdl_language/lang/class_dom.md
+      - 数据模块: dsdl_language/lang/data_section.md
+      - 链接库: dsdl_language/lang/libraries.md
+    - 实例演示: 
+      - 计算机视觉: dsdl_language/examples/cv.md
+  - DSDL任务模板: 
+    - 计算机视觉:
+      - 图像分类: dsdl_template/cv/cv_classification.md
+      - 目标检测: dsdl_template/cv/cv_detection.md 
+      - 图像分割: dsdl_template/cv/cv_segmentation.md
+      - 关键点检测: dsdl_template/cv/cv_keypoint_detection.md
+      - 目标跟踪: dsdl_template/cv/cv_object_tracking.md
+      - 旋转目标检测: dsdl_template/cv/cv_rotated_detection.md 
+  - API接口文档: api_reference/index.md
+>>>>>>> 20c05287554ca6addbf07ee7f5697e40f6f2be3a
 plugins:
   - search:
       lang: 
         - en
         - zh
   - i18n:
-      default_language: en
+      default_language: zh
       languages:
         en: 
           name: English
@@ -64,12 +130,17 @@ plugins:
 
       nav_translations:
         en:
+          主页: Home
           语言特性: Overview
           语言定义: Language
-          快速入门: Get Started
+          整体介绍: overview
+          入门指南: Getting Started
+          用户教程: Tutorials
           基本数据类型: Basic Types
           非结构化对象类: Unstructured Object Classes
           结构类: Struct Classes
+          类别域: Class Domain
+          数据模块: Data Section
           链接库: Libraries
           实例演示: Example
           计算机视觉: Computer Vision
@@ -77,5 +148,27 @@ plugins:
           使用教程: Tutorial
           任务模板: Task Template
           自然语言处理: Natural Language Processing
+          图像分类: Image Classification
+          目标检测: Object Detection
+          DSDL语言教程: DSDL Specification
+          DSDL任务模板: DSDL Task Template
+          API接口文档: API Docs
 
 
+# extra:
+#   alternate:
+
+#     # Switch to English
+#     - name: English
+#       link: <your-site>/en/
+#       lang: en
+
+#     # Switch to German
+#     - name: Deutsch
+#       link: <your-site>/de/
+#       lang: de
+
+#     # Switch to Japanese
+#     - name: 日本語
+#       link: <your-site>/ja/
+#       lang: ja
