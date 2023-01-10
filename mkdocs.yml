@@ -3,6 +3,9 @@ site_author: OpenDataLab
 site_description: >-
   基于新一代AI数据集标注语言DSDL（Data Set Description Language），打通AI数据鸿沟，便捷高效使用数据
 
+repo_name: opendatalab/dsdl-docs
+repo_url: https://github.com/opendatalab/dsdl-docs
+  
 #高亮配置, mkdown公式拓展
 markdown_extensions:
   - pymdownx.highlight:
