@@ -61,8 +61,8 @@ nav:
       - Pytorch: tutorials/training/dataloader_pytorch.md
       - Tensorflow: tutorials/training/dataloader_tensorflow.md
     - 模型推理: tutorials/training/model_training.md
-    - 数据/模型分析: 
-      - 基本介绍: tutorials/analysis/result_analysis.md
+    # - 数据/模型分析: 
+      # - 基本介绍: tutorials/analysis/result_analysis.md
     - 数据集分发: tutorials/dataset_distribution.md
     - 高阶教程:
       - 高阶教程介绍: tutorials/advanced/overview.md
@@ -111,12 +111,30 @@ plugins:
 
       nav_translations:
         en:
+          # 主页介绍
           主页: Home
+          # 入门指南
+          入门指南: Get Started
+
+          安装部署: Install
+          整体介绍: overview
+          快速上手: Quick Start
+          # 用户教程
+          用户教程: Tutorials
+
+          教程介绍: Introduction
+          数据集下载: Dataset Download
+          数据集分析: Dataset Analysis
+          模型训练: Model Training
+          模型推理: Model Inference
+          数据集分发: Dataset Distribution
+          高阶教程: High-Level Tutorial
+          # DSDL语言教程 
+          DSDL语言教程: DSDL Specification
+
           语言特性: Overview
           语言定义: Language
-          整体介绍: overview
-          入门指南: Getting Started
-          用户教程: Tutorials
+          快速入门: Get Started
           基本数据类型: Basic Types
           非结构化对象类: Unstructured Object Classes
           结构类: Struct Classes
@@ -125,14 +143,18 @@ plugins:
           链接库: Libraries
           实例演示: Example
           计算机视觉: Computer Vision
-          安装部署: Install
-          使用教程: Tutorial
-          任务模板: Task Template
-          自然语言处理: Natural Language Processing
+          # DSDL任务模板
+          DSDL任务模板: DSDL Template
+
           图像分类: Image Classification
           目标检测: Object Detection
-          DSDL语言教程: DSDL Specification
-          DSDL任务模板: DSDL Task Template
+          图像分割: Image Segmentation
+          关键点检测: Keypoint Detection
+          目标跟踪: Object Tracking
+          旋转目标检测: Rotated Object Detection
+          光学字符识别(OCR): Optical Character Recognition (OCR)
+          
+          # API接口文档
           API接口文档: API Docs
 
 
