@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2021 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -54,14 +54,6 @@ icon:
 
 # Favicon to be rendered
 favicon: assets/images/favicon.png
-
-# Material includes the search in the header as a partial, not as a separate
-# template, so it's correct that search.html is missing
-include_search_page: false
-
-# Material doesn't use MkDocs search functionality but provides its own. For
-# this reason, only the search index needs to be built
-search_index_only: true
 
 # Static pages to build
 static_templates:

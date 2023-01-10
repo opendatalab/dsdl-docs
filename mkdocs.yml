@@ -22,8 +22,7 @@ extra_javascript:
 #提示框配置
 theme:
   name: material
-  custom_dir: overrides
-  custom_dir: !ENV [THEME_DIR, "site"]
+  custom_dir: material/.overrides
   language: zh
   features:
     - navigation.tabs

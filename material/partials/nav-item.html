@@ -1,7 +1,7 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% macro render_nav_item(nav_item, path, level) %}
+{% macro render(nav_item, path, level) %}
   {% set class = "md-nav__item" %}
   {% if nav_item.active %}
     {% set class = class ~ " md-nav__item--active" %}
@@ -13,29 +13,48 @@
       {% set class = class ~ " md-nav__item--section" %}
     {% endif %}
     <li class="{{ class }} md-nav__item--nested">
+      {% set expanded = "navigation.expand" in features %}
+      {% set active = nav_item.active or expanded %}
       {% set checked = "checked" if nav_item.active %}
-      {% if "navigation.expand" in features and not checked %}
-        <input class="md-nav__toggle md-toggle" data-md-toggle="{{ path }}" data-md-state="indeterminate" type="checkbox" id="{{ path }}" checked>
-      {% else %}
-        <input class="md-nav__toggle md-toggle" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" {{ checked }}>
+      {% if expanded and not checked %}
+        {% set indeterminate = "md-toggle--indeterminate" %}
       {% endif %}
-      <label class="md-nav__link" for="{{ path }}">
-        {{ nav_item.title }}
-        <span class="md-nav__icon md-icon"></span>
-      </label>
+      <input class="md-nav__toggle md-toggle {{ indeterminate }}" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" {{ checked }}>
+      {% set indexes = [] %}
+      {% if "navigation.indexes" in features %}
+        {% for nav_item in nav_item.children %}
+          {% if nav_item.is_index and not index is defined %}
+            {% set _ = indexes.append(nav_item) %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+      {% if not indexes %}
+        <label class="md-nav__link" for="{{ path }}" tabindex="0" aria-expanded="{{ nav_item.active | tojson }}">
+          {{ nav_item.title }}
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      {% else %}
+        {% set index = indexes | first %}
+        {% set class = "md-nav__link--active" if index == page %}
+        <div class="md-nav__link md-nav__link--index {{ class }}">
+          <a href="{{ index.url | url }}">{{ nav_item.title }}</a>
+          {% if nav_item.children | length > 1 %}
+            <label for="{{ path }}">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          {% endif %}
+        </div>
+      {% endif %}
       <nav class="md-nav" aria-label="{{ nav_item.title }}" data-md-level="{{ level }}">
         <label class="md-nav__title" for="{{ path }}">
           <span class="md-nav__icon md-icon"></span>
           {{ nav_item.title }}
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
-          {% set base = path %}
           {% for nav_item in nav_item.children %}
-            {{ render_nav_item(
-              nav_item,
-              path = base ~ "-" ~ loop.index,
-              level = level + 1)
-            }}
+            {% if not indexes or nav_item != indexes | first %}
+              {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
+            {% endif %}
           {% endfor %}
         </ul>
       </nav>
@@ -44,10 +63,11 @@
     <li class="{{ class }}">
       {% set toc = page.toc %}
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      {% if toc | first is defined and "\x3ch1 id=" in page.content %}
-        {% set toc = (toc | first).children %}
+      {% set first = toc | first %}
+      {% if first and first.level == 1 %}
+        {% set toc = first.children %}
       {% endif %}
-      {% if toc | first is defined %}
+      {% if toc %}
         <label class="md-nav__link md-nav__link--active" for="__toc">
           {{ nav_item.title }}
           <span class="md-nav__icon md-icon"></span>
@@ -56,7 +76,7 @@
       <a href="{{ nav_item.url | url }}" class="md-nav__link md-nav__link--active">
         {{ nav_item.title }}
       </a>
-      {% if toc | first is defined %}
+      {% if toc %}
         {% include "partials/toc.html" %}
       {% endif %}
     </li>
@@ -68,4 +88,4 @@
     </li>
   {% endif %}
 {% endmacro %}
-{{ render_nav_item(nav_item, path, level) }}
+{{ render(nav_item, path, level) }}
