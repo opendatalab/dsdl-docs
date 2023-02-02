@@ -14,7 +14,7 @@
 
 三种图像分割的可视化结果如下图所示 ( 图片取自CVPR2019的论文: [Panoptic Segmentation](https://arxiv.org/pdf/1801.00868.pdf) )：
 
-![img](images/segmentation/seg_example.png)
+![img](https://user-images.githubusercontent.com/113978928/216255040-7c1a9e58-4f1a-4aac-8519-efb52eb29a28.png)
 
 ## 1.2 评价指标：
 
