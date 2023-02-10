@@ -15,7 +15,7 @@ pip install dsdl
 #### 2. 源码安装
 
 ```shell
-git clone https://github.com/opendatalab/dsdl.git
+git clone https://github.com/opendatalab/dsdl-sdk
 cd dsdl
 python setup.py install
 ```
