@@ -1,7 +1,6 @@
 # 数据集可视化
 
-数据集可视化分为CLI版本和网页版本。
-
+数据集可视化目前支持CLI版本，后续会开发网页版本。
 
 ## CLI
 
@@ -23,8 +22,3 @@ The description of each argument is shown below:
 | -v                  | `--visualize` | Whether to visualize the samples or just print the information in console.                                                                                                                                                                             |
 | -f                  | `--field`     | The field type to visualize, e.g.`-f BBox`means show the bounding box in samples, `-f Attributes`means show the attributes of a sample in the console . One can specify multiple field types simultaneously, such as `-f Label BBox Attributes`. |
 | -t                  | `--task`      | The task you are working on, for example,`-t detection` is equivalent to `-f Label BBox Polygon Attributes`.                                                                                                                                       |
-
-
-## 网页版本
-
-（需要开发组同学补充）
