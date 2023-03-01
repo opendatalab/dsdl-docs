@@ -148,10 +148,10 @@ InstanceSegmentationSample:
 - $def中定义的必须是strcut或class_dom
 - $params 参数验证参见单独的参数验证模块
 - $fields中检查
-  - 是否有字段，没有报错
-  - 字段名字是否符合规范： 不能以数字开头，不能包含空格，只能包含字母、数字、下划线
-  - 字段类型是否是DSDL中定义的[基本数据类型](../../dsdl_language/lang/basic_types.md)，如果是struct类型，如 **`objects: LocalObjectEntry[cdom=$cdom]`** 需要检查该struct类型是否已经注册（可以在后面再定义，顺序不要紧，但是要有）。
-  - 字段类型中的参数是否符合规范：包括参数名字和参数值
+    - 是否有字段，没有报错
+    - 字段名字是否符合规范： 不能以数字开头，不能包含空格，只能包含字母、数字、下划线
+    - 字段类型是否是DSDL中定义的[基本数据类型](../../dsdl_language/lang/basic_types.md)，如果是struct类型，如 **`objects: LocalObjectEntry[cdom=$cdom]`** 需要检查该struct类型是否已经注册（可以在后面再定义，顺序不要紧，但是要有）。
+    - 字段类型中的参数是否符合规范：包括参数名字和参数值
 - $optional中检查：optional list 中的字段是否是已经注册的，没有就报错
 - strcut中的循环引用检查
 
@@ -162,12 +162,12 @@ InstanceSegmentationSample:
 - `$params`中包含的参数名字和下面 `$field`字段中的一一对应
 - `$params`中给的参数是否与 `data` section 中 `sample-type`对应， eg. `SceneAndObjectSample[scenedom=COCO2017ClassFatherDom,objectdom=COCO2017ClassDom]`
 - 判断带参数的，且用到别的struct的 `$field`字段（如上面例子中的 `objects`）
-  - 该引用的struct是否存在（`LocalObjectEntry`是否存在）
-  - 是否存在循环引用，如果存在就报错
+    - 该引用的struct是否存在（`LocalObjectEntry`是否存在）
+    - 是否存在循环引用，如果存在就报错
 
-该引用的struct中需要传入的参数是否都已经被定义，是否存在未赋值的参数，有就报错
+- 该引用的struct中需要传入的参数是否都已经被定义，是否存在未赋值的参数，有就报错
 
-目前不同字段引用同一个strcut也会报错
+- 目前不同字段引用同一个strcut也会报错
 
 ## 验证结果
 
@@ -191,37 +191,43 @@ InstanceSegmentationSample:
   ** **[1. `Struct` name 2. `Class domain` name 3.name of `$field` in `Struct`]  is considered a valid identifier if it only contains alphanumeric letters (a-z) and (0-9), or underscores (_).
   ****A valid identifier cannot start with a number, or contain any spaces.**
 
-  含义：struct、class domain 的名字（如上面例子里面的 `**AnnotationDom**`等）和strcut中$filed里面的名字都要是一个a valid identifier：即只能包含字母数字或下划线（且不以字母开头），不包含任何空格。
+    含义：struct、class domain 的名字（如上面例子里面的 `**AnnotationDom**`等）和strcut中$filed里面的名字都要是一个a valid identifier：即只能包含字母数字或下划线（且不以字母开头），不包含任何空格。
+
 - **ValidationError： Error with class-dom name,  ** **`{varstr}`**** can't be a Python keyword.
   ****check ****https://docs.python.org/3/reference/lexical_analysis.html#keywords**** for more information.**
 
-  含义：class domain 的名字（如上面例子里面的 `**AnnotationDom**`等）不能是一个python的保留字符串（如：def, del, if, or....., 保留字符串列表详见：https://docs.python.org/3/reference/lexical_analysis.html#keywords）。
+    含义：class domain 的名字（如上面例子里面的 `**AnnotationDom**`等）不能是一个python的保留字符串（如：def, del, if, or....., 保留字符串列表详见：https://docs.python.org/3/reference/lexical_analysis.html#keywords）。
+
 - **ValidationError：**  **`{`** `self.name`**`}`**** is dsdl build-in value name, please rename it. Build-in value names are:  Bool, Num, Int, Str, Coord, Coord3D, Interval, BBox, Polygon, Image, InstanceMap, Video, Dict,
   ****Text, InstanceID, Date, Time, Label, LabelMap, Keypoint, List, ImageShape, RotatedBBox, UniqueID. **
 
-  含义：当struct、class domain 的名字（如上面例子里面的 `**AnnotationDom**`等）是dsdl里面的内置类名的时候会报错，dsdl内置类别名包括：Bool, Num, Int, Str, Coord, Coord3D, Interval, BBox, Polygon, Image, InstanceMap, Video, Dict, Text, InstanceID, Date, Time, Label, LabelMap, Keypoint, List, ImageShape, RotatedBBox, UniqueID
+    含义：当struct、class domain 的名字（如上面例子里面的 `**AnnotationDom**`等）是dsdl里面的内置类名的时候会报错，dsdl内置类别名包括：Bool, Num, Int, Str, Coord, Coord3D, Interval, BBox, Polygon, Image, InstanceMap, Video, Dict, Text, InstanceID, Date, Time, Label, LabelMap, Keypoint, List, ImageShape, RotatedBBox, UniqueID
+
 - **DefineSyntaxError：Error in skeleton of **  **`{`** `self.class_name` **`}`** **: skeleton must be list of list of int.**
 
-  含义：需要保证skeleton中的字段是list of int
+     含义：需要保证skeleton中的字段是list of int
+
 - **DefineSyntaxError：**  **`{`** `label_name`**`}`**** is not allowed. Label in class-dom can't start with dot `.`**
 
-  含义：class domain中的label是不能以 `.`来开始的
+     含义：class domain中的label是不能以 `.`来开始的
+
 - **DefineSyntaxWarning：** **`{label_name}`**** is not recommended.
   ****We recommend using alphanumeric letters (a-z, A-Z and 0-9), and underscores (_)
   ****for label in class-dom (with hierarchical structure).**
 
-  含义：对于有层级结构的class domain的label来说会报这个错误，表示：对于有层级结构的class domain的label，我们推荐使用字母数字和下划线来作为label名，并以 `.`来划分父子类。（带空格会报warning）
+     含义：对于有层级结构的class domain的label来说会报这个错误，表示：对于有层级结构的class domain的label，我们推荐使用字母数字和下划线来作为label名，并以 `.`来划分父子类。（带空格会报warning）
+
 - **DefineSyntaxWarning：** **`{label_name}`**** is not recommended.**
   **We recommend using space, alphanumeric letters (a-z, A-Z and 0-9), and underscores (_) "、**
   **for label in class-dom (without hierarchical structure).**
 
-  含义：对于非层级结构的class domain的label来说会报这个错误，表示：对于非层级结构的class domain的label，我们推荐使用空格字母数字和下划线来作为label名。
+     含义：对于非层级结构的class domain的label来说会报这个错误，表示：对于非层级结构的class domain的label，我们推荐使用空格字母数字和下划线来作为label名。
 
 #### Data section部分
 
 - **DefineSyntaxError：data yaml must contain `meta` section.**
 
-  含义：数据yaml文件中必须包含 `meta`部分 (不管几个yaml文件，数据文件必须包含，strcut、class domain等yaml文件可以没有)，eg.
+    含义：数据yaml文件中必须包含 `meta`部分 (不管几个yaml文件，数据文件必须包含，strcut、class domain等yaml文件可以没有)，eg.
 
 ```Python
 $dsdl-version: "0.5.2"
@@ -243,79 +249,98 @@ data:
 
 - **DefineSyntaxError: data yaml must contain `data` section and `data` section must have `sample-type`.**
 
-  含义：数据yaml文件中必须包含 `data`部分 (不管几个yaml文件，数据文件必须包含，strcut、class domain等yaml文件可以没有)，如上图所示。同时，`data`部分必须包含 `sample-type`。
+    含义：数据yaml文件中必须包含 `data`部分 (不管几个yaml文件，数据文件必须包含，strcut、class domain等yaml文件可以没有)，如上图所示。同时，`data`部分必须包含 `sample-type`。
+
 - **DefineSyntaxWarning:  `global-info-type` is not defined.**
 
-  含义：`global-info-type` 没有被定义，这是一个warning，可以不管
+    含义：`global-info-type` 没有被定义，这是一个warning，可以不管.
+
 - **DefineSyntaxError: **  **`{`** `struct_name/class_dom_name`**`}`**** section must contain "$def" sub-section.**
 
-  含义：strcut和class_dom中必须包含$def字段来定义它的类型。
+    含义：strcut和class_dom中必须包含$def字段来定义它的类型。
+
 - **DefineSyntaxError:  error type {** define_type**} in yaml, type must be class_domain or struct.**
 
-  含义：$def字段只能是strcut和class_domain中的一个。
+    含义：$def字段只能是strcut和class_domain中的一个。
+
 - **DuplicateDefineWarning:  **  **`{`** `struct_name/class_dom_name`**`}`**** has defined.**
 
-  含义：某个strcut/class_domain已经被定义了，这是一个warning，可以不管。如果不管，那后面定义的会覆盖前面定义的内容。
+    含义：某个strcut/class_domain已经被定义了，这是一个warning，可以不管。如果不管，那后面定义的会覆盖前面定义的内容。
+
 - **DSDLImportError: ****`import_path`**** does not exist in ** **`given_path`** **, please give the right path using `-p`.**
 
-  含义：当用 `-p`指定数据yaml文件中$import路径的时候，如果没找到需要import的文件会报这个问题。
+    含义：当用 `-p`指定数据yaml文件中$import路径的时候，如果没找到需要import的文件会报这个问题。
+
 - **DSDLImportError: ****`import_path`** ** does not exist in neither **  **`{`** `current_path`**`}`**** nor `dsdl/dsdl_library`, please check the path or give the right path using `-p`.**
 
-  含义：当不用 `-p`指定数据yaml文件中$import路径的时候，如果在当前文件夹和dsdl库文件（dsdl/dsdl_library）中都没找到需要import的文件会报这个问题。
+    含义：当不用 `-p`指定数据yaml文件中$import路径的时候，如果在当前文件夹和dsdl库文件（dsdl/dsdl_library）中都没找到需要import的文件会报这个问题。
 
 #### struct部分和参数部分
 
 - **DefineSyntaxError：miss the parameters **  **`{`** `param`**`}`** ** in ** **`{struct_name}`**** in `sample-type`.**
 
-  含义：在yaml中data部分的sample-type中没有给形式参数**`{`** `param`**`}`** 赋值。
+    含义：在yaml中data部分的sample-type中没有给形式参数**`{`** `param`**`}`** 赋值。
+
 - **DefineSyntaxError：miss the parameters **  **`{`** `param`**`}`** ** in ** **`{struct_name}`**** in `global-info-type`.**
 
-  含义：在yaml中data部分的global-info-type中没有给形式参数**`{`** `param`**`}`** 赋值。
+    含义：在yaml中data部分的global-info-type中没有给形式参数**`{`** `param`**`}`** 赋值。
+
 - **DefineSyntaxError：error in definition of `sample-type` or `global-info-type`.**
 
-  含义：在yaml中data部分的sample-type的定义有问题。
+    含义：在yaml中data部分的sample-type的定义有问题。
+
 - **DefineSyntaxError：parameter in struct ** **`{struct}`** ** is not defined correctly:  1. check your `sample-type` or `global-info-type`, 2. check the definition of struct **  **`{struct}`** **."**
 
-  含义：名为{struct}的struct中的参数没有被正确定义，大概率问题发生在：1. `sample-type`或 `global-info-type`的定义中 2. strcut本身的定义中
+    含义：名为{struct}的struct中的参数没有被正确定义，大概率问题发生在：1. `sample-type`或 `global-info-type`的定义中 2. strcut本身的定义中
+
 - **DefineSyntaxError：definition error of filed **  **`{`** `field` **`}`**  **in struct  **  **`{struct}`**  **,  check if parameter in **  **`{`** `field`**`}`**** is defined correctly.**
 
-  含义：名为{struct}的struct中的{filed}没有被正确定义，大概率问题发生在：{field}中的参数没被赋值或没正确定义
+     含义：名为{struct}的struct中的{filed}没有被正确定义，大概率问题发生在：{field}中的参数没被赋值或没正确定义。
+
 - **DefineSyntaxError：error in parameters definition of **  **`{`** `field`**`}`** ** in struct **  **`{`** `struct` **`}`** **.**
 
-  含义：名为{struct}的struct中{field}中的参数没被赋值或没正确定义.
+    含义：名为{struct}的struct中{field}中的参数没被赋值或没正确定义。
+
 - **DefineSyntaxError：parameter ** **`{param}`** ** of **  **`{`** `field`**`}`** ** in struct ** **`{struct}`**** must be defined.**
 - **DefineSyntaxError：parameter **  **`{param}`**  **of ** **`{struct}`**** must be defined.**
 
-  含义：名为{struct}的struct中{field}中的参数没被赋值.
+    含义：名为{struct}的struct中{field}中的参数没被赋值。
 - **DefineSyntaxError: each struct with param must have one parent struct, but can have more than one child struct.**
   **`{struct}`**** have more than one parent struct.**
 
-  含义：树状结构问题.是个遗留问题。
+    含义：树状结构问题.是个遗留问题。
+
 - **DefineSyntaxError: error of definition of parameters **  **`{`** `params_list`**`}`** ** in **  **`{struct_name}`** **.**
 
-  含义：名为{struct}的struct中{`params_list`}中的参数定义有问题，一般是$params中的参数和$filed中的没有一一对应。
+    含义：名为{struct}的struct中{`params_list`}中的参数定义有问题，一般是$params中的参数和$filed中的没有一一对应。
+
 - **DefineSyntaxError: Error  in field with value of **  **`{`** `field_type` **`}`** **.**
 - **DefineSyntaxError: Error  in field with value of **  **`{`** `field_type` **`}`**  **. check the **  **`{`** `k_v`**`}`**** part.**
 
-  含义：struct中的某个类型为**`{`** `field_type` **`}`** 的filed出了问题。(可能还会提示是 **`{`** `field_type` **`}`** 中的 `k_v`部分出了问题)
+    含义：struct中的某个类型为**`{`** `field_type` **`}`** 的filed出了问题。(可能还会提示是 **`{`** `field_type` **`}`** 中的 `k_v`部分出了问题)
+
 - **DefineSyntaxError: Error  in field with value of **  **`{`** `field_type` **`}`** **: check format of `optional` and `is_attr`.**
 
-  含义：struct中的某个类型为 `{field_type}`的filed出了问题， 问题出在optional 或is_attr的格式上，需要检查。
+    含义：struct中的某个类型为 `{field_type}`的filed出了问题， 问题出在optional 或is_attr的格式上，需要检查。
+
 - **DefineTypeError：No type ** **`{field_type}`**** in DSDL.**
 
-  含义：struct中的某个类型为 `{field_type}`的field在dsdl中并没有定义，即它既不是dsdl的内置类型（如Image, BBox, Int,..）也不是用户你定义的struct类型。
+    含义：struct中的某个类型为 `{field_type}`的field在dsdl中并没有定义，即它既不是dsdl的内置类型（如Image, BBox, Int,..）也不是用户你定义的struct类型。
+
 - **DefineSyntaxError：**  **`{`** `field_type`**`}`**** should not ccontain parameters  besides [1.optional 2. is_attr].**
 
-  含义：当不该出现参数的数据类型（如：Image\Int\Num等等）里面包含除（optional, is_attr等所有类型的共有参数）时会报错。
+    含义：当不该出现参数的数据类型（如：Image\Int\Num等等）里面包含除（optional, is_attr等所有类型的共有参数）时会报错。
+
 - **DefineSyntaxError：**  **`{`** `field_type`**`}`**** must contain parameters in addition to [1.optional 2. is_attr].**
 
-  含义：当一些必须带参数的数据类型（如：List（必须有etype）等等）里面不包含除（optional, is_attr等所有类型的共有参数）参数时会报错。
+    含义：当一些必须带参数的数据类型（如：List（必须有etype）等等）里面不包含除（optional, is_attr等所有类型的共有参数）参数时会报错。
 
 [List类型的报错]：
 
 - **DefineSyntaxError：Invalid parameters **  **`{`** `param`**`}`**** in List.**
 
-  含义： List filed中存在不能识别的参数（除etype, ordered, optional, is_attr以外的参数）
+    含义： List filed中存在不能识别的参数（除etype, ordered, optional, is_attr以外的参数）
+
 - **DefineSyntaxError: ** **List types must contain parameters `etype`.**
 - **DefineSyntaxError:**  **invalid value **  **`{`** **`val`** **`}`** ** in `ordered` of `List` field:  check the '**  **`filed_type`** **'.**
 
@@ -323,68 +348,81 @@ data:
 
 - **DefineSyntaxWarning： basic type ****`Time/Date`**** not contains fmt, we use ISO 8601 format by default.**
 
-  含义：是个警告，可以不管：你的Time或Date类型没有包含fmt参数，使用默认的**ISO 8601 format。**
+    含义：是个警告，可以不管：你的Time或Date类型没有包含fmt参数，使用默认的**ISO 8601 format。**
+
 - **DefineSyntaxError：Invalid parameters **  **`{`** `param`**`}`**** in ** **`Time/Date`** **.**
 
-  含义： Time或Date类型中存在不能识别的参数。
+     含义： Time或Date类型中存在不能识别的参数。
+
 - **ValueError：duplicated param **  **`{`** `param` **`}`** **in ** **`Time/Date`** **.**
 
-  含义： Time或Date类型中存在重复的参数。
+    含义： Time或Date类型中存在重复的参数。
 
 [ImageShape类型的报错]：
 
 - **DefineSyntaxError： invalid parameters value "**  **`{val}`** **" of `mode` in `ImageShape` field, `mode` value must be one of ["hw", "wh"].**
 
-  含义：ImageShape中的mode必须是hw或wh**。**
+    含义：ImageShape中的mode必须是hw或wh**。**
+
 - **DefineSyntaxError：Invalid parameters **  **`{`** `param`**`}`**** in ImageShape field.**
 
-  含义： 存在不能识别的参数。
+    含义： 存在不能识别的参数。
+
 - **ValueError：duplicated param **  **`{`** `param` **`}`** **in ImageShape field.**
 
-  含义： 存在重复的参数。
+    含义： 存在重复的参数。
 
 [RotatedBBox类型的报错]：
 
 - **DefineSyntaxError： invalid parameters value "**  **`{val}`** **" of `mode` in `RotatedBBox` field, `mode` value must be one of ["xywht", "xyxy"].**
 
-  含义：RotatedBBox中的mode必须是xywht或xyxy**。**
+    含义：RotatedBBox中的mode必须是xywht或xyxy**。**
+
 - **DefineSyntaxError： invalid parameters value "**  **`{val}`** **" of `measure` in `RotatedBBox` field, `measure` value must be one of ["degree", "radian"].**
 
-  含义：RotatedBBox中的mode必须是xywht或xyxy**。**
+    含义：RotatedBBox中的mode必须是xywht或xyxy**。**
+
 - **DefineSyntaxError：Invalid parameters **  **`{`** `param`**`}`**** in RotatedBBox field.**
 
-  含义： 存在不能识别的参数。
+    含义： 存在不能识别的参数。
+
 - **ValueError：duplicated param **  **`{`** `param` **`}`** **in RotatedBBox field.**
 
-  含义： 存在重复的参数。
+    含义： 存在重复的参数。
 
 [UniqueID类型的报错]：
 
 - **DefineSyntaxError： invalid parameters value "**  **`{val}`** **" of `id_type` in `UniqueID` field, `id_type` value must be a string.**
 
-  含义：UniqueID中的id_type必须是字符串**。**
+    含义：UniqueID中的id_type必须是字符串**。**
+
 - **DefineSyntaxError： invalid parameters value "**  **`{val}`** **" of `measure` in `UniqueID` field, `measure` value must be one of ["degree", "radian"].**
 
-  含义：UniqueID中的mode必须是xywht或xyxy**。**
+    含义：UniqueID中的mode必须是xywht或xyxy**。**
+
 - **DefineSyntaxError：Invalid parameters **  **`{`** `param`**`}`**** in UniqueID.**
 
-  含义： 存在不能识别的参数。
+    含义： 存在不能识别的参数。
+
 - **ValueError：duplicated param **  **`{`** `param` **`}`** **in UniqueID.**
 
-  含义： 存在重复的参数。
+     含义： 存在重复的参数。
 
 [Label类型的报错]：
 
 - **DefineSyntaxError： invalid dom in List field: **  **`{val}`**  **, for **  **`{part_of_val}`**  **in ** **`{val}`**** filed is illegal.**
 - **invalid dom: **  **`{`** `val` **`}`** **in List field.**
 
-  含义：List field中的dom参数的值 `val`不符合规范（检查 `val`中的 **`{part_of_val}`** 部分）**。**
+    含义：List field中的dom参数的值 `val`不符合规范（检查 `val`中的 **`{part_of_val}`** 部分）**。**
+
 - **DefineSyntaxError：List field must contain parameter `dom`.**
 
-  含义：List field中的dom参数是必须的**。**
+    含义：List field中的dom参数是必须的**。**
+
 - **DefineSyntaxError：Invalid parameters **  **`{`** `param`**`}`**** in Label field.**
 
-  含义： 存在不能识别的参数。
+    含义： 存在不能识别的参数。
+
 - **ValueError：duplicated param **  **`{`** `param` **`}`** **in Label field.**
 
-  含义： 存在重复的参数。
+    含义： 存在重复的参数。

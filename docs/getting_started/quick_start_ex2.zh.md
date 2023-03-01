@@ -67,7 +67,7 @@ VOC2007/                      # 原始数据集文件夹
 <summary>dsdl-voc目录结构</summary>
 ```
 dsdl-voc2007/
-├── defs/    
+├── defs/  
 │  ├── object-detection-def.yaml              # 任务类型的定义
 │  └── class-dom.yaml                         # 数据集的类别域
 ├── set-train/                                # 训练集
@@ -415,3 +415,5 @@ python tools/test.py config/dsdl/voc2007.py work_dirs/voc2007/epoch_4.pth
 ```
 
 ## **4. 结果可视化**（待补充）
+
+目前可以参考[数据集可视化](../tutorials/visualization.md)部分，对数据集样本进行简单的可视化。
