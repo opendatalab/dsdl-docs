@@ -96,6 +96,7 @@ nav:
       - 目标跟踪: dsdl_template/cv/cv_object_tracking.md
       - 旋转目标检测: dsdl_template/cv/cv_rotated_detection.md 
       - 光学字符识别(OCR): dsdl_template/cv/cv_ocr.md
+      - 图像生成: dsdl_template/cv/cv_generation.md
   - API接口文档:
     - Field概述: api_reference/fields_overview.md
     - dsdl.types:
