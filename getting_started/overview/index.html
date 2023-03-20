@@ -466,14 +466,21 @@
       
         <li class="md-nav__item">
   <a href="#dsdl" class="md-nav__link">
-    欢迎使用DSDL
+    DSDL简介
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    如何使用和阅读本文档？
+  <a href="#dsdl_1" class="md-nav__link">
+    DSDL目标用户
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dsdl_2" class="md-nav__link">
+    DSDL学习使用
   </a>
   
 </li>
@@ -1325,14 +1332,21 @@
       
         <li class="md-nav__item">
   <a href="#dsdl" class="md-nav__link">
-    欢迎使用DSDL
+    DSDL简介
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    如何使用和阅读本文档？
+  <a href="#dsdl_1" class="md-nav__link">
+    DSDL目标用户
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dsdl_2" class="md-nav__link">
+    DSDL学习使用
   </a>
   
 </li>
@@ -1357,34 +1371,45 @@
 
   <h1>整体介绍</h1>
 
-<h2 id="dsdl">欢迎使用DSDL</h2>
-<p><strong>数据</strong>、算法、算力是人工智能发展的三大基础元素，大规模高质量数据集的发布、相关优秀算法的提出及GPU算力的快速更新使得人工智能在近十年得到了飞速的发展。为了帮助研究人员更高效地进行算法研究，Caffe、Tensorflow、Pytorch等深度学习框架相继提出，研究人员基于这些框架可以快速搭建网络结构，验证算法实际效果。</p>
-<p>实际上在经典任务的模型开发过程中，相比于搭建模型，研究人员会将更多地时间花费在数据集的获取、处理和分析上。为此，我们搭建了公开数据集平台，方便用户获取所需数据；设计了新一代AI数据集描述语言DSDL（Data Set Description Language）统一AI数据集规范，避免了冗杂的格式转换工作；与此同时，提供一套数据集工具箱，便于研究人员进行一站式数据获取、使用及分析工作。</p>
-<p><strong>丰富数据内容</strong>，<strong>统一数据规范</strong>，<strong>便捷数据工具</strong>特性如下：</p>
+<h2 id="dsdl">DSDL简介</h2>
+<p>数据集描述语言DSDL（Data Set Description Language）旨在提供AI数据集统一规范，使用户可以高效便捷地使用多领域人工智能数据。</p>
 <ol>
-<li>AI公开数据集平台<a href="https://opendatalab.org.cn/">【OpenDataLab】</a><ul>
-<li>丰富的公开数据集资源</li>
-<li>规范的元信息整理</li>
+<li>
+<p>为了方便用户快捷获取数据，我们搭建了AI数据集平台<a href="https://opendatalab.org.cn/">【OpenDataLab】</a>，平台具有以下特点：</p>
+<ul>
+<li>数据集LICENSE声明，保证数据集使用合规性；</li>
+<li>汇聚丰富的公开AI数据集资源，涵盖各行业、各研究领域的高质量数据集；</li>
+<li>提供多维数据检索能力及数据集高速下载支持。</li>
 </ul>
 </li>
-<li>AI数据集描述语言<a href="https://github.com/opendatalab/dsdl-sdk">【DSDL】</a><ul>
-<li>提供AI数据集统一表示标准，可以覆盖各个领域的人工智能数据</li>
-<li>数据集描述文件无需修改，便于数据集的分发和交换</li>
-<li>DSDL语言有良好的拓展性，可方便地拓展到新的AI任务</li>
-</ul>
-</li>
-<li>AI数据集工具箱<a href="">【ODL】</a>（开发中，暂未开放）<ul>
-<li>提供高效获取数据集工具（检索、下载）</li>
-<li>提供便捷数据集使用工具（可视化、标注、数据分析）</li>
+<li>
+<p>为了方便用户高效使用数据，我们定义了AI数据集描述语言<a href="https://github.com/opendatalab/dsdl-sdk">【DSDL】</a>：</p>
+<ul>
+<li>用户可以读取AI媒体数据及对应标注，无需进行繁琐的格式转换操作</li>
+<li>用户可以用统一接口操作各种任务及模态数据，便捷灵活地组合使用多任务，多模态数据</li>
 </ul>
 </li>
 </ol>
-<h2 id="_1">如何使用和阅读本文档？</h2>
-<p>第一次使用DSDL，请先<a href="../install/">安装部署</a>DSDL-SDK。</p>
-<p>完成安装后，建议用户先通过<a href="../quick_start_ex2/">快速开始</a>的简单案例，了解数据集下载、数据集准备、模型训练和推理（结合OpenMMLab）、结果可视化的整体流程，以及简单的DSDL文件解释。</p>
-<p>更详细的教程，请参考<a href="../../tutorials/overview/">用户教程</a>部分，包含了快速开始中各个步骤的详细信息。此外，在<a href="../../tutorials/advanced/overview/">高阶教程</a>中，该文档介绍了如何自定义DSDL数据集并完成数据集的转换和验证，同时涉及了DSDL Dataset的开发教程。</p>
-<p>如果需要获取各个任务的DSDL模板，请访问<a href="../../dsdl_template/cv/cv_classification/">DSDL任务模板</a>板块，目前已支持的任务大类有：图像分类、目标检测、图像分割、关键点检测、旋转目标检测、目标跟踪、光学字符识别（OCR），各个任务的子任务的模板可以在此基础上进行适应性修改。任务持续拓展中，敬请期待！</p>
-<p>若用户希望对DSDL中支持的所有数据类型和模块有全面的了解，请参考<a href="../../dsdl_language/overview/">DSDL语言教程</a>。</p>
+<h2 id="dsdl_1">DSDL目标用户</h2>
+<p>DSDL核心目标是统一AI数据集标注规范，打通不同任务及模态间数据关联，其目标用户包含：</p>
+<ul>
+<li>
+<p><code>AI初学者</code>：对于开始接触AI研究的新用户，无需花费大量时间对数据集格式、内容进行分析。我们提前对AI各个领域的主流数据集进行DSDL标准化操作（<a href="">DSDL标准化数据列表</a>），DSDL可以清晰简洁地提供数据元信息、标注信息，用户一目了然，并且可直接使用统一接口进行训练推理操作。  </p>
+</li>
+<li>
+<p><code>特定领域研究/开发</code>：我们对大部分主流数据集进行DSDL标准化，同时提供统一的Dataset函数接口，用户使用各种数据更加便捷。  </p>
+</li>
+<li>
+<p><code>大模型研究/开发</code>：大模型研究通常需要大量的数据获取，预处理操作。OpenDataLab可以快速获取各类数据，DSDL使得不同任务和模态数据以统一规范描述。用户可灵活高效组合使用所需数据。</p>
+</li>
+</ul>
+<h2 id="dsdl_2">DSDL学习使用</h2>
+<p>对于初次使用DSDL的用户，请先<a href="../install/">安装部署</a>DSDL-SDK，我们为用户提供了下述学习资源：</p>
+<p><a href="../quick_start_ex2/">快速开始</a>：帮助用户快速了解DSDL数据集下载、使用方法。</p>
+<p><a href="../../tutorials/overview/">用户教程</a>：提供<strong>数据集下载</strong>、<strong>预处理</strong>、<strong>数据分析</strong>、<strong>模型训练</strong>、<strong>模型推理</strong>系统性教程。</p>
+<p><a href="../../dsdl_template/cv/cv_classification/">DSDL任务模板</a>：帮助用户快速了解相关任务DSDL模板定义，高效完成数据集转换工作。</p>
+<p><a href="../../dsdl_language/overview/">DSDL语言教程</a>：用户了解并系统性学习DSDL语言。</p>
+<p><a href="../../tutorials/advanced/overview/">高阶教程</a>：介绍<strong>DSDL任务拓展</strong>、<strong>数据集转换</strong>、及<strong>DSDL Dataset开发</strong>流程。</p>
 <p>如对DSDL有任何疑问，欢迎在GitHub页面提issue进行咨询。</p>
 
 
