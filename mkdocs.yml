@@ -74,6 +74,7 @@ nav:
         - 自定义DSDL数据集: tutorials/advanced/dsdl_define.md
         - DSDL数据集格式转换: tutorials/advanced/dsdl_convert.md
         - DSDL数据集验证: tutorials/advanced/dsdl_check.md
+        - 自定义DSDL Field: tutorials/advanced/dsdl_extend.md
       - DSDL DataLoader开发: tutorials/advanced/dsdl_dataloader.md
   - DSDL语言教程:
     - 语言特性: dsdl_language/overview.md
@@ -163,6 +164,7 @@ plugins:
           # API接口文档
           API接口文档: API Docs
           Field概述: Field Overview
+          自定义DSDL Field: Field Extend
 
 
 # extra:
