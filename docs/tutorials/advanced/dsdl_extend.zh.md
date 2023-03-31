@@ -172,7 +172,7 @@ data_args = {
 
 ## 数据类的定义
 
-在dsdl中，我们不仅希望可以验证各种数据是否合规，还希望能够将这些数据封装在各种类当中，从而方便用户调用各种方法来对数据进行操作。
+在dsdl中，我们使用jsonschema来检查给定的数据是否合规，但是这只是在基础数据类型方面的检查，我们通过这种方式只能确保例如BBox的数据必须为一个4元素列表，或是polygon必须是一个3层嵌套列表这种约束，为了能进一步表示各种不同的数据，将赋予他们语义信息，我们还会将这些通过jsonschema验证的数据封装在一个dsdl数据类（`dsdl.geometry.BaseGeometry`）当中，从而方便用户调用各种方法来对数据进行操作。
 
 对于RotatedBBox Field而言，我们将符合data schema的数据封装在了`dsdl.geometry.RBBox`类当中。因此用户在实现自定义Field时，建议也可以在`dsdl.geometry`包中定义一个数据类。
 

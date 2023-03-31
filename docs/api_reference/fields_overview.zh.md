@@ -620,10 +620,19 @@ BBox类型Field用来表示样本中的bounding box数据：
   ```python
   args_schema = {
       "type": "object",
-      "minProperties": 0,
-      "maxProperties": 0,
+      "properties": {
+          "mode": {"type": "string", "enum": ["xywh", "xyxy"]}
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "required": ["mode"]
   }
   ```
+
+  > 该jsonschema表示BBox类型传入的参数为`mode`，可以的取值为`xywh`或`xyxy`：
+  >
+  > 1. `mode=xywh`表示传入的数据会以左上角xy坐标和bbox宽高的形式给出；
+  > 2. `mode=xyxy`表示传入的数据会以左上角+右下角的xy坐标的形式给出
 
 * **数据schema**
 
@@ -633,20 +642,59 @@ BBox类型Field用来表示样本中的bounding box数据：
       "title": "BBoxField",
       "description": "Bounding box field in dsdl.",
       "type": "array",
-      "items": [
-          {"type": "number"},
-          {"type": "number"},
-          {"type": "number", "minimum": 0.},
-          {"type": "number", "minimum": 0.},
-      ],
+      "items": {"type": "number"},
       "minItems": 4,
       "maxItems": 4,
   }
   ```
 
-  > 该schema表示传入的值必须要是列表，列表中包含4个元素，分别表示了bounding box的`[x, y, w, h]`，这四个元素必须是数字类型，并且后两个元素（`w`与`h`）必须是非负数。
+  > 该schema表示传入的值必须要是列表，列表中包含4个元素，这四个元素必须是数字类型。
+  >
+  > 由于我们希望在mode为`xywh`时，传入的列表的4个元素中，表示wh的后两个元素必须为非负，我们额外为BBox Field设置了一个参数+数据 schema，来规范它的参数与传入数据：
+  >
+  > ```python
+  > whole_schema = {
+  >         "type": "object",
+  >         "oneOf": [
+  >             {
+  >                 "properties": {
+  >                     "args": {
+  >                         "type": "object",
+  >                         "properties": {
+  >                             "mode": {"type": "string", "enum": ["xywh"]}
+  >                         },
+  >                         "minProperties": 1,
+  >                         "maxProperties": 1,
+  >                         "required": ["mode"]
+  >                     },
+  >                     "value": {
+  >                         "type": "array",
+  >                         "minItems": 4,
+  >                         "maxItems": 4,
+  >                         "items": [{"type": "number"}, {"type": "number"}, {"type": "number", "minimum": 0},
+  >                                   {"type": "number", "minimum": 0}]
+  >                     }
+  >                 }
+  >             },
+  > 
+  >             {
+  >                 "properties": {
+  >                     "args": {"type": "object",
+  >                              "properties": {
+  >                                  "mode": {"type": "string", "enum": ["xyxy"]}
+  >                              },
+  >                              "minProperties": 1,
+  >                              "maxProperties": 1,
+  >                              "required": ["mode"]},
+  >                     "value": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number"}}
+  >                 }
+  >             }
+  >         ],
+  >         "required": ["args", "value"]
+  >     }
+  > ```
 
-* **实例**
+* **实例1**
 
   ```yaml
   # Struct 定义
@@ -674,6 +722,37 @@ BBox类型Field用来表示样本中的bounding box数据：
       "bbox": [1, 2, 10, 10, 1]  # wrong
   }
   ```
+
+* **实例2**
+
+  ```yaml
+  # Struct 定义
+  LocalObjectEntry:
+      $def: struct
+      $fields:
+          bbox: BBox[mode=xyxy]
+  ```
+  
+  ```python
+  # 具体样本
+  sample = {
+      "bbox": [10, 12, 480, 720]  # correct
+  }
+  
+  sample = {
+      "bbox": [-1, 12, 40, 80]  # correct
+  }
+  
+  sample = {
+      "bbox": [1, 2, -1, 100]  # correct
+  }
+  
+  sample = {
+      "bbox": [1, 2, 10, 10, 1]  # wrong
+  }
+  ```
+  
+* 
 
 * **数据类**
 
@@ -777,7 +856,7 @@ RotatedBBox类型Field用来表示样本中的旋转bounding box数据：
   >                       }
   >                   }
   >               },
-  >     
+  >       
   >               {
   >                   "properties": {
   >                       "args": {"type": "object",
