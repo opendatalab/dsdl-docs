@@ -1,6 +1,10 @@
 # DSDL数据集定义
 
-定义一个DSDL数据集，首先需要了解DSDL如何描述一个数据集，详细的内容可以阅读“DSDL语言教程”章节。
+定义一个DSDL数据集，首先需要了解DSDL如何描述一个数据集，详细的内容可以阅读[DSDL语言教程](../../dsdl_language/overview.md)章节。
+
+本章用两个案例解释DSDL数据集的定义：1. 用DSDL定义已有的数据集（VOC为例）；2. 利用任务模板定义一个新的数据集。
+
+## 用DSDL定义已有的数据集
 
 本小节主要用一个具体案例（VOC2007，目标检测)，讲解DSDL数据集的定义。
 
@@ -9,7 +13,7 @@
 * 原数据集调研（包括数据目录结构、标注字段及含义等）
 * DSDL模板制定
 
-## 原始数据集调研
+### 原始数据集调研
 
 首先需要调研原始数据集的文件结构：
 
@@ -98,7 +102,7 @@ VOC2007/
 ...
 ```
 
-## DSDL模板制定
+### DSDL模板制定
 
 最终需要转成的DSDL数据集格式，将包含以下几个重要的文件：
 
@@ -115,7 +119,7 @@ VOC2007/
 
 ```Plain
 dsdl-voc2007/
-├── defs/                    
+├── defs/                  
 │  ├── object-detection-def.yaml              # 任务类型的定义
 │  └── class-dom.yaml                         # 数据集的类别域
 ├── set-train/                                # 训练集
@@ -123,7 +127,7 @@ dsdl-voc2007/
 │  └── train_samples.json                     # 训练集sample的json文件
 ├── set-val/                                  # 验证集
 │  ├── val.yaml
-│  └── val_samples.json    
+│  └── val_samples.json  
 ├── set-test/                                 # 测试集
 │  ├── test.yaml
 │  └── test_samples.json  
@@ -131,7 +135,7 @@ dsdl-voc2007/
 └── README.md                                 # 数据集简介
 ```
 
-### struct的定义文件
+#### struct的定义文件
 
 object-detection-def.yaml：这个文件主要是定义struct的yaml文件，里面的字段名称可以根据原始数据集进行一个修改和适应（尽量保留原始数据集的字段名称和结构），但是字段类型一定要使用可识别的数据类型（可识别的数据类型详见“DSDL语言教程”章节）
 
@@ -148,12 +152,12 @@ ImageMedia:
         owner: Dict
         segmented: Bool
   
-LocalObjectEntry:                              
-    $def: struct                               
+LocalObjectEntry:                            
+    $def: struct                             
     $params: ["cdom"]
-    $fields:                                  
+    $fields:                                
         bbox: BBox
-        category: Label[dom=$cdom]                                       
+        category: Label[dom=$cdom]                                     
         pose: Str  
         truncated: Bool
         difficult: Bool
@@ -186,7 +190,7 @@ ObjectDetectionSample:
 * category：是该目标的类别对应的类别标号，对应的是原数据集的name字段，类别标号可以参见下面的VOC2007ClassDom.yaml
 * pose，truncated，difficult：标注框的属性，来自于原数据集同名字段
 
-### 类别域
+#### 类别域
 
 class-dom.yaml：这是一个类别定义的Dom文档
 
@@ -220,7 +224,7 @@ VOCClassDom:
 
 如果存在标签父类的情况，详细可以见“DSDL语言教程”下的“类别域”部分。
 
-### samples文件
+#### samples文件
 
 train.yaml：这个文档引用了之前定义的两个文档，并且指引了具体的sample路径（test.yaml和val.yaml类似，只是修改对应sample-path和sub_dataset_name字段）
 
@@ -282,7 +286,7 @@ train_samples.json需要我们写脚本从原始数据集转换来（转换脚�
 
 注意，"samples"字段是必须的（不可改名），且组织形式也不能改变，即：必须是字典形式，字典有一个键为"samples"，其值为一个列表，列表的每个对象都是一个sample类的实例（即本案例中的ObjectDetectionSample类）。
 
-### config.py
+#### config.py
 
 配置文件为图片文件的位置信息，目前支持本地和oss，具体格式如下：
 
@@ -302,3 +306,67 @@ ali_oss = dict(
 ```
 
 用户需要对应修改其中的values。
+
+## 利用任务模板定义一个新的DSDL数据集
+
+本小节以目标跟踪数据集为例，解释如何直接导入模板对数据集进行描述。
+
+**train.yaml**
+
+```yaml
+$dsdl-version: "0.5.2"
+
+$import:
+    - object-tracking
+    - class-dom
+
+meta:
+  dataset_name: "New_dataset"
+  sub_dataset_name: "train"
+  task_name: "single-object tracking" 
+
+data:
+    sample-type: VideoFrame[cdom=New_dataset_classdom]
+    sample-path: $local
+    samples:
+        - video_name: "example_video_1"
+          videoframes:
+                - frame_id: "1"
+                  media_path: "train/example_video_1/00001.jpg"
+                  objects:
+                      - instance_id: "0"
+                        bbox: [25, 36, 103, 122]
+                        category: "dog"
+                      - instance_id: "1"
+                        ...
+                - frame_id: "2"
+                  ...
+        - video_name: "example_video_2"
+          ...
+```
+
+上面的描述文件中，首先定义了dsdl的版本信息，然后import了之前定义的数据集模板文件，包括任务模板和类别域模板。接着用meta和data字段来描述自己的数据集，具体的字段说明如下所示：
+
+- $dsdl-version: dsdl版本信息
+- $import: 模板导入信息，这里导入[目标跟踪任务模板](#table-2)和数据集的class domain
+- meta: 主要展示数据集的一些元信息，比如数据集名称，任务类型等等，用户可以自己添加想要备注的其它信息
+- data: data的内容就是按照前面定义好的结构所保存的样本信息，具体如下：
+  - sample-type: 数据的类型定义，在这里用的是从[目标跟踪任务模板](#table-2)中导入的VideoFrame类，同时指定了采用的cdom为New_dataset_classdom
+  - sample-path: samples的存放路径，如果实际是一个路径，则samples的内容从该文件读取，如果是$local，则从本文件的data.samples字段中直接读取
+  - samples：保存数据集的样本信息，其组织结构与[目标跟踪任务模板](#table-2)中定义的struct结构一致，注意只有在sample-path是$local的时候该字段才会生效，否则samples会优先从sample-path中的路径去读取
+
+**class-dom.yaml**
+
+```
+$dsdl-version: 0.5.2
+
+New_dataset_classdom:
+  $def: class_domain
+  classes:
+      - dog
+      - cat
+```
+
+用户可以自定义类别域中包含的类型，在该示例中，数据集包含"dog"和"cat"两个类别，其标号分别是1和2。
+
+另外，用户也可根据自己的需求，自行修改[目标跟踪任务模板](#table-2)，添加相应字段。可以参考[主流数据集调研](#table-1)中的一些常用的独立字段（比如absence、visilibility等）。

@@ -57,7 +57,7 @@ nav:
       # - 3.计算机视觉-语义分割: getting_started/quick_start_ex3.md
   - 用户教程:
     - 教程介绍: tutorials/overview.md
-    - 数据集下载: tutorials/dataset_download.md
+    - 数据集准备: tutorials/dataset_download.md
     - 数据集可视化: tutorials/visualization.md
     - 数据集分析: tutorials/dataset_analysis.md
     - 模型训练:
