@@ -74,6 +74,7 @@ nav:
         - 自定义DSDL数据集: tutorials/advanced/dsdl_define.md
         - DSDL数据集格式转换: tutorials/advanced/dsdl_convert.md
         - DSDL数据集验证: tutorials/advanced/dsdl_check.md
+        - 自定义DSDL Field: tutorials/advanced/dsdl_extend.md
       - DSDL DataLoader开发: tutorials/advanced/dsdl_dataloader.md
   - DSDL语言教程:
     - 语言特性: dsdl_language/overview.md
@@ -96,7 +97,8 @@ nav:
       - 目标跟踪: dsdl_template/cv/cv_object_tracking.md
       - 旋转目标检测: dsdl_template/cv/cv_rotated_detection.md 
       - 光学字符识别(OCR): dsdl_template/cv/cv_ocr.md
-  - API接口文档: api_reference/index.md
+  - API接口文档:
+    - Field概述: api_reference/fields_overview.md
 plugins:
   - search:
       lang: 
@@ -161,6 +163,8 @@ plugins:
           
           # API接口文档
           API接口文档: API Docs
+          Field概述: Field Overview
+          自定义DSDL Field: Field Extend
 
 
 # extra:
