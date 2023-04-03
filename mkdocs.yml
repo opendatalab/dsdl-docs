@@ -51,20 +51,18 @@ nav:
   - 入门指南: 
     - 整体介绍: getting_started/overview.md
     - 安装部署: getting_started/install.md
-    - 快速上手: 
-      # - 1.计算机视觉-图像分类: getting_started/quick_start_ex1.md 
-      - 1.计算机视觉-目标检测: getting_started/quick_start_ex2.md
-      # - 3.计算机视觉-语义分割: getting_started/quick_start_ex3.md
+    - 快速上手: getting_started/quick_start.md
   - 用户教程:
     - 教程介绍: tutorials/overview.md
     - 数据集准备: tutorials/dataset_download.md
+    - 数据集配置: tutorials/config/location_config.md
     - 数据集可视化: tutorials/visualization.md
     - 数据集分析: tutorials/dataset_analysis.md
-    - 模型训练:
-      - OpenMMLab: tutorials/training/dataloader_openmmlab.md
-      - Pytorch: tutorials/training/dataloader_pytorch.md
-      - Tensorflow: tutorials/training/dataloader_tensorflow.md
-    - 模型推理: tutorials/training/model_training.md
+    - 模型训练&推理:
+      - OpenMMLab: tutorials/train_test/openmmlab.md
+      - Pytorch: tutorials/train_test/pytorch.md
+      - Tensorflow: tutorials/train_test/tensorflow.md
+    # - 模型推理: tutorials/training/model_training.md
     # - 数据/模型分析: 
       # - 基本介绍: tutorials/analysis/result_analysis.md
     - 数据集分发: tutorials/dataset_distribution.md
@@ -131,9 +129,9 @@ plugins:
 
           教程介绍: Introduction
           数据集下载: Dataset Download
+          数据集配置: Dataset Config
           数据集分析: Dataset Analysis
-          模型训练: Model Training
-          模型推理: Model Inference
+          训练&测试: Training & Testing
           数据集分发: Dataset Distribution
           高阶教程: High-Level Tutorial
           # DSDL语言教程 

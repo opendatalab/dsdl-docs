@@ -751,8 +751,7 @@ BBox类型Field用来表示样本中的bounding box数据：
       "bbox": [1, 2, 10, 10, 1]  # wrong
   }
   ```
-  
-* 
+
 
 * **数据类**
 
