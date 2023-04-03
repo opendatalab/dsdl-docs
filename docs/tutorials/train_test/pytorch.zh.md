@@ -218,7 +218,7 @@ Testing accuracy: 99.04 %
 
 可以看到，MNIST整体相对比较简单，resnet18经过5个epoch的训练，即可在测试集达到99.04的精度。
 
-完整的代码请参考[demo_code](./demo_code/pytorch/pytorch_classification.py). 
+完整的代码请参考[`pytorch_classification.py`](./demo_code/pytorch/pytorch_classification.py). 
 
 
 ## **拓展阅读**

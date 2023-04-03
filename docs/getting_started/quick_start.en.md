@@ -164,7 +164,7 @@ print(ds_val[0])
 在此基础上，也可以获取样本的不同字段，比如要获取图片字段，可以采用如下命令：
 
 ```
-print(ds_val.ds_val[0].Image)
+print(ds_val[0].Image)
 ```
 得到输出如下：
 
