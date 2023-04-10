@@ -1,58 +1,23 @@
-# DSDL数据集定义
+# DSDL数据集模板制定
 
 定义一个DSDL数据集，首先需要了解DSDL如何描述一个数据集，详细的内容可以阅读[DSDL语言教程](../../dsdl_language/overview.md)章节。
 
 本章用两个案例解释DSDL数据集的定义：1. 用DSDL定义已有的数据集（VOC为例）；2. 利用任务模板定义一个新的数据集。
 
-## 用DSDL定义已有的数据集
+该教程将在[数据集转换](./dsdl_convert.md)小节详述如何通过该章定义的模板进行数据集的DSDL标准化转换。
+
+## 1. 用DSDL定义已有的数据集
 
 本小节主要用一个具体案例（VOC2007，目标检测)，讲解DSDL数据集的定义。
 
 将分为以下几个步骤：
 
-* 原数据集调研（包括数据目录结构、标注字段及含义等）
-* DSDL模板制定
+* [原数据集调研标注字段及含义](#原始数据集调研)
+* DSDL模板制定（分为[详细版](#详细版DSDL)和[精简版](#精简版DSDL)）
 
-### 原始数据集调研
+<a id="原始数据集调研"></a>
 
-首先需要调研原始数据集的文件结构：
-
-```plaintext
-VOC2007/
-├── Annotations/              # 里面存放的是每张图片打完标签所对应的XML文件
-│  ├── 000001.xml             # 某张图片的标注信息
-│  └── ...
-├── ImageSets/                # 图片划分的txt存放位置
-│  ├── Layout                 # 包含Layout标注信息的图像文件名列表
-│  │  ├── test.txt 
-│  │  ├── train.txt 
-│  │  ├── trainval.txt 
-│  │  └── val.txt 
-│  ├── Main                   # 包含所有文件的列表和划分
-│  │  ├── aeroplane_test.txt  # 按每个类别的训练集、测试集等划分
-│  │  ├── aeroplane_train.txt 
-│  │  ├── ...
-│  │  ├── test.txt            # 全数据集的test划分
-│  │  ├── train.txt           # 全数据集的train划分
-│  │  ├── trainval.txt 
-│  │  └── val.txt 
-│  ├── Segmentation           # 包含语义分割信息图像文件的列表和划分
-│  │  ├── test.txt 
-│  │  ├── train.txt 
-│  │  ├── trainval.txt 
-│  │  └── val.txt 
-├── JPEGImages/               # 存放的是训练与测试的所有图片
-│  ├── 000001.jpg             # 图片（序号作为图片名） 
-│  └── ...
-├── SegmentationClass/        # 语义分割标注
-│  ├── 000032.png             # 某张图片的媒体文件 
-│  └── ...
-└── SegmentationObject/       # 实例分割标注
-   ├── 000032.png             # 某张图片的媒体文件 
-   └── ...
-```
-
-这里只以检测任务为例生成模板，因此只需要Annotations/、JPEGImages/这两个文件夹，另外，训练测试集划分，需要用ImageSets/Main/train.txt、val.txt、test.txt这三个文件。
+### 1.1 原始数据集调研
 
 标注类型如下（以Annotations/000001.xml为例）：
 
@@ -92,57 +57,19 @@ VOC2007/
 </annotation>
 ```
 
-这里以ImageSets/Main/train.txt为例展示一下数据集segment划分的文件内容：
+<a id="详细版DSDL"></a>
 
-```plaintext
-000012         # 图片名前缀
-000017
-000023
-000026
-...
-```
+### 1.2 DSDL模板制定（详细版DSDL）
 
-### DSDL模板制定
+#### 1.2.1 struct的定义文件
 
-最终需要转成的DSDL数据集格式，将包含以下几个重要的文件：
-
-* struct的定义文件（在这个例子里文件名为object-detetction.yaml）：这个文件主要是对struct做一个明确的定义，可以有sample的结构体和标注的结构体等，需指明包含了哪些field，每个field的类型。
-* 类别域（在这个例子为VOC2007ClassDom.yaml）：里面包含了类别列表，对应category的序号（从1开始排序）
-* samples文件（在这个例子里分别分为train.yaml和train_samples.json)
-  * train.yaml主要是指明引用哪个struct模板和类别域文件，并且指明数据类型和存放路径，另外还有一些meta信息
-  * train_samples.json里保存了实际的samples信息，其组织结构必须和之前定义的结构体匹配
-* config.py：用于指定媒体文件存放位置，在数据集验证的时候将会详细解释
-
-后文会对目录结构以及每一个文件的内容进行一个详细展示和解释。
-
-数据集目录如下：
-
-```Plain
-dsdl-voc2007/
-├── defs/                  
-│  ├── object-detection-def.yaml              # 任务类型的定义
-│  └── class-dom.yaml                         # 数据集的类别域
-├── set-train/                                # 训练集
-│  ├── train.yaml                             # 训练的yaml文件
-│  └── train_samples.json                     # 训练集sample的json文件
-├── set-val/                                  # 验证集
-│  ├── val.yaml
-│  └── val_samples.json  
-├── set-test/                                 # 测试集
-│  ├── test.yaml
-│  └── test_samples.json  
-├── config.py                                 # 数据集读取路径等config文件
-└── README.md                                 # 数据集简介
-```
-
-#### struct的定义文件
-
-object-detection-def.yaml：这个文件主要是定义struct的yaml文件，里面的字段名称可以根据原始数据集进行一个修改和适应（尽量保留原始数据集的字段名称和结构），但是字段类型一定要使用可识别的数据类型（可识别的数据类型详见“DSDL语言教程”章节）
+根据原始数据集的信息，我们可以制定如下的数据集模板（该模板中保留了原始数据集所有的字段名称和结构），注意，字段类型一定要使用可识别的数据类型，详情可以参考[Field文档](../../api_reference/fields_overview.md)。
 
 ```YAML
 $dsdl-version: "0.5.0"
 
 ImageMedia:
+    $def: struct  
     $fields:
         image: Image 
         image_shape: ImageShape
@@ -152,12 +79,12 @@ ImageMedia:
         owner: Dict
         segmented: Bool
   
-LocalObjectEntry:                            
-    $def: struct                             
+LocalObjectEntry:  
+    $def: struct   
     $params: ["cdom"]
-    $fields:                                
+    $fields:  
         bbox: BBox
-        category: Label[dom=$cdom]                                     
+        category: Label[dom=$cdom]   
         pose: Str  
         truncated: Bool
         difficult: Bool
@@ -187,68 +114,12 @@ ObjectDetectionSample:
 在LocalObjectEntry中：
 
 * bbox：对应原数据集的bndbox字段，但转化为bbox标准，即[x,y,w,h]
-* category：是该目标的类别对应的类别标号，对应的是原数据集的name字段，类别标号可以参见下面的VOC2007ClassDom.yaml
+* category：是该目标的类别对应的类别标号，对应的是原数据集的name字段，类别标号可以参见数据集转换页面的[VOC2007ClassDom.yaml](./dsdl_convert.zh.md#VOC2007ClassDom)
 * pose，truncated，difficult：标注框的属性，来自于原数据集同名字段
 
-#### 类别域
+#### 1.2.3 samples文件
 
-class-dom.yaml：这是一个类别定义的Dom文档
-
-```YAML
-$dsdl-version: "0.5.0"
-
-VOCClassDom:
-    $def: class_domain
-    classes:
-        - aeroplane                   # 对应_category为1
-        - bicycle                     # 对应_category为2，以此类推
-        - bird
-        - boat
-        - bottle
-        - bus
-        - car
-        - cat
-        - chair
-        - cow
-        - diningtable
-        - dog
-        - horse
-        - motorbike
-        - person
-        - pottedplant
-        - sheep
-        - sofa
-        - train
-        - tvmonitor
-```
-
-如果存在标签父类的情况，详细可以见“DSDL语言教程”下的“类别域”部分。
-
-#### samples文件
-
-train.yaml：这个文档引用了之前定义的两个文档，并且指引了具体的sample路径（test.yaml和val.yaml类似，只是修改对应sample-path和sub_dataset_name字段）
-
-```YAML
-$dsdl-version: "0.5.0"
-
-$import:
-    - ../defs/class-domain
-    - ../defs/object-detection-def
-
-meta:
-   dataset_name: "VOC2007"
-   sub_dataset_name: "train"
-   task_type: "SemanticSementation"
-   dataset_homepage: "http://host.robots.ox.ac.uk/pascal/VOC/voc2007/index.html"
-   dataset_publisher: "University of Leeds | ETHZ, Zurich | University of Edinburgh |Microsoft Research Cambridge | University of Oxford"
-   OpenDataLab_address: "https://opendatalab.com/PASCAL_VOC2007/download"
-
-data:
-    sample-type: ObjectDetectionSample[cdom=VOCClassDom]
-    sample-path: train_samples.json
-```
-
-train_samples.json需要我们写脚本从原始数据集转换来（转换脚本将在下一小节“数据集转换”中详述）。注意，里面的字段需要和之前定义的struct对应。最终样式如下：
+根据上一小节制定的模板，最终的samples.json的结构将与其完全对应，具体组织形式如下：
 
 ```JSON
 {"samples": [
@@ -265,7 +136,7 @@ train_samples.json需要我们写脚本从原始数据集转换来（转换脚�
                     "flickrid": "Fried Camels",
                     "name": "Jinky the Fruit Bat"
             },
-            "image_shape": [640, 480]
+            "image_shape": [640, 480],
             "depth": 3,
             "segmented": 0,
             },
@@ -286,30 +157,79 @@ train_samples.json需要我们写脚本从原始数据集转换来（转换脚�
 
 注意，"samples"字段是必须的（不可改名），且组织形式也不能改变，即：必须是字典形式，字典有一个键为"samples"，其值为一个列表，列表的每个对象都是一个sample类的实例（即本案例中的ObjectDetectionSample类）。
 
-#### config.py
+<a id="精简版DSDL"></a>
 
-配置文件为图片文件的位置信息，目前支持本地和oss，具体格式如下：
+### 1.3 DSDL模板制定（精简版DSDL）
 
-```Python
-local = dict(
-    type="LocalFileReader",
-    working_dir="path to origin dataset root path",
-)
+除了1.2小节中保留原始数据集所有原始字段的做法，我们还可以利用已有的[任务模板](../../dsdl_template\overview.md)作为数据集模板（该模板中仅保留了该任务的必需字段）。
 
-ali_oss = dict(
-    type="AliOSSFileReader",
-    access_key_secret="your secret key of aliyun oss",
-    endpoint="your endpoint of aliyun oss",
-    access_key_id="your access key of aliyun oss",
-    bucket_name="your bucket name of aliyun oss",
-    working_dir="the relative path of your media dir in the bucket")
+在[任务模板](../../dsdl_template\overview.md)页面，展示了目前DSDL预先制定的一些主流任务的模板，用户可根据需要使用。
+
+#### 1.3.1 struct的定义文件
+
+在此案例中，我们可以选用[目标检测模板](../../dsdl_template/cv/cv_detection.md)：
+
+```yaml
+$dsdl-version: "0.5.0"
+
+LocalObjectEntry:
+    $def: struct
+    $params: ['cdom']
+    $fields:
+        bbox: BBox
+        label: Label[dom=$cdom]
+
+ObjectDetectionSample:
+    $def: struct
+    $params: ['cdom']
+    $fields:
+        image: Image
+        objects: List[LocalObjectEntry[cdom=$cdom]]
 ```
 
-用户需要对应修改其中的values。
+在检测模板中的一些字段含义如下（详细学习请参考 [DSDL语言教程](../../dsdl_language/overview.zh.md)）
 
-## 利用任务模板定义一个新的DSDL数据集
+- $dsdl-version: 描述了该文件对应的dsdl版本
+- LocalObjectEntry: 定义了边界框的描述方式的嵌套结构体，包含四个字段:
+  - $def: struct, 表示这是一个结构体类型
+  - $params: 定义了形参，在这里即class domain
+  - $fields: 结构体类所包含的属性，具体包括:
+    - bbox 边界框的位置
+    - label 边界框的类别
+- ObjectDetectionSample: 定义了检测任务sample的结构体，包含四个字段:
+  - $def: struct, 表示这是一个结构体类型
+  - $params: 定义了形参，在这里即class domain
+  - $fields: 结构体类所包含的属性，具体包括:
+    - image 图片的路径
+    - objects 标注信息，检测任务中，为前面的LocalObjectEntry构成的一个列表
 
-本小节以目标跟踪数据集为例，解释如何直接导入模板对数据集进行描述。
+#### 1.3.2 samples文件
+
+根据上一小节制定的模板，最终的samples.json的结构将与其完全对应，具体组织形式如下：
+
+```JSON
+{"samples": [
+    {
+        "image": "JPEGImages/000001.jpg",
+        "objects": [
+            {
+                "bbox": [120.24, 0.32, 359.76, 596.04], 
+                "label": 1
+            }, 
+            ...
+         ]
+    },
+    ...
+]}
+```
+
+注意，"samples"字段是必须的（不可改名），且组织形式也不能改变，即：必须是字典形式，字典有一个键为"samples"，其值为一个列表，列表的每个对象都是一个sample类的实例（即本案例中的ObjectDetectionSample类）。
+
+## 2. 利用任务模板定义一个新的DSDL数据集
+
+我们在[任务模板](../../dsdl_template\overview.zh.md)板块，介绍了目前我们已经制定的一些任务的模板，用户可以根据需要选择所需的模板进行使用。
+
+本小节以目标跟踪数据集为例，解释如何直接导入[目标跟踪模板](../../dsdl_template/cv/cv_object_tracking.md#table-2)对数据集进行描述。
 
 **train.yaml**
 
@@ -348,16 +268,16 @@ data:
 上面的描述文件中，首先定义了dsdl的版本信息，然后import了之前定义的数据集模板文件，包括任务模板和类别域模板。接着用meta和data字段来描述自己的数据集，具体的字段说明如下所示：
 
 - $dsdl-version: dsdl版本信息
-- $import: 模板导入信息，这里导入[目标跟踪任务模板](#table-2)和数据集的class domain
+- $import: 模板导入信息，这里导入[目标跟踪任务模板](../../dsdl_template/cv/cv_object_tracking.md#table-2)和数据集的class domain
 - meta: 主要展示数据集的一些元信息，比如数据集名称，任务类型等等，用户可以自己添加想要备注的其它信息
 - data: data的内容就是按照前面定义好的结构所保存的样本信息，具体如下：
-  - sample-type: 数据的类型定义，在这里用的是从[目标跟踪任务模板](#table-2)中导入的VideoFrame类，同时指定了采用的cdom为New_dataset_classdom
+  - sample-type: 数据的类型定义，在这里用的是从[目标跟踪任务模板](../../dsdl_template/cv/cv_object_tracking.md#table-2)中导入的VideoFrame类，同时指定了采用的cdom为New_dataset_classdom
   - sample-path: samples的存放路径，如果实际是一个路径，则samples的内容从该文件读取，如果是$local，则从本文件的data.samples字段中直接读取
-  - samples：保存数据集的样本信息，其组织结构与[目标跟踪任务模板](#table-2)中定义的struct结构一致，注意只有在sample-path是$local的时候该字段才会生效，否则samples会优先从sample-path中的路径去读取
+  - samples：保存数据集的样本信息，其组织结构与[目标跟踪任务模板](../../dsdl_template/cv/cv_object_tracking.md#table-2)中定义的struct结构一致，注意只有在sample-path是$local的时候该字段才会生效，否则samples会优先从sample-path中的路径去读取
 
 **class-dom.yaml**
 
-```
+```yaml
 $dsdl-version: 0.5.2
 
 New_dataset_classdom:
@@ -369,4 +289,4 @@ New_dataset_classdom:
 
 用户可以自定义类别域中包含的类型，在该示例中，数据集包含"dog"和"cat"两个类别，其标号分别是1和2。
 
-另外，用户也可根据自己的需求，自行修改[目标跟踪任务模板](#table-2)，添加相应字段。可以参考[主流数据集调研](#table-1)中的一些常用的独立字段（比如absence、visilibility等）。
+另外，用户也可根据自己的需求，自行修改[目标跟踪任务模板](../../dsdl_template/cv/cv_object_tracking.md#table-2)，添加相应字段。可以参考[主流数据集调研](../../dsdl_template/cv/cv_object_tracking.md#table-1)中的一些常用的独立字段（比如absence、visilibility等）。

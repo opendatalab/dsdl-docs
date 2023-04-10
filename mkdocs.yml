@@ -69,7 +69,7 @@ nav:
     - 高阶教程:
       - 高阶教程介绍: tutorials/advanced/overview.md
       - DSDL数据集标准化:
-        - 自定义DSDL数据集: tutorials/advanced/dsdl_define.md
+        - DSDL数据集模板制定: tutorials/advanced/dsdl_define.md
         - DSDL数据集格式转换: tutorials/advanced/dsdl_convert.md
         - DSDL数据集验证: tutorials/advanced/dsdl_check.md
         - 自定义DSDL Field: tutorials/advanced/dsdl_extend.md
@@ -86,7 +86,8 @@ nav:
       - 链接库: dsdl_language/lang/libraries.md
     - 实例演示: 
       - 计算机视觉: dsdl_language/examples/cv.md
-  - DSDL任务模板: 
+  - DSDL任务模板:
+    - 任务模板介绍: dsdl_template\overview.md
     - 计算机视觉:
       - 图像分类: dsdl_template/cv/cv_classification.md
       - 目标检测: dsdl_template/cv/cv_detection.md 

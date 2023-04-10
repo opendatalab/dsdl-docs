@@ -4,14 +4,14 @@ OpenDataLab官网收集了海量公开数据集，对于大部分数据集用户
 
 数据集准备分为数据集下载和数据集组织两部分：
 
-- 数据集下载：可以在OpenDataLab官网进行下载，也可以直接使用odl命令进行下载。
-- 数据集组织：数据集下载完成后，请用户自行阅读README.md，参阅README中的原始数据集解压后的目录结构，确认原始数据集下载完整。另外，有部分数据集在dsdl目录下有tools文件夹（包含prepare.py），请按照README指示对数据集进行转换，以保证DSDL正常使用。
+- 数据集下载：可以在OpenDataLab官网进行下载，也可以直接使用odl命令进行下载。具体请参考数据集下载部分。
+- 数据集组织：数据集下载完成后，请用户自行阅读README.md，参阅README中的原始数据集解压后的目录结构，确认原始数据集下载完整。另外，有部分数据集在dsdl目录下有tools文件夹（包含prepare.py），请按照README指示对数据集进行转换，以保证DSDL正常使用。具体使用参考数据集组织部分。
 
-## 数据集下载
+## 1. 数据集下载
 
 根据（1）是否提供原始数据集下载；（2）是否提供DSDL标注下载，我们将数据集下载分为四类情形进行讨论。
 
-### 1. 同时提供原始数据集媒体文件和DSDL标注文件
+### 1.1 同时提供原始数据集媒体文件和DSDL标注文件
 
 在原始数据集允许分发，且DSDL标注文件已支持的情况下，用户可以同时下载到原始数据集媒体文件和DSDL标注文件。
 
@@ -63,7 +63,7 @@ local = dict(
 )
 ```
 
-### 2. 仅提供DSDL标注文件
+### 1.2 仅提供DSDL标注文件
 
 如果原始数据集不允许分发，而DSDL已支持，用户需要自行下载原始数据集。
 
@@ -75,7 +75,7 @@ odl get <dataset_name>
 
 下载到的数据集将只有dsdl-dataset文件夹，而不包含original-dataset文件夹。用户可以自行下载数据集，并通过修改config.py中的路径，来指定原始数据集媒体文件的存放位置。建议与上一小节给的目录格式保持一致，以保证tools文件夹下脚本的正常运行。
 
-### 3. 仅提供原始数据集媒体和标注文件
+### 1.3 仅提供原始数据集媒体和标注文件
 
 [OpenDataLab官网](https://opendatalab.com/)上允许分发的数据集，目前尚有部分暂未支持DSDL标准化标注，但是用户仍然可以下载到原始数据集的媒体和标注文件。
 
@@ -89,43 +89,44 @@ odl get <dataset_name>
 
 用户如果需要自行将其定义为DSDL数据集，以便使用ODL工具链相关功能和OpenMMLab训练，请参阅[自定义DSDL数据集](./advanced/dsdl_define.md)。
 
-### 4. 不提供原始数据集媒体文件和DSDL标注文件
+### 1.4 不提供原始数据集媒体文件和DSDL标注文件
 
 如果当前数据集在[OpenDataLab官网](https://opendatalab.com/)上暂不提供下载，且尚未支持DSDL标准化标注，用户需自行到数据集官网进行原始数据集媒体文件和标注文件下载。
 
 另外，用户如果需要自行将其定义为DSDL数据集，以便使用ODL工具链相关功能和OpenMMLab训练，请参阅[自定义DSDL数据集](./advanced/dsdl_define.md)。
 
-## 数据集组织
+## 2. 数据集组织
 
-用户下载好数据集后，请阅读README，根据是否需要用户运行prepare.py脚本，README分为两种版本：
+用户下载好数据集后，请阅读README，根据是否需要用户运行tools/prepare.py，README分为两种版本：
 
-- DSDL与原始数据集可以直接匹配
-- 需要运行prepare.py对数据集做预处理
+- 不包含“prepare the dataset”模块：DSDL与原始数据集可以直接匹配
+- 包含“prepare the dataset”模块：需要运行prepare.py对数据集做预处理
 
-### 1. DSDL与原始数据集可以直接匹配
+### 2.1 DSDL与原始数据集可以直接匹配
 
-这类数据集的dsdl目录下不包含tools文件夹。其README内容如下：
+这类数据集的dsdl目录下不包含tools文件夹，并且其README中不包含“prepare the dataset”模块。请用户自行解压原始数据集和DSDL文件夹，并保证其目录结构与README中展示的“原始数据集解压后的目录结构”一致，即可以直接使用DSDL标准化数据集。README内容如下：
 
-```markdown
+<details>
+<summary>不包含“prepare the dataset”模块的README</summary>
+```
 # Data Set Description Language(DSDL) for [dataset_name] dataset
 
 ## Data Structure
+
 Please make sure the folder structure of prepared dataset is organized as followed:
 
 <dataset_root>
 ├── ...               # 原始数据集解压后的目录结构
-
 
 The folder structure of dsdl annotation is organized as followed:
 
 <dataset_root>
 ├── ...               # dsdl解压后的目录结构
 
-
 ## config.py
+
 You can load your dataset from local or oss.
 From local:
-
 
 local = dict(
     type="LocalFileReader",
@@ -133,7 +134,7 @@ local = dict(
 )
 
 Please change the 'working_dir' to the path of your prepared dataset where media data can be found,
-for example: "<root>/dataset_name/prepared".
+for example: "`<root>`/dataset_name/prepared".
 
 From oss:
 
@@ -149,38 +150,47 @@ Please change the 'access_key_secret', 'endpoint', 'access_key_id', 'bucket_name
 e.g. if the full path of your prepared dataset is "oss://bucket_name/dataset_name/prepared", then the working_dir should be "dataset_name/prepared".
 
 ## Related source:
+
 1. Get more information about DSDL: [dsdl-docs](https://opendatalab.github.io/dsdl-docs/)
 2. DSDL-SDK official repo: [dsdl-sdk](https://github.com/opendatalab/dsdl-sdk/)
 3. Get more dataset: [opendatalab](https://opendatalab.com/)
+
+```
+</details>
+
+### 2.2 需要运行prepare.py对数据集做预处理
+
+这类数据集的dsdl目录下包含tools文件夹，需要运行tools/prepare.py将数据集转换为DSDL标准后（后文将会详述如何运行该代码），才能正常使用DSDL标准化数据集。这类数据集的README内容如下：
+<details>
+<summary>包含“prepare the dataset”模块的README</summary>
 ```
 
-请用户自行解压原始数据集，并保证其目录结构与README中展示的“原始数据集解压后的目录结构”一致。
-
-### 2. 需要运行prepare.sh对数据集做预处理
-
-这类数据集的dsdl目录下包含tools文件夹，需要运行tools/prepare.py将数据集转换为DSDL标准。这类数据集的README内容如下：
-
-```markdown
 # Data Set Description Language(DSDL) for [dataset_name] dataset
 
 ## prepare the dataset
-To make sure the DSDL dataset for [task_name] run successfully, the tools/prepare.py should be executed. 
+
+To make sure the DSDL dataset for [task_name] run successfully, the tools/prepare.py should be executed.
 For this dataset, the following step will be selected to execute:
+
 - decompress
 - prepare dataset and generate DSDL annotation
 
 There are four usage scenarios:
 
 ### decompress, convert
+
 python tools/prepare.py <path_to_the_compressed_dataset_folder>
 
 ### decompress, copy and convert
+
 python tools/prepare.py -c <path_to_the_compressed_dataset_folder>
 
 ### (already decompressed) copy and convert
+
 python tools/prepare.py -d -c <path_to_the_decompressed_dataset_folder>
 
 ### (already decompressed) convert, directly overwrite
+
 python tools/prepare.py -d <path_to_the_decompressed_dataset_folder>
 
 For more messages, see [Dataset Prepare Section](https://opendatalab.github.io/dsdl-docs/tutorials/dataset_download/) in DSDL DOC, or use the help option:
@@ -188,22 +198,21 @@ For more messages, see [Dataset Prepare Section](https://opendatalab.github.io/d
 python tools/prepare.py --help
 
 ## Data Structure
+
 Please make sure the folder structure of prepared dataset is organized as followed:
 
 <dataset_root>
 ├── ...               # 原始数据集解压后的目录结构
-
 
 The folder structure of dsdl annotation for [task_name] is organized as followed:
 
 <dataset_root>
 ├── ...               # dsdl解压后的目录结构
 
-
 ## config.py
+
 You can load your dataset from local or oss.
 From local:
-
 
 local = dict(
     type="LocalFileReader",
@@ -211,7 +220,7 @@ local = dict(
 )
 
 Please change the 'working_dir' to the path of your prepared dataset where media data can be found,
-for example: "<root>/dataset_name/prepared".
+for example: "`<root>`/dataset_name/prepared".
 
 From oss:
 
@@ -227,14 +236,15 @@ Please change the 'access_key_secret', 'endpoint', 'access_key_id', 'bucket_name
 e.g. if the full path of your prepared dataset is "oss://bucket_name/dataset_name/prepared", then the working_dir should be "dataset_name/prepared".
 
 ## Related source:
+
 1. Get more information about DSDL: [dsdl-docs](https://opendatalab.github.io/dsdl-docs/)
 2. DSDL-SDK official repo: [dsdl-sdk](https://github.com/opendatalab/dsdl-sdk/)
 3. Get more dataset: [opendatalab](https://opendatalab.com/)
+
 ```
+</details>
 
-prepare.py有两个参数，分别指示是否执行解压 (-d) 以及是否保留一份解压后的原始数据集 (-c)：
-
-分为以下四种使用场景：
+为了满足原始数据集来源不同的用户，prepare.py设定了两个参数，分别指示是否执行解压 (-d) 以及是否保留一份解压后的原始数据集 (-c)，分为以下四种使用场景：
 
 ```shell
 ### 执行解压并转换
@@ -251,9 +261,11 @@ python tools/prepare.py -d <path_to_the_decompressed_dataset_folder>
 
 ```
 
-### 执行解压并转换
+具体的代码运行场景和细节请查看2.2.1-2.2.4小节。
 
-如果用户是从OpenDataLab上下载到的原始数据集压缩包，可使用以下命令运行prepare.py，请将<path_to_the_compressed_dataset>修改为原始数据集压缩包所在的文件夹路径。
+#### 2.2.1 执行解压并转换
+
+如果用户是从OpenDataLab上下载到的原始数据集压缩包，可使用以下命令运行prepare.py，请将路径修改为原始数据集压缩包所在的文件夹路径。
 
 ```shell
 python tools/prepare.py <path_to_the_compressed_dataset_folder>
@@ -271,7 +283,7 @@ python tools/prepare.py <path_to_the_compressed_dataset_folder>
         ├── ...
 ```
 
-### 执行解压，复制一份原始数据集后转换
+#### 2.2.2 执行解压，复制一份原始数据集后转换
 
 如果用户希望保留一份解压后的原始数据集，可增加-c参数来指定：
 
@@ -293,9 +305,9 @@ python tools/prepare.py -c <path_to_the_compressed_dataset_folder>
         ├── ...
 ```
 
-### 跳过解压，复制一份原始数据集后执行转换
+#### 2.2.3 跳过解压，复制一份原始数据集后执行转换
 
-如果用户是从别的途径下载的原始数据集或是已解压过的数据集，并且希望转换后生成一个新的DSDL标准数据集文件夹，请用户自行解压数据集后，确保其目录结构与README中展示的“原始数据集解压后的目录结构”一致，然后利用-d参数跳过解压操作，直接执行数据集转换，<path_to_the_decompressed_dataset_folder>路径为解压后的原始数据集文件夹：
+如果用户是从别的途径下载的原始数据集或是已解压过的数据集，并且希望转换后生成一个新的DSDL标准数据集文件夹，请用户自行解压数据集后，确保其目录结构与README中展示的“原始数据集解压后的目录结构”一致，然后利用-d参数跳过解压操作，直接执行数据集转换，路径为解压后的原始数据集文件夹：
 
 ```shell
 python tools/prepare.py -d -c <path_to_the_decompressed_dataset_folder>
@@ -313,9 +325,9 @@ python tools/prepare.py -d -c <path_to_the_decompressed_dataset_folder>
         ├── ...
 ```
 
-### 跳过解压，执行转换（直接覆盖原始数据集）
+#### 2.2.4 跳过解压，执行转换（直接覆盖原始数据集）
 
-如果用户是从别的途径下载的原始数据集或是已解压过的数据集，并且希望转换后仅保留DSDL标准的数据集，请用户自行解压数据集后，确保其目录结构与README中展示的“原始数据集解压后的目录结构”一致，然后利用-d参数跳过解压操作，直接执行数据集转换，其中<path_to_the_decompressed_dataset_folder>路径为解压后的原始数据集文件夹：
+如果用户是从别的途径下载的原始数据集或是已解压过的数据集，并且希望转换后仅保留DSDL标准的数据集，请用户自行解压数据集后，确保其目录结构与README中展示的“原始数据集解压后的目录结构”一致，然后利用-d参数跳过解压操作，直接执行数据集转换，其中路径为解压后的原始数据集文件夹：
 
 ```shell
 python tools/prepare.py -d <path_to_the_decompressed_dataset_folder>
