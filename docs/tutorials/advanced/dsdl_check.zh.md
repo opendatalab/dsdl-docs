@@ -171,18 +171,16 @@ InstanceSegmentationSample:
 
 ## 验证结果
 
-### 报告样式
-
-  报告分为3个部分：
+  报告分为**3个部分**：
 
 - parser检查结果：结果包括了parse结果是否成功，如果不成功，则可以查看具体的报错信息
 
 * samples实例化检查结果：其中报告说明了当前数据集共有样本个数，正常样本个数，警告样本个数，错误样本个数，并提供了异常样本的具体信息日志。
 * 可视化结果：需要肉眼观察可视化结果是否正确，比如bbox位置是否正确，标签内容是否正确等，在图片下面展示了可视化过程中的日志内容，比如是可视化成功还是失败，以及失败日志等。
 
-### 报错信息解读
+### Parser部分
 
-#### Class  doamin部分
+#### 1. Class  doamin部分
 
 - **ValidationError： Error with class-dom name,  ** **`{class_dom_name}`** ** must be a valid identifier.
   ** **[1. `Struct` name 2. `Class domain` name 3.name of `$field` in `Struct`]  is considered a valid identifier if it only contains alphanumeric letters (a-z) and (0-9), or underscores (_).
@@ -223,7 +221,7 @@ InstanceSegmentationSample:
 
      含义：对于非层级结构的class domain的label来说会报这个错误，表示：对于非层级结构的class domain的label，我们推荐使用空格字母数字和下划线来作为label名。
 
-#### Data section部分
+#### 2. Data section部分
 
 - **DefineSyntaxError：data yaml must contain `meta` section.**
 
@@ -275,154 +273,147 @@ data:
 
     含义：当不用 `-p`指定数据yaml文件中$import路径的时候，如果在当前文件夹和dsdl库文件（dsdl/dsdl_library）中都没找到需要import的文件会报这个问题。
 
-#### struct部分和参数部分
+#### 3. struct部分和参数部分
 
-- **DefineSyntaxError：miss the parameters **  **`{`** `param`**`}`** ** in ** **`{struct_name}`**** in `sample-type`.**
+- **DefineSyntaxError: Error in field with value of `{ field_type }` . check the `{ k_v}` part.**
 
-    含义：在yaml中data部分的sample-type中没有给形式参数**`{`** `param`**`}`** 赋值。
+    含义：struct中的某个类型为{ field_type } 的filed出了问题。(可能还会提示是 { field_type } 中的 k_v部分出了问题)
 
-- **DefineSyntaxError：miss the parameters **  **`{`** `param`**`}`** ** in ** **`{struct_name}`**** in `global-info-type`.**
+- **DefineSyntaxError: definition error of `{field_type}` has `{param_list}`, please check field** 
 
-    含义：在yaml中data部分的global-info-type中没有给形式参数**`{`** `param`**`}`** 赋值。
+    含义：field_type不在field list和struct list中，视为参数，参数不可以有嵌套的参数列表。
 
-- **DefineSyntaxError：error in definition of `sample-type` or `global-info-type`.**
+[cdom的报错]
 
-    含义：在yaml中data部分的sample-type的定义有问题。
+- **DefineSyntaxError：definition error of dom `{cdom_name}` not in $params `{self.struct_params}`，check cdom is defined correctly.**
 
-- **DefineSyntaxError：parameter in struct ** **`{struct}`** ** is not defined correctly:  1. check your `sample-type` or `global-info-type`, 2. check the definition of struct **  **`{struct}`** **."**
+  含义：调用的cdom_name没有在该struct定义的params中。
 
-    含义：名为{struct}的struct中的参数没有被正确定义，大概率问题发生在：1. `sample-type`或 `global-info-type`的定义中 2. strcut本身的定义中
+- **DefineSyntaxError：`{k_v}` is dom params, should have '='**
 
-- **DefineSyntaxError：definition error of filed **  **`{`** `field` **`}`**  **in struct  **  **`{struct}`**  **,  check if parameter in **  **`{`** `field`**`}`**** is defined correctly.**
+  含义：调用的cdom参数，但是没有赋值，必须含‘=’
 
-     含义：名为{struct}的struct中的{filed}没有被正确定义，大概率问题发生在：{field}中的参数没被赋值或没正确定义。
 
-- **DefineSyntaxError：error in parameters definition of **  **`{`** `field`**`}`** ** in struct **  **`{`** `struct` **`}`** **.**
-
-    含义：名为{struct}的struct中{field}中的参数没被赋值或没正确定义。
-
-- **DefineSyntaxError：parameter ** **`{param}`** ** of **  **`{`** `field`**`}`** ** in struct ** **`{struct}`**** must be defined.**
-- **DefineSyntaxError：parameter **  **`{param}`**  **of ** **`{struct}`**** must be defined.**
-
-    含义：名为{struct}的struct中{field}中的参数没被赋值。
-- **DefineSyntaxError: each struct with param must have one parent struct, but can have more than one child struct.**
-  **`{struct}`**** have more than one parent struct.**
-
-    含义：树状结构问题.是个遗留问题。
-
-- **DefineSyntaxError: error of definition of parameters **  **`{`** `params_list`**`}`** ** in **  **`{struct_name}`** **.**
-
-    含义：名为{struct}的struct中{`params_list`}中的参数定义有问题，一般是$params中的参数和$filed中的没有一一对应。
-
-- **DefineSyntaxError: Error  in field with value of **  **`{`** `field_type` **`}`** **.**
-- **DefineSyntaxError: Error  in field with value of **  **`{`** `field_type` **`}`**  **. check the **  **`{`** `k_v`**`}`**** part.**
-
-    含义：struct中的某个类型为**`{`** `field_type` **`}`** 的filed出了问题。(可能还会提示是 **`{`** `field_type` **`}`** 中的 `k_v`部分出了问题)
-
-- **DefineSyntaxError: Error  in field with value of **  **`{`** `field_type` **`}`** **: check format of `optional` and `is_attr`.**
-
-    含义：struct中的某个类型为 `{field_type}`的filed出了问题， 问题出在optional 或is_attr的格式上，需要检查。
-
-- **DefineTypeError：No type ** **`{field_type}`**** in DSDL.**
-
-    含义：struct中的某个类型为 `{field_type}`的field在dsdl中并没有定义，即它既不是dsdl的内置类型（如Image, BBox, Int,..）也不是用户你定义的struct类型。
-
-- **DefineSyntaxError：**  **`{`** `field_type`**`}`**** should not ccontain parameters  besides [1.optional 2. is_attr].**
-
-    含义：当不该出现参数的数据类型（如：Image\Int\Num等等）里面包含除（optional, is_attr等所有类型的共有参数）时会报错。
-
-- **DefineSyntaxError：**  **`{`** `field_type`**`}`**** must contain parameters in addition to [1.optional 2. is_attr].**
-
-    含义：当一些必须带参数的数据类型（如：List（必须有etype）等等）里面不包含除（optional, is_attr等所有类型的共有参数）参数时会报错。
 
 [List类型的报错]：
 
-- **DefineSyntaxError：Invalid parameters **  **`{`** `param`**`}`**** in List.**
+- **DefineSyntaxError：`{param}` is list etype params, should have '='**
 
-    含义： List filed中存在不能识别的参数（除etype, ordered, optional, is_attr以外的参数）
+  含义：List中有etype开头的参数，但是没有赋值，该参数必须赋值。
 
-- **DefineSyntaxError: ** **List types must contain parameters `etype`.**
-- **DefineSyntaxError:**  **invalid value **  **`{`** **`val`** **`}`** ** in `ordered` of `List` field:  check the '**  **`filed_type`** **'.**
+### Samples实例化部分
 
-[Time, Date类型的报错]：
+#### 1. 是否存在样本
 
-- **DefineSyntaxWarning： basic type ****`Time/Date`**** not contains fmt, we use ISO 8601 format by default.**
+DSDL Check会将所有样本读取到内存中，如果检测到的样本数目为0，该情况异常，会在报告中显示：
 
-    含义：是个警告，可以不管：你的Time或Date类型没有包含fmt参数，使用默认的**ISO 8601 format。**
+```python
+{
+    "flag": 0,
+    "msg": "No samples found, please check the path of json file."
+}
+```
 
-- **DefineSyntaxError：Invalid parameters **  **`{`** `param`**`}`**** in ** **`Time/Date`** **.**
+> 此时用户需要检查Yaml文件中指定的json文件路径是否正确。
 
-     含义： Time或Date类型中存在不能识别的参数。
+如果实例化样本数目大于0，则该字段会显示：
 
-- **ValueError：duplicated param **  **`{`** `param` **`}`** **in ** **`Time/Date`** **.**
+```python
+{
+    "flag": 1,
+    "msg": f"Totally {sample_nums} samples found."
+}
+```
 
-    含义： Time或Date类型中存在重复的参数。
+> 此时需要用户检查样本数目是否正确
 
-[ImageShape类型的报错]：
+#### 2. 是否成功实例化数据集对象
 
-- **DefineSyntaxError： invalid parameters value "**  **`{val}`** **" of `mode` in `ImageShape` field, `mode` value must be one of ["hw", "wh"].**
+DSDL Check会将所有的样本存储到一个`dsdl.dataset.CheckDataset`对象当中，如果实例化`dsdl.dataset.CheckDataset`对象的过程中成功，会在报告中显示：
 
-    含义：ImageShape中的mode必须是hw或wh**。**
+```python
+{
+    "flag": 1,
+    "msg": "Dataset init successfully!"
+}
+```
 
-- **DefineSyntaxError：Invalid parameters **  **`{`** `param`**`}`**** in ImageShape field.**
+反之，如果数据集对象实例化失败，则会在报告中显示：
 
-    含义： 存在不能识别的参数。
+```python
+{
+    "flag": 0,
+    "msg": f"Dataset init error: {e}"
+}
+```
 
-- **ValueError：duplicated param **  **`{`** `param` **`}`** **in ImageShape field.**
+> 一般情况下，数据集实例化失败的原因可能是在yaml文件中声明的sample_type不存在，举例来说：
+>
+> ```yaml
+> data:
+>     sample-type: KeyPointSample[cdom0=KeyPoint_person_ClassDom]
+>     sample-path: samples.json
+> 
+> ```
+>
+> 在上面的yaml中的如果`KeyPointSample`未定义，或者`KeyPoint_person_ClassDom`未定义，或者`KeyPointSample`的参数名不叫`cdom0`，都会引起数据集实例化报错，用户需要检查是否上述这些内容写错了。
 
-    含义： 存在重复的参数。
+#### 3. 对样本进行实例化
 
-[RotatedBBox类型的报错]：
+DSDL Check会将所有的样本实例化为`Struct`对象，在这个过程中，如果有样本生成失败，DSDL会将错误信息记录到文档中，方便用户溯源。
 
-- **DefineSyntaxError： invalid parameters value "**  **`{val}`** **" of `mode` in `RotatedBBox` field, `mode` value must be one of ["xywht", "xyxy"].**
+具体的报错信息为：
 
-    含义：RotatedBBox中的mode必须是xywht或xyxy**。**
+1. **数据不符合schema**
 
-- **DefineSyntaxError： invalid parameters value "**  **`{val}`** **" of `measure` in `RotatedBBox` field, `measure` value must be one of ["degree", "radian"].**
+   举例来说，如果Struct中某一个Field为Int，但是给定数据却是字符串类型，则会报以下错误：
 
-    含义：RotatedBBox中的mode必须是xywht或xyxy**。**
+   ```python
+   ValidationError in {Field_Type} field: 
+       Schema is {schema}.
+       Data is {data}.
+   ```
 
-- **DefineSyntaxError：Invalid parameters **  **`{`** `param`**`}`**** in RotatedBBox field.**
+   上述的报错信息中，告诉了用户是哪一个Field报错，这个Field的schema，以及当前报错样本的具体数据，通过对比具体数据和schema，用户可以知道是哪里出了错。
 
-    含义： 存在不能识别的参数。
+2. **字段不匹配错误**
 
-- **ValueError：duplicated param **  **`{`** `param` **`}`** **in RotatedBBox field.**
+   举例来说，有以下的yaml：
 
-    含义： 存在重复的参数。
+   ```yaml
+   KeyPointLocalObject:
+       $def: struct
+       $params: ["cdom0"]
+       $fields:
+           num_keypoints: Int
+           keypoints: Keypoint[dom=$cdom0]
+       $optional: ["num_keypoints"]
+   ```
 
-[UniqueID类型的报错]：
+   如果具体的数据中，不存在`keypoints`字段，但是由于`keypoints`字段不在`$optional`列表当中，则会报以下的错误：
 
-- **DefineSyntaxError： invalid parameters value "**  **`{val}`** **" of `id_type` in `UniqueID` field, `id_type` value must be a string.**
+   ```python
+   Required struct instance {key} is missing.
+   ```
 
-    含义：UniqueID中的id_type必须是字符串**。**
+   这种情况下，用户需要在数据中添加`keypoints`字段信息，或者将`keypoints`字段添加到`$optional`列表当中。
 
-- **DefineSyntaxError： invalid parameters value "**  **`{val}`** **" of `measure` in `UniqueID` field, `measure` value must be one of ["degree", "radian"].**
+   另一种情况，如果具体的数据中出现了yaml定义以外的字段，则会报以下的错误：
 
-    含义：UniqueID中的mode必须是xywht或xyxy**。**
+   ```python
+   Not defined keys {keys} found in sample, which is not permitted in strict init mode.
+   ```
 
-- **DefineSyntaxError：Invalid parameters **  **`{`** `param`**`}`**** in UniqueID.**
+   这种情况下，用户需要将数据中的多余字段去除，或者将该字段在yaml中声明。
 
-    含义： 存在不能识别的参数。
+> DSDL会将总数据量，成功实例化的数据量，实例化失败的数据量写在报告中。
 
-- **ValueError：duplicated param **  **`{`** `param` **`}`** **in UniqueID.**
+### 可视化
 
-     含义： 存在重复的参数。
+DSDL为了检测标注信息是否正确，会随机从数据集中选择几个样本进行可视化，在这个步骤中，可能遇到以下问题：
 
-[Label类型的报错]：
+1. 图像路径错误
+2. 图像文件损坏
+3. 图像格式不支持
 
-- **DefineSyntaxError： invalid dom in List field: **  **`{val}`**  **, for **  **`{part_of_val}`**  **in ** **`{val}`**** filed is illegal.**
-- **invalid dom: **  **`{`** `val` **`}`** **in List field.**
-
-    含义：List field中的dom参数的值 `val`不符合规范（检查 `val`中的 **`{part_of_val}`** 部分）**。**
-
-- **DefineSyntaxError：List field must contain parameter `dom`.**
-
-    含义：List field中的dom参数是必须的**。**
-
-- **DefineSyntaxError：Invalid parameters **  **`{`** `param`**`}`**** in Label field.**
-
-    含义： 存在不能识别的参数。
-
-- **ValueError：duplicated param **  **`{`** `param` **`}`** **in Label field.**
-
-    含义： 存在重复的参数。
+具体原因需要根据报错信息确定。

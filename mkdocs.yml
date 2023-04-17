@@ -97,7 +97,25 @@ nav:
       - 光学字符识别(OCR): dsdl_template/cv/cv_ocr.md
   - API接口文档:
     - Field概述: api_reference/fields_overview.md
+    - dsdl.types:
+        - dsdl.types.special: api_reference/dsdl_fields/special.md
+        - dsdl.types.generic: api_reference/dsdl_fields/generic.md
+    - dsdl.geometry:
+        - dsdl.geometry.box: api_reference/dsdl_geometry/box.md
+        - dsdl.geometry.insmap: api_reference/dsdl_geometry/insmap.md
+        - dsdl.geometry.keypoint: api_reference/dsdl_geometry/keypoint.md
+        - dsdl.geometry.label: api_reference/dsdl_geometry/label.md
+        - dsdl.geometry.media: api_reference/dsdl_geometry/media.md
+        - dsdl.geometry.polygon: api_reference/dsdl_geometry/polygon.md
+        - dsdl.geometry.registry: api_reference/dsdl_geometry/registry.md
+        - dsdl.geometry.rotate_box: api_reference/dsdl_geometry/rotate_box.md
+        - dsdl.geometry.segmap: api_reference/dsdl_geometry/segmap.md
+        - dsdl.geometry.shape: api_reference/dsdl_geometry/shape.md
+        - dsdl.geometry.text: api_reference/dsdl_geometry/text.md
+        - dsdl.geometry.uniqueid: api_reference/dsdl_geometry/uniqueid.md
+
 plugins:
+  - mkdocstrings
   - search:
       lang: 
         - en

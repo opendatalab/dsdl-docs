@@ -7,3 +7,9 @@ mkdocs-material>=5.4.0
 
 # Add multi language plugin
 mkdocs-static-i18n
+
+# Generate the api reference according the annotations in dsdl
+mkdocstrings[python]
+
+# dsdl install
+dsdl==0.1.10.7
