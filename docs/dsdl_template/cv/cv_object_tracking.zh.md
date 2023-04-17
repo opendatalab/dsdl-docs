@@ -194,7 +194,7 @@
 **object-tracking.yaml**
 
 ```yaml
-$dsdl-version: "0.5.3"
+$dsdl-version: "0.5.0"
 
 LocalObjectEntry:  
     $def: struct   
