@@ -87,6 +87,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -312,18 +314,11 @@
   
   
   
-    
-
-  
-  
-  
     <li class="md-tabs__item">
-      <a href="../../../dsdl_template/cv/cv_classification/" class="md-tabs__link">
+      <a href="../../../../dsdl_template/overview.md" class="md-tabs__link">
         DSDL任务模板
       </a>
     </li>
-  
-
   
 
       
@@ -749,7 +744,7 @@
   
     <li class="md-nav__item">
       <a href="../dsdl_define/" class="md-nav__link">
-        自定义DSDL数据集
+        DSDL数据集模板制定
       </a>
     </li>
   
@@ -859,43 +854,77 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    报告样式
+  <a href="#parser" class="md-nav__link">
+    Parser部分
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    报错信息解读
-  </a>
-  
-    <nav class="md-nav" aria-label="报错信息解读">
+    <nav class="md-nav" aria-label="Parser部分">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#class-doamin" class="md-nav__link">
-    Class  doamin部分
+  <a href="#1-class-doamin" class="md-nav__link">
+    1. Class  doamin部分
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#data-section" class="md-nav__link">
-    Data section部分
+  <a href="#2-data-section" class="md-nav__link">
+    2. Data section部分
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#struct" class="md-nav__link">
-    struct部分和参数部分
+  <a href="#3-struct" class="md-nav__link">
+    3. struct部分和参数部分
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samples" class="md-nav__link">
+    Samples实例化部分
+  </a>
+  
+    <nav class="md-nav" aria-label="Samples实例化部分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 是否存在样本
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 是否成功实例化数据集对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 对样本进行实例化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    可视化
+  </a>
   
 </li>
         
@@ -1224,23 +1253,37 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../../dsdl_template/overview.md" class="md-nav__link">
+        任务模板介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
       
       
       
-        <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
           计算机视觉
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_5_1">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_2">
           <span class="md-nav__icon md-icon"></span>
           计算机视觉
         </label>
@@ -1400,6 +1443,270 @@
 
             
           
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          dsdl.types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          dsdl.types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_fields/special/" class="md-nav__link">
+        dsdl.types.special
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_fields/generic/" class="md-nav__link">
+        dsdl.types.generic
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+          dsdl.geometry
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          dsdl.geometry
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/box/" class="md-nav__link">
+        dsdl.geometry.box
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/insmap/" class="md-nav__link">
+        dsdl.geometry.insmap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/keypoint/" class="md-nav__link">
+        dsdl.geometry.keypoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/label/" class="md-nav__link">
+        dsdl.geometry.label
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/media/" class="md-nav__link">
+        dsdl.geometry.media
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/polygon/" class="md-nav__link">
+        dsdl.geometry.polygon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/registry/" class="md-nav__link">
+        dsdl.geometry.registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/rotate_box/" class="md-nav__link">
+        dsdl.geometry.rotate_box
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/segmap/" class="md-nav__link">
+        dsdl.geometry.segmap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/shape/" class="md-nav__link">
+        dsdl.geometry.shape
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/text/" class="md-nav__link">
+        dsdl.geometry.text
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/uniqueid/" class="md-nav__link">
+        dsdl.geometry.uniqueid
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1482,43 +1789,77 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    报告样式
+  <a href="#parser" class="md-nav__link">
+    Parser部分
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    报错信息解读
-  </a>
-  
-    <nav class="md-nav" aria-label="报错信息解读">
+    <nav class="md-nav" aria-label="Parser部分">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#class-doamin" class="md-nav__link">
-    Class  doamin部分
+  <a href="#1-class-doamin" class="md-nav__link">
+    1. Class  doamin部分
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#data-section" class="md-nav__link">
-    Data section部分
+  <a href="#2-data-section" class="md-nav__link">
+    2. Data section部分
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#struct" class="md-nav__link">
-    struct部分和参数部分
+  <a href="#3-struct" class="md-nav__link">
+    3. struct部分和参数部分
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samples" class="md-nav__link">
+    Samples实例化部分
+  </a>
+  
+    <nav class="md-nav" aria-label="Samples实例化部分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    1. 是否存在样本
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    2. 是否成功实例化数据集对象
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    3. 对样本进行实例化
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    可视化
+  </a>
   
 </li>
         
@@ -1697,8 +2038,7 @@
 </li>
 </ul>
 <h2 id="_3">验证结果</h2>
-<h3 id="_4">报告样式</h3>
-<p>报告分为3个部分：</p>
+<p>报告分为<strong>3个部分</strong>：</p>
 <ul>
 <li>
 <p>parser检查结果：结果包括了parse结果是否成功，如果不成功，则可以查看具体的报错信息</p>
@@ -1708,8 +2048,8 @@
 </li>
 <li>可视化结果：需要肉眼观察可视化结果是否正确，比如bbox位置是否正确，标签内容是否正确等，在图片下面展示了可视化过程中的日志内容，比如是可视化成功还是失败，以及失败日志等。</li>
 </ul>
-<h3 id="_5">报错信息解读</h3>
-<h4 id="class-doamin">Class  doamin部分</h4>
+<h3 id="parser">Parser部分</h3>
+<h4 id="1-class-doamin">1. Class  doamin部分</h4>
 <ul>
 <li><strong>ValidationError： Error with class-dom name,  </strong> <strong><code>{class_dom_name}</code></strong> <strong> must be a valid identifier.
   </strong> <strong>[1. <code>Struct</code> name 2. <code>Class domain</code> name 3.name of <code>$field</code> in <code>Struct</code>]  is considered a valid identifier if it only contains alphanumeric letters (a-z) and (0-9), or underscores (_).
@@ -1751,7 +2091,7 @@
 <p>含义：对于非层级结构的class domain的label来说会报这个错误，表示：对于非层级结构的class domain的label，我们推荐使用空格字母数字和下划线来作为label名。</p>
 </li>
 </ul>
-<h4 id="data-section">Data section部分</h4>
+<h4 id="2-data-section">2. Data section部分</h4>
 <ul>
 <li>
 <p><strong>DefineSyntaxError：data yaml must contain <code>meta</code> section.</strong></p>
@@ -1804,169 +2144,115 @@
 <p>含义：当不用 <code>-p</code>指定数据yaml文件中$import路径的时候，如果在当前文件夹和dsdl库文件（dsdl/dsdl_library）中都没找到需要import的文件会报这个问题。</p>
 </li>
 </ul>
-<h4 id="struct">struct部分和参数部分</h4>
+<h4 id="3-struct">3. struct部分和参数部分</h4>
 <ul>
 <li>
-<p><strong>DefineSyntaxError：miss the parameters </strong>  <strong><code>{</code></strong> <code>param</code><strong><code>}</code></strong> <strong> in </strong> <strong><code>{struct_name}</code></strong><strong> in <code>sample-type</code>.</strong></p>
-<p>含义：在yaml中data部分的sample-type中没有给形式参数<strong><code>{</code></strong> <code>param</code><strong><code>}</code></strong> 赋值。</p>
+<p><strong>DefineSyntaxError: Error in field with value of <code>{ field_type }</code> . check the <code>{ k_v}</code> part.</strong></p>
+<p>含义：struct中的某个类型为{ field_type } 的filed出了问题。(可能还会提示是 { field_type } 中的 k_v部分出了问题)</p>
 </li>
 <li>
-<p><strong>DefineSyntaxError：miss the parameters </strong>  <strong><code>{</code></strong> <code>param</code><strong><code>}</code></strong> <strong> in </strong> <strong><code>{struct_name}</code></strong><strong> in <code>global-info-type</code>.</strong></p>
-<p>含义：在yaml中data部分的global-info-type中没有给形式参数<strong><code>{</code></strong> <code>param</code><strong><code>}</code></strong> 赋值。</p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：error in definition of <code>sample-type</code> or <code>global-info-type</code>.</strong></p>
-<p>含义：在yaml中data部分的sample-type的定义有问题。</p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：parameter in struct </strong> <strong><code>{struct}</code></strong> <strong> is not defined correctly:  1. check your <code>sample-type</code> or <code>global-info-type</code>, 2. check the definition of struct </strong>  <strong><code>{struct}</code></strong> <strong>."</strong></p>
-<p>含义：名为{struct}的struct中的参数没有被正确定义，大概率问题发生在：1. <code>sample-type</code>或 <code>global-info-type</code>的定义中 2. strcut本身的定义中</p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：definition error of filed </strong>  <strong><code>{</code></strong> <code>field</code> <strong><code>}</code></strong>  <strong>in struct  </strong>  <strong><code>{struct}</code></strong>  <strong>,  check if parameter in </strong>  <strong><code>{</code></strong> <code>field</code><strong><code>}</code></strong><strong> is defined correctly.</strong></p>
-<p>含义：名为{struct}的struct中的{filed}没有被正确定义，大概率问题发生在：{field}中的参数没被赋值或没正确定义。</p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：error in parameters definition of </strong>  <strong><code>{</code></strong> <code>field</code><strong><code>}</code></strong> <strong> in struct </strong>  <strong><code>{</code></strong> <code>struct</code> <strong><code>}</code></strong> <strong>.</strong></p>
-<p>含义：名为{struct}的struct中{field}中的参数没被赋值或没正确定义。</p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：parameter </strong> <strong><code>{param}</code></strong> <strong> of </strong>  <strong><code>{</code></strong> <code>field</code><strong><code>}</code></strong> <strong> in struct </strong> <strong><code>{struct}</code></strong><strong> must be defined.</strong></p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：parameter </strong>  <strong><code>{param}</code></strong>  <strong>of </strong> <strong><code>{struct}</code></strong><strong> must be defined.</strong></p>
-<p>含义：名为{struct}的struct中{field}中的参数没被赋值。
-- <strong>DefineSyntaxError: each struct with param must have one parent struct, but can have more than one child struct.</strong>
-  <strong><code>{struct}</code></strong><strong> have more than one parent struct.</strong></p>
-<p>含义：树状结构问题.是个遗留问题。</p>
-</li>
-<li>
-<p><strong>DefineSyntaxError: error of definition of parameters </strong>  <strong><code>{</code></strong> <code>params_list</code><strong><code>}</code></strong> <strong> in </strong>  <strong><code>{struct_name}</code></strong> <strong>.</strong></p>
-<p>含义：名为{struct}的struct中{<code>params_list</code>}中的参数定义有问题，一般是<span class="arithmatex"><span class="MathJax_Preview">params中的参数和</span><script type="math/tex">params中的参数和</script></span>filed中的没有一一对应。</p>
-</li>
-<li>
-<p><strong>DefineSyntaxError: Error  in field with value of </strong>  <strong><code>{</code></strong> <code>field_type</code> <strong><code>}</code></strong> <strong>.</strong></p>
-</li>
-<li>
-<p><strong>DefineSyntaxError: Error  in field with value of </strong>  <strong><code>{</code></strong> <code>field_type</code> <strong><code>}</code></strong>  <strong>. check the </strong>  <strong><code>{</code></strong> <code>k_v</code><strong><code>}</code></strong><strong> part.</strong></p>
-<p>含义：struct中的某个类型为<strong><code>{</code></strong> <code>field_type</code> <strong><code>}</code></strong> 的filed出了问题。(可能还会提示是 <strong><code>{</code></strong> <code>field_type</code> <strong><code>}</code></strong> 中的 <code>k_v</code>部分出了问题)</p>
-</li>
-<li>
-<p><strong>DefineSyntaxError: Error  in field with value of </strong>  <strong><code>{</code></strong> <code>field_type</code> <strong><code>}</code></strong> <strong>: check format of <code>optional</code> and <code>is_attr</code>.</strong></p>
-<p>含义：struct中的某个类型为 <code>{field_type}</code>的filed出了问题， 问题出在optional 或is_attr的格式上，需要检查。</p>
-</li>
-<li>
-<p><strong>DefineTypeError：No type </strong> <strong><code>{field_type}</code></strong><strong> in DSDL.</strong></p>
-<p>含义：struct中的某个类型为 <code>{field_type}</code>的field在dsdl中并没有定义，即它既不是dsdl的内置类型（如Image, BBox, Int,..）也不是用户你定义的struct类型。</p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：</strong>  <strong><code>{</code></strong> <code>field_type</code><strong><code>}</code></strong><strong> should not ccontain parameters  besides [1.optional 2. is_attr].</strong></p>
-<p>含义：当不该出现参数的数据类型（如：Image\Int\Num等等）里面包含除（optional, is_attr等所有类型的共有参数）时会报错。</p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：</strong>  <strong><code>{</code></strong> <code>field_type</code><strong><code>}</code></strong><strong> must contain parameters in addition to [1.optional 2. is_attr].</strong></p>
-<p>含义：当一些必须带参数的数据类型（如：List（必须有etype）等等）里面不包含除（optional, is_attr等所有类型的共有参数）参数时会报错。</p>
+<p><strong>DefineSyntaxError: definition error of <code>{field_type}</code> has <code>{param_list}</code>, please check field</strong> </p>
+<p>含义：field_type不在field list和struct list中，视为参数，参数不可以有嵌套的参数列表。</p>
 </li>
 </ul>
+<p>[cdom的报错]</p>
+<ul>
+<li><strong>DefineSyntaxError：definition error of dom <code>{cdom_name}</code> not in $params <code>{self.struct_params}</code>，check cdom is defined correctly.</strong></li>
+</ul>
+<p>含义：调用的cdom_name没有在该struct定义的params中。</p>
+<ul>
+<li><strong>DefineSyntaxError：<code>{k_v}</code> is dom params, should have '='</strong></li>
+</ul>
+<p>含义：调用的cdom参数，但是没有赋值，必须含‘=’</p>
 <p>[List类型的报错]：</p>
 <ul>
-<li>
-<p><strong>DefineSyntaxError：Invalid parameters </strong>  <strong><code>{</code></strong> <code>param</code><strong><code>}</code></strong><strong> in List.</strong></p>
-<p>含义： List filed中存在不能识别的参数（除etype, ordered, optional, is_attr以外的参数）</p>
-</li>
-<li>
-<p><strong>DefineSyntaxError: </strong> <strong>List types must contain parameters <code>etype</code>.</strong></p>
-</li>
-<li><strong>DefineSyntaxError:</strong>  <strong>invalid value </strong>  <strong><code>{</code></strong> <strong><code>val</code></strong> <strong><code>}</code></strong> <strong> in <code>ordered</code> of <code>List</code> field:  check the '</strong>  <strong><code>filed_type</code></strong> <strong>'.</strong></li>
+<li><strong>DefineSyntaxError：<code>{param}</code> is list etype params, should have '='</strong></li>
 </ul>
-<p>[Time, Date类型的报错]：</p>
-<ul>
-<li>
-<p><strong>DefineSyntaxWarning： basic type </strong><strong><code>Time/Date</code></strong><strong> not contains fmt, we use ISO 8601 format by default.</strong></p>
-<p>含义：是个警告，可以不管：你的Time或Date类型没有包含fmt参数，使用默认的<strong>ISO 8601 format。</strong></p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：Invalid parameters </strong>  <strong><code>{</code></strong> <code>param</code><strong><code>}</code></strong><strong> in </strong> <strong><code>Time/Date</code></strong> <strong>.</strong></p>
-<p>含义： Time或Date类型中存在不能识别的参数。</p>
-</li>
-<li>
-<p><strong>ValueError：duplicated param </strong>  <strong><code>{</code></strong> <code>param</code> <strong><code>}</code></strong> <strong>in </strong> <strong><code>Time/Date</code></strong> <strong>.</strong></p>
-<p>含义： Time或Date类型中存在重复的参数。</p>
-</li>
-</ul>
-<p>[ImageShape类型的报错]：</p>
-<ul>
-<li>
-<p><strong>DefineSyntaxError： invalid parameters value "</strong>  <strong><code>{val}</code></strong> <strong>" of <code>mode</code> in <code>ImageShape</code> field, <code>mode</code> value must be one of ["hw", "wh"].</strong></p>
-<p>含义：ImageShape中的mode必须是hw或wh<strong>。</strong></p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：Invalid parameters </strong>  <strong><code>{</code></strong> <code>param</code><strong><code>}</code></strong><strong> in ImageShape field.</strong></p>
-<p>含义： 存在不能识别的参数。</p>
-</li>
-<li>
-<p><strong>ValueError：duplicated param </strong>  <strong><code>{</code></strong> <code>param</code> <strong><code>}</code></strong> <strong>in ImageShape field.</strong></p>
-<p>含义： 存在重复的参数。</p>
-</li>
-</ul>
-<p>[RotatedBBox类型的报错]：</p>
-<ul>
-<li>
-<p><strong>DefineSyntaxError： invalid parameters value "</strong>  <strong><code>{val}</code></strong> <strong>" of <code>mode</code> in <code>RotatedBBox</code> field, <code>mode</code> value must be one of ["xywht", "xyxy"].</strong></p>
-<p>含义：RotatedBBox中的mode必须是xywht或xyxy<strong>。</strong></p>
-</li>
-<li>
-<p><strong>DefineSyntaxError： invalid parameters value "</strong>  <strong><code>{val}</code></strong> <strong>" of <code>measure</code> in <code>RotatedBBox</code> field, <code>measure</code> value must be one of ["degree", "radian"].</strong></p>
-<p>含义：RotatedBBox中的mode必须是xywht或xyxy<strong>。</strong></p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：Invalid parameters </strong>  <strong><code>{</code></strong> <code>param</code><strong><code>}</code></strong><strong> in RotatedBBox field.</strong></p>
-<p>含义： 存在不能识别的参数。</p>
-</li>
-<li>
-<p><strong>ValueError：duplicated param </strong>  <strong><code>{</code></strong> <code>param</code> <strong><code>}</code></strong> <strong>in RotatedBBox field.</strong></p>
-<p>含义： 存在重复的参数。</p>
-</li>
-</ul>
-<p>[UniqueID类型的报错]：</p>
-<ul>
-<li>
-<p><strong>DefineSyntaxError： invalid parameters value "</strong>  <strong><code>{val}</code></strong> <strong>" of <code>id_type</code> in <code>UniqueID</code> field, <code>id_type</code> value must be a string.</strong></p>
-<p>含义：UniqueID中的id_type必须是字符串<strong>。</strong></p>
-</li>
-<li>
-<p><strong>DefineSyntaxError： invalid parameters value "</strong>  <strong><code>{val}</code></strong> <strong>" of <code>measure</code> in <code>UniqueID</code> field, <code>measure</code> value must be one of ["degree", "radian"].</strong></p>
-<p>含义：UniqueID中的mode必须是xywht或xyxy<strong>。</strong></p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：Invalid parameters </strong>  <strong><code>{</code></strong> <code>param</code><strong><code>}</code></strong><strong> in UniqueID.</strong></p>
-<p>含义： 存在不能识别的参数。</p>
-</li>
-<li>
-<p><strong>ValueError：duplicated param </strong>  <strong><code>{</code></strong> <code>param</code> <strong><code>}</code></strong> <strong>in UniqueID.</strong></p>
-<p>含义： 存在重复的参数。</p>
-</li>
-</ul>
-<p>[Label类型的报错]：</p>
-<ul>
-<li><strong>DefineSyntaxError： invalid dom in List field: </strong>  <strong><code>{val}</code></strong>  <strong>, for </strong>  <strong><code>{part_of_val}</code></strong>  <strong>in </strong> <strong><code>{val}</code></strong><strong> filed is illegal.</strong></li>
-<li>
-<p><strong>invalid dom: </strong>  <strong><code>{</code></strong> <code>val</code> <strong><code>}</code></strong> <strong>in List field.</strong></p>
-<p>含义：List field中的dom参数的值 <code>val</code>不符合规范（检查 <code>val</code>中的 <strong><code>{part_of_val}</code></strong> 部分）<strong>。</strong></p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：List field must contain parameter <code>dom</code>.</strong></p>
-<p>含义：List field中的dom参数是必须的<strong>。</strong></p>
-</li>
-<li>
-<p><strong>DefineSyntaxError：Invalid parameters </strong>  <strong><code>{</code></strong> <code>param</code><strong><code>}</code></strong><strong> in Label field.</strong></p>
-<p>含义： 存在不能识别的参数。</p>
-</li>
-<li>
-<p><strong>ValueError：duplicated param </strong>  <strong><code>{</code></strong> <code>param</code> <strong><code>}</code></strong> <strong>in Label field.</strong></p>
-<p>含义： 存在重复的参数。</p>
-</li>
-</ul>
+<p>含义：List中有etype开头的参数，但是没有赋值，该参数必须赋值。</p>
+<h3 id="samples">Samples实例化部分</h3>
+<h4 id="1">1. 是否存在样本</h4>
+<p>DSDL Check会将所有样本读取到内存中，如果检测到的样本数目为0，该情况异常，会在报告中显示：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="s2">&quot;flag&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;No samples found, please check the path of json file.&quot;</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>此时用户需要检查Yaml文件中指定的json文件路径是否正确。</p>
+</blockquote>
+<p>如果实例化样本数目大于0，则该字段会显示：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="p">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>    <span class="s2">&quot;flag&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>    <span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Totally </span><span class="si">{</span><span class="n">sample_nums</span><span class="si">}</span><span class="s2"> samples found.&quot;</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>此时需要用户检查样本数目是否正确</p>
+</blockquote>
+<h4 id="2">2. 是否成功实例化数据集对象</h4>
+<p>DSDL Check会将所有的样本存储到一个<code>dsdl.dataset.CheckDataset</code>对象当中，如果实例化<code>dsdl.dataset.CheckDataset</code>对象的过程中成功，会在报告中显示：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="s2">&quot;flag&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    <span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Dataset init successfully!&quot;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="p">}</span>
+</code></pre></div>
+<p>反之，如果数据集对象实例化失败，则会在报告中显示：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="s2">&quot;flag&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>    <span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Dataset init error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>一般情况下，数据集实例化失败的原因可能是在yaml文件中声明的sample_type不存在，举例来说：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nt">data</span><span class="p">:</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span><span class="nt">sample-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KeyPointSample[cdom0=KeyPoint_person_ClassDom]</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="nt">sample-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">samples.json</span>
+</code></pre></div>
+<p>在上面的yaml中的如果<code>KeyPointSample</code>未定义，或者<code>KeyPoint_person_ClassDom</code>未定义，或者<code>KeyPointSample</code>的参数名不叫<code>cdom0</code>，都会引起数据集实例化报错，用户需要检查是否上述这些内容写错了。</p>
+</blockquote>
+<h4 id="3">3. 对样本进行实例化</h4>
+<p>DSDL Check会将所有的样本实例化为<code>Struct</code>对象，在这个过程中，如果有样本生成失败，DSDL会将错误信息记录到文档中，方便用户溯源。</p>
+<p>具体的报错信息为：</p>
+<ol>
+<li><strong>数据不符合schema</strong></li>
+</ol>
+<p>举例来说，如果Struct中某一个Field为Int，但是给定数据却是字符串类型，则会报以下错误：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">ValidationError</span> <span class="ow">in</span> <span class="p">{</span><span class="n">Field_Type</span><span class="p">}</span> <span class="n">field</span><span class="p">:</span> 
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">Schema</span> <span class="ow">is</span> <span class="p">{</span><span class="n">schema</span><span class="p">}</span><span class="o">.</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">Data</span> <span class="ow">is</span> <span class="p">{</span><span class="n">data</span><span class="p">}</span><span class="o">.</span>
+</code></pre></div>
+<p>上述的报错信息中，告诉了用户是哪一个Field报错，这个Field的schema，以及当前报错样本的具体数据，通过对比具体数据和schema，用户可以知道是哪里出了错。</p>
+<ol>
+<li><strong>字段不匹配错误</strong></li>
+</ol>
+<p>举例来说，有以下的yaml：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">KeyPointLocalObject</span><span class="p">:</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;cdom0&quot;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span><span class="nt">num_keypoints</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">        </span><span class="nt">keypoints</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Keypoint[dom=$cdom0]</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">    </span><span class="nt">$optional</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;num_keypoints&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
+<p>如果具体的数据中，不存在<code>keypoints</code>字段，但是由于<code>keypoints</code>字段不在<code>$optional</code>列表当中，则会报以下的错误：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">Required</span> <span class="n">struct</span> <span class="n">instance</span> <span class="p">{</span><span class="n">key</span><span class="p">}</span> <span class="ow">is</span> <span class="n">missing</span><span class="o">.</span>
+</code></pre></div>
+<p>这种情况下，用户需要在数据中添加<code>keypoints</code>字段信息，或者将<code>keypoints</code>字段添加到<code>$optional</code>列表当中。</p>
+<p>另一种情况，如果具体的数据中出现了yaml定义以外的字段，则会报以下的错误：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">Not</span> <span class="n">defined</span> <span class="n">keys</span> <span class="p">{</span><span class="n">keys</span><span class="p">}</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">sample</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">permitted</span> <span class="ow">in</span> <span class="n">strict</span> <span class="n">init</span> <span class="n">mode</span><span class="o">.</span>
+</code></pre></div>
+<p>这种情况下，用户需要将数据中的多余字段去除，或者将该字段在yaml中声明。</p>
+<blockquote>
+<p>DSDL会将总数据量，成功实例化的数据量，实例化失败的数据量写在报告中。</p>
+</blockquote>
+<h3 id="_4">可视化</h3>
+<p>DSDL为了检测标注信息是否正确，会随机从数据集中选择几个样本进行可视化，在这个步骤中，可能遇到以下问题：</p>
+<ol>
+<li>图像路径错误</li>
+<li>图像文件损坏</li>
+<li>图像格式不支持</li>
+</ol>
+<p>具体原因需要根据报错信息确定。</p>
 
 
 

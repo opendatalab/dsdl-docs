@@ -23,7 +23,7 @@
     
     
       
-        <title>自定义DSDL数据集 - DSDL Document</title>
+        <title>DSDL数据集模板制定 - DSDL Document</title>
       
     
     
@@ -87,6 +87,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -147,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              自定义DSDL数据集
+              DSDL数据集模板制定
             
           </span>
         </div>
@@ -312,18 +314,11 @@
   
   
   
-    
-
-  
-  
-  
     <li class="md-tabs__item">
-      <a href="../../../dsdl_template/cv/cv_classification/" class="md-tabs__link">
+      <a href="../../../../dsdl_template/overview.md" class="md-tabs__link">
         DSDL Template
       </a>
     </li>
-  
-
   
 
       
@@ -758,12 +753,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          自定义DSDL数据集
+          DSDL数据集模板制定
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        自定义DSDL数据集
+        DSDL数据集模板制定
       </a>
       
         
@@ -782,52 +777,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dsdl_1" class="md-nav__link">
-    用DSDL定义已有的数据集
+  <a href="#1-dsdl" class="md-nav__link">
+    1. 用DSDL定义已有的数据集
   </a>
   
-    <nav class="md-nav" aria-label="用DSDL定义已有的数据集">
+    <nav class="md-nav" aria-label="1. 用DSDL定义已有的数据集">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    原始数据集调研
+  <a href="#11" class="md-nav__link">
+    1.1 原始数据集调研
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#dsdl_2" class="md-nav__link">
-    DSDL模板制定
+  <a href="#12-dsdldsdl" class="md-nav__link">
+    1.2 DSDL模板制定（详细版DSDL）
   </a>
   
-    <nav class="md-nav" aria-label="DSDL模板制定">
+    <nav class="md-nav" aria-label="1.2 DSDL模板制定（详细版DSDL）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#struct" class="md-nav__link">
-    struct的定义文件
+  <a href="#121-struct" class="md-nav__link">
+    1.2.1 struct的定义文件
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    类别域
+  <a href="#123-samples" class="md-nav__link">
+    1.2.3 samples文件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-dsdldsdl" class="md-nav__link">
+    1.3 DSDL模板制定（精简版DSDL）
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 DSDL模板制定（精简版DSDL）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-struct" class="md-nav__link">
+    1.3.1 struct的定义文件
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#samples" class="md-nav__link">
-    samples文件
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configpy" class="md-nav__link">
-    config.py
+  <a href="#132-samples" class="md-nav__link">
+    1.3.2 samples文件
   </a>
   
 </li>
@@ -843,8 +851,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dsdl_3" class="md-nav__link">
-    利用任务模板定义一个新的DSDL数据集
+  <a href="#2-dsdl" class="md-nav__link">
+    2. 利用任务模板定义一个新的DSDL数据集
   </a>
   
 </li>
@@ -1197,23 +1205,37 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../../../dsdl_template/overview.md" class="md-nav__link">
+        任务模板介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
       
       
       
-        <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
           Computer Vision
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_5_1">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_2">
           <span class="md-nav__icon md-icon"></span>
           Computer Vision
         </label>
@@ -1373,6 +1395,270 @@
 
             
           
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          dsdl.types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          dsdl.types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_fields/special/" class="md-nav__link">
+        dsdl.types.special
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_fields/generic/" class="md-nav__link">
+        dsdl.types.generic
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+          dsdl.geometry
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          dsdl.geometry
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/box/" class="md-nav__link">
+        dsdl.geometry.box
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/insmap/" class="md-nav__link">
+        dsdl.geometry.insmap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/keypoint/" class="md-nav__link">
+        dsdl.geometry.keypoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/label/" class="md-nav__link">
+        dsdl.geometry.label
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/media/" class="md-nav__link">
+        dsdl.geometry.media
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/polygon/" class="md-nav__link">
+        dsdl.geometry.polygon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/registry/" class="md-nav__link">
+        dsdl.geometry.registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/rotate_box/" class="md-nav__link">
+        dsdl.geometry.rotate_box
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/segmap/" class="md-nav__link">
+        dsdl.geometry.segmap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/shape/" class="md-nav__link">
+        dsdl.geometry.shape
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/text/" class="md-nav__link">
+        dsdl.geometry.text
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/uniqueid/" class="md-nav__link">
+        dsdl.geometry.uniqueid
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1406,52 +1692,65 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dsdl_1" class="md-nav__link">
-    用DSDL定义已有的数据集
+  <a href="#1-dsdl" class="md-nav__link">
+    1. 用DSDL定义已有的数据集
   </a>
   
-    <nav class="md-nav" aria-label="用DSDL定义已有的数据集">
+    <nav class="md-nav" aria-label="1. 用DSDL定义已有的数据集">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    原始数据集调研
+  <a href="#11" class="md-nav__link">
+    1.1 原始数据集调研
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#dsdl_2" class="md-nav__link">
-    DSDL模板制定
+  <a href="#12-dsdldsdl" class="md-nav__link">
+    1.2 DSDL模板制定（详细版DSDL）
   </a>
   
-    <nav class="md-nav" aria-label="DSDL模板制定">
+    <nav class="md-nav" aria-label="1.2 DSDL模板制定（详细版DSDL）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#struct" class="md-nav__link">
-    struct的定义文件
+  <a href="#121-struct" class="md-nav__link">
+    1.2.1 struct的定义文件
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    类别域
+  <a href="#123-samples" class="md-nav__link">
+    1.2.3 samples文件
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-dsdldsdl" class="md-nav__link">
+    1.3 DSDL模板制定（精简版DSDL）
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 DSDL模板制定（精简版DSDL）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-struct" class="md-nav__link">
+    1.3.1 struct的定义文件
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#samples" class="md-nav__link">
-    samples文件
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configpy" class="md-nav__link">
-    config.py
+  <a href="#132-samples" class="md-nav__link">
+    1.3.2 samples文件
   </a>
   
 </li>
@@ -1467,8 +1766,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#dsdl_3" class="md-nav__link">
-    利用任务模板定义一个新的DSDL数据集
+  <a href="#2-dsdl" class="md-nav__link">
+    2. 利用任务模板定义一个新的DSDL数据集
   </a>
   
 </li>
@@ -1491,152 +1790,87 @@
   
 
 
-<h1 id="dsdl">DSDL数据集定义</h1>
+<h1 id="dsdl">DSDL数据集模板制定</h1>
 <p>定义一个DSDL数据集，首先需要了解DSDL如何描述一个数据集，详细的内容可以阅读<a href="../../../dsdl_language/overview/">DSDL语言教程</a>章节。</p>
 <p>本章用两个案例解释DSDL数据集的定义：1. 用DSDL定义已有的数据集（VOC为例）；2. 利用任务模板定义一个新的数据集。</p>
-<h2 id="dsdl_1">用DSDL定义已有的数据集</h2>
+<p>该教程将在<a href="../dsdl_convert/">数据集转换</a>小节详述如何通过该章定义的模板进行数据集的DSDL标准化转换。</p>
+<h2 id="1-dsdl">1. 用DSDL定义已有的数据集</h2>
 <p>本小节主要用一个具体案例（VOC2007，目标检测)，讲解DSDL数据集的定义。</p>
 <p>将分为以下几个步骤：</p>
 <ul>
-<li>原数据集调研（包括数据目录结构、标注字段及含义等）</li>
-<li>DSDL模板制定</li>
+<li><a href="#原始数据集调研">原数据集调研标注字段及含义</a></li>
+<li>DSDL模板制定（分为<a href="#详细版DSDL">详细版</a>和<a href="#精简版DSDL">精简版</a>）</li>
 </ul>
-<h3 id="_1">原始数据集调研</h3>
-<p>首先需要调研原始数据集的文件结构：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>VOC2007/
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>├── Annotations/              # 里面存放的是每张图片打完标签所对应的XML文件
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>│  ├── 000001.xml             # 某张图片的标注信息
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>│  └── ...
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>├── ImageSets/                # 图片划分的txt存放位置
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>│  ├── Layout                 # 包含Layout标注信息的图像文件名列表
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>│  │  ├── test.txt 
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>│  │  ├── train.txt 
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>│  │  ├── trainval.txt 
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>│  │  └── val.txt 
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>│  ├── Main                   # 包含所有文件的列表和划分
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>│  │  ├── aeroplane_test.txt  # 按每个类别的训练集、测试集等划分
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>│  │  ├── aeroplane_train.txt 
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>│  │  ├── ...
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>│  │  ├── test.txt            # 全数据集的test划分
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>│  │  ├── train.txt           # 全数据集的train划分
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>│  │  ├── trainval.txt 
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>│  │  └── val.txt 
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>│  ├── Segmentation           # 包含语义分割信息图像文件的列表和划分
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>│  │  ├── test.txt 
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>│  │  ├── train.txt 
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>│  │  ├── trainval.txt 
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>│  │  └── val.txt 
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>├── JPEGImages/               # 存放的是训练与测试的所有图片
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>│  ├── 000001.jpg             # 图片（序号作为图片名） 
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>│  └── ...
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>├── SegmentationClass/        # 语义分割标注
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>│  ├── 000032.png             # 某张图片的媒体文件 
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>│  └── ...
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>└── SegmentationObject/       # 实例分割标注
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>   ├── 000032.png             # 某张图片的媒体文件 
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>   └── ...
-</code></pre></div>
-<p>这里只以检测任务为例生成模板，因此只需要Annotations/、JPEGImages/这两个文件夹，另外，训练测试集划分，需要用ImageSets/Main/train.txt、val.txt、test.txt这三个文件。</p>
+<p><a id="原始数据集调研"></a></p>
+<h3 id="11">1.1 原始数据集调研</h3>
 <p>标注类型如下（以Annotations/000001.xml为例）：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;annotation&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">   </span><span class="nt">&lt;folder&gt;</span>VOC2007<span class="nt">&lt;/folder&gt;</span><span class="w">                         </span>#<span class="w"> </span>文件夹
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">   </span><span class="nt">&lt;filename&gt;</span>000001.jpg<span class="nt">&lt;/filename&gt;</span><span class="w">                  </span>#<span class="w"> </span>图片文件名
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">   </span><span class="nt">&lt;source&gt;</span><span class="w">                                         </span>#<span class="w"> </span>图像元信息
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span><span class="nt">&lt;database&gt;</span>The<span class="w"> </span>VOC2007<span class="w"> </span>Database<span class="nt">&lt;/database&gt;</span><span class="w">     </span>#<span class="w"> </span>数据集名称
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span><span class="nt">&lt;annotation&gt;</span>PASCAL<span class="w"> </span>VOC2007<span class="nt">&lt;/annotation&gt;</span><span class="w">       </span>#<span class="w"> </span>标注类型
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">      </span><span class="nt">&lt;image&gt;</span>flickr<span class="nt">&lt;/image&gt;</span><span class="w">                         </span>#<span class="w"> </span>来源
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">      </span><span class="nt">&lt;flickrid&gt;</span>341012865<span class="nt">&lt;/flickrid&gt;</span><span class="w">                </span>#<span class="w"> </span>来源ID
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">   </span><span class="nt">&lt;/source&gt;</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">   </span><span class="nt">&lt;owner&gt;</span><span class="w">                                          </span>#<span class="w"> </span>源信息
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">      </span><span class="nt">&lt;flickrid&gt;</span>Fried<span class="w"> </span>Camels<span class="nt">&lt;/flickrid&gt;</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">      </span><span class="nt">&lt;name&gt;</span>Jinky<span class="w"> </span>the<span class="w"> </span>Fruit<span class="w"> </span>Bat<span class="nt">&lt;/name&gt;</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">   </span><span class="nt">&lt;/owner&gt;</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">   </span><span class="nt">&lt;size&gt;</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">      </span><span class="nt">&lt;width&gt;</span>353<span class="nt">&lt;/width&gt;</span><span class="w">                            </span>#<span class="w"> </span>图片宽
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">      </span><span class="nt">&lt;height&gt;</span>500<span class="nt">&lt;/height&gt;</span><span class="w">                          </span>#<span class="w"> </span>图片高<span class="w"> </span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">      </span><span class="nt">&lt;depth&gt;</span>3<span class="nt">&lt;/depth&gt;</span><span class="w">                              </span>#<span class="w"> </span>图片通道数
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">   </span><span class="nt">&lt;/size&gt;</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">   </span><span class="nt">&lt;segmented&gt;</span>0<span class="nt">&lt;/segmented&gt;</span><span class="w">                         </span>#<span class="w"> </span>是否用于分割
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">   </span><span class="nt">&lt;object&gt;</span><span class="w">                                         </span>#<span class="w"> </span>标注部分<span class="w"> </span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">      </span><span class="nt">&lt;name&gt;</span>dog<span class="nt">&lt;/name&gt;</span><span class="w">                              </span>#<span class="w"> </span>标签
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">      </span><span class="nt">&lt;pose&gt;</span>Left<span class="nt">&lt;/pose&gt;</span><span class="w">                             </span>#<span class="w"> </span>姿态
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">      </span><span class="nt">&lt;truncated&gt;</span>1<span class="nt">&lt;/truncated&gt;</span><span class="w">                      </span>#<span class="w"> </span>物体是否被部分遮挡（&gt;15%）
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">      </span><span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span><span class="w">                      </span>#<span class="w"> </span>是否为难以辨识的物体
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">      </span><span class="nt">&lt;bndbox&gt;</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">         </span><span class="nt">&lt;xmin&gt;</span>48<span class="nt">&lt;/xmin&gt;</span><span class="w">                            </span>#<span class="w"> </span>左上角点的x
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">         </span><span class="nt">&lt;ymin&gt;</span>240<span class="nt">&lt;/ymin&gt;</span><span class="w">                           </span>#<span class="w"> </span>左上角点的y
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">         </span><span class="nt">&lt;xmax&gt;</span>195<span class="nt">&lt;/xmax&gt;</span><span class="w">                           </span>#<span class="w"> </span>右下角点的x
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">         </span><span class="nt">&lt;ymax&gt;</span>371<span class="nt">&lt;/ymax&gt;</span><span class="w">                           </span>#<span class="w"> </span>右下角点的y
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">      </span><span class="nt">&lt;/bndbox&gt;</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">   </span><span class="nt">&lt;/object&gt;</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">   </span>...
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="nt">&lt;/annotation&gt;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;annotation&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">   </span><span class="nt">&lt;folder&gt;</span>VOC2007<span class="nt">&lt;/folder&gt;</span><span class="w">                         </span>#<span class="w"> </span>文件夹
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">   </span><span class="nt">&lt;filename&gt;</span>000001.jpg<span class="nt">&lt;/filename&gt;</span><span class="w">                  </span>#<span class="w"> </span>图片文件名
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">   </span><span class="nt">&lt;source&gt;</span><span class="w">                                         </span>#<span class="w"> </span>图像元信息
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">      </span><span class="nt">&lt;database&gt;</span>The<span class="w"> </span>VOC2007<span class="w"> </span>Database<span class="nt">&lt;/database&gt;</span><span class="w">     </span>#<span class="w"> </span>数据集名称
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="nt">&lt;annotation&gt;</span>PASCAL<span class="w"> </span>VOC2007<span class="nt">&lt;/annotation&gt;</span><span class="w">       </span>#<span class="w"> </span>标注类型
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">      </span><span class="nt">&lt;image&gt;</span>flickr<span class="nt">&lt;/image&gt;</span><span class="w">                         </span>#<span class="w"> </span>来源
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="nt">&lt;flickrid&gt;</span>341012865<span class="nt">&lt;/flickrid&gt;</span><span class="w">                </span>#<span class="w"> </span>来源ID
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">   </span><span class="nt">&lt;/source&gt;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">   </span><span class="nt">&lt;owner&gt;</span><span class="w">                                          </span>#<span class="w"> </span>源信息
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">      </span><span class="nt">&lt;flickrid&gt;</span>Fried<span class="w"> </span>Camels<span class="nt">&lt;/flickrid&gt;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">      </span><span class="nt">&lt;name&gt;</span>Jinky<span class="w"> </span>the<span class="w"> </span>Fruit<span class="w"> </span>Bat<span class="nt">&lt;/name&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">   </span><span class="nt">&lt;/owner&gt;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">   </span><span class="nt">&lt;size&gt;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">      </span><span class="nt">&lt;width&gt;</span>353<span class="nt">&lt;/width&gt;</span><span class="w">                            </span>#<span class="w"> </span>图片宽
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">      </span><span class="nt">&lt;height&gt;</span>500<span class="nt">&lt;/height&gt;</span><span class="w">                          </span>#<span class="w"> </span>图片高<span class="w"> </span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">      </span><span class="nt">&lt;depth&gt;</span>3<span class="nt">&lt;/depth&gt;</span><span class="w">                              </span>#<span class="w"> </span>图片通道数
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">   </span><span class="nt">&lt;/size&gt;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">   </span><span class="nt">&lt;segmented&gt;</span>0<span class="nt">&lt;/segmented&gt;</span><span class="w">                         </span>#<span class="w"> </span>是否用于分割
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">   </span><span class="nt">&lt;object&gt;</span><span class="w">                                         </span>#<span class="w"> </span>标注部分<span class="w"> </span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">      </span><span class="nt">&lt;name&gt;</span>dog<span class="nt">&lt;/name&gt;</span><span class="w">                              </span>#<span class="w"> </span>标签
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">      </span><span class="nt">&lt;pose&gt;</span>Left<span class="nt">&lt;/pose&gt;</span><span class="w">                             </span>#<span class="w"> </span>姿态
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">      </span><span class="nt">&lt;truncated&gt;</span>1<span class="nt">&lt;/truncated&gt;</span><span class="w">                      </span>#<span class="w"> </span>物体是否被部分遮挡（&gt;15%）
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">      </span><span class="nt">&lt;difficult&gt;</span>0<span class="nt">&lt;/difficult&gt;</span><span class="w">                      </span>#<span class="w"> </span>是否为难以辨识的物体
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">      </span><span class="nt">&lt;bndbox&gt;</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">         </span><span class="nt">&lt;xmin&gt;</span>48<span class="nt">&lt;/xmin&gt;</span><span class="w">                            </span>#<span class="w"> </span>左上角点的x
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">         </span><span class="nt">&lt;ymin&gt;</span>240<span class="nt">&lt;/ymin&gt;</span><span class="w">                           </span>#<span class="w"> </span>左上角点的y
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">         </span><span class="nt">&lt;xmax&gt;</span>195<span class="nt">&lt;/xmax&gt;</span><span class="w">                           </span>#<span class="w"> </span>右下角点的x
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">         </span><span class="nt">&lt;ymax&gt;</span>371<span class="nt">&lt;/ymax&gt;</span><span class="w">                           </span>#<span class="w"> </span>右下角点的y
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">      </span><span class="nt">&lt;/bndbox&gt;</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">   </span><span class="nt">&lt;/object&gt;</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">   </span>...
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="nt">&lt;/annotation&gt;</span>
 </code></pre></div>
-<p>这里以ImageSets/Main/train.txt为例展示一下数据集segment划分的文件内容：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>000012         # 图片名前缀
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>000017
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>000023
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>000026
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>...
-</code></pre></div>
-<h3 id="dsdl_2">DSDL模板制定</h3>
-<p>最终需要转成的DSDL数据集格式，将包含以下几个重要的文件：</p>
-<ul>
-<li>struct的定义文件（在这个例子里文件名为object-detetction.yaml）：这个文件主要是对struct做一个明确的定义，可以有sample的结构体和标注的结构体等，需指明包含了哪些field，每个field的类型。</li>
-<li>类别域（在这个例子为VOC2007ClassDom.yaml）：里面包含了类别列表，对应category的序号（从1开始排序）</li>
-<li>samples文件（在这个例子里分别分为train.yaml和train_samples.json)</li>
-<li>train.yaml主要是指明引用哪个struct模板和类别域文件，并且指明数据类型和存放路径，另外还有一些meta信息</li>
-<li>train_samples.json里保存了实际的samples信息，其组织结构必须和之前定义的结构体匹配</li>
-<li>config.py：用于指定媒体文件存放位置，在数据集验证的时候将会详细解释</li>
-</ul>
-<p>后文会对目录结构以及每一个文件的内容进行一个详细展示和解释。</p>
-<p>数据集目录如下：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>dsdl-voc2007/
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>├── defs/                  
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>│  ├── object-detection-def.yaml              # 任务类型的定义
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>│  └── class-dom.yaml                         # 数据集的类别域
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>├── set-train/                                # 训练集
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>│  ├── train.yaml                             # 训练的yaml文件
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>│  └── train_samples.json                     # 训练集sample的json文件
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>├── set-val/                                  # 验证集
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>│  ├── val.yaml
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>│  └── val_samples.json  
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>├── set-test/                                 # 测试集
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>│  ├── test.yaml
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>│  └── test_samples.json  
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>├── config.py                                 # 数据集读取路径等config文件
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>└── README.md                                 # 数据集简介
-</code></pre></div>
-<h4 id="struct">struct的定义文件</h4>
-<p>object-detection-def.yaml：这个文件主要是定义struct的yaml文件，里面的字段名称可以根据原始数据集进行一个修改和适应（尽量保留原始数据集的字段名称和结构），但是字段类型一定要使用可识别的数据类型（可识别的数据类型详见“DSDL语言教程”章节）</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.0&quot;</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">ImageMedia</span><span class="p">:</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Image</span><span class="w"> </span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span><span class="nt">image_shape</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ImageShape</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="nt">depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">        </span><span class="nt">folder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">        </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dict</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">        </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dict</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="nt">segmented</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bool</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="nt">LocalObjectEntry</span><span class="p">:</span><span class="w">                            </span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span><span class="w">                             </span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;cdom&quot;</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span><span class="w">                                </span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="nt">bbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BBox</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">        </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Label[dom=$cdom]</span><span class="w">                                     </span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">        </span><span class="nt">pose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str</span><span class="w">  </span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">        </span><span class="nt">truncated</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bool</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="nt">difficult</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bool</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
-<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="nt">ObjectDetectionSample</span><span class="p">:</span>
-<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span>
-<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;cdom&quot;</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
-<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">        </span><span class="nt">media</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ImageMedia</span>
-<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">        </span><span class="nt">objects</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List[etype=LocalObjectEntry[cdom=$cdom]]</span><span class="w"> </span>
+<p><a id="详细版DSDL"></a></p>
+<h3 id="12-dsdldsdl">1.2 DSDL模板制定（详细版DSDL）</h3>
+<h4 id="121-struct">1.2.1 struct的定义文件</h4>
+<p>根据原始数据集的信息，我们可以制定如下的数据集模板（该模板中保留了原始数据集所有的字段名称和结构），注意，字段类型一定要使用可识别的数据类型，详情可以参考<a href="../../../api_reference/fields_overview/">Field文档</a>。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.0&quot;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">ImageMedia</span><span class="p">:</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span><span class="w">  </span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Image</span><span class="w"> </span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="nt">image_shape</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ImageShape</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="nt">depth</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Int</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="nt">folder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dict</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dict</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="nt">segmented</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bool</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="nt">LocalObjectEntry</span><span class="p">:</span><span class="w">  </span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span><span class="w">   </span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;cdom&quot;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span><span class="w">  </span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="nt">bbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BBox</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Label[dom=$cdom]</span><span class="w">   </span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="nt">pose</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Str</span><span class="w">  </span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="nt">truncated</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bool</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="nt">difficult</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bool</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="nt">ObjectDetectionSample</span><span class="p">:</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;cdom&quot;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">        </span><span class="nt">media</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ImageMedia</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">        </span><span class="nt">objects</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List[etype=LocalObjectEntry[cdom=$cdom]]</span><span class="w"> </span>
 </code></pre></div>
 <p><strong>字段含义解释及对应关系：</strong></p>
 <p>在ObjectDetectionSample中：</p>
@@ -1654,162 +1888,158 @@
 <p>在LocalObjectEntry中：</p>
 <ul>
 <li>bbox：对应原数据集的bndbox字段，但转化为bbox标准，即[x,y,w,h]</li>
-<li>category：是该目标的类别对应的类别标号，对应的是原数据集的name字段，类别标号可以参见下面的VOC2007ClassDom.yaml</li>
+<li>category：是该目标的类别对应的类别标号，对应的是原数据集的name字段，类别标号可以参见数据集转换页面的<a href="../dsdl_convert/#VOC2007ClassDom">VOC2007ClassDom.yaml</a></li>
 <li>pose，truncated，difficult：标注框的属性，来自于原数据集同名字段</li>
 </ul>
-<h4 id="_2">类别域</h4>
-<p>class-dom.yaml：这是一个类别定义的Dom文档</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.0&quot;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">VOCClassDom</span><span class="p">:</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class_domain</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">classes</span><span class="p">:</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aeroplane</span><span class="w">                   </span><span class="c1"># 对应_category为1</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bicycle</span><span class="w">                     </span><span class="c1"># 对应_category为2，以此类推</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bird</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boat</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bottle</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bus</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">car</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chair</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cow</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">diningtable</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dog</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">horse</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">motorbike</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">person</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pottedplant</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sheep</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sofa</span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tvmonitor</span>
-</code></pre></div>
-<p>如果存在标签父类的情况，详细可以见“DSDL语言教程”下的“类别域”部分。</p>
-<h4 id="samples">samples文件</h4>
-<p>train.yaml：这个文档引用了之前定义的两个文档，并且指引了具体的sample路径（test.yaml和val.yaml类似，只是修改对应sample-path和sub_dataset_name字段）</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.0&quot;</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">$import</span><span class="p">:</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../defs/class-domain</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../defs/object-detection-def</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="nt">meta</span><span class="p">:</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">   </span><span class="nt">dataset_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;VOC2007&quot;</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">   </span><span class="nt">sub_dataset_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;train&quot;</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">   </span><span class="nt">task_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;SemanticSementation&quot;</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">   </span><span class="nt">dataset_homepage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://host.robots.ox.ac.uk/pascal/VOC/voc2007/index.html&quot;</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">   </span><span class="nt">dataset_publisher</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;University</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Leeds</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">ETHZ,</span><span class="nv"> </span><span class="s">Zurich</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">University</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Edinburgh</span><span class="nv"> </span><span class="s">|Microsoft</span><span class="nv"> </span><span class="s">Research</span><span class="nv"> </span><span class="s">Cambridge</span><span class="nv"> </span><span class="s">|</span><span class="nv"> </span><span class="s">University</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Oxford&quot;</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">   </span><span class="nt">OpenDataLab_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://opendatalab.com/PASCAL_VOC2007/download&quot;</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="nt">data</span><span class="p">:</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span><span class="nt">sample-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ObjectDetectionSample[cdom=VOCClassDom]</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span><span class="nt">sample-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">train_samples.json</span>
-</code></pre></div>
-<p>train_samples.json需要我们写脚本从原始数据集转换来（转换脚本将在下一小节“数据集转换”中详述）。注意，里面的字段需要和之前定义的struct对应。最终样式如下：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="p">{</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">         </span><span class="nt">&quot;media&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">                </span><span class="nt">&quot;_media_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JPEGImages/000001.jpg&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">                </span><span class="nt">&quot;folder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VOC2007&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">                </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">                    </span><span class="nt">&quot;database&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The VOC2007 Database&quot;</span><span class="p">,</span><span class="w"> </span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">                    </span><span class="nt">&quot;annotation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PASCAL VOC2007&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">                    </span><span class="nt">&quot;flickrid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;341012865&quot;</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">                </span><span class="p">},</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">                </span><span class="nt">&quot;owner&quot;</span><span class="p">:{</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">                    </span><span class="nt">&quot;flickrid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fried Camels&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jinky the Fruit Bat&quot;</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">            </span><span class="p">},</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">            </span><span class="nt">&quot;image_shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">480</span><span class="p">]</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">            </span><span class="nt">&quot;depth&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">            </span><span class="nt">&quot;segmented&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">            </span><span class="p">},</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">        </span><span class="nt">&quot;objects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">            </span><span class="p">{</span>
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">                </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">120.24</span><span class="p">,</span><span class="w"> </span><span class="mf">0.32</span><span class="p">,</span><span class="w"> </span><span class="mf">359.76</span><span class="p">,</span><span class="w"> </span><span class="mf">596.04</span><span class="p">],</span><span class="w"> </span>
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">                </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>
-<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">                </span><span class="nt">&quot;pose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Left&quot;</span><span class="p">,</span><span class="w"> </span>
-<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">                </span><span class="nt">&quot;truncated&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>
-<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">                </span><span class="nt">&quot;difficult&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span>
-<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">            </span><span class="p">},</span><span class="w"> </span>
-<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">            </span><span class="err">...</span>
-<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">         </span><span class="p">]</span>
-<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="w">    </span><span class="p">},</span>
-<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">    </span><span class="err">...</span>
-<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="p">]}</span>
+<h4 id="123-samples">1.2.3 samples文件</h4>
+<p>根据上一小节制定的模板，最终的samples.json的结构将与其完全对应，具体组织形式如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">         </span><span class="nt">&quot;media&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">                </span><span class="nt">&quot;_media_path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JPEGImages/000001.jpg&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">                </span><span class="nt">&quot;folder&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;VOC2007&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">                </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">                    </span><span class="nt">&quot;database&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The VOC2007 Database&quot;</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">                    </span><span class="nt">&quot;annotation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;PASCAL VOC2007&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">                    </span><span class="nt">&quot;flickrid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;341012865&quot;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">                </span><span class="p">},</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">                </span><span class="nt">&quot;owner&quot;</span><span class="p">:{</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">                    </span><span class="nt">&quot;flickrid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fried Camels&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Jinky the Fruit Bat&quot;</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">            </span><span class="p">},</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">            </span><span class="nt">&quot;image_shape&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">640</span><span class="p">,</span><span class="w"> </span><span class="mi">480</span><span class="p">],</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">            </span><span class="nt">&quot;depth&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">            </span><span class="nt">&quot;segmented&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">            </span><span class="p">},</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="nt">&quot;objects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">                </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">120.24</span><span class="p">,</span><span class="w"> </span><span class="mf">0.32</span><span class="p">,</span><span class="w"> </span><span class="mf">359.76</span><span class="p">,</span><span class="w"> </span><span class="mf">596.04</span><span class="p">],</span><span class="w"> </span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">                </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">                </span><span class="nt">&quot;pose&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Left&quot;</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">                </span><span class="nt">&quot;truncated&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">                </span><span class="nt">&quot;difficult&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">   </span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">            </span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">            </span><span class="err">...</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">         </span><span class="p">]</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">    </span><span class="err">...</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="p">]}</span>
 </code></pre></div>
 <p>注意，"samples"字段是必须的（不可改名），且组织形式也不能改变，即：必须是字典形式，字典有一个键为"samples"，其值为一个列表，列表的每个对象都是一个sample类的实例（即本案例中的ObjectDetectionSample类）。</p>
-<h4 id="configpy">config.py</h4>
-<p>配置文件为图片文件的位置信息，目前支持本地和oss，具体格式如下：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">local</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;LocalFileReader&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="n">working_dir</span><span class="o">=</span><span class="s2">&quot;path to origin dataset root path&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="n">ali_oss</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;AliOSSFileReader&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="n">access_key_secret</span><span class="o">=</span><span class="s2">&quot;your secret key of aliyun oss&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="n">endpoint</span><span class="o">=</span><span class="s2">&quot;your endpoint of aliyun oss&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    <span class="n">access_key_id</span><span class="o">=</span><span class="s2">&quot;your access key of aliyun oss&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="n">bucket_name</span><span class="o">=</span><span class="s2">&quot;your bucket name of aliyun oss&quot;</span><span class="p">,</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    <span class="n">working_dir</span><span class="o">=</span><span class="s2">&quot;the relative path of your media dir in the bucket&quot;</span><span class="p">)</span>
+<p><a id="精简版DSDL"></a></p>
+<h3 id="13-dsdldsdl">1.3 DSDL模板制定（精简版DSDL）</h3>
+<p>除了1.2小节中保留原始数据集所有原始字段的做法，我们还可以利用已有的<a href="../../dsdl_template\overview.md">任务模板</a>作为数据集模板（该模板中仅保留了该任务的必需字段）。</p>
+<p>在<a href="../../dsdl_template\overview.md">任务模板</a>页面，展示了目前DSDL预先制定的一些主流任务的模板，用户可根据需要使用。</p>
+<h4 id="131-struct">1.3.1 struct的定义文件</h4>
+<p>在此案例中，我们可以选用<a href="../../../dsdl_template/cv/cv_detection/">目标检测模板</a>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.0&quot;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">LocalObjectEntry</span><span class="p">:</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;cdom&#39;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="nt">bbox</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BBox</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="nt">label</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Label[dom=$cdom]</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="nt">ObjectDetectionSample</span><span class="p">:</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;cdom&#39;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Image</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="nt">objects</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">List[LocalObjectEntry[cdom=$cdom]]</span>
 </code></pre></div>
-<p>用户需要对应修改其中的values。</p>
-<h2 id="dsdl_3">利用任务模板定义一个新的DSDL数据集</h2>
-<p>本小节以目标跟踪数据集为例，解释如何直接导入模板对数据集进行描述。</p>
+<p>在检测模板中的一些字段含义如下（详细学习请参考 <a href="../../dsdl_language/overview.zh.md">DSDL语言教程</a>）</p>
+<ul>
+<li>$dsdl-version: 描述了该文件对应的dsdl版本</li>
+<li>LocalObjectEntry: 定义了边界框的描述方式的嵌套结构体，包含四个字段:</li>
+<li>$def: struct, 表示这是一个结构体类型</li>
+<li>$params: 定义了形参，在这里即class domain</li>
+<li>$fields: 结构体类所包含的属性，具体包括:<ul>
+<li>bbox 边界框的位置</li>
+<li>label 边界框的类别</li>
+</ul>
+</li>
+<li>ObjectDetectionSample: 定义了检测任务sample的结构体，包含四个字段:</li>
+<li>$def: struct, 表示这是一个结构体类型</li>
+<li>$params: 定义了形参，在这里即class domain</li>
+<li>$fields: 结构体类所包含的属性，具体包括:<ul>
+<li>image 图片的路径</li>
+<li>objects 标注信息，检测任务中，为前面的LocalObjectEntry构成的一个列表</li>
+</ul>
+</li>
+</ul>
+<h4 id="132-samples">1.3.2 samples文件</h4>
+<p>根据上一小节制定的模板，最终的samples.json的结构将与其完全对应，具体组织形式如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span><span class="nt">&quot;samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="p">{</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">        </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;JPEGImages/000001.jpg&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="nt">&quot;objects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">            </span><span class="p">{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">                </span><span class="nt">&quot;bbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">120.24</span><span class="p">,</span><span class="w"> </span><span class="mf">0.32</span><span class="p">,</span><span class="w"> </span><span class="mf">359.76</span><span class="p">,</span><span class="w"> </span><span class="mf">596.04</span><span class="p">],</span><span class="w"> </span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">                </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">            </span><span class="p">},</span><span class="w"> </span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">            </span><span class="err">...</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">         </span><span class="p">]</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="err">...</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="p">]}</span>
+</code></pre></div>
+<p>注意，"samples"字段是必须的（不可改名），且组织形式也不能改变，即：必须是字典形式，字典有一个键为"samples"，其值为一个列表，列表的每个对象都是一个sample类的实例（即本案例中的ObjectDetectionSample类）。</p>
+<h2 id="2-dsdl">2. 利用任务模板定义一个新的DSDL数据集</h2>
+<p>我们在<a href="../../dsdl_template\overview.zh.md">任务模板</a>板块，介绍了目前我们已经制定的一些任务的模板，用户可以根据需要选择所需的模板进行使用。</p>
+<p>本小节以目标跟踪数据集为例，解释如何直接导入<a href="../../../dsdl_template/cv/cv_object_tracking/#table-2">目标跟踪模板</a>对数据集进行描述。</p>
 <p><strong>train.yaml</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.2&quot;</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nt">$import</span><span class="p">:</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object-tracking</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class-dom</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="nt">meta</span><span class="p">:</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">  </span><span class="nt">dataset_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;New_dataset&quot;</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="w">  </span><span class="nt">sub_dataset_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;train&quot;</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">  </span><span class="nt">task_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;single-object</span><span class="nv"> </span><span class="s">tracking&quot;</span><span class="w"> </span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="nt">data</span><span class="p">:</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="nt">sample-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VideoFrame[cdom=New_dataset_classdom]</span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="w">    </span><span class="nt">sample-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$local</span>
-<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="nt">samples</span><span class="p">:</span>
-<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">video_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example_video_1&quot;</span>
-<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">          </span><span class="nt">videoframes</span><span class="p">:</span>
-<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="w">                  </span><span class="nt">media_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;train/example_video_1/00001.jpg&quot;</span>
-<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">                  </span><span class="nt">objects</span><span class="p">:</span>
-<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span>
-<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">                        </span><span class="nt">bbox</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">25</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">36</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">103</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">122</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="w">                        </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dog&quot;</span>
-<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">                        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
-<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">                  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
-<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">video_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example_video_2&quot;</span>
-<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.2&quot;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">$import</span><span class="p">:</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object-tracking</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class-dom</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nt">meta</span><span class="p">:</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="nt">dataset_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;New_dataset&quot;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span><span class="nt">sub_dataset_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;train&quot;</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="nt">task_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;single-object</span><span class="nv"> </span><span class="s">tracking&quot;</span><span class="w"> </span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nt">data</span><span class="p">:</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="nt">sample-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VideoFrame[cdom=New_dataset_classdom]</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nt">sample-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$local</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="nt">samples</span><span class="p">:</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">video_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example_video_1&quot;</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">          </span><span class="nt">videoframes</span><span class="p">:</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">                  </span><span class="nt">media_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;train/example_video_1/00001.jpg&quot;</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">                  </span><span class="nt">objects</span><span class="p">:</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0&quot;</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">                        </span><span class="nt">bbox</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">25</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">36</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">103</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">122</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">                        </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dog&quot;</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">                      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">instance_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">                        </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">                  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">video_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example_video_2&quot;</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
 <p>上面的描述文件中，首先定义了dsdl的版本信息，然后import了之前定义的数据集模板文件，包括任务模板和类别域模板。接着用meta和data字段来描述自己的数据集，具体的字段说明如下所示：</p>
 <ul>
 <li>$dsdl-version: dsdl版本信息</li>
-<li>$import: 模板导入信息，这里导入<a href="#table-2">目标跟踪任务模板</a>和数据集的class domain</li>
+<li>$import: 模板导入信息，这里导入<a href="../../../dsdl_template/cv/cv_object_tracking/#table-2">目标跟踪任务模板</a>和数据集的class domain</li>
 <li>meta: 主要展示数据集的一些元信息，比如数据集名称，任务类型等等，用户可以自己添加想要备注的其它信息</li>
 <li>data: data的内容就是按照前面定义好的结构所保存的样本信息，具体如下：</li>
-<li>sample-type: 数据的类型定义，在这里用的是从<a href="#table-2">目标跟踪任务模板</a>中导入的VideoFrame类，同时指定了采用的cdom为New_dataset_classdom</li>
+<li>sample-type: 数据的类型定义，在这里用的是从<a href="../../../dsdl_template/cv/cv_object_tracking/#table-2">目标跟踪任务模板</a>中导入的VideoFrame类，同时指定了采用的cdom为New_dataset_classdom</li>
 <li>sample-path: samples的存放路径，如果实际是一个路径，则samples的内容从该文件读取，如果是$local，则从本文件的data.samples字段中直接读取</li>
-<li>samples：保存数据集的样本信息，其组织结构与<a href="#table-2">目标跟踪任务模板</a>中定义的struct结构一致，注意只有在sample-path是$local的时候该字段才会生效，否则samples会优先从sample-path中的路径去读取</li>
+<li>samples：保存数据集的样本信息，其组织结构与<a href="../../../dsdl_template/cv/cv_object_tracking/#table-2">目标跟踪任务模板</a>中定义的struct结构一致，注意只有在sample-path是$local的时候该字段才会生效，否则samples会优先从sample-path中的路径去读取</li>
 </ul>
 <p><strong>class-dom.yaml</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>$dsdl-version: 0.5.2
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>New_dataset_classdom:
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  $def: class_domain
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>  classes:
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>      - dog
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>      - cat
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.5.2</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">New_dataset_classdom</span><span class="p">:</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class_domain</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="nt">classes</span><span class="p">:</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dog</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat</span>
 </code></pre></div>
 <p>用户可以自定义类别域中包含的类型，在该示例中，数据集包含"dog"和"cat"两个类别，其标号分别是1和2。</p>
-<p>另外，用户也可根据自己的需求，自行修改<a href="#table-2">目标跟踪任务模板</a>，添加相应字段。可以参考<a href="#table-1">主流数据集调研</a>中的一些常用的独立字段（比如absence、visilibility等）。</p>
+<p>另外，用户也可根据自己的需求，自行修改<a href="../../../dsdl_template/cv/cv_object_tracking/#table-2">目标跟踪任务模板</a>，添加相应字段。可以参考<a href="../../../dsdl_template/cv/cv_object_tracking/#table-1">主流数据集调研</a>中的一些常用的独立字段（比如absence、visilibility等）。</p>
 
 
 
