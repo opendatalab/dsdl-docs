@@ -265,6 +265,14 @@
          
     </url>
     <url>
+         <loc>Nonedsdl_template/cv/cv_generation/</loc>
+         <lastmod>2023-04-18</lastmod>
+         <changefreq>daily</changefreq>
+         <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_template/cv/cv_generation/"/>
+         <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_template/cv/cv_generation/"/>
+         
+    </url>
+    <url>
          <loc>Nonedsdl_template/cv/cv_keypoint_detection/</loc>
          <lastmod>2023-04-18</lastmod>
          <changefreq>daily</changefreq>

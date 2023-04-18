@@ -1,0 +1,2044 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="基于新一代AI数据集标注语言DSDL（Data Set Description Language），打通AI数据鸿沟，便捷高效使用数据">
+      
+      
+        <meta name="author" content="OpenDataLab">
+      
+      
+      
+        <link rel="prev" href="../cv_ocr/">
+      
+      
+        <link rel="next" href="../../../api_reference/fields_overview/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
+    
+    
+      
+        <title>图像生成 - DSDL中文文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ffa9267a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+  
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>');--md-admonition-icon--abstract:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.5 1.75v11.5c0 .138.112.25.25.25h3.17a.75.75 0 0 1 0 1.5H2.75A1.75 1.75 0 0 1 1 13.25V1.75C1 .784 1.784 0 2.75 0h8.5C12.216 0 13 .784 13 1.75v7.736a.75.75 0 0 1-1.5 0V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13.274 9.537v-.001l-4.557 4.45a.75.75 0 0 1-1.055-.008l-1.943-1.95a.75.75 0 0 1 1.062-1.058l1.419 1.425 4.026-3.932a.75.75 0 1 1 1.048 1.074ZM4.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM4 7.75A.75.75 0 0 1 4.75 7h2a.75.75 0 0 1 0 1.5h-2A.75.75 0 0 1 4 7.75Z"/></svg>');--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/></svg>');--md-admonition-icon--tip:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.499.75a.75.75 0 0 1 1.5 0v.996C5.9 2.903 6.793 3.65 7.662 4.376l.24.202c-.036-.694.055-1.422.426-2.163C9.1.873 10.794-.045 12.622.26 14.408.558 16 1.94 16 4.25c0 1.278-.954 2.575-2.44 2.734l.146.508.065.22c.203.701.412 1.455.476 2.226.142 1.707-.4 3.03-1.487 3.898C11.714 14.671 10.27 15 8.75 15h-6a.75.75 0 0 1 0-1.5h1.376a4.484 4.484 0 0 1-.563-1.191 3.835 3.835 0 0 1-.05-2.063 4.647 4.647 0 0 1-2.025-.293.75.75 0 0 1 .525-1.406c1.357.507 2.376-.006 2.698-.318l.009-.01a.747.747 0 0 1 1.06 0 .748.748 0 0 1-.012 1.074c-.912.92-.992 1.835-.768 2.586.221.74.745 1.337 1.196 1.621H8.75c1.343 0 2.398-.296 3.074-.836.635-.507 1.036-1.31.928-2.602-.05-.603-.216-1.224-.422-1.93l-.064-.221c-.12-.407-.246-.84-.353-1.29a2.425 2.425 0 0 1-.507-.441 3.075 3.075 0 0 1-.633-1.248.75.75 0 0 1 1.455-.364c.046.185.144.436.31.627.146.168.353.305.712.305.738 0 1.25-.615 1.25-1.25 0-1.47-.95-2.315-2.123-2.51-1.172-.196-2.227.387-2.706 1.345-.46.92-.27 1.774.019 3.062l.042.19a.884.884 0 0 1 .01.05c.348.443.666.949.94 1.553a.75.75 0 1 1-1.365.62c-.553-1.217-1.32-1.94-2.3-2.768L6.7 5.527c-.814-.68-1.75-1.462-2.692-2.619a3.737 3.737 0 0 0-1.023.88c-.406.495-.663 1.036-.722 1.508.116.122.306.21.591.239.388.038.797-.06 1.032-.19a.75.75 0 0 1 .728 1.31c-.515.287-1.23.439-1.906.373-.682-.067-1.473-.38-1.879-1.193L.75 5.677V5.5c0-.984.48-1.94 1.077-2.664.46-.559 1.05-1.055 1.673-1.353V.75Z"/></svg>');--md-admonition-icon--success:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"/></svg>');--md-admonition-icon--question:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.92 6.085h.001a.749.749 0 1 1-1.342-.67c.169-.339.436-.701.849-.977C6.845 4.16 7.369 4 8 4a2.756 2.756 0 0 1 1.637.525c.503.377.863.965.863 1.725 0 .448-.115.83-.329 1.15-.205.307-.47.513-.692.662-.109.072-.22.138-.313.195l-.006.004a6.24 6.24 0 0 0-.26.16.952.952 0 0 0-.276.245.75.75 0 0 1-1.248-.832c.184-.264.42-.489.692-.661.103-.067.207-.132.313-.195l.007-.004c.1-.061.182-.11.258-.161a.969.969 0 0 0 .277-.245C8.96 6.514 9 6.427 9 6.25a.612.612 0 0 0-.262-.525A1.27 1.27 0 0 0 8 5.5c-.369 0-.595.09-.74.187a1.01 1.01 0 0 0-.34.398ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--warning:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>');--md-admonition-icon--failure:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2.344 2.343h-.001a8 8 0 0 1 11.314 11.314A8.002 8.002 0 0 1 .234 10.089a8 8 0 0 1 2.11-7.746Zm1.06 10.253a6.5 6.5 0 1 0 9.108-9.275 6.5 6.5 0 0 0-9.108 9.275ZM6.03 4.97 8 6.94l1.97-1.97a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l1.97 1.97a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-1.97 1.97a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L6.94 8 4.97 6.03a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018Z"/></svg>');--md-admonition-icon--danger:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M9.504.43a1.516 1.516 0 0 1 2.437 1.713L10.415 5.5h2.123c1.57 0 2.346 1.909 1.22 3.004l-7.34 7.142a1.249 1.249 0 0 1-.871.354h-.302a1.25 1.25 0 0 1-1.157-1.723L5.633 10.5H3.462c-1.57 0-2.346-1.909-1.22-3.004L9.503.429Zm1.047 1.074L3.286 8.571A.25.25 0 0 0 3.462 9H6.75a.75.75 0 0 1 .694 1.034l-1.713 4.188 6.982-6.793A.25.25 0 0 0 12.538 7H9.25a.75.75 0 0 1-.683-1.06l2.008-4.418.003-.006a.036.036 0 0 0-.004-.009l-.006-.006-.008-.001c-.003 0-.006.002-.009.004Z"/></svg>');--md-admonition-icon--bug:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"/></svg>');--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M5 5.782V2.5h-.25a.75.75 0 0 1 0-1.5h6.5a.75.75 0 0 1 0 1.5H11v3.282l3.666 5.76C15.619 13.04 14.543 15 12.767 15H3.233c-1.776 0-2.852-1.96-1.899-3.458Zm-2.4 6.565a.75.75 0 0 0 .633 1.153h9.534a.75.75 0 0 0 .633-1.153L12.225 10.5h-8.45ZM9.5 2.5h-3V6c0 .143-.04.283-.117.403L4.73 9h6.54L9.617 6.403A.746.746 0 0 1 9.5 6Z"/></svg>');--md-admonition-icon--quote:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M1.75 2.5h10.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Zm4 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2.5 7.75v6a.75.75 0 0 1-1.5 0v-6a.75.75 0 0 1 1.5 0Z"/></svg>');}</style>
+
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  <link rel="stylesheet" href="../../../assets/stylesheets/custom.9097afc2.min.css">
+
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="DSDL中文文档" class="md-header__button md-logo" aria-label="DSDL中文文档" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DSDL中文文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              图像生成
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+        <div class="md-select">
+          
+          <button class="md-header__button md-icon" aria-label="选择当前语言">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+          </button>
+          <div class="md-select__inner">
+            <ul class="md-select__list">
+              
+                <li class="md-select__item">
+                  <a href="./" hreflang="zh" class="md-select__link">
+                    中文
+                  </a>
+                </li>
+              
+                <li class="md-select__item">
+                  <a href="../../../en/dsdl_template/cv/cv_generation/" hreflang="en" class="md-select__link">
+                    English
+                  </a>
+                </li>
+              
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/opendatalab/dsdl-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    opendatalab/dsdl-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      主页
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../getting_started/overview/" class="md-tabs__link">
+        入门指南
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tutorials/overview/" class="md-tabs__link">
+        用户教程
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../dsdl_language/overview/" class="md-tabs__link">
+        DSDL语言教程
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../overview.md" class="md-tabs__link md-tabs__link--active">
+        DSDL任务模板
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../api_reference/fields_overview/" class="md-tabs__link">
+        API接口文档
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="DSDL中文文档" class="md-nav__button md-logo" aria-label="DSDL中文文档" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    DSDL中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/opendatalab/dsdl-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    opendatalab/dsdl-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        主页
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          入门指南
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          入门指南
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/overview/" class="md-nav__link">
+        整体介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/install/" class="md-nav__link">
+        安装部署
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting_started/quick_start/" class="md-nav__link">
+        快速上手
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          用户教程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          用户教程
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/overview/" class="md-nav__link">
+        教程介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/dataset_download/" class="md-nav__link">
+        数据集准备
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/config/location_config/" class="md-nav__link">
+        数据集配置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/visualization/" class="md-nav__link">
+        数据集可视化
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/dataset_analysis/" class="md-nav__link">
+        数据集分析
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+          模型训练&推理
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6">
+          <span class="md-nav__icon md-icon"></span>
+          模型训练&推理
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/train_test/openmmlab/" class="md-nav__link">
+        OpenMMLab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/train_test/pytorch/" class="md-nav__link">
+        Pytorch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/train_test/tensorflow/" class="md-nav__link">
+        Tensorflow
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/dataset_distribution/" class="md-nav__link">
+        数据集分发
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+          高阶教程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_8">
+          <span class="md-nav__icon md-icon"></span>
+          高阶教程
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/advanced/overview/" class="md-nav__link">
+        高阶教程介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_8_2" id="__nav_3_8_2_label" tabindex="0">
+          DSDL数据集标准化
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_8_2">
+          <span class="md-nav__icon md-icon"></span>
+          DSDL数据集标准化
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/advanced/dsdl_define/" class="md-nav__link">
+        DSDL数据集模板制定
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/advanced/dsdl_convert/" class="md-nav__link">
+        DSDL数据集格式转换
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/advanced/dsdl_check/" class="md-nav__link">
+        DSDL数据集验证
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/advanced/dsdl_extend/" class="md-nav__link">
+        自定义DSDL Field
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tutorials/advanced/dsdl_dataloader/" class="md-nav__link">
+        DSDL DataLoader开发
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          DSDL语言教程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          DSDL语言教程
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dsdl_language/overview/" class="md-nav__link">
+        语言特性
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          语言定义
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          语言定义
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dsdl_language/lang/get_started/" class="md-nav__link">
+        快速入门
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dsdl_language/lang/basic_types/" class="md-nav__link">
+        基本数据类型
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dsdl_language/lang/unstructured_objs/" class="md-nav__link">
+        非结构化对象类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dsdl_language/lang/structs/" class="md-nav__link">
+        结构类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dsdl_language/lang/class_dom/" class="md-nav__link">
+        类别域
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dsdl_language/lang/data_section/" class="md-nav__link">
+        数据模块
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dsdl_language/lang/libraries/" class="md-nav__link">
+        链接库
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+          实例演示
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          实例演示
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dsdl_language/examples/cv/" class="md-nav__link">
+        计算机视觉
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          DSDL任务模板
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          DSDL任务模板
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview.md" class="md-nav__link">
+        任务模板介绍
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+          计算机视觉
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_5_2">
+          <span class="md-nav__icon md-icon"></span>
+          计算机视觉
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cv_classification/" class="md-nav__link">
+        图像分类
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cv_detection/" class="md-nav__link">
+        目标检测
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cv_segmentation/" class="md-nav__link">
+        图像分割
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cv_keypoint_detection/" class="md-nav__link">
+        关键点检测
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cv_object_tracking/" class="md-nav__link">
+        目标跟踪
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cv_rotated_detection/" class="md-nav__link">
+        旋转目标检测
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cv_ocr/" class="md-nav__link">
+        光学字符识别(OCR)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        图像生成
+      </a>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          API接口文档
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          API接口文档
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/fields_overview/" class="md-nav__link">
+        Field概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+          dsdl.types
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_2">
+          <span class="md-nav__icon md-icon"></span>
+          dsdl.types
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_fields/special/" class="md-nav__link">
+        dsdl.types.special
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_fields/generic/" class="md-nav__link">
+        dsdl.types.generic
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+          dsdl.geometry
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_3">
+          <span class="md-nav__icon md-icon"></span>
+          dsdl.geometry
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/box/" class="md-nav__link">
+        dsdl.geometry.box
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/insmap/" class="md-nav__link">
+        dsdl.geometry.insmap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/keypoint/" class="md-nav__link">
+        dsdl.geometry.keypoint
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/label/" class="md-nav__link">
+        dsdl.geometry.label
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/media/" class="md-nav__link">
+        dsdl.geometry.media
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/polygon/" class="md-nav__link">
+        dsdl.geometry.polygon
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/registry/" class="md-nav__link">
+        dsdl.geometry.registry
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/rotate_box/" class="md-nav__link">
+        dsdl.geometry.rotate_box
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/segmap/" class="md-nav__link">
+        dsdl.geometry.segmap
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/shape/" class="md-nav__link">
+        dsdl.geometry.shape
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/text/" class="md-nav__link">
+        dsdl.geometry.text
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_reference/dsdl_geometry/uniqueid/" class="md-nav__link">
+        dsdl.geometry.uniqueid
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="_1">图像生成任务</h1>
+<p>我们通过对图像生成任务进行调研，并总结图像生成数据集中的字段信息，从而制定出图像生成任务的DSDL模板，供大家参考使用。</p>
+<h1 id="1">1. 任务调研</h1>
+<h2 id="11">1.1 任务定义</h2>
+<p>图像生成指的是从已有的图像数据集中学习统计规律，并生成符合原始数据集的统计规律，但在原始数据集中未出现过的新图像的任务。如下所示：</p>
+<table>
+<thead>
+<tr>
+<th align="center">AFHQv2数据集中的真实图像</th>
+<th align="center">StyleGANv3生成的图像</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img alt="image-20230224103101133" src="../images/generation/AFHQv2.png" /></td>
+<td align="center"><img alt="image-20230224103122506" src="../images/generation/StyleGANv3.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>左图是AFHQv2数据集中采集的真实图像，右图则是StyleGANv3模型生成的新图像（图像出自<a href="https://nvlabs-fi-cdn.nvidia.com/stylegan3/stylegan3-paper.pdf">Alias-Free Generative Adversarial Networks</a>）。可见图像生成的模型已经可以生成十分真实并且符合原始数据集视觉特点的图像。</p>
+<h2 id="12">1.2 评价指标</h2>
+<p>设计图像生成模型的评价指标的时候一般有以下几个目标：</p>
+<ol>
+<li>生成的图像越真实，评价分数越好。因为大多数生成模型的主要目标都是生成更真实的图像。</li>
+<li>生成的图像越多样，评价分数越好。这主要是为了判断生成模型是否出现过拟合、模式崩塌（Modal Collapse）等问题。</li>
+<li>对于生成模型中的隐变量，最好具有一定的“意义”，即按照一定的规律改变隐变量，生成的图像也能出现有规律、有意义的变化。而评价指标应该要能衡量生成模型的隐变量是否存在这种“意义”。</li>
+<li>评价分数的变化应该与人类的感知一致，即评价分数差别大的图像，人类感知到的视觉效果也应该差别大。</li>
+</ol>
+<p>目前图像生成模型的评价指标有很多种，它们一般都需要满足上述要求（或满足部分要求）。虽然这些指标本身存在一些局限性，但是它们在评价一个生成模型的性能时仍然具有重要的参考价值。</p>
+<p>下面介绍2种常用的评价指标：<strong>Inception Score (IS)</strong>和<strong>Fréchet Inception Distance (FID)</strong>。</p>
+<ul>
+<li><strong>Inception Score (IS)</strong></li>
+</ul>
+<p>这个评价指标主要是评价生成的图像的真实性和多样性。具体的做法是：将生成的图像输入到一个Inception V3模型中，该模型是在ImageNet-1K上预训练的分类模型，所以会输出一个1000维的向量，其中向量的每一维度上的数值代表输入的图片属于某一类别的概率，然后基于该向量来评估真实性和多样性。</p>
+<p>在真实性方面，Inception Score认为，如果生成的图像质量较好，那么图像中应该包含一些清晰且有意义的物体，所以输入Inception V3之后，模型应该能将其判别为某种类别的图像，所以输出的1000维向量中较大的数值应该集中在某个维度上，而其他维度数值较小。如果用 <span class="arithmatex"><span class="MathJax_Preview">p(y|x)</span><script type="math/tex">p(y|x)</script></span> 代表输入一张图像 <span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> 之后，输出的类别概率 <span class="arithmatex"><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span> 的分布，那么 <span class="arithmatex"><span class="MathJax_Preview">p(y|x)</span><script type="math/tex">p(y|x)</script></span> 应该是一个形状尖锐的分布。</p>
+<p>而在多样性方面，Inception Score认为，如果一个生成模型能生成多样的图片，那么理想情况下它生成的图片属于各个类别的概率应该是均等的，即在 <span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> 张生成的图片中，每个类别的图片应该有 <span class="arithmatex"><span class="MathJax_Preview">\frac{N}{1000}</span><script type="math/tex">\frac{N}{1000}</script></span> 张。如果对 <span class="arithmatex"><span class="MathJax_Preview">p(y|x)</span><script type="math/tex">p(y|x)</script></span> 求边缘分布：<span class="arithmatex"><span class="MathJax_Preview">p(y)=\int_xp(y|x)p(x)</span><script type="math/tex">p(y)=\int_xp(y|x)p(x)</script></span> ，得到的 <span class="arithmatex"><span class="MathJax_Preview">p(y)</span><script type="math/tex">p(y)</script></span> 应该是一个均匀分布，其形状是一条平坦的直线。</p>
+<p>为了同时衡量真实性和多样性，Inception Score（下面简写为IS）采用了KL散度：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">IS=exp(\mathbb{E}_{x\sim p_g}D_{KL}(p(y|x)||p(y)))</div>
+<script type="math/tex; mode=display">IS=exp(\mathbb{E}_{x\sim p_g}D_{KL}(p(y|x)||p(y)))</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">p_g</span><script type="math/tex">p_g</script></span> 代表生成模型所生成的图像的分布。性能越好的生成模型，其 <span class="arithmatex"><span class="MathJax_Preview">p(y|x)</span><script type="math/tex">p(y|x)</script></span> 分布的形状应该越尖锐，而 <span class="arithmatex"><span class="MathJax_Preview">p(y)</span><script type="math/tex">p(y)</script></span> 分布的形状应该越平坦，所以它们之间的KL散度应该越大，IS分数也应该越大。在实际计算时，一般通过输入 <span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> 张图片并求均值来代替上式中的期望：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">IS=exp(\frac{1}{N}\sum_{i=1}^N D_{KL}(p(y|x^{(i)})||p(y)))</div>
+<script type="math/tex; mode=display">IS=exp(\frac{1}{N}\sum_{i=1}^N D_{KL}(p(y|x^{(i)})||p(y)))</script>
+</div>
+<p>IS分数存在一些缺点，比如不能用在一个数据集训练的Inception模型来评估在另一个数据集上训练的生成模型，又比如生成的图像如果不在预训练的类别中，即使人类感知到的视觉效果是真实的，IS分数仍然很低，等等。</p>
+<ul>
+<li><strong>Fréchet Inception Distance (FID)</strong></li>
+</ul>
+<p>这个评价指标主要是评价生成的图像的真实性，在计算时也需要用到Inception V3模型，但是不需要借助Inception V3中的分类器，而是使用Inception V3从图像中提取的特征向量来计算生成图像和真实图像之间的距离，距离越小则说明生成的图像越真实。由于神经网络的深层可以提取图像的抽象语义特征，所以Fréchet Inception Distance（下面简写为FID）使用的是Inception V3输入最后的分类器之前的2048维特征向量来衡量生成图像是否足够真实。</p>
+<p>具体的做法是：取同样数目的生成图像和真实图像各 <span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> 张，输入Inception Net-V3，各自得到 <span class="arithmatex"><span class="MathJax_Preview">N*2048</span><script type="math/tex">N*2048</script></span> 维的特征向量，然后利用下面的式子计算FID分数：</p>
+<div class="arithmatex">
+<div class="MathJax_Preview">FID=||\mu_r-\mu_g||^2+Tr(\Sigma_r+\Sigma_g-2(\Sigma_r\Sigma_g)^{\frac{1}{2}})</div>
+<script type="math/tex; mode=display">FID=||\mu_r-\mu_g||^2+Tr(\Sigma_r+\Sigma_g-2(\Sigma_r\Sigma_g)^{\frac{1}{2}})</script>
+</div>
+<p>其中 <span class="arithmatex"><span class="MathJax_Preview">\mu_r</span><script type="math/tex">\mu_r</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">\mu_g</span><script type="math/tex">\mu_g</script></span> 分别是真实图像和生成图像的 <span class="arithmatex"><span class="MathJax_Preview">N</span><script type="math/tex">N</script></span> 个特征向量的均值向量， <span class="arithmatex"><span class="MathJax_Preview">\Sigma_r</span><script type="math/tex">\Sigma_r</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">\Sigma_g</span><script type="math/tex">\Sigma_g</script></span> 分别是真实图像和生成图像的 <span class="arithmatex"><span class="MathJax_Preview">N*2048</span><script type="math/tex">N*2048</script></span> 维特征向量的协方差矩阵， <span class="arithmatex"><span class="MathJax_Preview">Tr</span><script type="math/tex">Tr</script></span> 代表矩阵的迹。FID分数越小，代表生成的图像越真实。</p>
+<p>跟IS分数相比，FID分数的优点是允许生成模型的训练集和Inception模型的训练集不相同，因为FID分数不使用Inception模型中的分类器。但FID分数仍然存在缺点，比如当生成模型过拟合，生成的图像和训练集中的图像一模一样时，FID分数也很小，但此时生成模型的性能并不好。</p>
+<h2 id="13">1.3 主流数据集调研</h2>
+<p>我们对一些图像生成数据集进行了调研，对相关数据集描述文件（主要是标注字段）进行了分析汇总，相同含义的标注字段会以统一命名进行展示，汇总信息如下表所示：</p>
+<table border="4" >
+    <tr>
+      <th rowspan="1" align=center colspan="2">图像生成数据集</th>
+      <th colspan="1" align=center>共享字段</th>
+      <th colspan="3" align=center>独立字段</th>
+    </tr>
+    <tr>
+      <th>任务类型</th>
+      <th>数据集名称</th>
+      <th>image_id</th>
+      <th>category_name</th>
+      <th>paired_images</th>
+      <th>domain</th>
+    </tr>
+    <tr>
+      <th width="5%" rowspan="5">Unconditional Generation</th>
+      <th width="10%" >LSUN</th>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center"></td>
+    </tr>
+    <tr>
+      <th width="10%" >FFHQ</th>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center"></td>
+    </tr>
+    <tr>
+      <th width="10%" >CelebA-HQ</th>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center"></td>
+    </tr>
+    <tr>
+      <th width="10%" >MetFaces</th>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center"></td>
+    </tr>
+    <tr>
+      <th width="10%" >AFHQ</th>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center">Y</td>
+    </tr>
+    <tr>
+      <th width="5%" rowspan="2">Conditional Generation</th>
+      <th width="10%" >ImageNet-1K</th>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center"></td>
+    </tr>
+    <tr>
+      <th width="10%" >Cifar-10</th>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center"></td>
+    </tr>
+    <tr>
+      <th width="5%">Style Transfer(Unpaired)</th>
+      <th width="10%" >Facade_CycleGAN</th>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center">Y</td>
+    </tr>
+    <tr>
+      <th width="5%">Style Transfer(Paired)</th>
+      <th width="10%" >Facade_pix2pix</th>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center"></td>
+      <td width="8%" align="center">Y</td>
+      <td width="8%" align="center">Y</td>
+    </tr>
+  </table>
+
+<p>对共享字段和独立字段进行汇总，得到下表：</p>
+<table border="4" >
+    <tr>
+      <th align="center" >字段类型</th>
+      <th align="center" >字段名称</th>
+      <th align="center" >含义</th>
+    </tr>
+    <tr>
+      <th rowspan="1">共享字段</th>
+      <th>image_id</th>
+      <td>定位到唯一图片，比如用图片名或者图片路径表示</td>
+    </tr>
+      <th rowspan="3">独立字段</th>
+      <th>category_name</th>
+      <td>图像所属的类别名</td>
+    <tr>
+      <th>paired_images</th>
+      <td>是否有成对的图像</td>
+    </tr>
+    <tr>
+      <th>domain</th>
+      <td>图像所属的域，与类别有些区别，往往不用于分类任务，而是用来代表图像的风格特点，可以用于风格迁移等任务。</td>
+    </tr>
+</table>
+
+<h1 id="2">2. 模板展示</h1>
+<p>从数据集调研结果可以看出，对于Unconditional Generation，只有image_id是必须字段。而对于Conditional Generation，只有image_id和category_name是必须字段，因此不需要专门为这两个任务制定模板，Conditional Generation的数据集可以用图像分类的模板来描述，Unconditional Generation的数据集则只需要定义sample的struct中有Image字段即可。</p>
+<p>对于Style Transfer任务，根据是否有成对图像（paired/unpaired），可以制定不同的模板，下面分别介绍两种模板。</p>
+<h2 id="21-style-transferunpaired">2.1 Style Transfer(Unpaired)模板</h2>
+<p>我们制定的Style Transfer(Unpaired)任务的模板如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.3&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">UnpairedSample</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;cdom&#39;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Image</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Label[dom=$cdom]</span>
+</code></pre></div>
+<p>在模板中的一些字段的含义如下所示：</p>
+<ul>
+<li>$dsdl-version: 描述了该文件对应的dsdl版本</li>
+<li>UnpairedSample: 定义了Style Transfer(Unpaired)任务的sample的结构体，包含三个字段：<ul>
+<li>$def: struct：表示这是一个结构体类型</li>
+<li>$params：定义了形参，在这里即class domain</li>
+<li>$fields：结构体类所包含的属性，具体包括:<ul>
+<li>image：图片路径，对应于共享字段中的image_id</li>
+<li>domain：域信息，对应于独立字段中的domain        </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="22-style-transferpaired">2.2 Style Transfer(Paired)模板</h2>
+<p>我们制定的Style Transfer(Paired)任务的模板如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.3&quot;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">ImageMedia</span><span class="p">:</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;cdom&#39;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Image</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Label[dom=$cdom]</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nt">PairedSample</span><span class="p">:</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;cdom&#39;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="nt">image_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ImageMedia[cdom=$cdom]</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="nt">image_b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ImageMedia[cdom=$cdom]</span>
+</code></pre></div>
+<p>在模板中的一些字段的含义如下所示：</p>
+<ul>
+<li>$dsdl-version: 描述了该文件对应的dsdl版本</li>
+<li>
+<p>ImageMedia：定义了Style Transfer(Paired)任务的image的结构体，包含三个字段：</p>
+<ul>
+<li>$def: struct：表示这是一个结构体类型</li>
+<li>$params：定义了形参，在这里即class domain</li>
+<li>$fields：结构体类所包含的属性，具体包括：<ul>
+<li>image：图片路径，对应于共享字段中的image_id</li>
+<li>domain：域信息，对应于独立字段中的domain</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>PairedSample: 定义了Style Transfer(Paired)任务的sample的结构体，包含三个字段：</p>
+<ul>
+<li>$def: struct：表示这是一个结构体类型</li>
+<li>$params：定义了形参，在这里即class domain</li>
+<li>$fields：结构体类所包含的属性，具体包括：<ul>
+<li>image_a：图片路径，对应于共享字段中的image_id</li>
+<li>image_b：与image_a配对的另一张图片的路径</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>可以看出，Style Transfer(Paired)模板与Style Transfer(Unpaired)模板的主要区别在于是否存在成对的图片。</p>
+<h1 id="3">3. 完整示例</h1>
+<p>我们以<a href="https://cmp.felk.cvut.cz/~tylecr1/facade/">CMP Facade</a>数据集为例，展示图像生成数据集DSDL描述文件的具体内容。</p>
+<h2 id="31-style-transferpaired">3.1 用Style Transfer(Paired)模板对数据集进行描述</h2>
+<p>CMP Facade数据集可以用于Style Transfer(Paired)任务，可以参见<a href="https://phillipi.github.io/pix2pix/">pix2pix</a>方法。通过分析原始数据集的标注信息，我们可以用DSDL对数据集进行描述，首先用DSDL语法描述风格域信息：</p>
+<p><code>class-dom.yaml</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.3&quot;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">FacadeStyleDom</span><span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">class_domain</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">classes</span><span class="p">:</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">photo</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mask</span>
+</code></pre></div>
+<p>由于Style Transfer中的风格域和图像分类中的类别域类似，在DSDL中可以使用<code>class_domain</code>来定义。<code>class-dom.yaml</code>中包含的关键字段含义如下：</p>
+<ul>
+<li>FacadeStyleDom：风格域的class domain的名字，用户可以自定义<ul>
+<li>$def: 描述了FacadeStyleDom的dsdl类型，这里即class_domain</li>
+<li>classes: 记录了每种风格的名字，在CMP Facade数据集中，共有photo和mask两种风格，分别对应数据集中的原始图像和标注图像。需要说明的是，CMP Facade数据集设计的初衷并不是用于Style Transfer任务的，所以原始数据集没有给不同的风格赋予一个特定的名字，但是在用DSDL语言描述的时候，我们可以给不同的风格起一个有意义的名字，在本模板中使用的是photo和mask</li>
+</ul>
+</li>
+</ul>
+<p>接下来使用DSDL语法描述一个样本的结构：</p>
+<p><code>image-generation-facade.yaml</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.3&quot;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">ImageMedia</span><span class="p">:</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sdom&#39;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Image</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Label[dom=$sdom]</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="nt">FacadeImageSample</span><span class="p">:</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sdom&#39;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">        </span><span class="nt">image_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ImageMedia[sdom=$sdom]</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">        </span><span class="nt">image_b</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ImageMedia[sdom=$sdom]</span>
+</code></pre></div>
+<p>其中一些关键字段含义解释：</p>
+<ul>
+<li>
+<p>ImageMedia：定义了image的结构体</p>
+<ul>
+<li>$params: ['sdom']：定义了image的形参，这个形参用来传入image的风格域列表</li>
+<li>domain: Label[dom=$sdom]：定义了image所属的风格，接收image的形参作为风格域</li>
+</ul>
+</li>
+<li>
+<p>FacadeImageSample：定义了sample的结构体</p>
+<ul>
+<li>$params: ['sdom']：定义了sample的形参，该形参会传入ImageMedia中</li>
+<li>image_a/image_b：组成sample的一对图片</li>
+</ul>
+</li>
+</ul>
+<p>对于数据集yaml文件，可以用下面的形式定义：</p>
+<p><code>base.yaml</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.3&quot;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">$import</span><span class="p">:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../defs/image-generation-facade</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../defs/class-dom</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nt">meta</span><span class="p">:</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nt">Dataset Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;CMP</span><span class="nv"> </span><span class="s">Facade&quot;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nt">HomePage</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://cmp.felk.cvut.cz/~tylecr1/facade/&quot;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nt">Subset Name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;base&quot;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="nt">Modality</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Images&quot;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="nt">Task</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Image</span><span class="nv"> </span><span class="s">Generation&quot;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="nt">data</span><span class="p">:</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nt">sample-type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FacadeImageSample[sdom=FacadeStyleDom]</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nt">sample-path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">base_samples.json</span>
+</code></pre></div>
+<p>其中一些关键字段含义解释：</p>
+<ul>
+<li>$import: 模板导入信息，这里导入的是任务模板和的class domain</li>
+<li>meta: 主要展示数据集的一些元信息，比如数据集名称，数据集官网等等，用户可以自己添加想要备注的其它信息</li>
+<li>data: data的内容就是按照前面定义好的结构所保存的样本信息，具体如下：<ul>
+<li>sample-type: 数据的类型定义，在这里用的是从任务模板中导入的FacadeImageSample类，同时传入了FacadeStyleDom作为每张图片的风格域列表</li>
+<li>sample-path: samples的存放路径。本模板参考DSDL语言教程中的<a href="../../../dsdl_language/lang/data_section/">数据模块</a>的“2.6.4 通过外部文件读取”小节介绍的方法，将数据集的samples列表抽出来单独放在JSON文件中，以提高数据读取效率</li>
+</ul>
+</li>
+</ul>
+<p><code>base.yaml</code>中提到的<code>base_samples.json</code>文件的内容和格式如下所示，注意，里面的字段需要和之前定义的FacadeImageSample对应：</p>
+<p><code>base_samples.json</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="p">{</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nt">&quot;samples&quot;</span><span class="p">:[</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">            </span><span class="nt">&quot;image_a&quot;</span><span class="p">:{</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">                </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="s2">&quot;base/cmp_b0001.jpg&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">                </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="s2">&quot;photo&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">            </span><span class="p">},</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">            </span><span class="nt">&quot;image_b&quot;</span><span class="p">:{</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">                </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="s2">&quot;base/cmp_b0001.png&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">                </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="s2">&quot;mask&quot;</span><span class="p">,</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="err">...</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="p">}</span>
+</code></pre></div>
+<p>在实际用DSDL描述一个数据集的时候，类似<code>base_samples.json</code>的文件一般内容较多，需要通过脚本来生成。</p>
+<h2 id="33-style-transferunpaired">3.3 用Style Transfer(Unpaired)模板对数据集进行描述</h2>
+<p>CMP Facade数据集也可以用于Style Transfer(Unpaired)任务，可以参见<a href="https://junyanz.github.io/CycleGAN/">CycleGAN</a>方法。我们可以基于Style Transfer(Unpaired)任务的特点，用DSDL对数据集进行描述，此时得到的DSDL数据集与Style Transfer(Paired)任务中的DSDL数据集大体上是一样，只是其中一些描述文件的内容和格式会有所变化，下面仅介绍与Style Transfer(Paired)任务不同的描述文件：</p>
+<p><code>image-generation-facade.yaml</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">$dsdl-version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.5.3&quot;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nt">FacadeImageSample</span><span class="p">:</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">$def</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">struct</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nt">$params</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;sdom&#39;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="nt">$fields</span><span class="p">:</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Image</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">        </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Label[dom=$sdom]</span>
+</code></pre></div>
+<p>其中一些关键字段含义解释：</p>
+<ul>
+<li>FacadeImageSample：定义了sample的结构体<ul>
+<li>$params: ['sdom']：定义了sample的形参，这个形参会传入image的风格域列表</li>
+<li>image: Image：图片的路径</li>
+<li>domain: Label[dom=$sdom]：定义了image所属的风格，接收image的形参作为风格域</li>
+</ul>
+</li>
+</ul>
+<p><code>base_samples.json</code></p>
+<p>与Style Transfer(Paired)任务类似，base_samples.json里面的字段也需要和当前任务定义的FacadeImageSample对应，最终样式如下：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="nt">&quot;samples&quot;</span><span class="p">:[</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">            </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="s2">&quot;base/cmp_b0001.jpg&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="s2">&quot;photo&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">            </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="s2">&quot;base/cmp_b0001.png&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">            </span><span class="nt">&quot;domain&quot;</span><span class="p">:</span><span class="s2">&quot;mask&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="p">},</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">        </span><span class="err">...</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+  
+      <script src="../../../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+        <script src="../../../mathjax-config.js"></script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  <script src="../../../assets/javascripts/custom.acd37711.min.js"></script>
+
+  </body>
+</html>
