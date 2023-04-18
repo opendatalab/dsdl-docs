@@ -87,7 +87,7 @@ nav:
     - 实例演示: 
       - 计算机视觉: dsdl_language/examples/cv.md
   - DSDL任务模板:
-    - 任务模板介绍: dsdl_template\overview.md
+    - 任务模板介绍: dsdl_template/overview.md
     - 计算机视觉:
       - 图像分类: dsdl_template/cv/cv_classification.md
       - 目标检测: dsdl_template/cv/cv_detection.md 
