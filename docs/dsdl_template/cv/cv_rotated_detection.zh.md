@@ -2,21 +2,21 @@
 
 我们通过对旋转目标检测任务进行调研，并总结数据集描述中的字段信息，从而制定出旋转目标检测任务DSDL模板，供大家参考使用。
 
-# 1. 任务调研
+## 1. 任务调研
 
-## 1.1 任务定义
+### 1.1 任务定义
 
 旋转目标检测任务是指在图像中用旋转矩形框、四边形甚至任意形状的形式检测出物体的位置，并识别其所属类别，示意图如下：
 
 ![img](images/detection/rotate_detect.png)
 
-## 1.2 评价指标：
+### 1.2 评价指标：
 
-旋转目标检测的评价指标与目标检测相同，最常用的评价指标就是mAP（**m**ean **A**verage **P**recision）和AP（**A**verage **P**recision），（详细学习请参考 [目标检测评价指标](./cv_detection.zh.md)）。
+旋转目标检测的评价指标与目标检测相同，最常用的评价指标就是mAP（**m**ean **A**verage **P**recision）和AP（**A**verage **P**recision），详细内容请参考 [目标检测评价指标](./cv_detection.zh.md)。
 
-`<a id="table-1"></a>`
+<a id="table-1"></a>
 
-## 1.3 主流数据集调研：
+### 1.3 主流数据集调研：
 
 我们对5个旋转目标检测数据集进行调研，对相关数据集描述文件（主要是标注字段）进行分析汇总，相同含义的标注字段会以统一命名进行展示，汇总信息如下表所示：
 
@@ -145,9 +145,9 @@
 
 可以看到，如果要描述一个旋转检测数据集的样本，image_id、label_id和rbbox是最基础的字段，此外还包含了各种描述边界框信息的特殊字段。
 
-`<a id="table-2"></a>`
+<a id="table-2"></a>
 
-# 2. 模板展示
+## 2. 模板展示
 
 <!--
 根据上述的[调研结果](#table-1)，我们知道对于检测任务，一个样本最重要的属性是图片的id(或路径)、每个边界框的位置以及类别，考虑到每张图片可能包含多个边界框，我们定义了一个嵌套结构体LocalObjectEntry（其详细定义可以参考[DSDL入门文档-语言定义-嵌套结构体](http://research.pages.shlab.tech/dataset_standard/dsdl-docs/zh/lang/structs/#242)），用来表述单个边界框的信息（即类别和位置）。这样，我们可以在检测任务结构体（结构体的概念请参考[DSDL入门文档-语言定义-结构体](https://opendatalab.github.io/dsdl-docs/zh/lang/structs/#24)部分）的$fields属性中定义image和objects两个字段，其中objects字段则为多个LocalObjectEntry结构体构成的列表（列表为空表示图片没有边界框）；其次，与分类相同，不同的数据集所蕴含的类别是各不相同的，所以在sample中需要有一个形参，来对类别域进行限定（在dsdl中，我们将类别域描述为class domain，或者cdom，具体可以参考[DSDL入门文档-语言定义-类别域](https://opendatalab.github.io/dsdl-docs/zh/lang/basic_types/#223-label)中更详细的定义）。基于上述考虑，我们制定了检测任务的模板，如下所示：
@@ -177,27 +177,21 @@ OrientedObjectDetectionSample:
 
 - $dsdl-version: 描述了该文件对应的dsdl版本
 - LocalObjectEntry: 定义了边界框的描述方式的嵌套结构体，包含四个字段:
-
-  - $def: struct，表示这是一个结构体类型
-  - $params: 定义了形参，在这里即class domain
-  - $fields: 结构体类所包含的属性，具体包括:
-
-    - rbbox 边界框的位置，目前有两种模式
-      - RotatedBBox[mode="xyxy"]：代表以四边形表示标注框
-        - 具体标注值示例：[x1,y1,x2,y2,x3,y3,x4,y4]，xi,yi代表四边形的四个顶点坐标。
-      - RotatedBBox[mode="xywht", measure="degree"]：代表以旋转矩形表示标注框
-        - 具体标注值示例：[x, y, w, h, t]，x,y：矩形框的中心点坐标，w,h：矩形框的宽和高，t：矩形框旋转的角度。
-        - 当measure="degree" 时，t代表角度，范围是(-180,180)；当measure="radian"时，t代表弧度，范围是（-pi,pi）。
-        - measure的默认值是弧度。即RotatedBBox[mode="xywht"]代表t只能填写弧度值。
-    - label 边界框的类别
+    - $def: struct，表示这是一个结构体类型
+    - $params: 定义了形参，在这里即class domain
+    - $fields: 结构体类所包含的属性，具体包括:
+        - label 边界框的类别
+        - rbbox 边界框的位置，目前有两种模式
+            - RotatedBBox[mode="xyxy"]：代表以四边形表示标注框，具体标注值示例：[x1,y1,x2,y2,x3,y3,x4,y4]，xi,yi代表四边形的四个顶点坐标。
+            - RotatedBBox[mode="xywht", measure="degree"]：代表以旋转矩形表示标注框，具体标注值示例：[x, y, w, h, t]，x,y：矩形框的中心点坐标，w,h：矩形框的宽和高，t：矩形框旋转的角度。
+                - 当measure="degree" 时，t代表角度，范围是(-180,180)；当measure="radian"时，t代表弧度，范围是（-pi,pi）。
+                - measure的默认值是弧度。即RotatedBBox[mode="xywht"]代表t只能填写弧度值。      
 - OrientedObjectDetectionSample: 定义了旋转目标检测任务sample的结构体，包含四个字段:
-
-  - $def: struct, 表示这是一个结构体类型
-  - $params: 定义了形参，在这里即class domain
-  - $fields: 结构体类所包含的属性，具体包括:
-
-    - image 图片的路径
-    - objects 标注信息，检测任务中，为前面的LocalObjectEntry构成的一个列表
+    - $def: struct, 表示这是一个结构体类型
+    - $params: 定义了形参，在这里即class domain
+    - $fields: 结构体类所包含的属性，具体包括:
+        - image 图片的路径
+        - objects 标注信息，检测任务中，为前面的LocalObjectEntry构成的一个列表
 
 ## 3. 完整示例
 
@@ -205,7 +199,7 @@ OrientedObjectDetectionSample:
 
 ### 3.1 DSDL语法描述类别信息
 
-`<code>`class-dom.yaml`</code>`
+<code>`class-dom.yaml`</code>
 
 ```yaml
 $dsdl-version: "0.5.2"
@@ -253,11 +247,11 @@ ClassMapInfo:
 - $def: 描述了DOTAV2ClassDom的dsdl类型，这里即class_domain
 - classes: 描述了该类别域中所包含的类别及其顺序，在DOTAV2ClassDom数据集中，则依次为large_vehicle、small_vehicle等等
 
-从class_domain可以获取当前数据集所有类别信息，熟悉DOTA数据集的用户可以看出，当前的类别名与原始DOTA数据集存在一定差异，这是因为DOTA数据集类别命名存在特殊字符，我们对齐进行规范化转换。我们将原始命名到DSDL命名的映射关系存储在ClassMapInfo中，需要的用户可以自行获取。
+从class_domain可以获取当前数据集所有类别信息，熟悉DOTA数据集的用户可以看出，当前的类别名与原始DOTA数据集存在一定差异，这是因为DOTA数据集类别命名存在特殊字符，我们对齐进行规范化转换。我们将原始命名到DSDL命名的映射关系存储在ClassMapInfo中，需要的用户可以自行获取，关于全局信息存储方式的具体信息可以查看DSDL语言教程的[Global-Info字段用法](../../dsdl_language/lang/data_section.md#global-info)。
 
 ### 3.2 数据集yaml文件定义
 
-`<code>`train.yaml`</code>`
+<code>`train.yaml`</code>
 
 ```yaml
 $dsdl-version: "0.5.2"
@@ -288,17 +282,16 @@ data:
 - $dsdl-version: dsdl版本信息
 - $import: 模板导入信息，这里导入旋转目标检测任务模板和DOTAV2的class domain。
 - meta: 主要展示数据集的一些元信息，比如数据集名称，创建者等等，用户可以自己添加想要备注的其它信息
-- data: data的内容就是按照前面定义好的结构所保存的样本信息，具体如下：
-
-  - global-info-type: 数据集的全局信息类型定义，在这里用的是从class-dom.yaml中导入的ClassMapInfo类，同时指定了采用的cdom为DOTAV2ClassDom.
-  - global-info-path: 全局信息global-info.json的存放路径.
-  - sample-type: 数据的类型定义，在这里用的是从旋转目标检测任务模板中导入的OrientedObjectDetectionSample类，同时指定了采用的cdom为DOTAV2ClassDom.
-  - sample-path: samples的存放路径，如果实际是一个路径，则samples的内容从该文件读取（此处是当前目录下的samples.json文件），如果是$local，则从本文件的data.samples字段中直接读取.
-  - samples: 保存数据集的样本信息，注意只有在sample-path是$local的时候该字段才会生效，否则samples会优先从sample-path中的路径去读取
+- data: 其内容就是按照前面定义好的结构所保存的样本信息，具体如下：
+    - global-info-type: 数据集的全局信息类型定义，在这里用的是从class-dom.yaml中导入的ClassMapInfo类，同时指定了采用的cdom为DOTAV2ClassDom.
+    - global-info-path: 全局信息global-info.json的存放路径.
+    - sample-type: 数据的类型定义，在这里用的是从旋转目标检测任务模板中导入的OrientedObjectDetectionSample类，同时指定了采用的cdom为DOTAV2ClassDom.
+    - sample-path: samples的存放路径，如果实际是一个路径，则samples的内容从该文件读取（此处是当前目录下的samples.json文件），如果是$local，则从本文件的data.samples字段中直接读取.
+    - samples: 保存数据集的样本信息，注意只有在sample-path是$local的时候该字段才会生效，否则samples会优先从sample-path中的路径去读取
 
 train.yaml中出现的文件和内容如下所示：
 
-`<code>`rotated-detection.yaml`</code>`
+<code>`rotated-detection.yaml`</code>
 
 ```yaml
 $dsdl-version: "0.5.2"
@@ -326,9 +319,9 @@ OrientedObjectDetectionSample:
   $optional: ['objects','acquisition_dates', 'imagesource', 'gsd']
 ```
 
-此模板中使用到了“\$optional”字段，该字段的值是一个列表，列表中的值只能来源于“\$fields”中。列表中出现的字段在样本中是可以不出现的。具体用法请参考`<a href="http://research.pages.shlab.tech/dataset_standard/dsdl-docs/dsdl_language/lang/data_section/#262-optional">`DSDL中Optional的用法`</a>`
+此模板中使用到了“\$optional”字段，该字段的值是一个列表，列表中的值只能来源于“\$fields”中。列表中出现的字段在样本中是可以不出现的。具体用法请参考DSDL语言教程中[Optional的用法](../../dsdl_language/lang/data_section.md#Optional)。
 
-`<code>`global-info.json`</code>`
+<code>`global-info.json`</code>
 
 ```json
 {
@@ -346,13 +339,13 @@ OrientedObjectDetectionSample:
           "dsdl_name": "small_vehicle",
           "original_name": "small-vehicle"
       },
-      ......
+      ...
     ]
   }
 }
 ```
 
-`<code>`samples.json`</code>`
+<code>`samples.json`</code>
 
 ```json
 {
@@ -384,15 +377,14 @@ OrientedObjectDetectionSample:
             22.0  
           ]     
         },
-        ......
+        ...
       ],
     "acquisition_dates": "2016-05-04",
     "imagesource": "GoogleEarth",
     "gsd": 0.146343590398
 		}
-		......
+		...
 	]
 }
 ```
 
-!!! note "提示：若当前数据集图像数目较多，将所有标注信息存储在yaml文件里会导致后续数据加载速度过慢。此时用户可以通过提供外部文件，例如train.yaml中的sample-path: samples.json 将数据存放到可高效读取的文件中"

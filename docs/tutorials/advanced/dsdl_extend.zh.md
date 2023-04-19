@@ -11,7 +11,7 @@ DSDL已经支持很多基础类型Field（Bool、Int、Num、Str、Dict、Date�
 
 下面本文将以`RotatedBBoxField`为例，介绍如何自定义一个DSDL Field。
 
-## 任务介绍
+## 1. 任务介绍
 
 用户在定义一个Field之前，需要了解该Field的任务特点，以旋转目标检测为例，它的标注应该是一个旋转的矩形框，在大多数任务中，该矩形框以`[x, y, w, h, theta]`的形式给出，其中x,y分别为矩形框中心点的横纵坐标，`w,h` 分别为举行框的宽和高，`theta`则为矩形框的旋转角度，单位为角度或弧度。而也有很大一部分数据集将旋转矩形框以polygon的形式给出，即将其标注为矩形框4个顶点的xy坐标，表示为`[x1, y1, x2, y2, x3, y3, x4, y4]`。
 
@@ -38,7 +38,7 @@ LocalObjectEntry:
 
 确定了RotatedBBox的样式，我们下面可以开始定义它的参数jsonschema
 
-## 参数schema定义
+## 2. 参数schema定义
 
 在RotatedBBox中，我们定义了`mode`、`measure`两个形参，并规定了`mode`的实参只能是`xywht`或`xyxy`，`measure`的实参只能是`radian`或`degree`。我们可以使用下面的jsonschema来描述该约束：
 
@@ -70,7 +70,7 @@ default_args = {
 
 定义完参数schema后，我们则需要规定具体传入的值的jsonschema。
 
-## 值schema定义
+## 3. 值schema定义
 
 在RotatedBBox这个例子中，传入的值只有两种情况：
 
@@ -103,7 +103,7 @@ data_schema = {
 
 
 
-此外，在RotatedBBox Field中，我们还需要确定参数schema和值schema之间的对应关系，因为我们需要确保当`mode="xywht"`时传入的值必须是5元素列表；当`mode=xyxy`时，传入的值必须是8元素列表，因此我们需要额外顶一个参数+值的整体schema：
+此外，在RotatedBBox Field中，我们还需要确定参数schema和值schema之间的对应关系，因为我们需要确保当`mode="xywht"`时传入的值必须是5元素列表；当`mode=xyxy`时，传入的值必须是8元素列表，因此我们需要额外定一个参数+值的整体schema：
 
 ```python
 whole_schema = {
@@ -170,7 +170,7 @@ data_args = {
 }   # 正确，满足whole_schema的规定
 ```
 
-## 数据类的定义
+## 4. 数据类的定义
 
 在dsdl中，我们使用jsonschema来检查给定的数据是否合规，但是这只是在基础数据类型方面的检查，我们通过这种方式只能确保例如BBox的数据必须为一个4元素列表，或是polygon必须是一个3层嵌套列表这种约束，为了能进一步表示各种不同的数据，将赋予他们语义信息，我们还会将这些通过jsonschema验证的数据封装在一个dsdl数据类（`dsdl.geometry.BaseGeometry`）当中，从而方便用户调用各种方法来对数据进行操作。
 
@@ -185,7 +185,7 @@ data_args = {
 3. 定义一些常用的方法
 4. 如果当前field需要在dsdl view命令中被可视化展示，则需要重写父类方法中的`visualize`方法（该步骤不会在本文中涉及）
 
-### 定义初始化方法
+### 4.1 定义初始化方法
 
 ```python
 from .base_geometry import BaseGeometry
@@ -218,7 +218,7 @@ class RBBox(BaseGeometry):
 
 
 
-### 定义一些常用的方法
+### 4.2 定义一些常用的方法
 
 我们有可能想对封装的数据进行一些简单的操作，我们则可以自己定义相应的方法，比如在RBBox中，我们定义了：
 
@@ -266,7 +266,7 @@ def rbbox_value(self):
 
 > 上面的方法实现了`mode`为`xywht`和`xyxy`之间数据的相互转换
 
-## 定义Field类
+## 5. 定义Field类
 
 在完成了上述的操作后，我们需要做的就是将上面定义的内容组装到一个Field类中，即定义Field类本身。
 

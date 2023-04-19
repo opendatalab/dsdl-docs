@@ -86,7 +86,7 @@ dsdl/
 
 ## **2. 数据集配置**
 
-dsdl采用了【媒体数据】和【标注文件】分离这一设计理念，若用户之前已经下载过相关数据集媒体文件，只需下载dsdl标注文件即可使用该数据集。为了使用下载好的数据集，我们需要修改配置文件`config.py`（位于`VOC07-det/dsdl/config.py`）来进行对媒体数据的定位。举例来说，假如下载的`VOC07-det`数据集位于`~/datasets`路径下，则只需要将`~/datasets/VOC07-det/dsdl/config.py`中的配置按照如下内容进行修改即可：
+dsdl采用了【媒体数据】和【标注文件】分离这一设计理念，若用户之前已经下载过相关数据集媒体文件，只需下载dsdl标注文件即可使用该数据集。为了使用下载好的数据集，我们需要修改配置文件`config.py`（位于`VOC07-det/dsdl/config.py`）来进行对媒体数据的定位。举例来说，假如下载的`VOC07-det`数据集的解压后的媒体文件位于`~/datasets/VOC07-det/original`路径下，解压后的DSDL标注文件位于`~/datasets/VOC07-det/dsdl/`路径下，则只需要将`~/datasets/VOC07-det/dsdl/config.py`中的配置按照如下内容进行修改即可：
 
 ```python
 local = dict(
@@ -102,7 +102,7 @@ local = dict(
 
 ### **3.1. 数据集初始化**
 
-dsdl将dsdl数据集的使用接口封装进DSDLDataset类，初始化一个DSDLDataset类需要yaml文件和location config，这里仍然假设上面VOC数据集的存放路径为~/datasets/VOC07-det，则初始化代码如下：
+dsdl将dsdl数据集的使用接口封装进DSDLDataset类，初始化一个DSDLDataset类需要yaml文件和location config，这里仍然假设上面VOC数据集解压后的媒体文件和dsdl标注文件的存放路径分别为`~/datasets/VOC07-det/`目录下的`original`和`dsdl`，则初始化代码如下：
 
 ```
 from dsdl.dataset import DSDLDataset
@@ -184,3 +184,10 @@ print(ds_val[0].Bbox[0])
 
 [263.0, 211.0, 324.0, 339.0]
 ```
+
+## 4. DSDL数据集高阶使用
+除了入门教程中提到的功能以外，DSDL的[用户教程](../tutorials/overview.md)中还有一些其他的应用：
+
+* [数据集可视化](../tutorials/visualization.md)
+* 模型训练&推理：包含了[OpenMMLab](../tutorials/train_test/openmmlab.md)和[Pytorch](../tutorials/train_test/pytorch.md)
+* [高阶教程](../tutorials/advanced/overview.md): 包含了[DSDL数据集模板制定](../tutorials/advanced/dsdl_define.md)、[格式转换](../tutorials/advanced/dsdl_convert.md)和[验证](../tutorials/advanced/dsdl_check.md)的全流程，并且介绍了[自定义DSDL Field](../tutorials/advanced/dsdl_extend.md)的方法

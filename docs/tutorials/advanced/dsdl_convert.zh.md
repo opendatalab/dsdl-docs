@@ -25,15 +25,15 @@
 
 以上的目录中的template.yaml为[DSDL数据集模板制定](./dsdl_define.md)小节中制定的模板，用户可以自定义模板，也可以在DSDL SDK中直接调用任务模板（后文的转换脚本模板中会标明用法）。
 
-**prepare.py中包含的模块如下**：
+我们为用户准备了prepare.py的模板，用户只需要按照实际情况实现部分函数即可。**prepare.py中包含的模块如下**：
 
-- prepare函数：该脚本主要是用于解压原始数据集压缩包。该脚本需要传入的参数为原始数据集压缩包的文件夹路径，即<dataset_name>/compressed/。我们已提供了模板，转换者只需要修改解压部分的命令即可（在代码模板中有标明）。
-- get_subset_samples_list函数：主要是用于生成class-dom和set-`<segment>`/`<segment>`_samples.json，请自行修改以适应不同数据集的标注内容提取。另外，需要注意的是，为了防止class-dom中出现不合规的命名，需要对所有类别名做转换（由replace_special_characters函数实现）。
+- prepare函数：该脚本主要是用于解压原始数据集压缩包。该脚本需要传入的参数为原始数据集压缩包的文件夹路径，即`<dataset_name>/compressed/`。我们已提供了模板，内置zip和tar.gz格式，如需要支持其他格式，只需要修改解压部分的命令即可（在代码模板中有标明）。
+- get_subset_samples_list函数：主要是用于生成`class-dom.yaml`和`set-<segment>.yaml`/`set-<segment>_samples.json`，请自行修改以适应不同数据集的标注内容提取。另外，需要注意的是，为了防止class-dom中出现不合规的命名，需要对所有类别名做转换（由replace_special_characters函数实现）。
 - （可选）dataset_converter函数：中间格式转换，用于对数据集的媒体文件或标注文件进行必要的中间格式转换，在此举两个实例：
-    - 比如像在分割数据集中，需要把三波段的label map映射为单通道的Int值图，由于目前DSDL标准里要求分割数据集以单通道Int值图存储mask，因此需要对数据集的标注文件做转换的替换。
+    - 比如像在分割数据集中，由于目前DSDL标准里要求分割数据集以单通道Int值图存储mask，需要把三波段的label map映射为单通道的Int值图，因此需要对数据集的标注文件做转换的替换。
     - 比如CIFAR10存储的图片格式是TFrecord，多个图片存在同一个TFrecord里，而DSDL的Image path需要一一对应关系，因此我们需要将每个图片提取出来转成PNG。
 - main函数中必填的参数：
-    - meta_info：包括数据集名称(Dataset Name)、官网(HomePage)、媒体文件的模态(Modality)、任务名称(Task)，注意，如果希望直接调用已有的任务模板，Task Name需要符合规范，可用的Task Name请参考[任务模板介绍](../../dsdl_template/overview.md)页面中的**任务英文全称**。
+    - meta_info：包括数据集名称(Dataset Name)、官网(HomePage)、媒体文件的模态(Modality)、任务名称(Task)，注意，如果希望直接调用已有的任务模板，Task Name需要符合规范，可调用的Task Name请参考[任务模板介绍](../../dsdl_template/overview.md)页面中的**任务英文全称**。
     - flag_middle_format：如果实现了dataset_converter函数，则需要将flag_middle_format改为True，以生成更加规范的README
     - class_dom_names_original：以list的形式，将数据集的类别存储在该字段中，注意，其排列顺序决定了class_id的生成，其中排在首位的class_id为1，第二位为2，以此类推。
     - subset_name_list：数据集子集的列表，比如['train', 'val']，根据数据集实际情况修改。
@@ -44,10 +44,17 @@
 ```python
 import argparse
 import os
+import re
 import shutil
 import sys
+import tarfile
+import zipfile
+from itertools import chain
+from multiprocessing import Pool, cpu_count
 from pathlib import Path
 
+import numpy as np
+from PIL import Image
 from dsdl.converter.mllm import generate_config_file
 from dsdl.converter.mllm import generate_readme_with_middle_format
 from dsdl.converter.mllm import generate_readme_without_middle_format
@@ -59,7 +66,10 @@ from dsdl.converter.utils import generate_subset_yaml_and_json
 from dsdl.converter.utils import replace_special_characters
 from dsdl.converter.utils import get_dsdl_template_from_lib
 
-#############提取原始数据集字段，生成sample list，用户需要实现该函数#############################
+from tqdm import tqdm
+
+
+#############生成DSDL标注，用户需要实现该函数#############################
 def get_subset_samples_list(*args, **kwargs):
     samples_list = []
     ## 返回的列表示例如下：
@@ -86,6 +96,7 @@ def get_subset_samples_list(*args, **kwargs):
     # ]
     return samples_list
 
+
 ###########数据集中间格式转换，如果需要的话，用户需要实现该函数#############################
 def dataset_to_middle_format(*args, **kwargs):
     # 有些数据集需要转换成中间格式，
@@ -97,7 +108,7 @@ def dataset_to_middle_format(*args, **kwargs):
     ## 实现代码这里编写
     pass
 
-################用户不需要修改该函数###############################################
+##########################用户不需要修改##########################
 def parse_args():
     """命令行参数解析"""
     parse = argparse.ArgumentParser(
@@ -122,19 +133,21 @@ def parse_args():
              'or decompressed folder when "-d" exists.'
     )
     args = parse.parse_args()
+    args.path = Path(args.path).absolute().resolve().as_posix()
     return args
+
 
 ###########需要修改prepare函数中的解压操作###########
 def prepare(args):
     """根据不同的命令行参数执行解压、复制操作,并调用数据集文件转换和dsdl标注生成。"""
-    SCRIPT_PATH = Path(__file__).resolve().absolute().parent
+    SCRIPT_PATH = Path(__file__).absolute().resolve().parent
     DSDL_PATH = SCRIPT_PATH.parent
     if args.decompressed:
         ORIGINAL_PATH = Path(args.path)
         if args.copy:
             PREPARED_PATH = ORIGINAL_PATH.parent / "prepared"
             if PREPARED_PATH.exists():
-                raise Exception(f"Path {PREPARED_PATH.absolute().as_posix()} already exists.")
+                raise Exception(f"Path {PREPARED_PATH.as_posix()} already exists.")
             shutil.copytree(ORIGINAL_PATH, PREPARED_PATH)
         else:
             if flag_middle_format:
@@ -150,7 +163,7 @@ def prepare(args):
         COMPRESSED_PATH = Path(args.path)
         PREPARED_PATH = COMPRESSED_PATH.parent / "prepared"
         if PREPARED_PATH.exists():
-            raise Exception(f"Path {PREPARED_PATH.absolute().as_posix()} already exists.")
+            raise Exception(f"Path {PREPARED_PATH.as_posix()} already exists.")
         PREPARED_PATH.mkdir()
 
         found_compressed = False
@@ -181,10 +194,11 @@ def prepare(args):
         if args.copy:
             ORIGINAL_PATH = COMPRESSED_PATH.parent / "original"
             if ORIGINAL_PATH.exists():
-                raise Exception(f"Path {ORIGINAL_PATH.absolute().as_posix()} already exists.")
+                raise Exception(f"Path {ORIGINAL_PATH.as_posix()} already exists.")
             shutil.copytree(PREPARED_PATH, ORIGINAL_PATH)
 
-    return PREPARED_PATH.absolute().as_posix(), DSDL_PATH.absolute().as_posix()
+    return PREPARED_PATH.as_posix(), DSDL_PATH.as_posix()
+
 
 if __name__ == "__main__":
     #########################必填的参数##########################
@@ -198,7 +212,7 @@ if __name__ == "__main__":
     flag_middle_format = False  # 数据集是否需要转换成中间格式(是的话，修改为True)
     class_dom_names_original = []  # 需要修改, e.g., ['dog','cat']，可以自行实现函数提取
     subset_name_list = []  # 数据集的子集名称列表，e.g., ['train', 'val']
-    ##############################################################
+
     args = parse_args()
     root_path, save_path = prepare(args)
 
@@ -207,9 +221,9 @@ if __name__ == "__main__":
     ## 所以必须先生成template.yaml才能进行后续转换。
     ## template.yaml的位置位于: save_path/defs/template.yaml
     ## 用户可以直接调用已有的模板，或手动创建template.yaml，并拷贝到save_path/defs/目录下。
-    ## 以下示例是调用已有的模板：
+    ## 以下示例是调用已有的任务模板：
     get_dsdl_template_from_lib(meta_info["Task"], save_path)
-    ## 注意，这里的task_name需要在数据集转换页面维护，template在converter下新建一个文件夹存储
+    ## 注意，这里的meta_info["Task"]需要满足DSDL任务模板页面的“任务英文全称”
 
     ###########以下是转换和生成的步骤，可根据实际情况修改#############
     ###########一般情况下，只需要修改get_subset_samples_list所需的参数###########
@@ -237,6 +251,11 @@ if __name__ == "__main__":
         meta_info["Subset Name"] = subset_name
         print(f"processing data in {subset_name}.")
         subset_samples_list = get_subset_samples_list(root_path, subset_name)  # 需要自行修改所需的参数
+        if len(subset_samples_list) == 0:
+            raise ResourceWarning(
+                "No samples found. Check if the file path is correct. "
+                "If the dataset is not decompressed, remove -d option and try again."
+            )
         # 示例：subset_samples_list = get_subset_samples_list(root_path, subset_name)
         generate_subset_yaml_and_json(
             meta_info,
@@ -244,7 +263,7 @@ if __name__ == "__main__":
             subset_samples_list
         )
         print(f"Sample list for {subset_name} is generated.")
-    dsdl_tree_str = generate_tree_string(save_path,display_num=100)  # 生成转后的dsdl数据集目录结构树形字符串
+    dsdl_tree_str = generate_tree_string(save_path, display_num=100)  # 生成转后的dsdl数据集目录结构树形字符串
 
     generate_config_file(save_path)  # 生成config.py
 
@@ -265,6 +284,7 @@ if __name__ == "__main__":
             original_tree_str,
             dsdl_tree_str
         )
+
 ```
 
 转换者完善了必要的函数的和必填的字段后，可以运行如下命令：
@@ -404,8 +424,9 @@ import os
 import shutil
 import sys
 from pathlib import Path
-from itertools import chain
 import tarfile
+import zipfile
+from itertools import chain
 
 from dsdl.converter.mllm import generate_config_file
 from dsdl.converter.mllm import generate_readme_with_middle_format
@@ -422,9 +443,8 @@ from dsdl.converter.utils import get_dsdl_template_from_lib
 """
 This file implements the generator of the VOC2007 DSDL format dataset.
 """
-
+  
 import itertools
-import yaml
 from xml.etree import ElementTree
 import json  
 
@@ -522,6 +542,7 @@ def prepare(args):
         PREPARED_PATH.mkdir()
 
         found_compressed = False
+        #######需要修改:解压操作，内置zip和tar.gz格式，其他格式需要修改#############
         for file in COMPRESSED_PATH.rglob("*.zip"):
             found_compressed = True
             zf = zipfile.ZipFile(file)
@@ -541,6 +562,7 @@ def prepare(args):
         for file in (PREPARED_PATH / "VOCdevkit"/ "VOC2007").iterdir():
             file.rename(file.parent.parent.parent / file.name)
         shutil.rmtree(PREPARED_PATH / "VOCdevkit")
+        #############################################################################
 
         if args.copy:
             ORIGINAL_PATH = COMPRESSED_PATH.parent / "original"
@@ -753,7 +775,7 @@ ali_oss = dict(
     working_dir="the prefix of the prepared dataset within the bucket")
 ```
 
-请根据需要修改对应的路径，以保证DSDL[数据集验证](./dsdl_check.md)通过。
+请根据实际情况，修改媒体文件读取方式和路径。
 
 #### 2.2.4 README.md
 
@@ -843,3 +865,5 @@ e.g. if the full path of your prepared dataset is "oss://bucket_name/dataset_nam
 3. Get more dataset: [OpenDataLab](https://opendatalab.com/)
 
 ```
+
+数据集转换完成后，建议运行[数据集验证](./dsdl_check.md)，以保证DSDL数据集可正常使用。

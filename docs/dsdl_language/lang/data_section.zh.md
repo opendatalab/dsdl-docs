@@ -48,6 +48,7 @@ ImageClassificationSample:
         label: Label[dom=MyClassDom]
 ```
 
+<a id="Optional"></a>
 ### 2.6.2 Optional的用法
 
 如果我们的数据中有些字段是缺失的，比如上面的 `data.samples`部分有的数据中label缺失：
@@ -77,6 +78,7 @@ ImageClassificationSample:
 
 !!! note "注意：当$optional中label被忽略时，对应的字段值可以在 `data.samples`缺失，否则会显示警告。"
 
+<a id="global-info"></a>
 ### 2.6.3 增加global-info字段
 
 对于数据集的全局信息，我们可以在数据模块新增global-info字段进行存放。全局信息包括但不限于：

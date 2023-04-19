@@ -1,14 +1,13 @@
 
 # 目标检测任务
 我们通过对目标检测任务进行调研，并总结数据集描述中的字段信息，从而制定出目标检测任务DSDL模板，供大家参考使用。
-# 1. 任务调研
-## 1.1 任务定义
+## 1. 任务调研
+### 1.1 任务定义
 目标检测任务是指给定一张输入图像，判别图像中目标位置（通常用边界框表示）和语义类别，示意图如下：
-：
 
 ![img](images/detection/det_example.png)
 
-## 1.2 评价指标：
+### 1.2 评价指标：
 
 目标检测最常用的评价指标就是AP（**A**verage **P**recision），此外还有一些基于AP衍生的指标，这些指标的含义如下：
 
@@ -44,7 +43,7 @@ $$ \rho_{interp}(r) = \max_{
 
 <a id="table-1"></a>
 
-## 1.3 主流数据集调研： 
+### 1.3 主流数据集调研： 
 我们对10个目标检测数据集进行调研，对相关数据集描述文件（主要是标注字段）进行分析汇总，相同含义的标注字段会以统一命名进行展示，汇总信息如下表所示：
 <table border="4" >
         <tr>
@@ -234,7 +233,7 @@ $$ \rho_{interp}(r) = \max_{
 
 <a id="table-2"></a>
 
-# 2. 模板展示
+## 2. 模板展示
 <!--
 根据上述的[调研结果](#table-1)，我们知道对于检测任务，一个样本最重要的属性是图片的id(或路径)、每个边界框的位置以及类别，考虑到每张图片可能包含多个边界框，我们定义了一个嵌套结构体LocalObjectEntry（其详细定义可以参考[DSDL入门文档-语言定义-嵌套结构体](http://research.pages.shlab.tech/dataset_standard/dsdl-docs/zh/lang/structs/#242)），用来表述单个边界框的信息（即类别和位置）。这样，我们可以在检测任务结构体（结构体的概念请参考[DSDL入门文档-语言定义-结构体](https://opendatalab.github.io/dsdl-docs/zh/lang/structs/#24)部分）的$fields属性中定义image和objects两个字段，其中objects字段则为多个LocalObjectEntry结构体构成的列表（列表为空表示图片没有边界框）；其次，与分类相同，不同的数据集所蕴含的类别是各不相同的，所以在sample中需要有一个形参，来对类别域进行限定（在dsdl中，我们将类别域描述为class domain，或者cdom，具体可以参考[DSDL入门文档-语言定义-类别域](https://opendatalab.github.io/dsdl-docs/zh/lang/basic_types/#223-label)中更详细的定义）。基于上述考虑，我们制定了检测任务的模板，如下所示：
 -->
@@ -359,7 +358,7 @@ data:
 - $dsdl-version: dsdl版本信息
 - $import: 模板导入信息，这里导入检测任务模板和VOC的class domain，也就是[2. 模板展示](#table-2)中展示的两部分内容
 - meta: 主要展示数据集的一些元信息，比如数据集名称，创建者等等，用户可以自己添加想要备注的其它信息
-- data: data的内容就是按照前面定义好的结构所保存的样本信息，具体如下：  
+- data: 其内容就是按照前面定义好的结构所保存的样本信息，具体如下：  
 
     - sample-type: 数据的类型定义，在这里用的是从检测任务模板中导入的ObjectDetectionSample类，同时指定了采用的cdom为VOCClassDom
     - sample-path: samples的存放路径，如果实际是一个路径，则samples的内容从该文件读取，如果是$local（这个例子），则从本文件的data.samples字段中直接读取
