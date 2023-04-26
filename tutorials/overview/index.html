@@ -576,36 +576,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/location_config/" class="md-nav__link">
-        数据集配置
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../visualization/" class="md-nav__link">
         数据集可视化
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dataset_analysis/" class="md-nav__link">
-        数据集分析
       </a>
     </li>
   
@@ -623,17 +595,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
       
       
       
-        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
           模型训练&推理
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
           <span class="md-nav__icon md-icon"></span>
           模型训练&推理
         </label>
@@ -667,36 +639,8 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../train_test/tensorflow/" class="md-nav__link">
-        Tensorflow
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dataset_distribution/" class="md-nav__link">
-        数据集分发
-      </a>
     </li>
   
 
@@ -713,17 +657,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
       
       
       
-        <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
           高阶教程
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_8">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5">
           <span class="md-nav__icon md-icon"></span>
           高阶教程
         </label>
@@ -754,19 +698,19 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_2" >
       
       
       
-        <label class="md-nav__link" for="__nav_3_8_2" id="__nav_3_8_2_label" tabindex="0">
-          DSDL数据集标准化
+        <label class="md-nav__link" for="__nav_3_5_2" id="__nav_3_5_2_label" tabindex="0">
+          自定义DSDL数据集
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_8_2">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5_2">
           <span class="md-nav__icon md-icon"></span>
-          DSDL数据集标准化
+          自定义DSDL数据集
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -812,20 +756,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../advanced/dsdl_extend/" class="md-nav__link">
-        自定义DSDL Field
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -839,8 +769,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../advanced/dsdl_dataloader/" class="md-nav__link">
-        DSDL DataLoader开发
+      <a href="../advanced/dsdl_extend/" class="md-nav__link">
+        自定义DSDL Field
       </a>
     </li>
   
@@ -1668,60 +1598,35 @@
 <p>为了方便用户快速的对数据进行检索、下载、管理、统计分析、可视化等操作，我们提供了一整套的数据工具链<strong>ODL</strong> (Open Dataset Library)，可大幅提升用户使用数据效率。</p>
 <p>用户教程将对AI模型开发全流程中的数据操作进行展开：</p>
 <details>
-<summary><font size=5>1.数据集下载</font></summary>
+<summary><font size=5>1.数据集准备</font></summary>
  <ul>
-     <li>情形1: 原始数据集+DSDL标注文件可直接下载</li>
-     <li>情形2：原始数据集需自行下载</li>
-     <li>情形3：DSDL标注文件需自行转换</li>
+     <li>1.1 数据集下载</li>
+     <li>1.2 数据集组织</li>
+     <li>1.3 数据集配置</li>
  </ul>
 </details>
 
 <details>
-<summary><font size=5>2.数据集分析</font></summary>
+<summary><font size=5>2.数据集可视化</font></summary>
  <ul>
-     <li>数据集统计信息</li>
-     <li>数据集可视化分析</li>
+     <li>2.1 Python可视化</li>
+     <li>2.2 CLI可视化</li>
  </ul>
 </details>
 
 <details>
-<summary><font size=5>3.模型训练</font></summary>
+<summary><font size=5>3.模型训练&推理</font></summary>
  <ul>
-     <li>配置文件准备</li>
-     <li>模型训练</li>
+     <li>3.1 OpenMMLab</li>
+     <li>3.2 Pytorch</li>
  </ul>
 </details>
 
 <details>
-<summary><font size=5>4.模型推理</font></summary>
+<summary><font size=5>4. 高阶教程</font></summary>
  <ul>
-     <li>模型推理</li>
-     <li>推理结果格式查看</li>
- </ul>
-</details>
-
-<details>
-<summary><font size=5>5.数据/模型分析</font></summary>
- <ul>
-     <li>模型指标评估</li>
-     <li>结果可视化分析</li>
- </ul>
-</details>
-
-<details>
-<summary><font size=5>6.数据集分发</font></summary>
- <ul>
-     <li>公开数据集新版本标注共享</li>
-     <li>公开数据集上传</li>
- </ul>
-</details>
-
-<details>
-<summary><font size=5>高阶教程</font></summary>
- <ul>
-     <li>1.自定义DSDL数据集</li>
-     <li>2.DSDL数据集格式转换</li>
-     <li>3.DSDL DataLoader开发</li>
+     <li>4.1 DSDL数据集标准化</li>
+     <li>4.2 自定义DSDL Field</li>
  </ul>
 </details>
 

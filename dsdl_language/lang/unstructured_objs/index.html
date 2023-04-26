@@ -537,36 +537,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorials/config/location_config/" class="md-nav__link">
-        数据集配置
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../tutorials/visualization/" class="md-nav__link">
         数据集可视化
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tutorials/dataset_analysis/" class="md-nav__link">
-        数据集分析
       </a>
     </li>
   
@@ -584,17 +556,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
       
       
       
-        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
           模型训练&推理
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
           <span class="md-nav__icon md-icon"></span>
           模型训练&推理
         </label>
@@ -628,36 +600,8 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tutorials/train_test/tensorflow/" class="md-nav__link">
-        Tensorflow
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tutorials/dataset_distribution/" class="md-nav__link">
-        数据集分发
-      </a>
     </li>
   
 
@@ -674,17 +618,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
       
       
       
-        <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
           高阶教程
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_8">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5">
           <span class="md-nav__icon md-icon"></span>
           高阶教程
         </label>
@@ -715,19 +659,19 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_2" >
       
       
       
-        <label class="md-nav__link" for="__nav_3_8_2" id="__nav_3_8_2_label" tabindex="0">
-          DSDL数据集标准化
+        <label class="md-nav__link" for="__nav_3_5_2" id="__nav_3_5_2_label" tabindex="0">
+          自定义DSDL数据集
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_8_2">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5_2">
           <span class="md-nav__icon md-icon"></span>
-          DSDL数据集标准化
+          自定义DSDL数据集
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -773,20 +717,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tutorials/advanced/dsdl_extend/" class="md-nav__link">
-        自定义DSDL Field
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -800,8 +730,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorials/advanced/dsdl_dataloader/" class="md-nav__link">
-        DSDL DataLoader开发
+      <a href="../../../tutorials/advanced/dsdl_extend/" class="md-nav__link">
+        自定义DSDL Field
       </a>
     </li>
   
@@ -1712,49 +1642,37 @@
 <ul>
 <li><code>Image</code>：每个实例都是一张图像，可以通过像素的矩阵来表示。</li>
 <li><code>Video</code>：每个实例可以被解码为一个序列的视频帧，每个视频帧都是一张图像。</li>
-<li><code>Audio</code>：每个实例都是一段音频信号，可以通过波序列来表示。</li>
 <li><code>Text</code>：每个实例都是一个单词序列。</li>
 <li><code>PointCloud</code>：每个实例都是3D点的集合，用来表示一个3D对象的形状。</li>
 <li><code>LabelMap</code>：每个实例都是整型标注的组成的矩阵，每个整型标注对应了一个类别。</li>
 </ul>
 <h3 id="232">2.3.2 描述一个非结构化对象</h3>
-<p>在DSDL中，一个非结构化对象可以通过一个对象定位器和一个可选的，用来提供对象额外信息的描述器来声明。</p>
-<p>拿一张路径为<code>abc/0001.jpg</code>为例，它可以使用下面任意一种方式来表示：</p>
+<p>在DSDL中，一个非结构化对象可以通过一个对象定位器和其他属于该对象的参数来声明。</p>
+<p>拿一张路径为<code>abc/0001.jpg</code>为例，它可以使用下面的方式来表示：</p>
 <ul>
-<li>
-<p><strong>只使用目标定位器</strong>：只使用目标定位器<code>abc/0001.jpg</code>。当一个变量或者一个字段有一个非结构化目标类的数据类型并且它的值为一个字符串，则该字符串将被解析为一个目标定位器。</p>
-</li>
-<li>
-<p><strong>使用描述器</strong>：如果用户想提供一些额外的信息，比如尺寸或色彩模式等，则可以使用一个json对象来表示该非结构化对象，json对象包含<code>$loc</code>和<code>$descr</code>两个属性，具体如下：</p>
-</li>
+<li><strong>目标定位器</strong>：使用目标定位器<code>abc/0001.jpg</code>。当一个变量或者一个字段有一个非结构化目标类的数据类型并且它的值为一个字符串，则该字符串将被解析为一个目标定位器。</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">$loc</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;abc/0001.jpg&quot;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">$descr</span><span class="p">:</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">640</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">480</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;rgb&quot;</span>
-</code></pre></div>
-<p>这里的描述信息通过<code>$descr</code>字段来提供，会被对应的非结构化对象类的对象加载器使用。</p>
 <h3 id="233">2.3.3 扩展非结构化对象类</h3>
 <p>DSDL允许用户通过指定如何从存储中加载对象来注册<strong>扩展非结构化对象类</strong>。</p>
 <p>在客户端，可以通过定义一个抽象基类<code>UnstructuredObject</code>的子类并实现其<code>load</code>方法来进行对象加载，从而实现扩展非结构化对象类。</p>
 <p>具体来讲，在Python中，抽象基类<code>UnstructuredObject</code>通过下面的方式定义：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">class</span> <span class="nc">UnstructuredObject</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Abstract base class for unstructured objects.&quot;&quot;&quot;</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="nd">@abstractmethod</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">descr</span><span class="p">):</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Load an unstructured object from a given file-like object.</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="sd">        Arguments:</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="sd">            file:   file-like, from which the unstructured object is loaded.</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="sd">            descr:  dict-like, which provides the descriptive information.</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="sd">        Returns:</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="sd">            The loaded object.</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="sd">        &quot;&quot;&quot;</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        <span class="k">pass</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">class</span> <span class="nc">UnstructuredObject</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Abstract base class for unstructured objects.&quot;&quot;&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="nd">@abstractmethod</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">descr</span><span class="p">):</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="sd">&quot;&quot;&quot;Load an unstructured object from a given file-like object.</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="sd">        Arguments:</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="sd">            file:   file-like, from which the unstructured object is loaded.</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="sd">            descr:  dict-like, which provides the descriptive information.</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="sd">        Returns:</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="sd">            The loaded object.</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="sd">        &quot;&quot;&quot;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="k">pass</span>
 </code></pre></div>
 <blockquote>
 <p><strong>注意</strong>：这里的<code>load</code>方法需要接收一个已经打开的文件对象，而不是一个文件路径。该设计是基于“关注点分离”原则：数据系统有责任去解析对象定位器并且构建一个对应的文件阅读器。因此<code>UnstructuredObject</code>类的子类只需要考虑在给定一个文件阅读器后，如何加载，解析与验证对象。</p>

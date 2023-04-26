@@ -13,7 +13,7 @@
       
       
       
-        <link rel="prev" href="../../dataset_distribution/">
+        <link rel="prev" href="../../train_test/pytorch/">
       
       
         <link rel="next" href="../dsdl_define/">
@@ -539,36 +539,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../config/location_config/" class="md-nav__link">
-        Dataset Config
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../visualization/" class="md-nav__link">
         数据集可视化
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dataset_analysis/" class="md-nav__link">
-        Dataset Analysis
       </a>
     </li>
   
@@ -586,17 +558,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
       
       
       
-        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
           模型训练&推理
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
           <span class="md-nav__icon md-icon"></span>
           模型训练&推理
         </label>
@@ -630,36 +602,8 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../train_test/tensorflow/" class="md-nav__link">
-        Tensorflow
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dataset_distribution/" class="md-nav__link">
-        Dataset Distribution
-      </a>
     </li>
   
 
@@ -678,17 +622,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
       
       
       
-        <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
           High-Level Tutorial
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_3_8">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_5">
           <span class="md-nav__icon md-icon"></span>
           High-Level Tutorial
         </label>
@@ -729,19 +673,19 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_2" >
       
       
       
-        <label class="md-nav__link" for="__nav_3_8_2" id="__nav_3_8_2_label" tabindex="0">
-          DSDL数据集标准化
+        <label class="md-nav__link" for="__nav_3_5_2" id="__nav_3_5_2_label" tabindex="0">
+          自定义DSDL数据集
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_8_2">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5_2">
           <span class="md-nav__icon md-icon"></span>
-          DSDL数据集标准化
+          自定义DSDL数据集
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -787,20 +731,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dsdl_extend/" class="md-nav__link">
-        Field Extend
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -814,8 +744,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../dsdl_dataloader/" class="md-nav__link">
-        DSDL DataLoader开发
+      <a href="../dsdl_extend/" class="md-nav__link">
+        Field Extend
       </a>
     </li>
   
@@ -1609,15 +1539,17 @@
 
 
 <h1 id="dsdl">DSDL高阶教程</h1>
-<p>本章节将详细讲解如何通过DSDL对已有的数据集进行描述，并转换为DSDL数据集，以便使用后续ODL工具链相关功能。</p>
+<p>本章节将详细讲解如何通过DSDL对已有的数据集进行描述，并转换为DSDL数据集，以便使用后续ODL工具链相关功能。另外，还讲解了如何自定义DSDL Field，能够拓展用户需要的数据类型，从而拓展DSDL标准，欢迎用户给<a href="https://github.com/opendatalab/dsdl-sdk">DSDL-SDK</a>提PR。</p>
 <p>主要分为以下几个部分：</p>
-<p><strong>1. DSDL数据集标准化</strong>：</p>
 <ul>
-<li><strong>自定义DSDL数据集</strong>：包括原始数据集调研、DSDL模板制定</li>
-<li><strong>数据集转换</strong>：提供主流格式的转换脚本，对于非主流格式，提供SDK接口和实用工具，辅助数据集转换</li>
-<li><strong>数据集验证</strong>：对定义的DSDL数据集进行验证，确认其规范性</li>
+<li><strong>自定义DSDL数据集</strong>：<ul>
+<li><strong>DSDL数据集模板制定</strong>：包括用DSDL描述已有的数据集、利用任务模板定义一个新的DSDL数据集。</li>
+<li><strong>DSDL数据集格式转换</strong>：提供了转换脚本模板（提供SDK接口和实用函数，辅助数据集转换）、并以一个实际示例演示了转换流程。</li>
+<li><strong>DSDL数据集验证</strong>：对定义的DSDL数据集进行验证，确认其规范性。</li>
 </ul>
-<p><strong>2. DSDL DataLoader开发</strong>：提供多个任务的DataLoader接口，并指导如何对DataLoader进行适应性修改，或自行开发一个新任务的DataLoader</p>
+</li>
+<li><strong>自定义DSDL Field</strong>: 介绍了DSDL Field拓展的具体步骤。</li>
+</ul>
 
 
 

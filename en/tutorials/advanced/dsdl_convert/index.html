@@ -539,36 +539,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../config/location_config/" class="md-nav__link">
-        Dataset Config
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../visualization/" class="md-nav__link">
         数据集可视化
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dataset_analysis/" class="md-nav__link">
-        Dataset Analysis
       </a>
     </li>
   
@@ -586,17 +558,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
       
       
       
-        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
           模型训练&推理
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
           <span class="md-nav__icon md-icon"></span>
           模型训练&推理
         </label>
@@ -630,36 +602,8 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../train_test/tensorflow/" class="md-nav__link">
-        Tensorflow
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../dataset_distribution/" class="md-nav__link">
-        Dataset Distribution
-      </a>
     </li>
   
 
@@ -678,17 +622,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
       
       
       
-        <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
           High-Level Tutorial
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_3_8">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_5">
           <span class="md-nav__icon md-icon"></span>
           High-Level Tutorial
         </label>
@@ -721,19 +665,19 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_2" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_2" checked>
       
       
       
-        <label class="md-nav__link" for="__nav_3_8_2" id="__nav_3_8_2_label" tabindex="0">
-          DSDL数据集标准化
+        <label class="md-nav__link" for="__nav_3_5_2" id="__nav_3_5_2_label" tabindex="0">
+          自定义DSDL数据集
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_2_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_3_8_2">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_5_2">
           <span class="md-nav__icon md-icon"></span>
-          DSDL数据集标准化
+          自定义DSDL数据集
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -881,20 +825,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../dsdl_extend/" class="md-nav__link">
-        Field Extend
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -908,8 +838,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../dsdl_dataloader/" class="md-nav__link">
-        DSDL DataLoader开发
+      <a href="../dsdl_extend/" class="md-nav__link">
+        Field Extend
       </a>
     </li>
   
@@ -1798,17 +1728,17 @@
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            └── prepare.py                       # 数据集准备脚本，可参考本小节提供的模板
 </code></pre></div>
 <p>以上的目录中的template.yaml为<a href="../dsdl_define/">DSDL数据集模板制定</a>小节中制定的模板，用户可以自定义模板，也可以在DSDL SDK中直接调用任务模板（后文的转换脚本模板中会标明用法）。</p>
-<p><strong>prepare.py中包含的模块如下</strong>：</p>
+<p>我们为用户准备了prepare.py的模板，用户只需要按照实际情况实现部分函数即可。<strong>prepare.py中包含的模块如下</strong>：</p>
 <ul>
-<li>prepare函数：该脚本主要是用于解压原始数据集压缩包。该脚本需要传入的参数为原始数据集压缩包的文件夹路径，即<dataset_name>/compressed/。我们已提供了模板，转换者只需要修改解压部分的命令即可（在代码模板中有标明）。</li>
-<li>get_subset_samples_list函数：主要是用于生成class-dom和set-<code>&lt;segment&gt;</code>/<code>&lt;segment&gt;</code>_samples.json，请自行修改以适应不同数据集的标注内容提取。另外，需要注意的是，为了防止class-dom中出现不合规的命名，需要对所有类别名做转换（由replace_special_characters函数实现）。</li>
+<li>prepare函数：该脚本主要是用于解压原始数据集压缩包。该脚本需要传入的参数为原始数据集压缩包的文件夹路径，即<code>&lt;dataset_name&gt;/compressed/</code>。我们已提供了模板，内置zip和tar.gz格式，如需要支持其他格式，只需要修改解压部分的命令即可（在代码模板中有标明）。</li>
+<li>get_subset_samples_list函数：主要是用于生成<code>class-dom.yaml</code>和<code>set-&lt;segment&gt;.yaml</code>/<code>set-&lt;segment&gt;_samples.json</code>，请自行修改以适应不同数据集的标注内容提取。另外，需要注意的是，为了防止class-dom中出现不合规的命名，需要对所有类别名做转换（由replace_special_characters函数实现）。</li>
 <li>（可选）dataset_converter函数：中间格式转换，用于对数据集的媒体文件或标注文件进行必要的中间格式转换，在此举两个实例：<ul>
-<li>比如像在分割数据集中，需要把三波段的label map映射为单通道的Int值图，由于目前DSDL标准里要求分割数据集以单通道Int值图存储mask，因此需要对数据集的标注文件做转换的替换。</li>
+<li>比如像在分割数据集中，由于目前DSDL标准里要求分割数据集以单通道Int值图存储mask，需要把三波段的label map映射为单通道的Int值图，因此需要对数据集的标注文件做转换的替换。</li>
 <li>比如CIFAR10存储的图片格式是TFrecord，多个图片存在同一个TFrecord里，而DSDL的Image path需要一一对应关系，因此我们需要将每个图片提取出来转成PNG。</li>
 </ul>
 </li>
 <li>main函数中必填的参数：<ul>
-<li>meta_info：包括数据集名称(Dataset Name)、官网(HomePage)、媒体文件的模态(Modality)、任务名称(Task)，注意，如果希望直接调用已有的任务模板，Task Name需要符合规范，可用的Task Name请参考<a href="../../../dsdl_template/overview/">任务模板介绍</a>页面中的<strong>任务英文全称</strong>。</li>
+<li>meta_info：包括数据集名称(Dataset Name)、官网(HomePage)、媒体文件的模态(Modality)、任务名称(Task)，注意，如果希望直接调用已有的任务模板，Task Name需要符合规范，可调用的Task Name请参考<a href="../../../dsdl_template/overview/">任务模板介绍</a>页面中的<strong>任务英文全称</strong>。</li>
 <li>flag_middle_format：如果实现了dataset_converter函数，则需要将flag_middle_format改为True，以生成更加规范的README</li>
 <li>class_dom_names_original：以list的形式，将数据集的类别存储在该字段中，注意，其排列顺序决定了class_id的生成，其中排在首位的class_id为1，第二位为2，以此类推。</li>
 <li>subset_name_list：数据集子集的列表，比如['train', 'val']，根据数据集实际情况修改。</li>
@@ -1819,227 +1749,246 @@
 <p>具体的prepare.py的模板如下：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">argparse</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span> <span class="nn">os</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span> <span class="nn">shutil</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">import</span> <span class="nn">sys</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_config_file</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_readme_with_middle_format</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_readme_without_middle_format</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_tree_string</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">check_dsdl_meta_info</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">check_task_template_file</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">generate_class_dom</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">generate_subset_yaml_and_json</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">replace_special_characters</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">get_dsdl_template_from_lib</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="c1">#############提取原始数据集字段，生成sample list，用户需要实现该函数#############################</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="k">def</span> <span class="nf">get_subset_samples_list</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    <span class="n">samples_list</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    <span class="c1">## 返回的列表示例如下：</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="c1">## 注意每个字段名称要与template.yaml中定义的字段和结构完全相同，比如：</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    <span class="c1"># [{</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    <span class="c1">#     &quot;media&quot;: {</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>    <span class="c1">#         &quot;image&quot;: &quot;images/train/1.jpg&quot;,</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>    <span class="c1">#         &quot;image_shape&quot;: [405,720]</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>    <span class="c1">#     },</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>    <span class="c1">#     &quot;objects&quot;: [</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    <span class="c1">#         {</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    <span class="c1">#             &quot;bbox&quot;: [220,183,154,104],</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>    <span class="c1">#             &quot;label&quot;: &quot;holothurian&quot;,</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>    <span class="c1">#             &quot;iscrowd&quot;: false,</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>    <span class="c1">#             &quot;segmentation&quot;: [[</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>    <span class="c1">#                     [220,183],</span>
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>    <span class="c1">#                     [374,183],</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>    <span class="c1">#                     [374,287],</span>
-<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>    <span class="c1">#                     [220,287]]]</span>
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>    <span class="c1">#         },</span>
-<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>    <span class="c1">#         ...,</span>
-<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>    <span class="c1">#  },</span>
-<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>    <span class="c1">#  ...</span>
-<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>    <span class="c1"># ]</span>
-<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>    <span class="k">return</span> <span class="n">samples_list</span>
-<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>
-<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="c1">###########数据集中间格式转换，如果需要的话，用户需要实现该函数#############################</span>
-<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="k">def</span> <span class="nf">dataset_to_middle_format</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>    <span class="c1"># 有些数据集需要转换成中间格式，</span>
-<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>    <span class="c1"># 在这个函数中编写转换代码，并记录中间格式的文件夹树形结构和转换结果描述。</span>
-<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>    <span class="c1">## 1. 确定中间格式数据保存路径</span>
-<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>    <span class="n">middle_data_path</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>
-<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>    <span class="c1">## 2. 把数据集转换成中间格式</span>
-<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a>    <span class="c1">## 实现代码这里编写</span>
-<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>    <span class="k">pass</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span> <span class="nn">re</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">import</span> <span class="nn">shutil</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="kn">import</span> <span class="nn">tarfile</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kn">import</span> <span class="nn">zipfile</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span><span class="p">,</span> <span class="n">cpu_count</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_config_file</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_readme_with_middle_format</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_readme_without_middle_format</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_tree_string</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">check_dsdl_meta_info</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">check_task_template_file</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">generate_class_dom</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">generate_subset_yaml_and_json</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">replace_special_characters</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">get_dsdl_template_from_lib</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="c1">#############生成DSDL标注，用户需要实现该函数#############################</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="k">def</span> <span class="nf">get_subset_samples_list</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    <span class="n">samples_list</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>    <span class="c1">## 返回的列表示例如下：</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>    <span class="c1">## 注意每个字段名称要与template.yaml中定义的字段和结构完全相同，比如：</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>    <span class="c1"># [{</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>    <span class="c1">#     &quot;media&quot;: {</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>    <span class="c1">#         &quot;image&quot;: &quot;images/train/1.jpg&quot;,</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>    <span class="c1">#         &quot;image_shape&quot;: [405,720]</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>    <span class="c1">#     },</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>    <span class="c1">#     &quot;objects&quot;: [</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>    <span class="c1">#         {</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>    <span class="c1">#             &quot;bbox&quot;: [220,183,154,104],</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>    <span class="c1">#             &quot;label&quot;: &quot;holothurian&quot;,</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>    <span class="c1">#             &quot;iscrowd&quot;: false,</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>    <span class="c1">#             &quot;segmentation&quot;: [[</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>    <span class="c1">#                     [220,183],</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>    <span class="c1">#                     [374,183],</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>    <span class="c1">#                     [374,287],</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>    <span class="c1">#                     [220,287]]]</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>    <span class="c1">#         },</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>    <span class="c1">#         ...,</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>    <span class="c1">#  },</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>    <span class="c1">#  ...</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>    <span class="c1"># ]</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a>    <span class="k">return</span> <span class="n">samples_list</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>
 <a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a>
-<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="c1">################用户不需要修改该函数###############################################</span>
-<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="k">def</span> <span class="nf">parse_args</span><span class="p">():</span>
-<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;命令行参数解析&quot;&quot;&quot;</span>
-<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>    <span class="n">parse</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
-<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Prepare the dsdl_SemSeg_full dataset from original dataset.&#39;</span>
-<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a>    <span class="p">)</span>
-<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a>    <span class="n">parse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a>        <span class="s1">&#39;--decompressed&#39;</span><span class="p">,</span> <span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
-<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;This argument decides whether the dataset files are decompressed. &#39;</span>
-<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>             <span class="s1">&#39;Add &quot;-d&quot; argument to skip decompress process, &#39;</span>
-<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>             <span class="s1">&#39;and directly pass the decompressed dataset. &#39;</span>
-<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>             <span class="s1">&#39;The default is need decompress process.&#39;</span>
-<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a>    <span class="p">)</span>
-<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a>    <span class="n">parse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a>        <span class="s1">&#39;--copy&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
-<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a>        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;This argument decides whether the decompressed dataset files will be copied as a backup and then run the converter. &#39;</span>
-<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a>             <span class="s1">&#39;Add &quot;-c&quot; argument to create a copy, and then run the converter. &#39;</span>
-<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a>             <span class="s1">&#39;The default is not to create a copy and directly overwrite the original data.&#39;</span>
-<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a>    <span class="p">)</span>
-<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a>    <span class="n">parse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
-<a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a>        <span class="s1">&#39;path&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
-<a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a>        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The original dataset path, a folder with compressed files if &quot;-d&quot; doesn</span><span class="se">\&#39;</span><span class="s1">t exist, &#39;</span>
-<a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a>             <span class="s1">&#39;or decompressed folder when &quot;-d&quot; exists.&#39;</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="c1">###########数据集中间格式转换，如果需要的话，用户需要实现该函数#############################</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="k">def</span> <span class="nf">dataset_to_middle_format</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a>    <span class="c1"># 有些数据集需要转换成中间格式，</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>    <span class="c1"># 在这个函数中编写转换代码，并记录中间格式的文件夹树形结构和转换结果描述。</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>    <span class="c1">## 1. 确定中间格式数据保存路径</span>
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a>    <span class="n">middle_data_path</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a>
+<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a>    <span class="c1">## 2. 把数据集转换成中间格式</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>    <span class="c1">## 实现代码这里编写</span>
+<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>    <span class="k">pass</span>
+<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>
+<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="c1">##########################用户不需要修改##########################</span>
+<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="k">def</span> <span class="nf">parse_args</span><span class="p">():</span>
+<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;命令行参数解析&quot;&quot;&quot;</span>
+<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a>    <span class="n">parse</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
+<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a>        <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Prepare the dsdl_SemSeg_full dataset from original dataset.&#39;</span>
+<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a>    <span class="p">)</span>
+<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a>    <span class="n">parse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a>        <span class="s1">&#39;--decompressed&#39;</span><span class="p">,</span> <span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a>        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;This argument decides whether the dataset files are decompressed. &#39;</span>
+<a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a>             <span class="s1">&#39;Add &quot;-d&quot; argument to skip decompress process, &#39;</span>
+<a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a>             <span class="s1">&#39;and directly pass the decompressed dataset. &#39;</span>
+<a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a>             <span class="s1">&#39;The default is need decompress process.&#39;</span>
 <a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a>    <span class="p">)</span>
-<a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a>    <span class="n">args</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
-<a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a>    <span class="k">return</span> <span class="n">args</span>
-<a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a>
-<a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a><span class="c1">###########需要修改prepare函数中的解压操作###########</span>
-<a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a><span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
-<a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;根据不同的命令行参数执行解压、复制操作,并调用数据集文件转换和dsdl标注生成。&quot;&quot;&quot;</span>
-<a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a>    <span class="n">SCRIPT_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
-<a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a>    <span class="n">DSDL_PATH</span> <span class="o">=</span> <span class="n">SCRIPT_PATH</span><span class="o">.</span><span class="n">parent</span>
-<a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a>    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">decompressed</span><span class="p">:</span>
-<a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a>        <span class="n">ORIGINAL_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
-<a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a>        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">copy</span><span class="p">:</span>
-<a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a>            <span class="n">PREPARED_PATH</span> <span class="o">=</span> <span class="n">ORIGINAL_PATH</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;prepared&quot;</span>
-<a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a>            <span class="k">if</span> <span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-<a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a>                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path </span><span class="si">{</span><span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s2"> already exists.&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a>            <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="n">ORIGINAL_PATH</span><span class="p">,</span> <span class="n">PREPARED_PATH</span><span class="p">)</span>
-<a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a>            <span class="k">if</span> <span class="n">flag_middle_format</span><span class="p">:</span>
-<a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The operation will directly overwrite the dataset files with no backup.&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a>                <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a>                    <span class="n">confirm</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Input [yes] to continue, or [quit] to exit.  &quot;</span><span class="p">)</span>
-<a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a>                    <span class="k">if</span> <span class="n">confirm</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;quit&quot;</span><span class="p">:</span>
-<a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a>                        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a>                    <span class="k">elif</span> <span class="n">confirm</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;yes&quot;</span><span class="p">:</span>
-<a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a>                        <span class="k">break</span>
-<a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a>            <span class="n">PREPARED_PATH</span> <span class="o">=</span> <span class="n">ORIGINAL_PATH</span>
-<a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a>        <span class="n">COMPRESSED_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
-<a id="__codelineno-1-107" name="__codelineno-1-107" href="#__codelineno-1-107"></a>        <span class="n">PREPARED_PATH</span> <span class="o">=</span> <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;prepared&quot;</span>
-<a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a>        <span class="k">if</span> <span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-<a id="__codelineno-1-109" name="__codelineno-1-109" href="#__codelineno-1-109"></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path </span><span class="si">{</span><span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s2"> already exists.&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-110" name="__codelineno-1-110" href="#__codelineno-1-110"></a>        <span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
-<a id="__codelineno-1-111" name="__codelineno-1-111" href="#__codelineno-1-111"></a>
-<a id="__codelineno-1-112" name="__codelineno-1-112" href="#__codelineno-1-112"></a>        <span class="n">found_compressed</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-1-113" name="__codelineno-1-113" href="#__codelineno-1-113"></a>        <span class="c1">#######需要修改:解压操作，内置zip和tar.gz格式，其他格式需要修改#############</span>
-<a id="__codelineno-1-114" name="__codelineno-1-114" href="#__codelineno-1-114"></a>        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.zip&quot;</span><span class="p">):</span>
-<a id="__codelineno-1-115" name="__codelineno-1-115" href="#__codelineno-1-115"></a>            <span class="n">found_compressed</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-1-116" name="__codelineno-1-116" href="#__codelineno-1-116"></a>            <span class="n">zf</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-<a id="__codelineno-1-117" name="__codelineno-1-117" href="#__codelineno-1-117"></a>            <span class="n">zf</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">PREPARED_PATH</span><span class="p">)</span>
-<a id="__codelineno-1-118" name="__codelineno-1-118" href="#__codelineno-1-118"></a>        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span>
-<a id="__codelineno-1-119" name="__codelineno-1-119" href="#__codelineno-1-119"></a>            <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tar.gz&quot;</span><span class="p">),</span>
-<a id="__codelineno-1-120" name="__codelineno-1-120" href="#__codelineno-1-120"></a>            <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tgz&quot;</span><span class="p">),</span>
-<a id="__codelineno-1-121" name="__codelineno-1-121" href="#__codelineno-1-121"></a>            <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tar&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-122" name="__codelineno-1-122" href="#__codelineno-1-122"></a>        <span class="p">):</span>
-<a id="__codelineno-1-123" name="__codelineno-1-123" href="#__codelineno-1-123"></a>            <span class="n">found_compressed</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-1-124" name="__codelineno-1-124" href="#__codelineno-1-124"></a>            <span class="n">tf</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-<a id="__codelineno-1-125" name="__codelineno-1-125" href="#__codelineno-1-125"></a>            <span class="n">tf</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">PREPARED_PATH</span><span class="p">)</span>
-<a id="__codelineno-1-126" name="__codelineno-1-126" href="#__codelineno-1-126"></a>
-<a id="__codelineno-1-127" name="__codelineno-1-127" href="#__codelineno-1-127"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">found_compressed</span><span class="p">:</span>
-<a id="__codelineno-1-128" name="__codelineno-1-128" href="#__codelineno-1-128"></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Compressed file not found. Check the file path.&#39;</span><span class="p">)</span>
-<a id="__codelineno-1-129" name="__codelineno-1-129" href="#__codelineno-1-129"></a>
-<a id="__codelineno-1-130" name="__codelineno-1-130" href="#__codelineno-1-130"></a>        <span class="c1"># 如果解压后发现prepared文件夹中仍有一层数据集名称的嵌套文件夹，</span>
-<a id="__codelineno-1-131" name="__codelineno-1-131" href="#__codelineno-1-131"></a>        <span class="c1"># 使用以下代码删除这层嵌套，将数据集文件直接放在prepared文件夹中。</span>
-<a id="__codelineno-1-132" name="__codelineno-1-132" href="#__codelineno-1-132"></a>        <span class="c1"># for file in (PREPARED_PATH / &quot;foldername&quot;).iterdir():</span>
-<a id="__codelineno-1-133" name="__codelineno-1-133" href="#__codelineno-1-133"></a>        <span class="c1">#     file.rename(file.parent.parent / file.name)</span>
-<a id="__codelineno-1-134" name="__codelineno-1-134" href="#__codelineno-1-134"></a>        <span class="c1"># (PREPARED_PATH / &quot;foldername&quot;).rmdir()</span>
-<a id="__codelineno-1-135" name="__codelineno-1-135" href="#__codelineno-1-135"></a>        <span class="c1">#############################################################################</span>
-<a id="__codelineno-1-136" name="__codelineno-1-136" href="#__codelineno-1-136"></a>
-<a id="__codelineno-1-137" name="__codelineno-1-137" href="#__codelineno-1-137"></a>        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">copy</span><span class="p">:</span>
-<a id="__codelineno-1-138" name="__codelineno-1-138" href="#__codelineno-1-138"></a>            <span class="n">ORIGINAL_PATH</span> <span class="o">=</span> <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;original&quot;</span>
-<a id="__codelineno-1-139" name="__codelineno-1-139" href="#__codelineno-1-139"></a>            <span class="k">if</span> <span class="n">ORIGINAL_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-<a id="__codelineno-1-140" name="__codelineno-1-140" href="#__codelineno-1-140"></a>                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path </span><span class="si">{</span><span class="n">ORIGINAL_PATH</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s2"> already exists.&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-141" name="__codelineno-1-141" href="#__codelineno-1-141"></a>            <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="n">PREPARED_PATH</span><span class="p">,</span> <span class="n">ORIGINAL_PATH</span><span class="p">)</span>
+<a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a>    <span class="n">parse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+<a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a>        <span class="s1">&#39;--copy&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span>
+<a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a>        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;This argument decides whether the decompressed dataset files will be copied as a backup and then run the converter. &#39;</span>
+<a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a>             <span class="s1">&#39;Add &quot;-c&quot; argument to create a copy, and then run the converter. &#39;</span>
+<a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a>             <span class="s1">&#39;The default is not to create a copy and directly overwrite the original data.&#39;</span>
+<a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a>    <span class="p">)</span>
+<a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a>    <span class="n">parse</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+<a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a>        <span class="s1">&#39;path&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span>
+<a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a>        <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The original dataset path, a folder with compressed files if &quot;-d&quot; doesn</span><span class="se">\&#39;</span><span class="s1">t exist, &#39;</span>
+<a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a>             <span class="s1">&#39;or decompressed folder when &quot;-d&quot; exists.&#39;</span>
+<a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a>    <span class="p">)</span>
+<a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a>    <span class="n">args</span> <span class="o">=</span> <span class="n">parse</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+<a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a>    <span class="n">args</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span>
+<a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a>    <span class="k">return</span> <span class="n">args</span>
+<a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a>
+<a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a>
+<a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a><span class="c1">###########需要修改prepare函数中的解压操作###########</span>
+<a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a><span class="k">def</span> <span class="nf">prepare</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;根据不同的命令行参数执行解压、复制操作,并调用数据集文件转换和dsdl标注生成。&quot;&quot;&quot;</span>
+<a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a>    <span class="n">SCRIPT_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
+<a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a>    <span class="n">DSDL_PATH</span> <span class="o">=</span> <span class="n">SCRIPT_PATH</span><span class="o">.</span><span class="n">parent</span>
+<a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a>    <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">decompressed</span><span class="p">:</span>
+<a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a>        <span class="n">ORIGINAL_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a>        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">copy</span><span class="p">:</span>
+<a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a>            <span class="n">PREPARED_PATH</span> <span class="o">=</span> <span class="n">ORIGINAL_PATH</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;prepared&quot;</span>
+<a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a>            <span class="k">if</span> <span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+<a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a>                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path </span><span class="si">{</span><span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s2"> already exists.&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-107" name="__codelineno-1-107" href="#__codelineno-1-107"></a>            <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="n">ORIGINAL_PATH</span><span class="p">,</span> <span class="n">PREPARED_PATH</span><span class="p">)</span>
+<a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-1-109" name="__codelineno-1-109" href="#__codelineno-1-109"></a>            <span class="k">if</span> <span class="n">flag_middle_format</span><span class="p">:</span>
+<a id="__codelineno-1-110" name="__codelineno-1-110" href="#__codelineno-1-110"></a>                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The operation will directly overwrite the dataset files with no backup.&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-111" name="__codelineno-1-111" href="#__codelineno-1-111"></a>                <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-1-112" name="__codelineno-1-112" href="#__codelineno-1-112"></a>                    <span class="n">confirm</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Input [yes] to continue, or [quit] to exit.  &quot;</span><span class="p">)</span>
+<a id="__codelineno-1-113" name="__codelineno-1-113" href="#__codelineno-1-113"></a>                    <span class="k">if</span> <span class="n">confirm</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;quit&quot;</span><span class="p">:</span>
+<a id="__codelineno-1-114" name="__codelineno-1-114" href="#__codelineno-1-114"></a>                        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-1-115" name="__codelineno-1-115" href="#__codelineno-1-115"></a>                    <span class="k">elif</span> <span class="n">confirm</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;yes&quot;</span><span class="p">:</span>
+<a id="__codelineno-1-116" name="__codelineno-1-116" href="#__codelineno-1-116"></a>                        <span class="k">break</span>
+<a id="__codelineno-1-117" name="__codelineno-1-117" href="#__codelineno-1-117"></a>            <span class="n">PREPARED_PATH</span> <span class="o">=</span> <span class="n">ORIGINAL_PATH</span>
+<a id="__codelineno-1-118" name="__codelineno-1-118" href="#__codelineno-1-118"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-1-119" name="__codelineno-1-119" href="#__codelineno-1-119"></a>        <span class="n">COMPRESSED_PATH</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<a id="__codelineno-1-120" name="__codelineno-1-120" href="#__codelineno-1-120"></a>        <span class="n">PREPARED_PATH</span> <span class="o">=</span> <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;prepared&quot;</span>
+<a id="__codelineno-1-121" name="__codelineno-1-121" href="#__codelineno-1-121"></a>        <span class="k">if</span> <span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+<a id="__codelineno-1-122" name="__codelineno-1-122" href="#__codelineno-1-122"></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path </span><span class="si">{</span><span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s2"> already exists.&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-123" name="__codelineno-1-123" href="#__codelineno-1-123"></a>        <span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+<a id="__codelineno-1-124" name="__codelineno-1-124" href="#__codelineno-1-124"></a>
+<a id="__codelineno-1-125" name="__codelineno-1-125" href="#__codelineno-1-125"></a>        <span class="n">found_compressed</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-1-126" name="__codelineno-1-126" href="#__codelineno-1-126"></a>        <span class="c1">#######需要修改:解压操作，内置zip和tar.gz格式，其他格式需要修改#############</span>
+<a id="__codelineno-1-127" name="__codelineno-1-127" href="#__codelineno-1-127"></a>        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.zip&quot;</span><span class="p">):</span>
+<a id="__codelineno-1-128" name="__codelineno-1-128" href="#__codelineno-1-128"></a>            <span class="n">found_compressed</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-1-129" name="__codelineno-1-129" href="#__codelineno-1-129"></a>            <span class="n">zf</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<a id="__codelineno-1-130" name="__codelineno-1-130" href="#__codelineno-1-130"></a>            <span class="n">zf</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">PREPARED_PATH</span><span class="p">)</span>
+<a id="__codelineno-1-131" name="__codelineno-1-131" href="#__codelineno-1-131"></a>        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span>
+<a id="__codelineno-1-132" name="__codelineno-1-132" href="#__codelineno-1-132"></a>            <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tar.gz&quot;</span><span class="p">),</span>
+<a id="__codelineno-1-133" name="__codelineno-1-133" href="#__codelineno-1-133"></a>            <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tgz&quot;</span><span class="p">),</span>
+<a id="__codelineno-1-134" name="__codelineno-1-134" href="#__codelineno-1-134"></a>            <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tar&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-135" name="__codelineno-1-135" href="#__codelineno-1-135"></a>        <span class="p">):</span>
+<a id="__codelineno-1-136" name="__codelineno-1-136" href="#__codelineno-1-136"></a>            <span class="n">found_compressed</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-1-137" name="__codelineno-1-137" href="#__codelineno-1-137"></a>            <span class="n">tf</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<a id="__codelineno-1-138" name="__codelineno-1-138" href="#__codelineno-1-138"></a>            <span class="n">tf</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">PREPARED_PATH</span><span class="p">)</span>
+<a id="__codelineno-1-139" name="__codelineno-1-139" href="#__codelineno-1-139"></a>
+<a id="__codelineno-1-140" name="__codelineno-1-140" href="#__codelineno-1-140"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">found_compressed</span><span class="p">:</span>
+<a id="__codelineno-1-141" name="__codelineno-1-141" href="#__codelineno-1-141"></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Compressed file not found. Check the file path.&#39;</span><span class="p">)</span>
 <a id="__codelineno-1-142" name="__codelineno-1-142" href="#__codelineno-1-142"></a>
-<a id="__codelineno-1-143" name="__codelineno-1-143" href="#__codelineno-1-143"></a>    <span class="k">return</span> <span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span> <span class="n">DSDL_PATH</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span>
-<a id="__codelineno-1-144" name="__codelineno-1-144" href="#__codelineno-1-144"></a>
-<a id="__codelineno-1-145" name="__codelineno-1-145" href="#__codelineno-1-145"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-<a id="__codelineno-1-146" name="__codelineno-1-146" href="#__codelineno-1-146"></a>    <span class="c1">#########################必填的参数##########################</span>
-<a id="__codelineno-1-147" name="__codelineno-1-147" href="#__codelineno-1-147"></a>    <span class="n">meta_info</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-1-148" name="__codelineno-1-148" href="#__codelineno-1-148"></a>        <span class="s2">&quot;Dataset Name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># e.g., VOC2012</span>
-<a id="__codelineno-1-149" name="__codelineno-1-149" href="#__codelineno-1-149"></a>        <span class="s2">&quot;HomePage&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># e.g., http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html</span>
-<a id="__codelineno-1-150" name="__codelineno-1-150" href="#__codelineno-1-150"></a>        <span class="s2">&quot;Modality&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># e.g., Images</span>
-<a id="__codelineno-1-151" name="__codelineno-1-151" href="#__codelineno-1-151"></a>        <span class="s2">&quot;Task&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
-<a id="__codelineno-1-152" name="__codelineno-1-152" href="#__codelineno-1-152"></a>    <span class="p">}</span>  <span class="c1"># e.g., Object Detection</span>
-<a id="__codelineno-1-153" name="__codelineno-1-153" href="#__codelineno-1-153"></a>
-<a id="__codelineno-1-154" name="__codelineno-1-154" href="#__codelineno-1-154"></a>    <span class="n">flag_middle_format</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># 数据集是否需要转换成中间格式(是的话，修改为True)</span>
-<a id="__codelineno-1-155" name="__codelineno-1-155" href="#__codelineno-1-155"></a>    <span class="n">class_dom_names_original</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 需要修改, e.g., [&#39;dog&#39;,&#39;cat&#39;]，可以自行实现函数提取</span>
-<a id="__codelineno-1-156" name="__codelineno-1-156" href="#__codelineno-1-156"></a>    <span class="n">subset_name_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 数据集的子集名称列表，e.g., [&#39;train&#39;, &#39;val&#39;]</span>
-<a id="__codelineno-1-157" name="__codelineno-1-157" href="#__codelineno-1-157"></a>    <span class="c1">##############################################################</span>
-<a id="__codelineno-1-158" name="__codelineno-1-158" href="#__codelineno-1-158"></a>    <span class="n">args</span> <span class="o">=</span> <span class="n">parse_args</span><span class="p">()</span>
-<a id="__codelineno-1-159" name="__codelineno-1-159" href="#__codelineno-1-159"></a>    <span class="n">root_path</span><span class="p">,</span> <span class="n">save_path</span> <span class="o">=</span> <span class="n">prepare</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-<a id="__codelineno-1-160" name="__codelineno-1-160" href="#__codelineno-1-160"></a>
-<a id="__codelineno-1-161" name="__codelineno-1-161" href="#__codelineno-1-161"></a>    <span class="c1">## 说明：</span>
-<a id="__codelineno-1-162" name="__codelineno-1-162" href="#__codelineno-1-162"></a>    <span class="c1">## 因为模板文件template.yaml是dsdl中定义数据集结构和字段的文件。</span>
-<a id="__codelineno-1-163" name="__codelineno-1-163" href="#__codelineno-1-163"></a>    <span class="c1">## 所以必须先生成template.yaml才能进行后续转换。</span>
-<a id="__codelineno-1-164" name="__codelineno-1-164" href="#__codelineno-1-164"></a>    <span class="c1">## template.yaml的位置位于: save_path/defs/template.yaml</span>
-<a id="__codelineno-1-165" name="__codelineno-1-165" href="#__codelineno-1-165"></a>    <span class="c1">## 用户可以直接调用已有的模板，或手动创建template.yaml，并拷贝到save_path/defs/目录下。</span>
-<a id="__codelineno-1-166" name="__codelineno-1-166" href="#__codelineno-1-166"></a>    <span class="c1">## 以下示例是调用已有的模板：</span>
-<a id="__codelineno-1-167" name="__codelineno-1-167" href="#__codelineno-1-167"></a>    <span class="n">get_dsdl_template_from_lib</span><span class="p">(</span><span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Task&quot;</span><span class="p">],</span> <span class="n">save_path</span><span class="p">)</span>
-<a id="__codelineno-1-168" name="__codelineno-1-168" href="#__codelineno-1-168"></a>    <span class="c1">## 注意，这里的task_name需要在数据集转换页面维护，template在converter下新建一个文件夹存储</span>
-<a id="__codelineno-1-169" name="__codelineno-1-169" href="#__codelineno-1-169"></a>
-<a id="__codelineno-1-170" name="__codelineno-1-170" href="#__codelineno-1-170"></a>    <span class="c1">###########以下是转换和生成的步骤，可根据实际情况修改#############</span>
-<a id="__codelineno-1-171" name="__codelineno-1-171" href="#__codelineno-1-171"></a>    <span class="c1">###########一般情况下，只需要修改get_subset_samples_list所需的参数###########</span>
-<a id="__codelineno-1-172" name="__codelineno-1-172" href="#__codelineno-1-172"></a>    <span class="n">check_dsdl_meta_info</span><span class="p">(</span><span class="n">meta_info</span><span class="p">)</span>  <span class="c1"># 检验meta信息是否存在错误</span>
-<a id="__codelineno-1-173" name="__codelineno-1-173" href="#__codelineno-1-173"></a>    <span class="n">check_task_template_file</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>  <span class="c1"># 检验保存路径中是否已经存在模板文件</span>
+<a id="__codelineno-1-143" name="__codelineno-1-143" href="#__codelineno-1-143"></a>        <span class="c1"># 如果解压后发现prepared文件夹中仍有一层数据集名称的嵌套文件夹，</span>
+<a id="__codelineno-1-144" name="__codelineno-1-144" href="#__codelineno-1-144"></a>        <span class="c1"># 使用以下代码删除这层嵌套，将数据集文件直接放在prepared文件夹中。</span>
+<a id="__codelineno-1-145" name="__codelineno-1-145" href="#__codelineno-1-145"></a>        <span class="c1"># for file in (PREPARED_PATH / &quot;foldername&quot;).iterdir():</span>
+<a id="__codelineno-1-146" name="__codelineno-1-146" href="#__codelineno-1-146"></a>        <span class="c1">#     file.rename(file.parent.parent / file.name)</span>
+<a id="__codelineno-1-147" name="__codelineno-1-147" href="#__codelineno-1-147"></a>        <span class="c1"># (PREPARED_PATH / &quot;foldername&quot;).rmdir()</span>
+<a id="__codelineno-1-148" name="__codelineno-1-148" href="#__codelineno-1-148"></a>        <span class="c1">#############################################################################</span>
+<a id="__codelineno-1-149" name="__codelineno-1-149" href="#__codelineno-1-149"></a>
+<a id="__codelineno-1-150" name="__codelineno-1-150" href="#__codelineno-1-150"></a>        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">copy</span><span class="p">:</span>
+<a id="__codelineno-1-151" name="__codelineno-1-151" href="#__codelineno-1-151"></a>            <span class="n">ORIGINAL_PATH</span> <span class="o">=</span> <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;original&quot;</span>
+<a id="__codelineno-1-152" name="__codelineno-1-152" href="#__codelineno-1-152"></a>            <span class="k">if</span> <span class="n">ORIGINAL_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+<a id="__codelineno-1-153" name="__codelineno-1-153" href="#__codelineno-1-153"></a>                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path </span><span class="si">{</span><span class="n">ORIGINAL_PATH</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s2"> already exists.&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-154" name="__codelineno-1-154" href="#__codelineno-1-154"></a>            <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="n">PREPARED_PATH</span><span class="p">,</span> <span class="n">ORIGINAL_PATH</span><span class="p">)</span>
+<a id="__codelineno-1-155" name="__codelineno-1-155" href="#__codelineno-1-155"></a>
+<a id="__codelineno-1-156" name="__codelineno-1-156" href="#__codelineno-1-156"></a>    <span class="k">return</span> <span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span> <span class="n">DSDL_PATH</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span>
+<a id="__codelineno-1-157" name="__codelineno-1-157" href="#__codelineno-1-157"></a>
+<a id="__codelineno-1-158" name="__codelineno-1-158" href="#__codelineno-1-158"></a>
+<a id="__codelineno-1-159" name="__codelineno-1-159" href="#__codelineno-1-159"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<a id="__codelineno-1-160" name="__codelineno-1-160" href="#__codelineno-1-160"></a>    <span class="c1">#########################必填的参数##########################</span>
+<a id="__codelineno-1-161" name="__codelineno-1-161" href="#__codelineno-1-161"></a>    <span class="n">meta_info</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-1-162" name="__codelineno-1-162" href="#__codelineno-1-162"></a>        <span class="s2">&quot;Dataset Name&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># e.g., VOC2012</span>
+<a id="__codelineno-1-163" name="__codelineno-1-163" href="#__codelineno-1-163"></a>        <span class="s2">&quot;HomePage&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># e.g., http://host.robots.ox.ac.uk/pascal/VOC/voc2012/index.html</span>
+<a id="__codelineno-1-164" name="__codelineno-1-164" href="#__codelineno-1-164"></a>        <span class="s2">&quot;Modality&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>  <span class="c1"># e.g., Images</span>
+<a id="__codelineno-1-165" name="__codelineno-1-165" href="#__codelineno-1-165"></a>        <span class="s2">&quot;Task&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span>
+<a id="__codelineno-1-166" name="__codelineno-1-166" href="#__codelineno-1-166"></a>    <span class="p">}</span>  <span class="c1"># e.g., Object Detection</span>
+<a id="__codelineno-1-167" name="__codelineno-1-167" href="#__codelineno-1-167"></a>
+<a id="__codelineno-1-168" name="__codelineno-1-168" href="#__codelineno-1-168"></a>    <span class="n">flag_middle_format</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># 数据集是否需要转换成中间格式(是的话，修改为True)</span>
+<a id="__codelineno-1-169" name="__codelineno-1-169" href="#__codelineno-1-169"></a>    <span class="n">class_dom_names_original</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 需要修改, e.g., [&#39;dog&#39;,&#39;cat&#39;]，可以自行实现函数提取</span>
+<a id="__codelineno-1-170" name="__codelineno-1-170" href="#__codelineno-1-170"></a>    <span class="n">subset_name_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 数据集的子集名称列表，e.g., [&#39;train&#39;, &#39;val&#39;]</span>
+<a id="__codelineno-1-171" name="__codelineno-1-171" href="#__codelineno-1-171"></a>
+<a id="__codelineno-1-172" name="__codelineno-1-172" href="#__codelineno-1-172"></a>    <span class="n">args</span> <span class="o">=</span> <span class="n">parse_args</span><span class="p">()</span>
+<a id="__codelineno-1-173" name="__codelineno-1-173" href="#__codelineno-1-173"></a>    <span class="n">root_path</span><span class="p">,</span> <span class="n">save_path</span> <span class="o">=</span> <span class="n">prepare</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 <a id="__codelineno-1-174" name="__codelineno-1-174" href="#__codelineno-1-174"></a>
-<a id="__codelineno-1-175" name="__codelineno-1-175" href="#__codelineno-1-175"></a>    <span class="c1"># 1. 生成原始数据集目录结构树形字符串</span>
-<a id="__codelineno-1-176" name="__codelineno-1-176" href="#__codelineno-1-176"></a>    <span class="n">original_tree_str</span> <span class="o">=</span> <span class="n">generate_tree_string</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>
-<a id="__codelineno-1-177" name="__codelineno-1-177" href="#__codelineno-1-177"></a>
-<a id="__codelineno-1-178" name="__codelineno-1-178" href="#__codelineno-1-178"></a>    <span class="c1"># 2. 数据集中间格式转换，调用dataset_to_middle_format（如有需要请实现该函数）</span>
-<a id="__codelineno-1-179" name="__codelineno-1-179" href="#__codelineno-1-179"></a>    <span class="k">if</span> <span class="n">flag_middle_format</span><span class="p">:</span>
-<a id="__codelineno-1-180" name="__codelineno-1-180" href="#__codelineno-1-180"></a>        <span class="c1">## 先实现一个函数把数据集转换成中间格式</span>
-<a id="__codelineno-1-181" name="__codelineno-1-181" href="#__codelineno-1-181"></a>        <span class="c1">## 可参考dataset_to_middle_format()中注释</span>
-<a id="__codelineno-1-182" name="__codelineno-1-182" href="#__codelineno-1-182"></a>        <span class="c1">## 需要对middle_format_tree_str和converter_description赋值</span>
-<a id="__codelineno-1-183" name="__codelineno-1-183" href="#__codelineno-1-183"></a>        <span class="n">dataset_to_middle_format</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>  <span class="c1"># 需要自行修改所需的参数</span>
-<a id="__codelineno-1-184" name="__codelineno-1-184" href="#__codelineno-1-184"></a>
-<a id="__codelineno-1-185" name="__codelineno-1-185" href="#__codelineno-1-185"></a>    <span class="c1"># 3. 生成class-dom</span>
-<a id="__codelineno-1-186" name="__codelineno-1-186" href="#__codelineno-1-186"></a>    <span class="n">class_dom_names</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-1-187" name="__codelineno-1-187" href="#__codelineno-1-187"></a>    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">class_dom_names_original</span><span class="p">:</span>
-<a id="__codelineno-1-188" name="__codelineno-1-188" href="#__codelineno-1-188"></a>        <span class="n">class_dom_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">replace_special_characters</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>  <span class="c1"># 将不合规的label名字做转换</span>
-<a id="__codelineno-1-189" name="__codelineno-1-189" href="#__codelineno-1-189"></a>    <span class="n">generate_class_dom</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">class_dom_names</span><span class="p">)</span>  <span class="c1"># 生成class-dom.yaml文件</span>
-<a id="__codelineno-1-190" name="__codelineno-1-190" href="#__codelineno-1-190"></a>
-<a id="__codelineno-1-191" name="__codelineno-1-191" href="#__codelineno-1-191"></a>    <span class="c1"># 4. 生成&lt;segment&gt;_samples.json,调用get_subset_samples_list（必须实现该函数）</span>
-<a id="__codelineno-1-192" name="__codelineno-1-192" href="#__codelineno-1-192"></a>    <span class="k">for</span> <span class="n">subset_name</span> <span class="ow">in</span> <span class="n">subset_name_list</span><span class="p">:</span>
-<a id="__codelineno-1-193" name="__codelineno-1-193" href="#__codelineno-1-193"></a>        <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Subset Name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset_name</span>
-<a id="__codelineno-1-194" name="__codelineno-1-194" href="#__codelineno-1-194"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;processing data in </span><span class="si">{</span><span class="n">subset_name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-195" name="__codelineno-1-195" href="#__codelineno-1-195"></a>        <span class="n">subset_samples_list</span> <span class="o">=</span> <span class="n">get_subset_samples_list</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">subset_name</span><span class="p">)</span>  <span class="c1"># 需要自行修改所需的参数</span>
-<a id="__codelineno-1-196" name="__codelineno-1-196" href="#__codelineno-1-196"></a>        <span class="c1"># 示例：subset_samples_list = get_subset_samples_list(root_path, subset_name)</span>
-<a id="__codelineno-1-197" name="__codelineno-1-197" href="#__codelineno-1-197"></a>        <span class="n">generate_subset_yaml_and_json</span><span class="p">(</span>
-<a id="__codelineno-1-198" name="__codelineno-1-198" href="#__codelineno-1-198"></a>            <span class="n">meta_info</span><span class="p">,</span>
-<a id="__codelineno-1-199" name="__codelineno-1-199" href="#__codelineno-1-199"></a>            <span class="n">save_path</span><span class="p">,</span>
-<a id="__codelineno-1-200" name="__codelineno-1-200" href="#__codelineno-1-200"></a>            <span class="n">subset_samples_list</span>
-<a id="__codelineno-1-201" name="__codelineno-1-201" href="#__codelineno-1-201"></a>        <span class="p">)</span>
-<a id="__codelineno-1-202" name="__codelineno-1-202" href="#__codelineno-1-202"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample list for </span><span class="si">{</span><span class="n">subset_name</span><span class="si">}</span><span class="s2"> is generated.&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-203" name="__codelineno-1-203" href="#__codelineno-1-203"></a>    <span class="n">dsdl_tree_str</span> <span class="o">=</span> <span class="n">generate_tree_string</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span><span class="n">display_num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 生成转后的dsdl数据集目录结构树形字符串</span>
+<a id="__codelineno-1-175" name="__codelineno-1-175" href="#__codelineno-1-175"></a>    <span class="c1">## 说明：</span>
+<a id="__codelineno-1-176" name="__codelineno-1-176" href="#__codelineno-1-176"></a>    <span class="c1">## 因为模板文件template.yaml是dsdl中定义数据集结构和字段的文件。</span>
+<a id="__codelineno-1-177" name="__codelineno-1-177" href="#__codelineno-1-177"></a>    <span class="c1">## 所以必须先生成template.yaml才能进行后续转换。</span>
+<a id="__codelineno-1-178" name="__codelineno-1-178" href="#__codelineno-1-178"></a>    <span class="c1">## template.yaml的位置位于: save_path/defs/template.yaml</span>
+<a id="__codelineno-1-179" name="__codelineno-1-179" href="#__codelineno-1-179"></a>    <span class="c1">## 用户可以直接调用已有的模板，或手动创建template.yaml，并拷贝到save_path/defs/目录下。</span>
+<a id="__codelineno-1-180" name="__codelineno-1-180" href="#__codelineno-1-180"></a>    <span class="c1">## 以下示例是调用已有的任务模板：</span>
+<a id="__codelineno-1-181" name="__codelineno-1-181" href="#__codelineno-1-181"></a>    <span class="n">get_dsdl_template_from_lib</span><span class="p">(</span><span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Task&quot;</span><span class="p">],</span> <span class="n">save_path</span><span class="p">)</span>
+<a id="__codelineno-1-182" name="__codelineno-1-182" href="#__codelineno-1-182"></a>    <span class="c1">## 注意，这里的meta_info[&quot;Task&quot;]需要满足DSDL任务模板页面的“任务英文全称”</span>
+<a id="__codelineno-1-183" name="__codelineno-1-183" href="#__codelineno-1-183"></a>
+<a id="__codelineno-1-184" name="__codelineno-1-184" href="#__codelineno-1-184"></a>    <span class="c1">###########以下是转换和生成的步骤，可根据实际情况修改#############</span>
+<a id="__codelineno-1-185" name="__codelineno-1-185" href="#__codelineno-1-185"></a>    <span class="c1">###########一般情况下，只需要修改get_subset_samples_list所需的参数###########</span>
+<a id="__codelineno-1-186" name="__codelineno-1-186" href="#__codelineno-1-186"></a>    <span class="n">check_dsdl_meta_info</span><span class="p">(</span><span class="n">meta_info</span><span class="p">)</span>  <span class="c1"># 检验meta信息是否存在错误</span>
+<a id="__codelineno-1-187" name="__codelineno-1-187" href="#__codelineno-1-187"></a>    <span class="n">check_task_template_file</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>  <span class="c1"># 检验保存路径中是否已经存在模板文件</span>
+<a id="__codelineno-1-188" name="__codelineno-1-188" href="#__codelineno-1-188"></a>
+<a id="__codelineno-1-189" name="__codelineno-1-189" href="#__codelineno-1-189"></a>    <span class="c1"># 1. 生成原始数据集目录结构树形字符串</span>
+<a id="__codelineno-1-190" name="__codelineno-1-190" href="#__codelineno-1-190"></a>    <span class="n">original_tree_str</span> <span class="o">=</span> <span class="n">generate_tree_string</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>
+<a id="__codelineno-1-191" name="__codelineno-1-191" href="#__codelineno-1-191"></a>
+<a id="__codelineno-1-192" name="__codelineno-1-192" href="#__codelineno-1-192"></a>    <span class="c1"># 2. 数据集中间格式转换，调用dataset_to_middle_format（如有需要请实现该函数）</span>
+<a id="__codelineno-1-193" name="__codelineno-1-193" href="#__codelineno-1-193"></a>    <span class="k">if</span> <span class="n">flag_middle_format</span><span class="p">:</span>
+<a id="__codelineno-1-194" name="__codelineno-1-194" href="#__codelineno-1-194"></a>        <span class="c1">## 先实现一个函数把数据集转换成中间格式</span>
+<a id="__codelineno-1-195" name="__codelineno-1-195" href="#__codelineno-1-195"></a>        <span class="c1">## 可参考dataset_to_middle_format()中注释</span>
+<a id="__codelineno-1-196" name="__codelineno-1-196" href="#__codelineno-1-196"></a>        <span class="c1">## 需要对middle_format_tree_str和converter_description赋值</span>
+<a id="__codelineno-1-197" name="__codelineno-1-197" href="#__codelineno-1-197"></a>        <span class="n">dataset_to_middle_format</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>  <span class="c1"># 需要自行修改所需的参数</span>
+<a id="__codelineno-1-198" name="__codelineno-1-198" href="#__codelineno-1-198"></a>
+<a id="__codelineno-1-199" name="__codelineno-1-199" href="#__codelineno-1-199"></a>    <span class="c1"># 3. 生成class-dom</span>
+<a id="__codelineno-1-200" name="__codelineno-1-200" href="#__codelineno-1-200"></a>    <span class="n">class_dom_names</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-1-201" name="__codelineno-1-201" href="#__codelineno-1-201"></a>    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">class_dom_names_original</span><span class="p">:</span>
+<a id="__codelineno-1-202" name="__codelineno-1-202" href="#__codelineno-1-202"></a>        <span class="n">class_dom_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">replace_special_characters</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>  <span class="c1"># 将不合规的label名字做转换</span>
+<a id="__codelineno-1-203" name="__codelineno-1-203" href="#__codelineno-1-203"></a>    <span class="n">generate_class_dom</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">class_dom_names</span><span class="p">)</span>  <span class="c1"># 生成class-dom.yaml文件</span>
 <a id="__codelineno-1-204" name="__codelineno-1-204" href="#__codelineno-1-204"></a>
-<a id="__codelineno-1-205" name="__codelineno-1-205" href="#__codelineno-1-205"></a>    <span class="n">generate_config_file</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>  <span class="c1"># 生成config.py</span>
-<a id="__codelineno-1-206" name="__codelineno-1-206" href="#__codelineno-1-206"></a>
-<a id="__codelineno-1-207" name="__codelineno-1-207" href="#__codelineno-1-207"></a>    <span class="c1"># 5. 生成README.md</span>
-<a id="__codelineno-1-208" name="__codelineno-1-208" href="#__codelineno-1-208"></a>    <span class="k">if</span> <span class="n">flag_middle_format</span><span class="p">:</span>
-<a id="__codelineno-1-209" name="__codelineno-1-209" href="#__codelineno-1-209"></a>        <span class="n">generate_readme_with_middle_format</span><span class="p">(</span>
-<a id="__codelineno-1-210" name="__codelineno-1-210" href="#__codelineno-1-210"></a>            <span class="n">save_path</span><span class="p">,</span>
-<a id="__codelineno-1-211" name="__codelineno-1-211" href="#__codelineno-1-211"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Dataset Name&quot;</span><span class="p">],</span>
-<a id="__codelineno-1-212" name="__codelineno-1-212" href="#__codelineno-1-212"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Task&quot;</span><span class="p">],</span>
-<a id="__codelineno-1-213" name="__codelineno-1-213" href="#__codelineno-1-213"></a>            <span class="n">original_tree_str</span><span class="p">,</span>
-<a id="__codelineno-1-214" name="__codelineno-1-214" href="#__codelineno-1-214"></a>            <span class="n">dsdl_tree_str</span><span class="p">,</span>
-<a id="__codelineno-1-215" name="__codelineno-1-215" href="#__codelineno-1-215"></a>        <span class="p">)</span>
-<a id="__codelineno-1-216" name="__codelineno-1-216" href="#__codelineno-1-216"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-1-217" name="__codelineno-1-217" href="#__codelineno-1-217"></a>        <span class="n">generate_readme_without_middle_format</span><span class="p">(</span>
+<a id="__codelineno-1-205" name="__codelineno-1-205" href="#__codelineno-1-205"></a>    <span class="c1"># 4. 生成&lt;segment&gt;_samples.json,调用get_subset_samples_list（必须实现该函数）</span>
+<a id="__codelineno-1-206" name="__codelineno-1-206" href="#__codelineno-1-206"></a>    <span class="k">for</span> <span class="n">subset_name</span> <span class="ow">in</span> <span class="n">subset_name_list</span><span class="p">:</span>
+<a id="__codelineno-1-207" name="__codelineno-1-207" href="#__codelineno-1-207"></a>        <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Subset Name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset_name</span>
+<a id="__codelineno-1-208" name="__codelineno-1-208" href="#__codelineno-1-208"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;processing data in </span><span class="si">{</span><span class="n">subset_name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-209" name="__codelineno-1-209" href="#__codelineno-1-209"></a>        <span class="n">subset_samples_list</span> <span class="o">=</span> <span class="n">get_subset_samples_list</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">subset_name</span><span class="p">)</span>  <span class="c1"># 需要自行修改所需的参数</span>
+<a id="__codelineno-1-210" name="__codelineno-1-210" href="#__codelineno-1-210"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">subset_samples_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-1-211" name="__codelineno-1-211" href="#__codelineno-1-211"></a>            <span class="k">raise</span> <span class="ne">ResourceWarning</span><span class="p">(</span>
+<a id="__codelineno-1-212" name="__codelineno-1-212" href="#__codelineno-1-212"></a>                <span class="s2">&quot;No samples found. Check if the file path is correct. &quot;</span>
+<a id="__codelineno-1-213" name="__codelineno-1-213" href="#__codelineno-1-213"></a>                <span class="s2">&quot;If the dataset is not decompressed, remove -d option and try again.&quot;</span>
+<a id="__codelineno-1-214" name="__codelineno-1-214" href="#__codelineno-1-214"></a>            <span class="p">)</span>
+<a id="__codelineno-1-215" name="__codelineno-1-215" href="#__codelineno-1-215"></a>        <span class="c1"># 示例：subset_samples_list = get_subset_samples_list(root_path, subset_name)</span>
+<a id="__codelineno-1-216" name="__codelineno-1-216" href="#__codelineno-1-216"></a>        <span class="n">generate_subset_yaml_and_json</span><span class="p">(</span>
+<a id="__codelineno-1-217" name="__codelineno-1-217" href="#__codelineno-1-217"></a>            <span class="n">meta_info</span><span class="p">,</span>
 <a id="__codelineno-1-218" name="__codelineno-1-218" href="#__codelineno-1-218"></a>            <span class="n">save_path</span><span class="p">,</span>
-<a id="__codelineno-1-219" name="__codelineno-1-219" href="#__codelineno-1-219"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Dataset Name&quot;</span><span class="p">],</span>
-<a id="__codelineno-1-220" name="__codelineno-1-220" href="#__codelineno-1-220"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Task&quot;</span><span class="p">],</span>
-<a id="__codelineno-1-221" name="__codelineno-1-221" href="#__codelineno-1-221"></a>            <span class="n">original_tree_str</span><span class="p">,</span>
-<a id="__codelineno-1-222" name="__codelineno-1-222" href="#__codelineno-1-222"></a>            <span class="n">dsdl_tree_str</span>
-<a id="__codelineno-1-223" name="__codelineno-1-223" href="#__codelineno-1-223"></a>        <span class="p">)</span>
+<a id="__codelineno-1-219" name="__codelineno-1-219" href="#__codelineno-1-219"></a>            <span class="n">subset_samples_list</span>
+<a id="__codelineno-1-220" name="__codelineno-1-220" href="#__codelineno-1-220"></a>        <span class="p">)</span>
+<a id="__codelineno-1-221" name="__codelineno-1-221" href="#__codelineno-1-221"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample list for </span><span class="si">{</span><span class="n">subset_name</span><span class="si">}</span><span class="s2"> is generated.&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-222" name="__codelineno-1-222" href="#__codelineno-1-222"></a>    <span class="n">dsdl_tree_str</span> <span class="o">=</span> <span class="n">generate_tree_string</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">display_num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 生成转后的dsdl数据集目录结构树形字符串</span>
+<a id="__codelineno-1-223" name="__codelineno-1-223" href="#__codelineno-1-223"></a>
+<a id="__codelineno-1-224" name="__codelineno-1-224" href="#__codelineno-1-224"></a>    <span class="n">generate_config_file</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>  <span class="c1"># 生成config.py</span>
+<a id="__codelineno-1-225" name="__codelineno-1-225" href="#__codelineno-1-225"></a>
+<a id="__codelineno-1-226" name="__codelineno-1-226" href="#__codelineno-1-226"></a>    <span class="c1"># 5. 生成README.md</span>
+<a id="__codelineno-1-227" name="__codelineno-1-227" href="#__codelineno-1-227"></a>    <span class="k">if</span> <span class="n">flag_middle_format</span><span class="p">:</span>
+<a id="__codelineno-1-228" name="__codelineno-1-228" href="#__codelineno-1-228"></a>        <span class="n">generate_readme_with_middle_format</span><span class="p">(</span>
+<a id="__codelineno-1-229" name="__codelineno-1-229" href="#__codelineno-1-229"></a>            <span class="n">save_path</span><span class="p">,</span>
+<a id="__codelineno-1-230" name="__codelineno-1-230" href="#__codelineno-1-230"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Dataset Name&quot;</span><span class="p">],</span>
+<a id="__codelineno-1-231" name="__codelineno-1-231" href="#__codelineno-1-231"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Task&quot;</span><span class="p">],</span>
+<a id="__codelineno-1-232" name="__codelineno-1-232" href="#__codelineno-1-232"></a>            <span class="n">original_tree_str</span><span class="p">,</span>
+<a id="__codelineno-1-233" name="__codelineno-1-233" href="#__codelineno-1-233"></a>            <span class="n">dsdl_tree_str</span><span class="p">,</span>
+<a id="__codelineno-1-234" name="__codelineno-1-234" href="#__codelineno-1-234"></a>        <span class="p">)</span>
+<a id="__codelineno-1-235" name="__codelineno-1-235" href="#__codelineno-1-235"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-1-236" name="__codelineno-1-236" href="#__codelineno-1-236"></a>        <span class="n">generate_readme_without_middle_format</span><span class="p">(</span>
+<a id="__codelineno-1-237" name="__codelineno-1-237" href="#__codelineno-1-237"></a>            <span class="n">save_path</span><span class="p">,</span>
+<a id="__codelineno-1-238" name="__codelineno-1-238" href="#__codelineno-1-238"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Dataset Name&quot;</span><span class="p">],</span>
+<a id="__codelineno-1-239" name="__codelineno-1-239" href="#__codelineno-1-239"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Task&quot;</span><span class="p">],</span>
+<a id="__codelineno-1-240" name="__codelineno-1-240" href="#__codelineno-1-240"></a>            <span class="n">original_tree_str</span><span class="p">,</span>
+<a id="__codelineno-1-241" name="__codelineno-1-241" href="#__codelineno-1-241"></a>            <span class="n">dsdl_tree_str</span>
+<a id="__codelineno-1-242" name="__codelineno-1-242" href="#__codelineno-1-242"></a>        <span class="p">)</span>
 </code></pre></div>
 <p>转换者完善了必要的函数的和必填的字段后，可以运行如下命令：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python tools/prepare.py &lt;path_to_compressed_dataset_folder&gt;
@@ -2156,27 +2105,27 @@
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="kn">import</span> <span class="nn">shutil</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="kn">import</span> <span class="nn">sys</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="kn">import</span> <span class="nn">tarfile</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_config_file</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_readme_with_middle_format</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_readme_without_middle_format</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_tree_string</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">check_dsdl_meta_info</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">check_task_template_file</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">generate_class_dom</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">generate_subset_yaml_and_json</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">replace_special_characters</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">get_dsdl_template_from_lib</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="c1">#!/usr/bin/env python3</span>
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="sd">&quot;&quot;&quot;</span>
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="sd">This file implements the generator of the VOC2007 DSDL format dataset.</span>
-<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="sd">&quot;&quot;&quot;</span>
-<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>
-<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="kn">import</span> <span class="nn">itertools</span>
-<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="kn">import</span> <span class="nn">yaml</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="kn">import</span> <span class="nn">tarfile</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="kn">import</span> <span class="nn">zipfile</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_config_file</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_readme_with_middle_format</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_readme_without_middle_format</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="kn">from</span> <span class="nn">dsdl.converter.mllm</span> <span class="kn">import</span> <span class="n">generate_tree_string</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">check_dsdl_meta_info</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">check_task_template_file</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">generate_class_dom</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">generate_subset_yaml_and_json</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">replace_special_characters</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="kn">from</span> <span class="nn">dsdl.converter.utils</span> <span class="kn">import</span> <span class="n">get_dsdl_template_from_lib</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="c1">#!/usr/bin/env python3</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="sd">This file implements the generator of the VOC2007 DSDL format dataset.</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="sd">&quot;&quot;&quot;</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="kn">import</span> <span class="nn">itertools</span>
 <a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="kn">from</span> <span class="nn">xml.etree</span> <span class="kn">import</span> <span class="n">ElementTree</span>
 <a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="kn">import</span> <span class="nn">json</span>  
 <a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>
@@ -2274,111 +2223,113 @@
 <a id="__codelineno-7-121" name="__codelineno-7-121" href="#__codelineno-7-121"></a>        <span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
 <a id="__codelineno-7-122" name="__codelineno-7-122" href="#__codelineno-7-122"></a>
 <a id="__codelineno-7-123" name="__codelineno-7-123" href="#__codelineno-7-123"></a>        <span class="n">found_compressed</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-7-124" name="__codelineno-7-124" href="#__codelineno-7-124"></a>        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.zip&quot;</span><span class="p">):</span>
-<a id="__codelineno-7-125" name="__codelineno-7-125" href="#__codelineno-7-125"></a>            <span class="n">found_compressed</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-7-126" name="__codelineno-7-126" href="#__codelineno-7-126"></a>            <span class="n">zf</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-<a id="__codelineno-7-127" name="__codelineno-7-127" href="#__codelineno-7-127"></a>            <span class="n">zf</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">PREPARED_PATH</span><span class="p">)</span>
-<a id="__codelineno-7-128" name="__codelineno-7-128" href="#__codelineno-7-128"></a>        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span>
-<a id="__codelineno-7-129" name="__codelineno-7-129" href="#__codelineno-7-129"></a>            <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tar.gz&quot;</span><span class="p">),</span>
-<a id="__codelineno-7-130" name="__codelineno-7-130" href="#__codelineno-7-130"></a>            <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tgz&quot;</span><span class="p">),</span>
-<a id="__codelineno-7-131" name="__codelineno-7-131" href="#__codelineno-7-131"></a>            <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tar&quot;</span><span class="p">)</span>
-<a id="__codelineno-7-132" name="__codelineno-7-132" href="#__codelineno-7-132"></a>        <span class="p">):</span>
-<a id="__codelineno-7-133" name="__codelineno-7-133" href="#__codelineno-7-133"></a>            <span class="n">found_compressed</span> <span class="o">=</span> <span class="kc">True</span>
-<a id="__codelineno-7-134" name="__codelineno-7-134" href="#__codelineno-7-134"></a>            <span class="n">tf</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
-<a id="__codelineno-7-135" name="__codelineno-7-135" href="#__codelineno-7-135"></a>            <span class="n">tf</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">PREPARED_PATH</span><span class="p">)</span>
-<a id="__codelineno-7-136" name="__codelineno-7-136" href="#__codelineno-7-136"></a>
-<a id="__codelineno-7-137" name="__codelineno-7-137" href="#__codelineno-7-137"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">found_compressed</span><span class="p">:</span>
-<a id="__codelineno-7-138" name="__codelineno-7-138" href="#__codelineno-7-138"></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Compressed file not found. Check the file path.&#39;</span><span class="p">)</span>
-<a id="__codelineno-7-139" name="__codelineno-7-139" href="#__codelineno-7-139"></a>
-<a id="__codelineno-7-140" name="__codelineno-7-140" href="#__codelineno-7-140"></a>        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">(</span><span class="n">PREPARED_PATH</span> <span class="o">/</span> <span class="s2">&quot;VOCdevkit&quot;</span><span class="o">/</span> <span class="s2">&quot;VOC2007&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
-<a id="__codelineno-7-141" name="__codelineno-7-141" href="#__codelineno-7-141"></a>            <span class="n">file</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-<a id="__codelineno-7-142" name="__codelineno-7-142" href="#__codelineno-7-142"></a>        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">PREPARED_PATH</span> <span class="o">/</span> <span class="s2">&quot;VOCdevkit&quot;</span><span class="p">)</span>
-<a id="__codelineno-7-143" name="__codelineno-7-143" href="#__codelineno-7-143"></a>
-<a id="__codelineno-7-144" name="__codelineno-7-144" href="#__codelineno-7-144"></a>        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">copy</span><span class="p">:</span>
-<a id="__codelineno-7-145" name="__codelineno-7-145" href="#__codelineno-7-145"></a>            <span class="n">ORIGINAL_PATH</span> <span class="o">=</span> <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;original&quot;</span>
-<a id="__codelineno-7-146" name="__codelineno-7-146" href="#__codelineno-7-146"></a>            <span class="k">if</span> <span class="n">ORIGINAL_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-<a id="__codelineno-7-147" name="__codelineno-7-147" href="#__codelineno-7-147"></a>                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path </span><span class="si">{</span><span class="n">ORIGINAL_PATH</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s2"> already exists.&quot;</span><span class="p">)</span>
-<a id="__codelineno-7-148" name="__codelineno-7-148" href="#__codelineno-7-148"></a>            <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="n">PREPARED_PATH</span><span class="p">,</span> <span class="n">ORIGINAL_PATH</span><span class="p">)</span>
-<a id="__codelineno-7-149" name="__codelineno-7-149" href="#__codelineno-7-149"></a>
-<a id="__codelineno-7-150" name="__codelineno-7-150" href="#__codelineno-7-150"></a>    <span class="k">return</span> <span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span> <span class="n">DSDL_PATH</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span>
+<a id="__codelineno-7-124" name="__codelineno-7-124" href="#__codelineno-7-124"></a>        <span class="c1">#######需要修改:解压操作，内置zip和tar.gz格式，其他格式需要修改#############</span>
+<a id="__codelineno-7-125" name="__codelineno-7-125" href="#__codelineno-7-125"></a>        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.zip&quot;</span><span class="p">):</span>
+<a id="__codelineno-7-126" name="__codelineno-7-126" href="#__codelineno-7-126"></a>            <span class="n">found_compressed</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-7-127" name="__codelineno-7-127" href="#__codelineno-7-127"></a>            <span class="n">zf</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<a id="__codelineno-7-128" name="__codelineno-7-128" href="#__codelineno-7-128"></a>            <span class="n">zf</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">PREPARED_PATH</span><span class="p">)</span>
+<a id="__codelineno-7-129" name="__codelineno-7-129" href="#__codelineno-7-129"></a>        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span>
+<a id="__codelineno-7-130" name="__codelineno-7-130" href="#__codelineno-7-130"></a>            <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tar.gz&quot;</span><span class="p">),</span>
+<a id="__codelineno-7-131" name="__codelineno-7-131" href="#__codelineno-7-131"></a>            <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tgz&quot;</span><span class="p">),</span>
+<a id="__codelineno-7-132" name="__codelineno-7-132" href="#__codelineno-7-132"></a>            <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.tar&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-133" name="__codelineno-7-133" href="#__codelineno-7-133"></a>        <span class="p">):</span>
+<a id="__codelineno-7-134" name="__codelineno-7-134" href="#__codelineno-7-134"></a>            <span class="n">found_compressed</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-7-135" name="__codelineno-7-135" href="#__codelineno-7-135"></a>            <span class="n">tf</span> <span class="o">=</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<a id="__codelineno-7-136" name="__codelineno-7-136" href="#__codelineno-7-136"></a>            <span class="n">tf</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">PREPARED_PATH</span><span class="p">)</span>
+<a id="__codelineno-7-137" name="__codelineno-7-137" href="#__codelineno-7-137"></a>
+<a id="__codelineno-7-138" name="__codelineno-7-138" href="#__codelineno-7-138"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">found_compressed</span><span class="p">:</span>
+<a id="__codelineno-7-139" name="__codelineno-7-139" href="#__codelineno-7-139"></a>            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Compressed file not found. Check the file path.&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-140" name="__codelineno-7-140" href="#__codelineno-7-140"></a>
+<a id="__codelineno-7-141" name="__codelineno-7-141" href="#__codelineno-7-141"></a>        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">(</span><span class="n">PREPARED_PATH</span> <span class="o">/</span> <span class="s2">&quot;VOCdevkit&quot;</span><span class="o">/</span> <span class="s2">&quot;VOC2007&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+<a id="__codelineno-7-142" name="__codelineno-7-142" href="#__codelineno-7-142"></a>            <span class="n">file</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<a id="__codelineno-7-143" name="__codelineno-7-143" href="#__codelineno-7-143"></a>        <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">PREPARED_PATH</span> <span class="o">/</span> <span class="s2">&quot;VOCdevkit&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-144" name="__codelineno-7-144" href="#__codelineno-7-144"></a>        <span class="c1">#############################################################################</span>
+<a id="__codelineno-7-145" name="__codelineno-7-145" href="#__codelineno-7-145"></a>
+<a id="__codelineno-7-146" name="__codelineno-7-146" href="#__codelineno-7-146"></a>        <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">copy</span><span class="p">:</span>
+<a id="__codelineno-7-147" name="__codelineno-7-147" href="#__codelineno-7-147"></a>            <span class="n">ORIGINAL_PATH</span> <span class="o">=</span> <span class="n">COMPRESSED_PATH</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;original&quot;</span>
+<a id="__codelineno-7-148" name="__codelineno-7-148" href="#__codelineno-7-148"></a>            <span class="k">if</span> <span class="n">ORIGINAL_PATH</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+<a id="__codelineno-7-149" name="__codelineno-7-149" href="#__codelineno-7-149"></a>                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path </span><span class="si">{</span><span class="n">ORIGINAL_PATH</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span><span class="si">}</span><span class="s2"> already exists.&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-150" name="__codelineno-7-150" href="#__codelineno-7-150"></a>            <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="n">PREPARED_PATH</span><span class="p">,</span> <span class="n">ORIGINAL_PATH</span><span class="p">)</span>
 <a id="__codelineno-7-151" name="__codelineno-7-151" href="#__codelineno-7-151"></a>
-<a id="__codelineno-7-152" name="__codelineno-7-152" href="#__codelineno-7-152"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-<a id="__codelineno-7-153" name="__codelineno-7-153" href="#__codelineno-7-153"></a>    <span class="n">meta_info</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-7-154" name="__codelineno-7-154" href="#__codelineno-7-154"></a>        <span class="s2">&quot;Dataset Name&quot;</span><span class="p">:</span> <span class="s2">&quot;VOC2007&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-155" name="__codelineno-7-155" href="#__codelineno-7-155"></a>        <span class="s2">&quot;HomePage&quot;</span><span class="p">:</span> <span class="s2">&quot;http://host.robots.ox.ac.uk/pascal/VOC/voc2007/index.html&quot;</span><span class="p">,</span>
-<a id="__codelineno-7-156" name="__codelineno-7-156" href="#__codelineno-7-156"></a>        <span class="s2">&quot;Modality&quot;</span><span class="p">:</span> <span class="s2">&quot;Images&quot;</span><span class="p">,</span> 
-<a id="__codelineno-7-157" name="__codelineno-7-157" href="#__codelineno-7-157"></a>        <span class="s2">&quot;Task&quot;</span><span class="p">:</span> <span class="s2">&quot;Object Detection&quot;</span>
-<a id="__codelineno-7-158" name="__codelineno-7-158" href="#__codelineno-7-158"></a>    <span class="p">}</span>
-<a id="__codelineno-7-159" name="__codelineno-7-159" href="#__codelineno-7-159"></a>
-<a id="__codelineno-7-160" name="__codelineno-7-160" href="#__codelineno-7-160"></a>    <span class="n">flag_middle_format</span> <span class="o">=</span> <span class="kc">False</span>
-<a id="__codelineno-7-161" name="__codelineno-7-161" href="#__codelineno-7-161"></a>    <span class="n">class_dom_names_original</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;aeroplane&quot;</span><span class="p">,</span> <span class="s2">&quot;bicycle&quot;</span><span class="p">,</span> <span class="s2">&quot;bird&quot;</span><span class="p">,</span> <span class="s2">&quot;boat&quot;</span><span class="p">,</span> <span class="s2">&quot;bottle&quot;</span><span class="p">,</span> <span class="s2">&quot;bus&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;chair&quot;</span><span class="p">,</span> <span class="s2">&quot;cow&quot;</span><span class="p">,</span> <span class="s2">&quot;diningtable&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;horse&quot;</span><span class="p">,</span> <span class="s2">&quot;motorbike&quot;</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;pottedplant&quot;</span><span class="p">,</span> <span class="s2">&quot;sheep&quot;</span><span class="p">,</span> <span class="s2">&quot;sofa&quot;</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;tvmonitor&quot;</span><span class="p">]</span>
-<a id="__codelineno-7-162" name="__codelineno-7-162" href="#__codelineno-7-162"></a>    <span class="n">subset_name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]</span>
-<a id="__codelineno-7-163" name="__codelineno-7-163" href="#__codelineno-7-163"></a>    <span class="n">args</span> <span class="o">=</span> <span class="n">parse_args</span><span class="p">()</span>
-<a id="__codelineno-7-164" name="__codelineno-7-164" href="#__codelineno-7-164"></a>    <span class="n">root_path</span><span class="p">,</span> <span class="n">save_path</span> <span class="o">=</span> <span class="n">prepare</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
-<a id="__codelineno-7-165" name="__codelineno-7-165" href="#__codelineno-7-165"></a>
-<a id="__codelineno-7-166" name="__codelineno-7-166" href="#__codelineno-7-166"></a>    <span class="c1">## 说明：</span>
-<a id="__codelineno-7-167" name="__codelineno-7-167" href="#__codelineno-7-167"></a>    <span class="c1">## 因为模板文件template.yaml是dsdl中定义数据集结构和字段的文件。</span>
-<a id="__codelineno-7-168" name="__codelineno-7-168" href="#__codelineno-7-168"></a>    <span class="c1">## 所以必须先生成template.yaml才能进行后续转换。</span>
-<a id="__codelineno-7-169" name="__codelineno-7-169" href="#__codelineno-7-169"></a>    <span class="c1">## template.yaml的位置位于: save_path/defs/template.yaml</span>
-<a id="__codelineno-7-170" name="__codelineno-7-170" href="#__codelineno-7-170"></a>    <span class="c1">## 用户可以直接调用已有的模板，或手动创建template.yaml，并拷贝到save_path/defs/目录下。</span>
-<a id="__codelineno-7-171" name="__codelineno-7-171" href="#__codelineno-7-171"></a>    <span class="c1">## 以下示例是调用已有的模板：</span>
-<a id="__codelineno-7-172" name="__codelineno-7-172" href="#__codelineno-7-172"></a>    <span class="n">get_dsdl_template_from_lib</span><span class="p">(</span><span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Task&quot;</span><span class="p">],</span> <span class="n">save_path</span><span class="p">)</span>
-<a id="__codelineno-7-173" name="__codelineno-7-173" href="#__codelineno-7-173"></a>    <span class="c1">## 注意，这里的task_name可以在数据集模板介绍页面的表格中的“任务英文全称”获取</span>
-<a id="__codelineno-7-174" name="__codelineno-7-174" href="#__codelineno-7-174"></a>
-<a id="__codelineno-7-175" name="__codelineno-7-175" href="#__codelineno-7-175"></a>    <span class="c1">###########以下是转换和生成的步骤，可根据实际情况修改#############</span>
-<a id="__codelineno-7-176" name="__codelineno-7-176" href="#__codelineno-7-176"></a>    <span class="c1">###########一般情况下，只需要修改get_subset_samples_list所需的参数###########</span>
-<a id="__codelineno-7-177" name="__codelineno-7-177" href="#__codelineno-7-177"></a>    <span class="n">check_dsdl_meta_info</span><span class="p">(</span><span class="n">meta_info</span><span class="p">)</span>  <span class="c1"># 检验meta信息是否存在错误</span>
-<a id="__codelineno-7-178" name="__codelineno-7-178" href="#__codelineno-7-178"></a>    <span class="n">check_task_template_file</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>  <span class="c1"># 检验保存路径中是否已经存在模板文件</span>
-<a id="__codelineno-7-179" name="__codelineno-7-179" href="#__codelineno-7-179"></a>
-<a id="__codelineno-7-180" name="__codelineno-7-180" href="#__codelineno-7-180"></a>    <span class="c1"># 1. 生成原始数据集目录结构树形字符串</span>
-<a id="__codelineno-7-181" name="__codelineno-7-181" href="#__codelineno-7-181"></a>    <span class="n">original_tree_str</span> <span class="o">=</span> <span class="n">generate_tree_string</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>
-<a id="__codelineno-7-182" name="__codelineno-7-182" href="#__codelineno-7-182"></a>
-<a id="__codelineno-7-183" name="__codelineno-7-183" href="#__codelineno-7-183"></a>    <span class="c1"># 2. 数据集中间格式转换，调用dataset_to_middle_format（如有需要请实现该函数）</span>
-<a id="__codelineno-7-184" name="__codelineno-7-184" href="#__codelineno-7-184"></a>    <span class="k">if</span> <span class="n">flag_middle_format</span><span class="p">:</span>
-<a id="__codelineno-7-185" name="__codelineno-7-185" href="#__codelineno-7-185"></a>        <span class="c1">## 先实现一个函数把数据集转换成中间格式</span>
-<a id="__codelineno-7-186" name="__codelineno-7-186" href="#__codelineno-7-186"></a>        <span class="c1">## 可参考dataset_to_middle_format()中注释</span>
-<a id="__codelineno-7-187" name="__codelineno-7-187" href="#__codelineno-7-187"></a>        <span class="c1">## 需要对middle_format_tree_str和converter_description赋值</span>
-<a id="__codelineno-7-188" name="__codelineno-7-188" href="#__codelineno-7-188"></a>        <span class="n">dataset_to_middle_format</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>  <span class="c1"># 需要自行修改所需的参数</span>
-<a id="__codelineno-7-189" name="__codelineno-7-189" href="#__codelineno-7-189"></a>
-<a id="__codelineno-7-190" name="__codelineno-7-190" href="#__codelineno-7-190"></a>    <span class="c1"># 3. 生成class-dom</span>
-<a id="__codelineno-7-191" name="__codelineno-7-191" href="#__codelineno-7-191"></a>    <span class="n">class_dom_names</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-7-192" name="__codelineno-7-192" href="#__codelineno-7-192"></a>    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">class_dom_names_original</span><span class="p">:</span>
-<a id="__codelineno-7-193" name="__codelineno-7-193" href="#__codelineno-7-193"></a>        <span class="n">class_dom_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">replace_special_characters</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>  <span class="c1"># 将不合规的label名字做转换</span>
-<a id="__codelineno-7-194" name="__codelineno-7-194" href="#__codelineno-7-194"></a>    <span class="n">generate_class_dom</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">class_dom_names</span><span class="p">)</span>  <span class="c1"># 生成class-dom.yaml文件</span>
-<a id="__codelineno-7-195" name="__codelineno-7-195" href="#__codelineno-7-195"></a>
-<a id="__codelineno-7-196" name="__codelineno-7-196" href="#__codelineno-7-196"></a>    <span class="c1"># 4. 生成&lt;segment&gt;_samples.json,调用get_subset_samples_list（必须实现该函数）</span>
-<a id="__codelineno-7-197" name="__codelineno-7-197" href="#__codelineno-7-197"></a>    <span class="k">for</span> <span class="n">subset_name</span> <span class="ow">in</span> <span class="n">subset_name_list</span><span class="p">:</span>
-<a id="__codelineno-7-198" name="__codelineno-7-198" href="#__codelineno-7-198"></a>        <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Subset Name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset_name</span>
-<a id="__codelineno-7-199" name="__codelineno-7-199" href="#__codelineno-7-199"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;processing data in </span><span class="si">{</span><span class="n">subset_name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
-<a id="__codelineno-7-200" name="__codelineno-7-200" href="#__codelineno-7-200"></a>        <span class="n">subset_samples_list</span> <span class="o">=</span> <span class="n">get_subset_samples_list</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">subset_name</span><span class="p">,</span> <span class="n">class_dom_names_original</span><span class="p">)</span>  <span class="c1"># 需要自行修改所需的参数</span>
-<a id="__codelineno-7-201" name="__codelineno-7-201" href="#__codelineno-7-201"></a>        <span class="c1"># 示例：subset_samples_list = get_subset_samples_list(root_path, subset_name)</span>
-<a id="__codelineno-7-202" name="__codelineno-7-202" href="#__codelineno-7-202"></a>        <span class="n">generate_subset_yaml_and_json</span><span class="p">(</span>
-<a id="__codelineno-7-203" name="__codelineno-7-203" href="#__codelineno-7-203"></a>            <span class="n">meta_info</span><span class="p">,</span>
-<a id="__codelineno-7-204" name="__codelineno-7-204" href="#__codelineno-7-204"></a>            <span class="n">save_path</span><span class="p">,</span>
-<a id="__codelineno-7-205" name="__codelineno-7-205" href="#__codelineno-7-205"></a>            <span class="n">subset_samples_list</span>
-<a id="__codelineno-7-206" name="__codelineno-7-206" href="#__codelineno-7-206"></a>        <span class="p">)</span>
-<a id="__codelineno-7-207" name="__codelineno-7-207" href="#__codelineno-7-207"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample list for </span><span class="si">{</span><span class="n">subset_name</span><span class="si">}</span><span class="s2"> is generated.&quot;</span><span class="p">)</span>
-<a id="__codelineno-7-208" name="__codelineno-7-208" href="#__codelineno-7-208"></a>    <span class="n">dsdl_tree_str</span> <span class="o">=</span> <span class="n">generate_tree_string</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span><span class="n">display_num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 生成转后的dsdl数据集目录结构树形字符串</span>
-<a id="__codelineno-7-209" name="__codelineno-7-209" href="#__codelineno-7-209"></a>
-<a id="__codelineno-7-210" name="__codelineno-7-210" href="#__codelineno-7-210"></a>    <span class="n">generate_config_file</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>  <span class="c1"># 生成config.py</span>
+<a id="__codelineno-7-152" name="__codelineno-7-152" href="#__codelineno-7-152"></a>    <span class="k">return</span> <span class="n">PREPARED_PATH</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span> <span class="n">DSDL_PATH</span><span class="o">.</span><span class="n">absolute</span><span class="p">()</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span>
+<a id="__codelineno-7-153" name="__codelineno-7-153" href="#__codelineno-7-153"></a>
+<a id="__codelineno-7-154" name="__codelineno-7-154" href="#__codelineno-7-154"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<a id="__codelineno-7-155" name="__codelineno-7-155" href="#__codelineno-7-155"></a>    <span class="n">meta_info</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-7-156" name="__codelineno-7-156" href="#__codelineno-7-156"></a>        <span class="s2">&quot;Dataset Name&quot;</span><span class="p">:</span> <span class="s2">&quot;VOC2007&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-157" name="__codelineno-7-157" href="#__codelineno-7-157"></a>        <span class="s2">&quot;HomePage&quot;</span><span class="p">:</span> <span class="s2">&quot;http://host.robots.ox.ac.uk/pascal/VOC/voc2007/index.html&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-158" name="__codelineno-7-158" href="#__codelineno-7-158"></a>        <span class="s2">&quot;Modality&quot;</span><span class="p">:</span> <span class="s2">&quot;Images&quot;</span><span class="p">,</span> 
+<a id="__codelineno-7-159" name="__codelineno-7-159" href="#__codelineno-7-159"></a>        <span class="s2">&quot;Task&quot;</span><span class="p">:</span> <span class="s2">&quot;Object Detection&quot;</span>
+<a id="__codelineno-7-160" name="__codelineno-7-160" href="#__codelineno-7-160"></a>    <span class="p">}</span>
+<a id="__codelineno-7-161" name="__codelineno-7-161" href="#__codelineno-7-161"></a>
+<a id="__codelineno-7-162" name="__codelineno-7-162" href="#__codelineno-7-162"></a>    <span class="n">flag_middle_format</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-7-163" name="__codelineno-7-163" href="#__codelineno-7-163"></a>    <span class="n">class_dom_names_original</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;aeroplane&quot;</span><span class="p">,</span> <span class="s2">&quot;bicycle&quot;</span><span class="p">,</span> <span class="s2">&quot;bird&quot;</span><span class="p">,</span> <span class="s2">&quot;boat&quot;</span><span class="p">,</span> <span class="s2">&quot;bottle&quot;</span><span class="p">,</span> <span class="s2">&quot;bus&quot;</span><span class="p">,</span> <span class="s2">&quot;car&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">,</span> <span class="s2">&quot;chair&quot;</span><span class="p">,</span> <span class="s2">&quot;cow&quot;</span><span class="p">,</span> <span class="s2">&quot;diningtable&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;horse&quot;</span><span class="p">,</span> <span class="s2">&quot;motorbike&quot;</span><span class="p">,</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span> <span class="s2">&quot;pottedplant&quot;</span><span class="p">,</span> <span class="s2">&quot;sheep&quot;</span><span class="p">,</span> <span class="s2">&quot;sofa&quot;</span><span class="p">,</span> <span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;tvmonitor&quot;</span><span class="p">]</span>
+<a id="__codelineno-7-164" name="__codelineno-7-164" href="#__codelineno-7-164"></a>    <span class="n">subset_name_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;val&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]</span>
+<a id="__codelineno-7-165" name="__codelineno-7-165" href="#__codelineno-7-165"></a>    <span class="n">args</span> <span class="o">=</span> <span class="n">parse_args</span><span class="p">()</span>
+<a id="__codelineno-7-166" name="__codelineno-7-166" href="#__codelineno-7-166"></a>    <span class="n">root_path</span><span class="p">,</span> <span class="n">save_path</span> <span class="o">=</span> <span class="n">prepare</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<a id="__codelineno-7-167" name="__codelineno-7-167" href="#__codelineno-7-167"></a>
+<a id="__codelineno-7-168" name="__codelineno-7-168" href="#__codelineno-7-168"></a>    <span class="c1">## 说明：</span>
+<a id="__codelineno-7-169" name="__codelineno-7-169" href="#__codelineno-7-169"></a>    <span class="c1">## 因为模板文件template.yaml是dsdl中定义数据集结构和字段的文件。</span>
+<a id="__codelineno-7-170" name="__codelineno-7-170" href="#__codelineno-7-170"></a>    <span class="c1">## 所以必须先生成template.yaml才能进行后续转换。</span>
+<a id="__codelineno-7-171" name="__codelineno-7-171" href="#__codelineno-7-171"></a>    <span class="c1">## template.yaml的位置位于: save_path/defs/template.yaml</span>
+<a id="__codelineno-7-172" name="__codelineno-7-172" href="#__codelineno-7-172"></a>    <span class="c1">## 用户可以直接调用已有的模板，或手动创建template.yaml，并拷贝到save_path/defs/目录下。</span>
+<a id="__codelineno-7-173" name="__codelineno-7-173" href="#__codelineno-7-173"></a>    <span class="c1">## 以下示例是调用已有的模板：</span>
+<a id="__codelineno-7-174" name="__codelineno-7-174" href="#__codelineno-7-174"></a>    <span class="n">get_dsdl_template_from_lib</span><span class="p">(</span><span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Task&quot;</span><span class="p">],</span> <span class="n">save_path</span><span class="p">)</span>
+<a id="__codelineno-7-175" name="__codelineno-7-175" href="#__codelineno-7-175"></a>    <span class="c1">## 注意，这里的task_name可以在数据集模板介绍页面的表格中的“任务英文全称”获取</span>
+<a id="__codelineno-7-176" name="__codelineno-7-176" href="#__codelineno-7-176"></a>
+<a id="__codelineno-7-177" name="__codelineno-7-177" href="#__codelineno-7-177"></a>    <span class="c1">###########以下是转换和生成的步骤，可根据实际情况修改#############</span>
+<a id="__codelineno-7-178" name="__codelineno-7-178" href="#__codelineno-7-178"></a>    <span class="c1">###########一般情况下，只需要修改get_subset_samples_list所需的参数###########</span>
+<a id="__codelineno-7-179" name="__codelineno-7-179" href="#__codelineno-7-179"></a>    <span class="n">check_dsdl_meta_info</span><span class="p">(</span><span class="n">meta_info</span><span class="p">)</span>  <span class="c1"># 检验meta信息是否存在错误</span>
+<a id="__codelineno-7-180" name="__codelineno-7-180" href="#__codelineno-7-180"></a>    <span class="n">check_task_template_file</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>  <span class="c1"># 检验保存路径中是否已经存在模板文件</span>
+<a id="__codelineno-7-181" name="__codelineno-7-181" href="#__codelineno-7-181"></a>
+<a id="__codelineno-7-182" name="__codelineno-7-182" href="#__codelineno-7-182"></a>    <span class="c1"># 1. 生成原始数据集目录结构树形字符串</span>
+<a id="__codelineno-7-183" name="__codelineno-7-183" href="#__codelineno-7-183"></a>    <span class="n">original_tree_str</span> <span class="o">=</span> <span class="n">generate_tree_string</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>
+<a id="__codelineno-7-184" name="__codelineno-7-184" href="#__codelineno-7-184"></a>
+<a id="__codelineno-7-185" name="__codelineno-7-185" href="#__codelineno-7-185"></a>    <span class="c1"># 2. 数据集中间格式转换，调用dataset_to_middle_format（如有需要请实现该函数）</span>
+<a id="__codelineno-7-186" name="__codelineno-7-186" href="#__codelineno-7-186"></a>    <span class="k">if</span> <span class="n">flag_middle_format</span><span class="p">:</span>
+<a id="__codelineno-7-187" name="__codelineno-7-187" href="#__codelineno-7-187"></a>        <span class="c1">## 先实现一个函数把数据集转换成中间格式</span>
+<a id="__codelineno-7-188" name="__codelineno-7-188" href="#__codelineno-7-188"></a>        <span class="c1">## 可参考dataset_to_middle_format()中注释</span>
+<a id="__codelineno-7-189" name="__codelineno-7-189" href="#__codelineno-7-189"></a>        <span class="c1">## 需要对middle_format_tree_str和converter_description赋值</span>
+<a id="__codelineno-7-190" name="__codelineno-7-190" href="#__codelineno-7-190"></a>        <span class="n">dataset_to_middle_format</span><span class="p">(</span><span class="n">root_path</span><span class="p">)</span>  <span class="c1"># 需要自行修改所需的参数</span>
+<a id="__codelineno-7-191" name="__codelineno-7-191" href="#__codelineno-7-191"></a>
+<a id="__codelineno-7-192" name="__codelineno-7-192" href="#__codelineno-7-192"></a>    <span class="c1"># 3. 生成class-dom</span>
+<a id="__codelineno-7-193" name="__codelineno-7-193" href="#__codelineno-7-193"></a>    <span class="n">class_dom_names</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-7-194" name="__codelineno-7-194" href="#__codelineno-7-194"></a>    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">class_dom_names_original</span><span class="p">:</span>
+<a id="__codelineno-7-195" name="__codelineno-7-195" href="#__codelineno-7-195"></a>        <span class="n">class_dom_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">replace_special_characters</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>  <span class="c1"># 将不合规的label名字做转换</span>
+<a id="__codelineno-7-196" name="__codelineno-7-196" href="#__codelineno-7-196"></a>    <span class="n">generate_class_dom</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">class_dom_names</span><span class="p">)</span>  <span class="c1"># 生成class-dom.yaml文件</span>
+<a id="__codelineno-7-197" name="__codelineno-7-197" href="#__codelineno-7-197"></a>
+<a id="__codelineno-7-198" name="__codelineno-7-198" href="#__codelineno-7-198"></a>    <span class="c1"># 4. 生成&lt;segment&gt;_samples.json,调用get_subset_samples_list（必须实现该函数）</span>
+<a id="__codelineno-7-199" name="__codelineno-7-199" href="#__codelineno-7-199"></a>    <span class="k">for</span> <span class="n">subset_name</span> <span class="ow">in</span> <span class="n">subset_name_list</span><span class="p">:</span>
+<a id="__codelineno-7-200" name="__codelineno-7-200" href="#__codelineno-7-200"></a>        <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Subset Name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">subset_name</span>
+<a id="__codelineno-7-201" name="__codelineno-7-201" href="#__codelineno-7-201"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;processing data in </span><span class="si">{</span><span class="n">subset_name</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-202" name="__codelineno-7-202" href="#__codelineno-7-202"></a>        <span class="n">subset_samples_list</span> <span class="o">=</span> <span class="n">get_subset_samples_list</span><span class="p">(</span><span class="n">root_path</span><span class="p">,</span> <span class="n">subset_name</span><span class="p">,</span> <span class="n">class_dom_names_original</span><span class="p">)</span>  <span class="c1"># 需要自行修改所需的参数</span>
+<a id="__codelineno-7-203" name="__codelineno-7-203" href="#__codelineno-7-203"></a>        <span class="c1"># 示例：subset_samples_list = get_subset_samples_list(root_path, subset_name)</span>
+<a id="__codelineno-7-204" name="__codelineno-7-204" href="#__codelineno-7-204"></a>        <span class="n">generate_subset_yaml_and_json</span><span class="p">(</span>
+<a id="__codelineno-7-205" name="__codelineno-7-205" href="#__codelineno-7-205"></a>            <span class="n">meta_info</span><span class="p">,</span>
+<a id="__codelineno-7-206" name="__codelineno-7-206" href="#__codelineno-7-206"></a>            <span class="n">save_path</span><span class="p">,</span>
+<a id="__codelineno-7-207" name="__codelineno-7-207" href="#__codelineno-7-207"></a>            <span class="n">subset_samples_list</span>
+<a id="__codelineno-7-208" name="__codelineno-7-208" href="#__codelineno-7-208"></a>        <span class="p">)</span>
+<a id="__codelineno-7-209" name="__codelineno-7-209" href="#__codelineno-7-209"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample list for </span><span class="si">{</span><span class="n">subset_name</span><span class="si">}</span><span class="s2"> is generated.&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-210" name="__codelineno-7-210" href="#__codelineno-7-210"></a>    <span class="n">dsdl_tree_str</span> <span class="o">=</span> <span class="n">generate_tree_string</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span><span class="n">display_num</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>  <span class="c1"># 生成转后的dsdl数据集目录结构树形字符串</span>
 <a id="__codelineno-7-211" name="__codelineno-7-211" href="#__codelineno-7-211"></a>
-<a id="__codelineno-7-212" name="__codelineno-7-212" href="#__codelineno-7-212"></a>    <span class="c1"># 5. 生成README.md</span>
-<a id="__codelineno-7-213" name="__codelineno-7-213" href="#__codelineno-7-213"></a>    <span class="k">if</span> <span class="n">flag_middle_format</span><span class="p">:</span>
-<a id="__codelineno-7-214" name="__codelineno-7-214" href="#__codelineno-7-214"></a>        <span class="n">generate_readme_with_middle_format</span><span class="p">(</span>
-<a id="__codelineno-7-215" name="__codelineno-7-215" href="#__codelineno-7-215"></a>            <span class="n">save_path</span><span class="p">,</span>
-<a id="__codelineno-7-216" name="__codelineno-7-216" href="#__codelineno-7-216"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Dataset Name&quot;</span><span class="p">],</span>
-<a id="__codelineno-7-217" name="__codelineno-7-217" href="#__codelineno-7-217"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Task&quot;</span><span class="p">],</span>
-<a id="__codelineno-7-218" name="__codelineno-7-218" href="#__codelineno-7-218"></a>            <span class="n">original_tree_str</span><span class="p">,</span>
-<a id="__codelineno-7-219" name="__codelineno-7-219" href="#__codelineno-7-219"></a>            <span class="n">dsdl_tree_str</span><span class="p">,</span>
-<a id="__codelineno-7-220" name="__codelineno-7-220" href="#__codelineno-7-220"></a>        <span class="p">)</span>
-<a id="__codelineno-7-221" name="__codelineno-7-221" href="#__codelineno-7-221"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-7-222" name="__codelineno-7-222" href="#__codelineno-7-222"></a>        <span class="n">generate_readme_without_middle_format</span><span class="p">(</span>
-<a id="__codelineno-7-223" name="__codelineno-7-223" href="#__codelineno-7-223"></a>            <span class="n">save_path</span><span class="p">,</span>
-<a id="__codelineno-7-224" name="__codelineno-7-224" href="#__codelineno-7-224"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Dataset Name&quot;</span><span class="p">],</span>
-<a id="__codelineno-7-225" name="__codelineno-7-225" href="#__codelineno-7-225"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Task&quot;</span><span class="p">],</span>
-<a id="__codelineno-7-226" name="__codelineno-7-226" href="#__codelineno-7-226"></a>            <span class="n">original_tree_str</span><span class="p">,</span>
-<a id="__codelineno-7-227" name="__codelineno-7-227" href="#__codelineno-7-227"></a>            <span class="n">dsdl_tree_str</span>
-<a id="__codelineno-7-228" name="__codelineno-7-228" href="#__codelineno-7-228"></a>        <span class="p">)</span>
+<a id="__codelineno-7-212" name="__codelineno-7-212" href="#__codelineno-7-212"></a>    <span class="n">generate_config_file</span><span class="p">(</span><span class="n">save_path</span><span class="p">)</span>  <span class="c1"># 生成config.py</span>
+<a id="__codelineno-7-213" name="__codelineno-7-213" href="#__codelineno-7-213"></a>
+<a id="__codelineno-7-214" name="__codelineno-7-214" href="#__codelineno-7-214"></a>    <span class="c1"># 5. 生成README.md</span>
+<a id="__codelineno-7-215" name="__codelineno-7-215" href="#__codelineno-7-215"></a>    <span class="k">if</span> <span class="n">flag_middle_format</span><span class="p">:</span>
+<a id="__codelineno-7-216" name="__codelineno-7-216" href="#__codelineno-7-216"></a>        <span class="n">generate_readme_with_middle_format</span><span class="p">(</span>
+<a id="__codelineno-7-217" name="__codelineno-7-217" href="#__codelineno-7-217"></a>            <span class="n">save_path</span><span class="p">,</span>
+<a id="__codelineno-7-218" name="__codelineno-7-218" href="#__codelineno-7-218"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Dataset Name&quot;</span><span class="p">],</span>
+<a id="__codelineno-7-219" name="__codelineno-7-219" href="#__codelineno-7-219"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Task&quot;</span><span class="p">],</span>
+<a id="__codelineno-7-220" name="__codelineno-7-220" href="#__codelineno-7-220"></a>            <span class="n">original_tree_str</span><span class="p">,</span>
+<a id="__codelineno-7-221" name="__codelineno-7-221" href="#__codelineno-7-221"></a>            <span class="n">dsdl_tree_str</span><span class="p">,</span>
+<a id="__codelineno-7-222" name="__codelineno-7-222" href="#__codelineno-7-222"></a>        <span class="p">)</span>
+<a id="__codelineno-7-223" name="__codelineno-7-223" href="#__codelineno-7-223"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-7-224" name="__codelineno-7-224" href="#__codelineno-7-224"></a>        <span class="n">generate_readme_without_middle_format</span><span class="p">(</span>
+<a id="__codelineno-7-225" name="__codelineno-7-225" href="#__codelineno-7-225"></a>            <span class="n">save_path</span><span class="p">,</span>
+<a id="__codelineno-7-226" name="__codelineno-7-226" href="#__codelineno-7-226"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Dataset Name&quot;</span><span class="p">],</span>
+<a id="__codelineno-7-227" name="__codelineno-7-227" href="#__codelineno-7-227"></a>            <span class="n">meta_info</span><span class="p">[</span><span class="s2">&quot;Task&quot;</span><span class="p">],</span>
+<a id="__codelineno-7-228" name="__codelineno-7-228" href="#__codelineno-7-228"></a>            <span class="n">original_tree_str</span><span class="p">,</span>
+<a id="__codelineno-7-229" name="__codelineno-7-229" href="#__codelineno-7-229"></a>            <span class="n">dsdl_tree_str</span>
+<a id="__codelineno-7-230" name="__codelineno-7-230" href="#__codelineno-7-230"></a>        <span class="p">)</span>
 </code></pre></div>
 <p>运行了tools/prepare.py后，得到的DSDL数目录如下：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>dsdl-voc2007/
@@ -2485,7 +2436,7 @@
 <a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>    bucket_name=&quot;your bucket name of aliyun oss&quot;,
 <a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>    working_dir=&quot;the prefix of the prepared dataset within the bucket&quot;)
 </code></pre></div>
-<p>请根据需要修改对应的路径，以保证DSDL<a href="../dsdl_check/">数据集验证</a>通过。</p>
+<p>请根据实际情况，修改媒体文件读取方式和路径。</p>
 <h4 id="224-readmemd">2.2.4 README.md</h4>
 <p>该数据集最终将字段生成README，其内容如下：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a># Data Set Description Language(DSDL) for VOC2007 dataset
@@ -2570,6 +2521,7 @@
 <a id="__codelineno-13-80" name="__codelineno-13-80" href="#__codelineno-13-80"></a>2. DSDL-SDK official repo: [dsdl-sdk](https://github.com/opendatalab/dsdl-sdk/)
 <a id="__codelineno-13-81" name="__codelineno-13-81" href="#__codelineno-13-81"></a>3. Get more dataset: [OpenDataLab](https://opendatalab.com/)
 </code></pre></div>
+<p>数据集转换完成后，建议运行<a href="../dsdl_check/">数据集验证</a>，以保证DSDL数据集可正常使用。</p>
 
 
 

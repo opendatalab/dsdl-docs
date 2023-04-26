@@ -537,36 +537,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorials/config/location_config/" class="md-nav__link">
-        数据集配置
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../tutorials/visualization/" class="md-nav__link">
         数据集可视化
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tutorials/dataset_analysis/" class="md-nav__link">
-        数据集分析
       </a>
     </li>
   
@@ -584,17 +556,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
       
       
       
-        <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
           模型训练&推理
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
           <span class="md-nav__icon md-icon"></span>
           模型训练&推理
         </label>
@@ -628,36 +600,8 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tutorials/train_test/tensorflow/" class="md-nav__link">
-        Tensorflow
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tutorials/dataset_distribution/" class="md-nav__link">
-        数据集分发
-      </a>
     </li>
   
 
@@ -674,17 +618,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
       
       
       
-        <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
           高阶教程
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_8">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5">
           <span class="md-nav__icon md-icon"></span>
           高阶教程
         </label>
@@ -715,19 +659,19 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5_2" >
       
       
       
-        <label class="md-nav__link" for="__nav_3_8_2" id="__nav_3_8_2_label" tabindex="0">
-          DSDL数据集标准化
+        <label class="md-nav__link" for="__nav_3_5_2" id="__nav_3_5_2_label" tabindex="0">
+          自定义DSDL数据集
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_8_2_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_8_2">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_5_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_5_2">
           <span class="md-nav__icon md-icon"></span>
-          DSDL数据集标准化
+          自定义DSDL数据集
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -773,20 +717,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../tutorials/advanced/dsdl_extend/" class="md-nav__link">
-        自定义DSDL Field
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -800,8 +730,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../tutorials/advanced/dsdl_dataloader/" class="md-nav__link">
-        DSDL DataLoader开发
+      <a href="../../../tutorials/advanced/dsdl_extend/" class="md-nav__link">
+        自定义DSDL Field
       </a>
     </li>
   
@@ -2025,7 +1955,7 @@ F1~score = \frac {2*检测精确率*检测召回率}{检测精确率+检测召�
 </script>
 </div>
 <h3 id="13">1.3 主流数据集调研</h3>
-<p>OCR数据集，其中包含了Total-Text、ICDAR2015等常见数据集。考虑到有些数据集同时包含了不同的OCR子任务，这里对常用的子任务进行了拆分，并且每个子任务只考虑和他相关的标注内容。为了使得模板更加通用，同时也具备拓展能力，我们着重关注各个数据集之间的共性和特性，此外，调研过程会遇到一些名称不同，但是实际含义相同或类似的字段，这些字段我们也视为同一字段，并统一去命名，比如image_id字段一般表示图片的路径或者id，他是图片的唯一标识；</p>
+<p>OCR数据集，其中包含了Total-Text、ICDAR2015等常见数据集。考虑到有些数据集同时包含了不同的OCR子任务，这里对常用的子任务进行了拆分，并且每个子任务只考虑和他相关的标注内容。为了使得模板更加通用，同时也具备拓展能力，我们着重关注各个数据集之间的共性和特性，此外，调研过程会遇到一些名称不同，但是实际含义相同或类似的字段，这些字段我们也视为同一字段，并统一去命名，比如image_id字段一般表示图片的路径或者id，是图片的唯一标识。</p>
 <h4 id="131">1.3.1 文字检测数据集调研</h4>
 <p>我们调研了ICDAR2013、ICDAR2015、SVT、Total-Text、MSRA-TD50、CUTE80，数据集的标注框信息是必要的，但格式可以为bbox或polygon形式。</p>
 <table border="6" >
@@ -2243,11 +2173,13 @@ F1~score = \frac {2*检测精确率*检测召回率}{检测精确率+检测召�
 <p>在模板中的一些字段含义如下：</p>
 <ul>
 <li>$dsdl-version: 描述了该文件对应的dsdl版本</li>
-<li>OCRSample: 定义了OCR任务sample的结构体，包含四个字段:</li>
+<li>OCRSample: 定义了OCR任务sample的结构体，包含四个字段:<ul>
 <li>$def: struct, 表示这是一个结构体类型</li>
 <li>$fields: 结构体类所包含的属性，具体包括:<ul>
 <li>image 图片的路径</li>
 <li>instances 标注信息，OCR任务中，为多个标注框构成的一个列表，标注框形式取决于数据集，可以是Bbox，也可以是Polygon</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2271,16 +2203,20 @@ F1~score = \frac {2*检测精确率*检测召回率}{检测精确率+检测召�
 <p>在模板中的一些字段含义如下：</p>
 <ul>
 <li>$dsdl-version: 描述了该文件对应的dsdl版本</li>
-<li>SegClassDom: 定义了分割任务的classdom，包含两个字段：</li>
-<li>$def class_domain，表示这是一个class_domain类型</li>
+<li>SegClassDom: 定义了分割任务的classdom，包含两个字段：<ul>
+<li>$def: class_domain，表示这是一个class_domain类型</li>
 <li>classes 包含具体类别，这里只有一个text类别</li>
-<li>OCRSample: 定义了OCR任务sample的结构体，包含四个字段:</li>
+</ul>
+</li>
+<li>OCRSample: 定义了OCR任务sample的结构体，包含四个字段:<ul>
 <li>$def: struct, 表示这是一个结构体类型</li>
 <li>$params: 定义了形参，在这里即class domain</li>
 <li>$fields: 结构体类所包含的属性，具体包括:<ul>
 <li>image 图片的路径</li>
 <li>word_segmap 单词粒度的分割图</li>
 <li>chr_segmap 字符粒度的分割图</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2297,11 +2233,13 @@ F1~score = \frac {2*检测精确率*检测召回率}{检测精确率+检测召�
 <p>在模板中的一些字段含义如下：</p>
 <ul>
 <li>$dsdl-version: 描述了该文件对应的dsdl版本</li>
-<li>OCRSample: 定义了OCR任务sample的结构体，包含四个字段:</li>
+<li>OCRSample: 定义了OCR任务sample的结构体，包含四个字段:<ul>
 <li>$def: struct, 表示这是一个结构体类型</li>
 <li>$fields: 结构体类所包含的属性，具体包括:<ul>
 <li>word_image 图片的路径，注意文字识别任务中图片为裁切图片，即文字检测后的图片</li>
 <li>annotations 标注信息，OCR任务中，为前面的LocalInstanceEntry构成的一个列表</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2324,18 +2262,22 @@ F1~score = \frac {2*检测精确率*检测召回率}{检测精确率+检测召�
 <p>在模板中的一些字段含义如下：</p>
 <ul>
 <li>$dsdl-version: 描述了该文件对应的dsdl版本</li>
-<li>LocalInstanceEntry: 定义了标注框的描述方式的嵌套结构体，包含四个字段:</li>
+<li>LocalInstanceEntry: 定义了标注框的描述方式的嵌套结构体，包含四个字段:<ul>
 <li>$def: struct, 表示这是一个结构体类型</li>
 <li>$fields: 结构体类所包含的属性，具体包括:<ul>
 <li>polygon 标注框的位置</li>
 <li>text 标注框的内容</li>
 </ul>
 </li>
-<li>OCRSample: 定义了检测任务sample的结构体，包含四个字段:</li>
+</ul>
+</li>
+<li>OCRSample: 定义了检测任务sample的结构体，包含四个字段:<ul>
 <li>$def: struct, 表示这是一个结构体类型</li>
 <li>$fields: 结构体类所包含的属性，具体包括:<ul>
 <li>image 图片的路径</li>
 <li>instances 标注信息，为前面的LocalInstanceEntry构成的一个列表</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2377,14 +2319,16 @@ F1~score = \frac {2*检测精确率*检测召回率}{检测精确率+检测召�
 <p>具体的字段说明如下所示：</p>
 <ul>
 <li>$dsdl-version: 描述了该文件对应的dsdl版本</li>
-<li>LocalCharEntry: 定义了字符粒度的标注结构体，包含两个字段：</li>
+<li>LocalCharEntry: 定义了字符粒度的标注结构体，包含两个字段：<ul>
 <li>$def: struct, 表示这是一个结构体类型</li>
 <li>$fields: 结构体类所包含的属性，具体包括:<ul>
 <li>char_polygon 单个字符的polygon</li>
 <li>char_text 单个字符的文本标注</li>
 </ul>
 </li>
-<li>LocalInstanceEntry: 定义了单词粒度的标注结构体，包含两个字段：</li>
+</ul>
+</li>
+<li>LocalInstanceEntry: 定义了单词粒度的标注结构体，包含两个字段：<ul>
 <li>$def: struct, 表示这是一个结构体类型</li>
 <li>$fields: 结构体类所包含的属性，具体包括:<ul>
 <li>polygon 单词的polygon</li>
@@ -2392,11 +2336,15 @@ F1~score = \frac {2*检测精确率*检测召回率}{检测精确率+检测召�
 <li>charlist 该单词内字符的文本标注,为上面LocalCharEntry构成的一个列表</li>
 </ul>
 </li>
-<li>OCRSample: 定义了检测任务sample的结构体，包含四个字段:</li>
+</ul>
+</li>
+<li>OCRSample: 定义了检测任务sample的结构体，包含四个字段:<ul>
 <li>$def: struct, 表示这是一个结构体类型</li>
 <li>$fields: 结构体类所包含的属性，具体包括:<ul>
 <li>image 图片的路径</li>
 <li>instances 标注信息，为前面的LocalInstanceEntry构成的一个列表</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
