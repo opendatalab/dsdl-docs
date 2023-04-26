@@ -28,7 +28,7 @@
 
 考虑到标注框的尺度大小将影响对精确度的判断（比如，对于较小的标注框，预测框和标注框的中心点相隔20像素，两者的交并比已经下降到一个非常低的值），因此，将精确度 (Precision)根据标注框大小进行了归一化，得到了归一化精确度 (Normalized Precision)。
 
-`<a id="table-1"></a>`
+<a id="table-1"></a>
 
 ### 1.3 主流数据集调研
 
@@ -183,7 +183,7 @@
 
 可以看到，如果要描述一个检测数据集的样本，instance_id、bbox、media_path和frame_id是最基础的字段，此外还包含了各种描述边界框信息的特殊字段。
 
-`<a id="table-2"></a>`
+<a id="table-2"></a>
 
 ## 2. 模板展示
 
@@ -224,26 +224,27 @@ VideoFrame:
 
 - $dsdl-version: 描述了该文件对应的dsdl版本
 - LocalObjectEntry: 定义了标注框的描述方式的嵌套结构体，包含四个字段:
-  - $def: struct, 表示这是一个结构体类型
-  - $params: 定义了形参，在这里即class domain
-  - $fields: 结构体类所包含的属性，具体包括:
-    - instance_id：物体编号，同一物体在整个视频片段中具有唯一的编号
-    - bbox：标注框信息，转化为bbox标准，即[x,y,w,h]
-    - category：标注框类别，与ClassDom对应
+    - $def: struct, 表示这是一个结构体类型
+    - $params: 定义了形参，在这里即class domain
+    - $fields: 结构体类所包含的属性，具体包括:
+        - instance_id：物体编号，同一物体在整个视频片段中具有唯一的编号
+        - bbox：标注框信息，转化为bbox标准，即[x,y,w,h]
+        - category：标注框类别，与ClassDom对应
 - FrameSample: 定义了视频帧sample的结构体，包含四个字段:
-  - $def: struct, 表示这是一个结构体类型
-  - $params: 定义了形参，在这里即class domain
-  - $fields: 结构体类所包含的属性，具体包括:
-    - frame_id：视频帧序号，类型为UniqueID，如有多个层级包含UniqueID，可指定参数id_type，比如UniqueID[id_type='frame']
-    - media_path：视频帧的路径
-    - objects：标注信息，为前面的标注框结构体构成的一个列表
+    - $def: struct, 表示这是一个结构体类型
+    - $params: 定义了形参，在这里即class domain
+    - $fields: 结构体类所包含的属性，具体包括:
+        - frame_id：视频帧序号，类型为UniqueID，如有多个层级包含UniqueID，可指定参数id_type，比如UniqueID[id_type='frame']
+        - media_path：视频帧的路径
+        - objects：标注信息，为前面的标注框结构体构成的一个列表
 - VideoFrame：定义了一个视频sample的结构体，包含四个字段
-  - $def: struct, 表示这是一个结构体类型
-  - $params: 定义了形参，在这里即class domain
-  - $fields: 结构体类所包含的属性，具体包括:
-    - video_name：视频的名称（一般是文件夹名字）
-    - videoframes：为前面的视频帧sample构成的一个列表
-      除了这些必需字段以外，用户还可以参考“主流数据集调研”中的特殊字段和其他字段，新增对结构体的属性定义。
+    - $def: struct, 表示这是一个结构体类型
+    - $params: 定义了形参，在这里即class domain
+    - $fields: 结构体类所包含的属性，具体包括:
+        - video_name：视频的名称（一般是文件夹名字）
+        - videoframes：为前面的视频帧sample构成的一个列表
+
+除了这些必需字段以外，用户还可以参考“主流数据集调研”中的特殊字段和其他字段，新增对结构体的属性定义。
 
 ## 3. 完整示例
 
@@ -285,16 +286,16 @@ VideoFrame:
 （以下划线开头的字段是[目标跟踪任务模板](#table-2)中没有包含的字段）
 
 - 在LocalObjectEntry中：
-  - bbox：对应原数据集txt标注文件中的标注框坐标，即[x,y,w,h]
+    - bbox：对应原数据集txt标注文件中的标注框坐标，即[x,y,w,h]
 - 在ObjectTrackingSample中：
-  - frame_id：视频帧序号，类型为UniqueID，这里对应的是原数据集的视频帧文件名，比如“0.jpg"对应的frame_id为“0”。
-  - media_path：该字段是我们自适应的字段，用于储存图像的相对路径，主要从原始数据集的filename字段转化而来
-  - _image_shape：图片的宽高信息，格式为[height, width]，TrackingNet中并没有直接提供图片宽高属性，但是为了方便odl工具的筛选等操作，建议添加该字段
-  - objects：该字段对应原始数据集的object字段，以List的形式存储具体bounding box的标注信息
+    - frame_id：视频帧序号，类型为UniqueID，这里对应的是原数据集的视频帧文件名，比如“0.jpg"对应的frame_id为“0”。
+    - media_path：该字段是我们自适应的字段，用于储存图像的相对路径，主要从原始数据集的filename字段转化而来
+    - _image_shape：图片的宽高信息，格式为[height, width]，TrackingNet中并没有直接提供图片宽高属性，但是为了方便odl工具的筛选等操作，建议添加该字段
+    - objects：该字段对应原始数据集的object字段，以List的形式存储具体bounding box的标注信息
 - 在VideoFrame中：
-  - video_name：视频的名称（对应frames下的子目录文件名）
-  - _folder: 主要是标识视频来自于哪个文件夹，因为训练集一共分了12个文件夹，模板中没有该字段，为新增字段
-  - videoframes：以列表的形式存储了视频的每一帧的信息
+    - video_name：视频的名称（对应frames下的子目录文件名）
+    - _folder: 主要是标识视频来自于哪个文件夹，因为训练集一共分了12个文件夹，模板中没有该字段，为新增字段
+    - videoframes：以列表的形式存储了视频的每一帧的信息
 
 值得注意的是，由于该数据集没有类别信息，因此其实可以不需要category字段和类别域文件，另外，因为是单目标跟踪，instance_id字段也可以省略。但为了保证示例的完整性，在此皆保留，供用户参考。
 
@@ -310,9 +311,10 @@ TrackingNetClassDom:
       - object
 ```
 
-在[定义新的DSDL数据集](#table-3)的示例中，我们已经了解了如何从yaml文件读取样本具体标注信息，在该示例中将展示如何从外部读取样本具体标注信息。
 
 **train.yaml**
+
+在该示例中将展示的方式是从外部json读取样本具体标注信息。
 
 ```yaml
 $dsdl-version: "0.5.3"
@@ -339,13 +341,13 @@ data:
 - $dsdl-version: dsdl版本信息
 - $import: 模板导入信息，这里导入检测任务模板和TrackingNet的class domain
 - meta: 主要展示数据集的一些元信息，比如数据集名称，创建者等等，用户可以自己添加想要备注的其它信息
-- data: data的内容就是按照前面定义好的结构所保存的样本信息，具体如下：
-  - sample-type: 数据的类型定义，在这里用的是从目标跟踪任务模板中导入的VideoFrame类，同时指定了采用的cdom为TrackingNetClassDom
-  - sample-path: samples的存放路径，这里给了实际的json文件路径，因此samples的内容将从该文件读取
+- data: 其内容就是按照前面定义好的结构所保存的样本信息，具体如下：
+    - sample-type: 数据的类型定义，在这里用的是从目标跟踪任务模板中导入的VideoFrame类，同时指定了采用的cdom为TrackingNetClassDom
+    - sample-path: samples的存放路径，这里给了实际的json文件路径，因此samples的内容将从该文件读取
 
 **train_samples.json**
 
-train_samples.json需要我们写脚本从原始数据集转换来，注意，里面的字段需要和之前定义的struct对应，最终样式如下：
+train_samples.json需要我们写脚本从原始数据集转换来，转换脚本模板可以参考[数据集转换](../../tutorials/advanced/dsdl_convert.md)页面注意，里面的字段需要和之前定义的struct对应，最终样式如下：
 
 ```
 {"samples": [

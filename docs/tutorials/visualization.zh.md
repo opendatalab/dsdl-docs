@@ -6,36 +6,37 @@
 
 使用PIL库，我们可以方便的对图片进行可视化，这里给出目标检测任务可视化的实例代码：
 
-```
+```python
+import random
 from dsdl.dataset import DSDLDataset
 from PIL import Image, ImageDraw
 
-# train_yaml = "~/datasets/VOC07-det/dsdl/set-train/train.yaml"
-val_yaml = "~/datasets/VOC07-det/dsdl/set-val/val.yaml"
+val_yaml = "~/data/VOC07-det/dsdl/set-val/val.yaml"
 
 loc_config = dict(
     type="LocalFileReader",
-    working_dir="~/datasets/VOC07-det/original"
+    working_dir="~/data/VOC07-det/original"
 )
 
 # 初始化Dataset
-# ds_train = DSDLDataset(dsdl_yaml=train_yaml, location_config=loc_config)
 ds_val = DSDLDataset(dsdl_yaml=val_yaml, location_config=loc_config)
 
-# 获取索引为1的样本
-example = ds_val.sample_list[1]
+# 获取索引为0的样本
+example = ds_val[0]
+# print(example)
 
 # 提取图片
-img = example.media.image.to_image().convert(mode='RGB')
+img = example.Image[0].to_image().convert(mode='RGB')
 
 # 定义Draw方法
 draw = ImageDraw.Draw(img)
 
 # 迭代绘制标注框及其类别名称
-for i in range(len(example.objects)):
-    draw.rectangle(example.objects[i].bbox.xyxy, width=2)
-    x,y,w,h = example.objects[i].bbox.xywh
-    draw.text((x,y), example.objects[i].category.name)
+for i in range(len(example.Bbox)):
+    color = (random.randint(0,250), random.randint(0,250), random.randint(0,250))
+    draw.rectangle(example.Bbox[i].xyxy, width=2, outline=color)
+    x,y,w,h = example.Bbox[i].xywh
+    draw.text((x,y), example.Label[i].name)
 
 # 展示绘图结果
 img
@@ -61,3 +62,9 @@ The description of each argument is shown below:
 | -v                  | `--visualize` | Whether to visualize the samples or just print the information in console.                                                                                                                                                                             |
 | -f                  | `--field`     | The field type to visualize, e.g.`-f BBox`means show the bounding box in samples, `-f Attributes`means show the attributes of a sample in the console . One can specify multiple field types simultaneously, such as `-f Label BBox Attributes`. |
 | -t                  | `--task`      | The task you are working on, for example,`-t detection` is equivalent to `-f Label BBox Polygon Attributes`.                                                                                                                                       |
+
+
+可视化的结果如下：
+<center>
+<img src="https://user-images.githubusercontent.com/113978928/232955194-638f0107-fcd4-4d34-bdac-753a6706cf28.png">
+</center>

@@ -2,9 +2,9 @@
 
 我们通过对图像生成任务进行调研，并总结图像生成数据集中的字段信息，从而制定出图像生成任务的DSDL模板，供大家参考使用。
 
-# 1. 任务调研
+## 1. 任务调研
 
-## 1.1 任务定义
+### 1.1 任务定义
 
 图像生成指的是从已有的图像数据集中学习统计规律，并生成符合原始数据集的统计规律，但在原始数据集中未出现过的新图像的任务。如下所示：
 
@@ -14,7 +14,7 @@
 
 左图是AFHQv2数据集中采集的真实图像，右图则是StyleGANv3模型生成的新图像（图像出自[Alias-Free Generative Adversarial Networks](https://nvlabs-fi-cdn.nvidia.com/stylegan3/stylegan3-paper.pdf)）。可见图像生成的模型已经可以生成十分真实并且符合原始数据集视觉特点的图像。
 
-## 1.2 评价指标
+### 1.2 评价指标
 
 设计图像生成模型的评价指标的时候一般有以下几个目标：
 
@@ -57,7 +57,7 @@ $$FID=||\mu_r-\mu_g||^2+Tr(\Sigma_r+\Sigma_g-2(\Sigma_r\Sigma_g)^{\frac{1}{2}})$
 
   跟IS分数相比，FID分数的优点是允许生成模型的训练集和Inception模型的训练集不相同，因为FID分数不使用Inception模型中的分类器。但FID分数仍然存在缺点，比如当生成模型过拟合，生成的图像和训练集中的图像一模一样时，FID分数也很小，但此时生成模型的性能并不好。
 
-## 1.3 主流数据集调研
+### 1.3 主流数据集调研
 
 我们对一些图像生成数据集进行了调研，对相关数据集描述文件（主要是标注字段）进行了分析汇总，相同含义的标注字段会以统一命名进行展示，汇总信息如下表所示：
 
@@ -170,13 +170,13 @@ $$FID=||\mu_r-\mu_g||^2+Tr(\Sigma_r+\Sigma_g-2(\Sigma_r\Sigma_g)^{\frac{1}{2}})$
     </tr>
 </table>
 
-# 2. 模板展示
+## 2. 模板展示
 
 从数据集调研结果可以看出，对于Unconditional Generation，只有image_id是必须字段。而对于Conditional Generation，只有image_id和category_name是必须字段，因此不需要专门为这两个任务制定模板，Conditional Generation的数据集可以用图像分类的模板来描述，Unconditional Generation的数据集则只需要定义sample的struct中有Image字段即可。
 
 对于Style Transfer任务，根据是否有成对图像（paired/unpaired），可以制定不同的模板，下面分别介绍两种模板。
 
-## 2.1 Style Transfer(Unpaired)模板
+### 2.1 Style Transfer(Unpaired)模板
 
 我们制定的Style Transfer(Unpaired)任务的模板如下：
 
@@ -201,7 +201,7 @@ UnpairedSample:
         - image：图片路径，对应于共享字段中的image_id
         - domain：域信息，对应于独立字段中的domain        
 
-## 2.2 Style Transfer(Paired)模板
+### 2.2 Style Transfer(Paired)模板
 
 我们制定的Style Transfer(Paired)任务的模板如下：
 
@@ -242,11 +242,11 @@ PairedSample:
 
 可以看出，Style Transfer(Paired)模板与Style Transfer(Unpaired)模板的主要区别在于是否存在成对的图片。
 
-# 3. 完整示例
+## 3. 完整示例
 
 我们以[CMP Facade](https://cmp.felk.cvut.cz/~tylecr1/facade/)数据集为例，展示图像生成数据集DSDL描述文件的具体内容。
 
-## 3.1 用Style Transfer(Paired)模板对数据集进行描述
+### 3.1 用Style Transfer(Paired)模板对数据集进行描述
 
 CMP Facade数据集可以用于Style Transfer(Paired)任务，可以参见[pix2pix](https://phillipi.github.io/pix2pix/)方法。通过分析原始数据集的标注信息，我们可以用DSDL对数据集进行描述，首先用DSDL语法描述风格域信息：
 
@@ -354,7 +354,7 @@ data:
 
 在实际用DSDL描述一个数据集的时候，类似`base_samples.json`的文件一般内容较多，需要通过脚本来生成。
 
-## 3.3 用Style Transfer(Unpaired)模板对数据集进行描述
+### 3.3 用Style Transfer(Unpaired)模板对数据集进行描述
 
 CMP Facade数据集也可以用于Style Transfer(Unpaired)任务，可以参见[CycleGAN](https://junyanz.github.io/CycleGAN/)方法。我们可以基于Style Transfer(Unpaired)任务的特点，用DSDL对数据集进行描述，此时得到的DSDL数据集与Style Transfer(Paired)任务中的DSDL数据集大体上是一样，只是其中一些描述文件的内容和格式会有所变化，下面仅介绍与Style Transfer(Paired)任务不同的描述文件：
 

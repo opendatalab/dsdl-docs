@@ -59,7 +59,7 @@ $$
 
 ### 1.3 主流数据集调研
 
-OCR数据集，其中包含了Total-Text、ICDAR2015等常见数据集。考虑到有些数据集同时包含了不同的OCR子任务，这里对常用的子任务进行了拆分，并且每个子任务只考虑和他相关的标注内容。为了使得模板更加通用，同时也具备拓展能力，我们着重关注各个数据集之间的共性和特性，此外，调研过程会遇到一些名称不同，但是实际含义相同或类似的字段，这些字段我们也视为同一字段，并统一去命名，比如image_id字段一般表示图片的路径或者id，他是图片的唯一标识；
+OCR数据集，其中包含了Total-Text、ICDAR2015等常见数据集。考虑到有些数据集同时包含了不同的OCR子任务，这里对常用的子任务进行了拆分，并且每个子任务只考虑和他相关的标注内容。为了使得模板更加通用，同时也具备拓展能力，我们着重关注各个数据集之间的共性和特性，此外，调研过程会遇到一些名称不同，但是实际含义相同或类似的字段，这些字段我们也视为同一字段，并统一去命名，比如image_id字段一般表示图片的路径或者id，是图片的唯一标识。
 
 #### 1.3.1 文字检测数据集调研
 
@@ -296,10 +296,10 @@ OCRSample:
 
 - $dsdl-version: 描述了该文件对应的dsdl版本
 - OCRSample: 定义了OCR任务sample的结构体，包含四个字段:
-  - $def: struct, 表示这是一个结构体类型
-  - $fields: 结构体类所包含的属性，具体包括:
-    - image 图片的路径
-    - instances 标注信息，OCR任务中，为多个标注框构成的一个列表，标注框形式取决于数据集，可以是Bbox，也可以是Polygon
+    - $def: struct, 表示这是一个结构体类型
+    - $fields: 结构体类所包含的属性，具体包括:
+        - image 图片的路径
+        - instances 标注信息，OCR任务中，为多个标注框构成的一个列表，标注框形式取决于数据集，可以是Bbox，也可以是Polygon
 
 ### 2.2 文字分割模板
 
@@ -326,15 +326,15 @@ OCRSample:
 
 - $dsdl-version: 描述了该文件对应的dsdl版本
 - SegClassDom: 定义了分割任务的classdom，包含两个字段：
-  - $def class_domain，表示这是一个class_domain类型
-  - classes 包含具体类别，这里只有一个text类别
+    - $def: class_domain，表示这是一个class_domain类型
+    - classes 包含具体类别，这里只有一个text类别
 - OCRSample: 定义了OCR任务sample的结构体，包含四个字段:
-  - $def: struct, 表示这是一个结构体类型
-  - $params: 定义了形参，在这里即class domain
-  - $fields: 结构体类所包含的属性，具体包括:
-    - image 图片的路径
-    - word_segmap 单词粒度的分割图
-    - chr_segmap 字符粒度的分割图
+    - $def: struct, 表示这是一个结构体类型
+    - $params: 定义了形参，在这里即class domain
+    - $fields: 结构体类所包含的属性，具体包括:
+        - image 图片的路径
+        - word_segmap 单词粒度的分割图
+        - chr_segmap 字符粒度的分割图
 
 ### 2.3 文字识别模板
 
@@ -354,10 +354,10 @@ OCRSample:
 
 - $dsdl-version: 描述了该文件对应的dsdl版本
 - OCRSample: 定义了OCR任务sample的结构体，包含四个字段:
-  - $def: struct, 表示这是一个结构体类型
-  - $fields: 结构体类所包含的属性，具体包括:
-    - word_image 图片的路径，注意文字识别任务中图片为裁切图片，即文字检测后的图片
-    - annotations 标注信息，OCR任务中，为前面的LocalInstanceEntry构成的一个列表
+    - $def: struct, 表示这是一个结构体类型
+    - $fields: 结构体类所包含的属性，具体包括:
+        - word_image 图片的路径，注意文字识别任务中图片为裁切图片，即文字检测后的图片
+        - annotations 标注信息，OCR任务中，为前面的LocalInstanceEntry构成的一个列表
 
 ### 2.4 端到端模板
 
@@ -383,15 +383,15 @@ OCRSample:
 
 - $dsdl-version: 描述了该文件对应的dsdl版本
 - LocalInstanceEntry: 定义了标注框的描述方式的嵌套结构体，包含四个字段:
-  - $def: struct, 表示这是一个结构体类型
-  - $fields: 结构体类所包含的属性，具体包括:
-    - polygon 标注框的位置
-    - text 标注框的内容
+    - $def: struct, 表示这是一个结构体类型
+    - $fields: 结构体类所包含的属性，具体包括:
+        - polygon 标注框的位置
+        - text 标注框的内容
 - OCRSample: 定义了检测任务sample的结构体，包含四个字段:
-  - $def: struct, 表示这是一个结构体类型
-  - $fields: 结构体类所包含的属性，具体包括:
-    - image 图片的路径
-    - instances 标注信息，为前面的LocalInstanceEntry构成的一个列表
+    - $def: struct, 表示这是一个结构体类型
+    - $fields: 结构体类所包含的属性，具体包括:
+        - image 图片的路径
+        - instances 标注信息，为前面的LocalInstanceEntry构成的一个列表
 
 ## 3. 使用说明
 
@@ -442,21 +442,21 @@ OCRSample:
 
 - $dsdl-version: 描述了该文件对应的dsdl版本
 - LocalCharEntry: 定义了字符粒度的标注结构体，包含两个字段：
-  - $def: struct, 表示这是一个结构体类型
-  - $fields: 结构体类所包含的属性，具体包括:
-    - char_polygon 单个字符的polygon
-    - char_text 单个字符的文本标注
+    - $def: struct, 表示这是一个结构体类型
+    - $fields: 结构体类所包含的属性，具体包括:
+        - char_polygon 单个字符的polygon
+        - char_text 单个字符的文本标注
 - LocalInstanceEntry: 定义了单词粒度的标注结构体，包含两个字段：
-  - $def: struct, 表示这是一个结构体类型
-  - $fields: 结构体类所包含的属性，具体包括:
-    - polygon 单词的polygon
-    - text 单词的文本标注
-    - charlist 该单词内字符的文本标注,为上面LocalCharEntry构成的一个列表
+    - $def: struct, 表示这是一个结构体类型
+    - $fields: 结构体类所包含的属性，具体包括:
+        - polygon 单词的polygon
+        - text 单词的文本标注
+        - charlist 该单词内字符的文本标注,为上面LocalCharEntry构成的一个列表
 - OCRSample: 定义了检测任务sample的结构体，包含四个字段:
-  - $def: struct, 表示这是一个结构体类型
-  - $fields: 结构体类所包含的属性，具体包括:
-    - image 图片的路径
-    - instances 标注信息，为前面的LocalInstanceEntry构成的一个列表
+    - $def: struct, 表示这是一个结构体类型
+    - $fields: 结构体类所包含的属性，具体包括:
+        - image 图片的路径
+        - instances 标注信息，为前面的LocalInstanceEntry构成的一个列表
 
 ### 3.2 samples相关文件
 

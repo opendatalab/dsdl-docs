@@ -55,25 +55,24 @@ nav:
   - 用户教程:
     - 教程介绍: tutorials/overview.md
     - 数据集准备: tutorials/dataset_download.md
-    - 数据集配置: tutorials/config/location_config.md
+    # - 数据集配置: tutorials/config/location_config.md
     - 数据集可视化: tutorials/visualization.md
-    - 数据集分析: tutorials/dataset_analysis.md
+    # - 数据集分析: tutorials/dataset_analysis.md
     - 模型训练&推理:
       - OpenMMLab: tutorials/train_test/openmmlab.md
       - Pytorch: tutorials/train_test/pytorch.md
-      - Tensorflow: tutorials/train_test/tensorflow.md
+      # - Tensorflow: tutorials/train_test/tensorflow.md
     # - 模型推理: tutorials/training/model_training.md
     # - 数据/模型分析: 
       # - 基本介绍: tutorials/analysis/result_analysis.md
-    - 数据集分发: tutorials/dataset_distribution.md
+    # - 数据集分发: tutorials/dataset_distribution.md
     - 高阶教程:
       - 高阶教程介绍: tutorials/advanced/overview.md
-      - DSDL数据集标准化:
+      - 自定义DSDL数据集:
         - DSDL数据集模板制定: tutorials/advanced/dsdl_define.md
         - DSDL数据集格式转换: tutorials/advanced/dsdl_convert.md
         - DSDL数据集验证: tutorials/advanced/dsdl_check.md
-        - 自定义DSDL Field: tutorials/advanced/dsdl_extend.md
-      - DSDL DataLoader开发: tutorials/advanced/dsdl_dataloader.md
+      - 自定义DSDL Field: tutorials/advanced/dsdl_extend.md
   - DSDL语言教程:
     - 语言特性: dsdl_language/overview.md
     - 语言定义: 

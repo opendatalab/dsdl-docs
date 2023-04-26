@@ -28,11 +28,11 @@ DSDL核心目标是统一AI数据集标注规范，打通不同任务及模态�
 
 对于初次使用DSDL的用户，请先[安装部署](install.md)DSDL-SDK，我们为用户提供了下述学习资源：
 
-[快速开始](quick_start_ex2.md)：帮助用户快速了解DSDL数据集下载、使用方法。
+[快速开始](quick_start.md)：帮助用户快速了解DSDL数据集下载、使用方法。
 
 [用户教程](../tutorials/overview.md)：提供**数据集下载**、**预处理**、**数据分析**、**模型训练**、**模型推理**系统性教程。
 
-[DSDL任务模板](../dsdl_template/cv/cv_classification.md)：帮助用户快速了解相关任务DSDL模板定义，高效完成数据集转换工作。
+[DSDL任务模板](../dsdl_template/overview.md)：帮助用户快速了解相关任务DSDL模板定义，高效完成数据集转换工作。
 
 [DSDL语言教程](../dsdl_language/overview.md)：用户了解并系统性学习DSDL语言。
 

@@ -5,19 +5,33 @@ DSDL支持对数据集进行简单的check，并生成检测报告。DSDL check�
 check 命令如下所示：
 
 ```shell
-dsdl check -y {path_to_yaml_file} -c {path_to_config.py} -l local -p {path_to_defs} -t detection -o ./
+dsdl check -y {path_to_yaml_file} -c {path_to_config.py} -l {local/ali-oss} -p {path_to_defs} -t {task} -f {Field} -o ./
 ```
 
 部分参数的含义如下：
 
     -y 为需检查的模板定义文件
-    -c 为指定媒体文件存放位置的config文件（可指定ali-oss路径和local路径）
-    -l 为指定位置，可以选择使用 ali-oss 或 local，与config文件对应
+    -c 为config文件的路径
+    -l 为指定媒体文件读取途径，可以选择使用 ali-oss 或 local，会对应调用config文件里的ali-oss或local里填写的路径来读取媒体文件
     -p 如果在模板定义文件内部的import没有使用相对路径，需要指定import的根目录
-    -t 为指定当前yaml的任务类别，当前支持的任务类别有（detection，segmentation，classification）
+    -t 为指定当前yaml的任务类别，当前支持的任务类别及可视化的类型将会在后文展示
+    -f 为指定可视化的类型，如果不指定-t, 也可以直接指定-f来选择希望可视化的类型，当前支持的可视化类型将会在后文展示
     -o 为指定输出的文件夹，包含图片和md文档，check的结果保存在输出文件夹下的log/output.md中
 
-## 实际案例
+当前支持的可视化类型见FIELDS字段，任务类别及其对应的Field种类见TASK_FIELDS字段：
+```python
+FIELDS = ["image", "label", "bbox", "polygon", "keypoint", "rotatedbbox", "labelmap", "instancemap", "text"]
+
+TASK_FIELDS = {
+    "detection": ["image", "label", "bbox", "polygon", "keypoint", "rotatedbbox"],
+    "classification": ["image", "label"],
+    "semantic-seg": ["image", "labelmap"],
+    "panoptic-seg": ["image", "labelmap", "instancemap"],
+    "ocr": ["image", "rotatedbbox", "text", "polygon"]
+}
+```
+
+## 1. 实际案例
 
 假设DSDL数据集和原始数据集的目录结构如下，用户需要分别对train.yaml、val.yaml和test.yaml进行验证：
 
@@ -41,7 +55,7 @@ root-path/
     └── config.py                 # 数据集读取路径等config文件
 ```
 
-config.py文件的内容为：
+假设媒体文件从本地读取，那么config.py文件的内容为：
 
 ```
 local = dict(
@@ -50,10 +64,15 @@ local = dict(
 )
 ```
 
-check命令如下：
+假设是一个检测的数据集，可指定-t为detection，check命令如下：
 
-```
+```bash
 dsdl check -y set-train/train.yaml -c config.py -l local -t detection -p defs/ -o ./
+```
+
+或者也可以用-f来直接指定可视化的类型：
+```bash
+dsdl check -y set-train/train.yaml -c config.py -l local -f image label bbox -p defs/ -o ./
 ```
 
 其中，如果train.yaml中的import部分写了相对路径的话（如下），可以省略-p参数：
@@ -78,7 +97,7 @@ data:
     sample-path: train_samples.json
 ```
 
-## DSDL check模块
+## 2. DSDL check模块
 
 目前解析器的检查分三个模块：
 
@@ -86,7 +105,7 @@ data:
 * strcut的检查
 * 参数的检查
 
-### class_dom的检查
+### 2.1 class_dom的检查
 
 首先明确class_dom的样式：
 
@@ -119,7 +138,7 @@ KeyointDom:
   `        - airplane[tool][sports tool]`
 - 保证skeleton中的字段是list of int
 
-### strcut的检查
+### 2.2 strcut的检查
 
 ```YAML
 LocalObjectEntry:
@@ -155,7 +174,7 @@ InstanceSegmentationSample:
 - $optional中检查：optional list 中的字段是否是已经注册的，没有就报错
 - strcut中的循环引用检查
 
-### 参数检查
+### 2.3 参数检查
 
 包括：
 
@@ -169,7 +188,7 @@ InstanceSegmentationSample:
 
 - 目前不同字段引用同一个strcut也会报错
 
-## 验证结果
+## 3. 验证结果
 
   报告分为**3个部分**：
 
@@ -178,9 +197,9 @@ InstanceSegmentationSample:
 * samples实例化检查结果：其中报告说明了当前数据集共有样本个数，正常样本个数，警告样本个数，错误样本个数，并提供了异常样本的具体信息日志。
 * 可视化结果：需要肉眼观察可视化结果是否正确，比如bbox位置是否正确，标签内容是否正确等，在图片下面展示了可视化过程中的日志内容，比如是可视化成功还是失败，以及失败日志等。
 
-### Parser部分
+### 3.1 Parser部分
 
-#### 1. Class  doamin部分
+#### 3.1.1 Class  doamin部分
 
 - **ValidationError： Error with class-dom name,  ** **`{class_dom_name}`** ** must be a valid identifier.
   ** **[1. `Struct` name 2. `Class domain` name 3.name of `$field` in `Struct`]  is considered a valid identifier if it only contains alphanumeric letters (a-z) and (0-9), or underscores (_).
@@ -221,7 +240,7 @@ InstanceSegmentationSample:
 
      含义：对于非层级结构的class domain的label来说会报这个错误，表示：对于非层级结构的class domain的label，我们推荐使用空格字母数字和下划线来作为label名。
 
-#### 2. Data section部分
+#### 3.1.2 Data section部分
 
 - **DefineSyntaxError：data yaml must contain `meta` section.**
 
@@ -273,7 +292,7 @@ data:
 
     含义：当不用 `-p`指定数据yaml文件中$import路径的时候，如果在当前文件夹和dsdl库文件（dsdl/dsdl_library）中都没找到需要import的文件会报这个问题。
 
-#### 3. struct部分和参数部分
+#### 3.1.3 struct部分和参数部分
 
 - **DefineSyntaxError: Error in field with value of `{ field_type }` . check the `{ k_v}` part.**
 
@@ -301,9 +320,9 @@ data:
 
   含义：List中有etype开头的参数，但是没有赋值，该参数必须赋值。
 
-### Samples实例化部分
+### 3.2 Samples实例化部分
 
-#### 1. 是否存在样本
+#### 3.2.1 是否存在样本
 
 DSDL Check会将所有样本读取到内存中，如果检测到的样本数目为0，该情况异常，会在报告中显示：
 
@@ -327,7 +346,7 @@ DSDL Check会将所有样本读取到内存中，如果检测到的样本数目�
 
 > 此时需要用户检查样本数目是否正确
 
-#### 2. 是否成功实例化数据集对象
+#### 3.2.2 是否成功实例化数据集对象
 
 DSDL Check会将所有的样本存储到一个`dsdl.dataset.CheckDataset`对象当中，如果实例化`dsdl.dataset.CheckDataset`对象的过程中成功，会在报告中显示：
 
@@ -358,7 +377,7 @@ DSDL Check会将所有的样本存储到一个`dsdl.dataset.CheckDataset`对象�
 >
 > 在上面的yaml中的如果`KeyPointSample`未定义，或者`KeyPoint_person_ClassDom`未定义，或者`KeyPointSample`的参数名不叫`cdom0`，都会引起数据集实例化报错，用户需要检查是否上述这些内容写错了。
 
-#### 3. 对样本进行实例化
+#### 3.2.3 对样本进行实例化
 
 DSDL Check会将所有的样本实例化为`Struct`对象，在这个过程中，如果有样本生成失败，DSDL会将错误信息记录到文档中，方便用户溯源。
 
@@ -408,7 +427,7 @@ DSDL Check会将所有的样本实例化为`Struct`对象，在这个过程中�
 
 > DSDL会将总数据量，成功实例化的数据量，实例化失败的数据量写在报告中。
 
-### 可视化
+### 3.3 可视化
 
 DSDL为了检测标注信息是否正确，会随机从数据集中选择几个样本进行可视化，在这个步骤中，可能遇到以下问题：
 

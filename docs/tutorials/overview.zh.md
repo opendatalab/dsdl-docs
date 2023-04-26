@@ -25,64 +25,37 @@
 用户教程将对AI模型开发全流程中的数据操作进行展开：
 
 <details>
-<summary><font size=5>1.数据集下载</font></summary>
+<summary><font size=5>1.数据集准备</font></summary>
  <ul>
-     <li>情形1: 原始数据集+DSDL标注文件可直接下载</li>
-     <li>情形2：原始数据集需自行下载</li>
-     <li>情形3：DSDL标注文件需自行转换</li>
+     <li>1.1 数据集下载</li>
+     <li>1.2 数据集组织</li>
+     <li>1.3 数据集配置</li>
  </ul>
 </details>
 
 
 <details>
-<summary><font size=5>2.数据集分析</font></summary>
+<summary><font size=5>2.数据集可视化</font></summary>
  <ul>
-     <li>数据集统计信息</li>
-     <li>数据集可视化分析</li>
+     <li>2.1 Python可视化</li>
+     <li>2.2 CLI可视化</li>
  </ul>
 </details>
 
 
 <details>
-<summary><font size=5>3.模型训练</font></summary>
+<summary><font size=5>3.模型训练&推理</font></summary>
  <ul>
-     <li>配置文件准备</li>
-     <li>模型训练</li>
+     <li>3.1 OpenMMLab</li>
+     <li>3.2 Pytorch</li>
  </ul>
 </details>
 
 
 <details>
-<summary><font size=5>4.模型推理</font></summary>
+<summary><font size=5>4. 高阶教程</font></summary>
  <ul>
-     <li>模型推理</li>
-     <li>推理结果格式查看</li>
- </ul>
-</details>
-
-
-<details>
-<summary><font size=5>5.数据/模型分析</font></summary>
- <ul>
-     <li>模型指标评估</li>
-     <li>结果可视化分析</li>
- </ul>
-</details>
-
-
-<details>
-<summary><font size=5>6.数据集分发</font></summary>
- <ul>
-     <li>公开数据集新版本标注共享</li>
-     <li>公开数据集上传</li>
- </ul>
-</details>
-
-<details>
-<summary><font size=5>高阶教程</font></summary>
- <ul>
-     <li>1.自定义DSDL数据集</li>
-     <li>2.DSDL数据集格式转换</li>
-     <li>3.DSDL DataLoader开发</li>
+     <li>4.1 DSDL数据集标准化</li>
+     <li>4.2 自定义DSDL Field</li>
  </ul>
 </details>
