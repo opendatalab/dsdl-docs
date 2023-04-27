@@ -5,13 +5,13 @@
 ## **1. 数据集下载**
 
 ```
-odl get VOC07-det
+odl get PASCAL_VOC2007
 ```
 
 出现如下日志，说明数据集已经下载完成。
 
 ```
-saving to {your home path}/datasets/VOC07-det
+saving to {your home path}/datasets/PASCAL_VOC2007
 preparing...
 start download...
 Download |██████████████████████████████████████████████████| 100.0%, Eta 0 seconds
@@ -24,11 +24,11 @@ register local dataset...
 <details>
 <summary>voc数据集原始目录结构</summary>
 ```
-original/                     # 原始数据集文件夹
-├── Annotations/              # 里面存放的是每张图片打完标签所对应的XML文件
+original                      # 原始数据集文件夹
+├── Annotations               # 里面存放的是每张图片打完标签所对应的XML文件
 │  ├── 000001.xml             # 某张图片的标注信息
 │  └── ...
-├── ImageSets/                # 图片划分的txt存放位置
+├── ImageSets                 # 图片划分的txt存放位置
 │  ├── Layout                 # 包含Layout标注信息的图像文件名列表
 │  │  ├── test.txt 
 │  │  ├── train.txt 
@@ -47,13 +47,13 @@ original/                     # 原始数据集文件夹
 │  │  ├── train.txt 
 │  │  ├── trainval.txt 
 │  │  └── val.txt 
-├── JPEGImages/               # 存放的是训练与测试的所有图片
+├── JPEGImages                # 存放的是训练与测试的所有图片
 │  ├── 000001.jpg             # 图片（序号作为图片名） 
 │  └── ...
-├── SegmentationClass/        # 语义分割标注
+├── SegmentationClass         # 语义分割标注
 │  ├── 000032.png             # 某张图片的媒体文件 
 │  └── ...
-└── SegmentationObject/       # 实例分割标注
+└── SegmentationObject        # 实例分割标注
    ├── 000032.png             # 某张图片的媒体文件 
    └── ...
 ```
@@ -64,17 +64,17 @@ original/                     # 原始数据集文件夹
 <details>
 <summary>dsdl-voc目录结构</summary>
 ```
-dsdl/
-├── defs/  
+dsdl
+├── defs
 │  ├── object-detection-def.yaml              # 任务类型的定义
 │  └── class-dom.yaml                         # 数据集的类别域
-├── set-train/                                # 训练集
+├── set-train                                 # 训练集
 │  ├── train.yaml                             # 训练的yaml文件
 │  └── train_samples.json                     # 训练集sample的json文件
-├── set-val/                                  # 验证集
+├── set-val                                   # 验证集
 │  ├── val.yaml
 │  └── val_samples.json  
-├── set-test/                                 # 测试集
+├── set-test                                  # 测试集
 │  ├── test.yaml
 │  └── test_samples.json  
 ├── config.py                                 # 数据集读取路径等config文件
@@ -86,35 +86,35 @@ dsdl/
 
 ## **2. 数据集配置**
 
-dsdl采用了【媒体数据】和【标注文件】分离这一设计理念，若用户之前已经下载过相关数据集媒体文件，只需下载dsdl标注文件即可使用该数据集。为了使用下载好的数据集，我们需要修改配置文件`config.py`（位于`VOC07-det/dsdl/config.py`）来进行对媒体数据的定位。举例来说，假如下载的`VOC07-det`数据集的解压后的媒体文件位于`~/datasets/VOC07-det/original`路径下，解压后的DSDL标注文件位于`~/datasets/VOC07-det/dsdl/`路径下，则只需要将`~/datasets/VOC07-det/dsdl/config.py`中的配置按照如下内容进行修改即可：
+dsdl采用了【媒体数据】和【标注文件】分离这一设计理念，若用户之前已经下载过相关数据集媒体文件，只需下载dsdl标注文件即可使用该数据集。为了使用下载好的数据集，我们需要修改配置文件`config.py`（位于`PASCAL_VOC2007/dsdl/config.py`）来进行对媒体数据的定位。举例来说，假如下载的`PASCAL_VOC2007`数据集的解压后的媒体文件位于`~/datasets/PASCAL_VOC2007/original`路径下，解压后的DSDL标注文件位于`~/datasets/PASCAL_VOC2007/dsdl/`路径下，则只需要将`~/datasets/PASCAL_VOC2007/dsdl/config.py`中的配置按照如下内容进行修改即可：
 
 ```python
 local = dict(
     type="LocalFileReader",
-    working_dir="~/datasets/VOC07-det/original",
+    working_dir="~/datasets/PASCAL_VOC2007/original",
 )
 ```
 
-实际上，dsdl也支持从阿里云读取媒体数据，同样也只需要修改`config.py`文件即可，详细内容可以参考[数据集配置教程](../tutorials/config/location_config.md)
+实际上，dsdl也支持从阿里云读取媒体数据，同样也只需要修改`config.py`文件即可，详细内容可以参考[数据集配置教程](../tutorials/config/location_config.md)。
 
 ## **3. 数据集简单使用**
 
 
 ### **3.1. 数据集初始化**
 
-dsdl将dsdl数据集的使用接口封装进DSDLDataset类，初始化一个DSDLDataset类需要yaml文件和location config，这里仍然假设上面VOC数据集解压后的媒体文件和dsdl标注文件的存放路径分别为`~/datasets/VOC07-det/`目录下的`original`和`dsdl`，则初始化代码如下：
+dsdl将dsdl数据集的使用接口封装进DSDLDataset类，初始化一个DSDLDataset类需要yaml文件和location config，这里仍然假设上面VOC数据集解压后的媒体文件和dsdl标注文件的存放路径分别为`~/datasets/PASCAL_VOC2007/`目录下的`original`和`dsdl`，则初始化代码如下：
 
 ```
 from dsdl.dataset import DSDLDataset
 
 # 1. 指定要加载数据的dsdl文件
-train_yaml = "~/datasets/VOC07-det/dsdl/set-train/train.yaml"
-val_yaml = "~/datasets/VOC07-det/dsdl/set-val/val.yaml"
+train_yaml = "~/datasets/PASCAL_VOC2007/dsdl/set-train/train.yaml"
+val_yaml = "~/datasets/PASCAL_VOC2007/dsdl/set-val/val.yaml"
 
 # 2. 配置数据集路径（支持本地、阿里云oss等主流存储）
 loc_config = dict(
     type="LocalFileReader",
-    working_dir="~/datasets/VOC07-det/original"
+    working_dir="~/datasets/PASCAL_VOC2007/original"
 )
 ds_train = DSDLDataset(dsdl_yaml=train_yaml, location_config=loc_config)
 ds_val = DSDLDataset(dsdl_yaml=val_yaml, location_config=loc_config)
@@ -188,6 +188,6 @@ print(ds_val[0].Bbox[0])
 ## 4. DSDL数据集高阶使用
 除了入门教程中提到的功能以外，DSDL的[用户教程](../tutorials/overview.md)中还有一些其他的应用：
 
-* [数据集可视化](../tutorials/visualization.md)
-* 模型训练&推理：包含了[OpenMMLab](../tutorials/train_test/openmmlab.md)和[Pytorch](../tutorials/train_test/pytorch.md)
-* [高阶教程](../tutorials/advanced/overview.md): 包含了[DSDL数据集模板制定](../tutorials/advanced/dsdl_define.md)、[格式转换](../tutorials/advanced/dsdl_convert.md)和[验证](../tutorials/advanced/dsdl_check.md)的全流程，并且介绍了[自定义DSDL Field](../tutorials/advanced/dsdl_extend.md)的方法
+* [数据集可视化](../tutorials/visualization.md)；
+* 模型训练&推理：包含了[OpenMMLab](../tutorials/train_test/openmmlab.md)和[Pytorch](../tutorials/train_test/pytorch.md)；
+* [高阶教程](../tutorials/advanced/overview.md): 包含了[DSDL数据集模板制定](../tutorials/advanced/dsdl_define.md)、[格式转换](../tutorials/advanced/dsdl_convert.md)和[验证](../tutorials/advanced/dsdl_check.md)的全流程，并且介绍了[自定义DSDL Field](../tutorials/advanced/dsdl_extend.md)的方法。
