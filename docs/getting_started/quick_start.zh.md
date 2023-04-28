@@ -5,13 +5,13 @@
 ## **1. 数据集下载**
 
 ```
-odl get VOC07-det
+odl get PASCAL_VOC2007
 ```
 
 出现如下日志，说明数据集已经下载完成。
 
 ```
-saving to {your home path}/datasets/VOC07-det
+saving to {your home path}/datasets/PASCAL_VOC2007
 preparing...
 start download...
 Download |██████████████████████████████████████████████████| 100.0%, Eta 0 seconds
@@ -86,12 +86,12 @@ dsdl/
 
 ## **2. 数据集配置**
 
-dsdl采用了【媒体数据】和【标注文件】分离这一设计理念，若用户之前已经下载过相关数据集媒体文件，只需下载dsdl标注文件即可使用该数据集。为了使用下载好的数据集，我们需要修改配置文件`config.py`（位于`VOC07-det/dsdl/config.py`）来进行对媒体数据的定位。举例来说，假如下载的`VOC07-det`数据集的解压后的媒体文件位于`~/datasets/VOC07-det/original`路径下，解压后的DSDL标注文件位于`~/datasets/VOC07-det/dsdl/`路径下，则只需要将`~/datasets/VOC07-det/dsdl/config.py`中的配置按照如下内容进行修改即可：
+dsdl采用了【媒体数据】和【标注文件】分离这一设计理念，若用户之前已经下载过相关数据集媒体文件，只需下载dsdl标注文件即可使用该数据集。为了使用下载好的数据集，我们需要修改配置文件`config.py`（位于`PASCAL_VOC2007/dsdl/config.py`）来进行对媒体数据的定位。举例来说，假如下载的`PASCAL_VOC2007`数据集的解压后的媒体文件位于`~/datasets/PASCAL_VOC2007/original`路径下，解压后的DSDL标注文件位于`~/datasets/PASCAL_VOC2007/dsdl/`路径下，则只需要将`~/datasets/PASCAL_VOC2007/dsdl/config.py`中的配置按照如下内容进行修改即可：
 
 ```python
 local = dict(
     type="LocalFileReader",
-    working_dir="~/datasets/VOC07-det/original",
+    working_dir="~/datasets/PASCAL_VOC2007/original",
 )
 ```
 
@@ -102,19 +102,19 @@ local = dict(
 
 ### **3.1. 数据集初始化**
 
-dsdl将dsdl数据集的使用接口封装进DSDLDataset类，初始化一个DSDLDataset类需要yaml文件和location config，这里仍然假设上面VOC数据集解压后的媒体文件和dsdl标注文件的存放路径分别为`~/datasets/VOC07-det/`目录下的`original`和`dsdl`，则初始化代码如下：
+dsdl将dsdl数据集的使用接口封装进DSDLDataset类，初始化一个DSDLDataset类需要yaml文件和location config，这里仍然假设上面VOC数据集解压后的媒体文件和dsdl标注文件的存放路径分别为`~/datasets/PASCAL_VOC2007/`目录下的`original`和`dsdl`，则初始化代码如下：
 
 ```
 from dsdl.dataset import DSDLDataset
 
 # 1. 指定要加载数据的dsdl文件
-train_yaml = "~/datasets/VOC07-det/dsdl/set-train/train.yaml"
-val_yaml = "~/datasets/VOC07-det/dsdl/set-val/val.yaml"
+train_yaml = "~/datasets/PASCAL_VOC2007/dsdl/set-train/train.yaml"
+val_yaml = "~/datasets/PASCAL_VOC2007/dsdl/set-val/val.yaml"
 
 # 2. 配置数据集路径（支持本地、阿里云oss等主流存储）
 loc_config = dict(
     type="LocalFileReader",
-    working_dir="~/datasets/VOC07-det/original"
+    working_dir="~/datasets/PASCAL_VOC2007/original"
 )
 ds_train = DSDLDataset(dsdl_yaml=train_yaml, location_config=loc_config)
 ds_val = DSDLDataset(dsdl_yaml=val_yaml, location_config=loc_config)

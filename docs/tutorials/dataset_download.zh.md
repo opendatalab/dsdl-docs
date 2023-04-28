@@ -23,7 +23,7 @@ CLI命令如下：
 odl get <dataset_name>
 ```
 
-注意这里的<dataset_name>需要与[OpenDataLab官网](https://opendatalab.com/)上的名字对应。用户可在官网搜索相关数据集，并在数据集详情页面的CLI部分获取到数据集名称，比如：
+注意这里的`<dataset_name>`需要与[OpenDataLab官网](https://opendatalab.com/)上的名字对应。用户可在官网搜索相关数据集，并在数据集详情页面的CLI部分获取到数据集名称，比如：
 
 ```shell
 odl get CIFAR-10
@@ -59,7 +59,7 @@ odl get CIFAR-10
   * defs文件夹和set-xxx文件夹主要包含DSDL数据集的定义文件、类别域文件和数据文件等（详细信息可以参阅[自定义DSDL数据集](./advanced/dsdl_define.md)）；
   * config.py需要修改媒体文件读取方式和路径，具体请查看[数据集配置](#数据集配置)部分。
   * 部分数据集存在tools文件夹，提供了prepare.py工具，能够对数据集进行解压和标准化操作，具体使用方法请查看数据集组织中的[执行解压并转换](#执行解压并转换)部分的命令。
-!!! note "注意：如果dsdl下存在tools文件夹，请用户不要自行解压原始数据集压缩包，请参考[数据集组织](#数据集组织)部分对原始数据集执行解压和标准化操作。"
+!!! note "注意：如果dsdl下存在tools文件夹，请用户参考[数据集组织](#数据集组织)部分对原始数据集执行解压和标准化操作。"
 
 
 ### 1.2 仅提供DSDL标注文件
@@ -99,7 +99,7 @@ odl get <dataset_name>
 
 用户下载好数据集后，请自行解压dsdl压缩包，并阅读README，根据是否需要用户运行tools/prepare.py，分为两种情况：
 
-- **DSDL与原始数据集可以直接匹配**：dsdl目录下不包含tools文件夹，README中不包含“prepare the dataset”模块内容，请用户自行解压原始数据集压缩包，既可以直接使用DSDL数据集
+- **DSDL与原始数据集可以直接匹配**：dsdl目录下不包含tools文件夹，README中不包含“prepare the dataset”模块内容，请用户自行解压原始数据集压缩包，即可以直接使用DSDL数据集
 - **需要运行prepare.py对数据集做预处理**：dsdl目录下包含tools文件夹，README中包含“prepare the dataset”模块内容，请参阅[2.2小节](#2.2小节)选择适合的CLI命令运行prepare.py
 
 ### 2.1 DSDL与原始数据集可以直接匹配
@@ -161,7 +161,9 @@ e.g. if the full path of your prepared dataset is "oss://bucket_name/dataset_nam
 <a id="2.2小节"></a>
 ### 2.2 需要运行prepare.py对数据集做预处理
 
-这类数据集的dsdl目录下包含tools文件夹，需要运行tools/prepare.py将数据集转换为DSDL标准后（后文将会详述如何运行该代码），才能正常使用DSDL标准化数据集。这类数据集的README内容如下：
+这类数据集的dsdl目录下包含tools文件夹，需要运行tools/prepare.py将数据集转换为DSDL标准后（后文将会详述如何运行该代码），才能正常使用DSDL标准化数据集。
+!!! note "注意：在运行tools/prepare.py之前，用户需要[部署dsdl-sdk](../getting_started/install.md)。另外，部分数据集的tools/prepare.py可能还需要安装一些其他的python依赖包。"
+这类数据集的README内容如下：
 <details>
 <summary>包含“prepare the dataset”模块的README</summary>
 ```
@@ -360,7 +362,7 @@ python tools/prepare.py -d <path_to_the_decompressed_dataset_folder>
 ```python
 local = dict(
     type="LocalFileReader",
-    working_dir="local path of your media",
+    working_dir="the root path of the prepared dataset",
 )
 
 ali_oss = dict(
@@ -369,5 +371,5 @@ ali_oss = dict(
     endpoint="your endpoint of aliyun oss",
     access_key_id="your access key of aliyun oss",
     bucket_name="your bucket name of aliyun oss",
-    working_dir="the relative path of your media dir in the bucket")
+    working_dir="the prefix of the prepared dataset within the bucket")
 ```

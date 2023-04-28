@@ -14,7 +14,7 @@ pip install -v -e .
 ```
 mmdetection
 └── data                          
-    └── VOC07-det
+    └── PASCAL_VOC2007
         ├── dsdl
         │   ├── config.py
         │   ├── defs
