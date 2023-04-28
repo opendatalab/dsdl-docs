@@ -11,11 +11,11 @@ import random
 from dsdl.dataset import DSDLDataset
 from PIL import Image, ImageDraw
 
-val_yaml = "~/data/VOC07-det/dsdl/set-val/val.yaml"
+val_yaml = "~/data/PASCAL_VOC2007/dsdl/set-val/val.yaml"
 
 loc_config = dict(
     type="LocalFileReader",
-    working_dir="~/data/VOC07-det/original"
+    working_dir="~/data/PASCAL_VOC2007/original"
 )
 
 # 初始化Dataset
@@ -44,25 +44,38 @@ img
 
 ## CLI
 
-#### Visualize samples
+#### 可视化samples
 
 ```shell
 dsdl view -y <yaml-name>.yaml -c <config.py> -l ali-oss -n 10 -r -v -f Label BBox Attributes
 ```
 
-The description of each argument is shown below:
+每个参数的描述如下：
 
-| simplified argument | argument        | description                                                                                                                                                                                                                                            |
+| 缩写 | 参数 | 描述 |
 | ------------------- | --------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| -y                  | `--yaml`      | The path of dsdl yaml file.                                                                                                                                                                                                                            |
-| -c                  | `--config`    | The path of location configuration file.                                                                                                                                                                                                               |
-| -l                  | `--location`  | `local` or `ali-oss`，which means read media from local or aliyun oss.                                                                                                                                                                             |
-| -n                  | `--num`       | The number of samples to be visualized.                                                                                                                                                                                                                |
-| -r                  | `--random`    | Whether to load the samples in a random order.                                                                                                                                                                                                         |
-| -v                  | `--visualize` | Whether to visualize the samples or just print the information in console.                                                                                                                                                                             |
-| -f                  | `--field`     | The field type to visualize, e.g.`-f BBox`means show the bounding box in samples, `-f Attributes`means show the attributes of a sample in the console . One can specify multiple field types simultaneously, such as `-f Label BBox Attributes`. |
-| -t                  | `--task`      | The task you are working on, for example,`-t detection` is equivalent to `-f Label BBox Polygon Attributes`.                                                                                                                                       |
+| `-y`                  | `--yaml`      | dsdl yaml 文件的路径 |
+| `-c`                  | `--config`    | config文件的路径 |
+| `-l`                  | `--location`  | 可取`local` 或 `ali-oss`，分别代表从本地或阿里云oss读取媒体文件 |
+| `-n`                  | `--num`       | 可视化的样本数量 |
+| `-r`                  | `--random`    | 是否以随机的方式从数据集中读取一批样本 |
+| `-v`                  | `--visualize` | 加上该参数会实际地执行可视化操作，否则仅将样本信息打印到控制台 |
+| `-t`                  | `--task`      | 指定当前yaml的任务类别，当前支持的任务类别及可视化的类型将会在后文展示 |
+| `-f`                  | `--field`     | 指定可视化的类型，如果不指定-t, 也可以直接指定-f来选择希望可视化的类型，当前支持的可视化类型将会在后文展示 |
 
+
+当前支持的可视化类型见FIELDS字段，任务类别及其对应的Field种类见TASK_FIELDS字段：
+```python
+FIELDS = ["image", "label", "bbox", "polygon", "keypoint", "rotatedbbox", "labelmap", "instancemap", "text"]
+
+TASK_FIELDS = {
+    "detection": ["image", "label", "bbox", "polygon", "keypoint", "rotatedbbox"],
+    "classification": ["image", "label"],
+    "semantic-seg": ["image", "labelmap"],
+    "panoptic-seg": ["image", "labelmap", "instancemap"],
+    "ocr": ["image", "rotatedbbox", "text", "polygon"]
+}
+```
 
 可视化的结果如下：
 <center>
