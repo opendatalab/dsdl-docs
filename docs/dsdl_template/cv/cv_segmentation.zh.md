@@ -467,7 +467,7 @@ InstanceSegmentationSample:
 
 和实例分割类似，全景分割当中的实例信息也可以通过两种方式给出，这里分别给出其模板定义：  
 
-- 实例信息通过instance map给出：  
+- 实例信息通过instance map给出：
 
 ```yaml
 PanopticSegmentationSample:
@@ -490,7 +490,7 @@ LocalInstanceEntry:
         bbox: BBox
         polygon: Polygon
 
-InstanceSegmentationSample:
+PanopticSegmentationSample:
     $def: struct
     $params: ['cdom']
     $fields:
@@ -503,47 +503,14 @@ InstanceSegmentationSample:
 此外，全景分割由于对类别有things和stuff的区分，所以需要对class domain进行补充说明，这里我们通过父类别来说明类别是things还是stuff：
 如下所示：  
 ```yaml
-$dsdl-version: "0.5.0"
+$dsdl-version: "0.5.3"
 
-COCOClassDom[ThingsorStuff]:
+COCOClassDom:
     $def: class_domain
     classes:
-        - sky[stuff]
-        - horse[things]
-        - person[things]
-        - bottle[things]
+        - stuff.sky
+        - things.horse
+        - things.person
+        - things.bottle
         - ...
-
-ThingsorStuff:
-    $def: class_domain
-    classes:
-        - things
-        - stuff
-```
-同时，如果数据集本省有层次结构，dsdl支持多个父类别，如下所示：  
-
-```yaml
-$dsdl-version: "0.5.0"
-
-COCOClassDom[COCOParentDom, ThingsorStuff]:
-    $def: class_domain
-    classes:
-        - sky[][stuff]               # 如果没有对应的父类别则用空括号表示
-        - horse[animal][things]
-        - person[animal][things]
-        - bottle[][things]
-        - ...
-
-COCOParentDom:
-    $def: class_domain
-    classes:
-        - animal
-        - food
-        - ...
-
-ThingsorStuff:
-    $def: class_domain
-    classes:
-        - things
-        - stuff
 ```
