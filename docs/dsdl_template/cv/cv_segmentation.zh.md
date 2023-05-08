@@ -406,10 +406,10 @@ segmentation_map的常见情况有以下几种：
 
   - **LabelMap**: 即label map，用来表示语义map，LabelMap是一个单通道，int32类型的图片，且需要接受一个class domain参数，LabelMap的像素值即代表class domain中类别的索引，这样即可实现从像素到语义类别的映射；
 
-  - **InsMap**: 即instance map的简称，用来表示实例map，InsMap同样是一个单通道，int32类型的图片，矩阵中的元素用来表示实例的位置，语义信息则通过对应位置的LabelMap来获取（InsMap本身不需要class domain参数）；
+  - **InstanceMap**: 即instance map，用来表示实例map，InstanceMap同样是一个单通道，int32类型的图片，矩阵中的元素用来表示实例的位置，语义信息则通过对应位置的LabelMap来获取（InstanceMap本身不需要class domain参数）；
 
 
-  *这里LabelMap和InsMap都表示一个单通道图片，但是实际上为了减少标注文件的容量，也可以将图片保存下来，然后LabelMap和InsMap保存指向这个符合规范的图像文件的路径信息。*  
+  *这里LabelMap和InstanceMap都表示一个单通道图片，但是实际上为了减少标注文件的容量，也可以将图片保存下来，然后LabelMap和InstanceMap保存指向这个符合规范的图像文件的路径信息。*  
 
 有了分割图的规范，我们可以进行三个分割任务的规范制定。
 
@@ -438,7 +438,7 @@ InstanceSegmentationSample:
     $params: ['cdom']
     $fields:
         image: Image
-        instance_map: InsMap
+        instance_map: InstanceMap
         semantic_map: LabelMap[dom=$cdom]
 ```
 
@@ -475,7 +475,7 @@ PanopticSegmentationSample:
     $params: ['cdom']
     $fields:
         image: Image
-        instance_map: InsMap
+        instance_map: InstanceMap
         semantic_map: LabelMap[dom=$cdom]
 ```
 
