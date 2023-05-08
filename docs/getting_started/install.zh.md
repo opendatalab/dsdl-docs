@@ -12,12 +12,10 @@
 pip install dsdl
 ```
 
-#### 2. 源码安装（推荐）
-
-由于DSDL正在开发内测阶段，推荐使用源码安装，以获取最新的版本更新。
+#### 2. 源码安装
 
 ```shell
-git clone -b schema-dsdl https://github.com/opendatalab/dsdl-sdk.git
+git clone -b https://github.com/opendatalab/dsdl-sdk.git
 cd dsdl
 python setup.py install
 ```
