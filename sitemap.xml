@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
          <loc>None.</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/"/>
@@ -10,7 +10,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/fields_overview/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/fields_overview/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/fields_overview/"/>
@@ -18,7 +18,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/"/>
@@ -26,7 +26,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_fields/generic/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_fields/generic/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_fields/generic/"/>
@@ -34,7 +34,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_fields/special/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_fields/special/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_fields/special/"/>
@@ -42,7 +42,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_geometry/box/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_geometry/box/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_geometry/box/"/>
@@ -50,7 +50,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_geometry/insmap/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_geometry/insmap/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_geometry/insmap/"/>
@@ -58,7 +58,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_geometry/keypoint/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_geometry/keypoint/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_geometry/keypoint/"/>
@@ -66,7 +66,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_geometry/label/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_geometry/label/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_geometry/label/"/>
@@ -74,7 +74,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_geometry/media/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_geometry/media/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_geometry/media/"/>
@@ -82,7 +82,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_geometry/polygon/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_geometry/polygon/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_geometry/polygon/"/>
@@ -90,7 +90,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_geometry/registry/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_geometry/registry/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_geometry/registry/"/>
@@ -98,7 +98,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_geometry/rotate_box/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_geometry/rotate_box/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_geometry/rotate_box/"/>
@@ -106,7 +106,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_geometry/segmap/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_geometry/segmap/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_geometry/segmap/"/>
@@ -114,7 +114,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_geometry/shape/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_geometry/shape/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_geometry/shape/"/>
@@ -122,7 +122,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_geometry/text/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_geometry/text/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_geometry/text/"/>
@@ -130,7 +130,7 @@
     </url>
     <url>
          <loc>Noneapi_reference/dsdl_geometry/uniqueid/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/api_reference/dsdl_geometry/uniqueid/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/api_reference/dsdl_geometry/uniqueid/"/>
@@ -138,7 +138,7 @@
     </url>
     <url>
          <loc>Nonedsdl_language/install/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_language/install/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_language/install/"/>
@@ -146,7 +146,7 @@
     </url>
     <url>
          <loc>Nonedsdl_language/overview/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_language/overview/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_language/overview/"/>
@@ -154,7 +154,7 @@
     </url>
     <url>
          <loc>Nonedsdl_language/tutorial/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_language/tutorial/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_language/tutorial/"/>
@@ -162,7 +162,7 @@
     </url>
     <url>
          <loc>Nonedsdl_language/examples/cv/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_language/examples/cv/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_language/examples/cv/"/>
@@ -170,7 +170,7 @@
     </url>
     <url>
          <loc>Nonedsdl_language/lang/basic_types/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_language/lang/basic_types/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_language/lang/basic_types/"/>
@@ -178,7 +178,7 @@
     </url>
     <url>
          <loc>Nonedsdl_language/lang/class_dom/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_language/lang/class_dom/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_language/lang/class_dom/"/>
@@ -186,7 +186,7 @@
     </url>
     <url>
          <loc>Nonedsdl_language/lang/data_section/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_language/lang/data_section/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_language/lang/data_section/"/>
@@ -194,7 +194,7 @@
     </url>
     <url>
          <loc>Nonedsdl_language/lang/get_started/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_language/lang/get_started/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_language/lang/get_started/"/>
@@ -202,7 +202,7 @@
     </url>
     <url>
          <loc>Nonedsdl_language/lang/libraries/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_language/lang/libraries/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_language/lang/libraries/"/>
@@ -210,7 +210,7 @@
     </url>
     <url>
          <loc>Nonedsdl_language/lang/structs/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_language/lang/structs/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_language/lang/structs/"/>
@@ -218,7 +218,7 @@
     </url>
     <url>
          <loc>Nonedsdl_language/lang/unstructured_objs/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_language/lang/unstructured_objs/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_language/lang/unstructured_objs/"/>
@@ -226,7 +226,7 @@
     </url>
     <url>
          <loc>Nonedsdl_template/intro_labeling/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_template/intro_labeling/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_template/intro_labeling/"/>
@@ -234,7 +234,7 @@
     </url>
     <url>
          <loc>Nonedsdl_template/overview/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_template/overview/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_template/overview/"/>
@@ -242,7 +242,7 @@
     </url>
     <url>
          <loc>Nonedsdl_template/cv/cv_classification/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_template/cv/cv_classification/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_template/cv/cv_classification/"/>
@@ -250,7 +250,7 @@
     </url>
     <url>
          <loc>Nonedsdl_template/cv/cv_detection/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_template/cv/cv_detection/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_template/cv/cv_detection/"/>
@@ -258,7 +258,7 @@
     </url>
     <url>
          <loc>Nonedsdl_template/cv/cv_generation/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_template/cv/cv_generation/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_template/cv/cv_generation/"/>
@@ -266,7 +266,7 @@
     </url>
     <url>
          <loc>Nonedsdl_template/cv/cv_keypoint_detection/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_template/cv/cv_keypoint_detection/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_template/cv/cv_keypoint_detection/"/>
@@ -274,7 +274,7 @@
     </url>
     <url>
          <loc>Nonedsdl_template/cv/cv_object_tracking/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_template/cv/cv_object_tracking/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_template/cv/cv_object_tracking/"/>
@@ -282,7 +282,7 @@
     </url>
     <url>
          <loc>Nonedsdl_template/cv/cv_ocr/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_template/cv/cv_ocr/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_template/cv/cv_ocr/"/>
@@ -290,7 +290,7 @@
     </url>
     <url>
          <loc>Nonedsdl_template/cv/cv_rotated_detection/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_template/cv/cv_rotated_detection/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_template/cv/cv_rotated_detection/"/>
@@ -298,7 +298,7 @@
     </url>
     <url>
          <loc>Nonedsdl_template/cv/cv_segmentation/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_template/cv/cv_segmentation/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_template/cv/cv_segmentation/"/>
@@ -306,7 +306,7 @@
     </url>
     <url>
          <loc>Nonedsdl_template/nlp/nlp/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/dsdl_template/nlp/nlp/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/dsdl_template/nlp/nlp/"/>
@@ -314,7 +314,7 @@
     </url>
     <url>
          <loc>Nonegetting_started/Detection/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting_started/Detection/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/getting_started/Detection/"/>
@@ -322,7 +322,7 @@
     </url>
     <url>
          <loc>Nonegetting_started/install/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting_started/install/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/getting_started/install/"/>
@@ -330,7 +330,7 @@
     </url>
     <url>
          <loc>Nonegetting_started/overview/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting_started/overview/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/getting_started/overview/"/>
@@ -338,7 +338,7 @@
     </url>
     <url>
          <loc>Nonegetting_started/quick_start/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting_started/quick_start/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/getting_started/quick_start/"/>
@@ -346,7 +346,7 @@
     </url>
     <url>
          <loc>Nonegetting_started/quick_start_ex1/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting_started/quick_start_ex1/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/getting_started/quick_start_ex1/"/>
@@ -354,7 +354,7 @@
     </url>
     <url>
          <loc>Nonegetting_started/quick_start_ex3/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/getting_started/quick_start_ex3/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/getting_started/quick_start_ex3/"/>
@@ -362,7 +362,7 @@
     </url>
     <url>
          <loc>Nonetutorials/dataset_analysis/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/dataset_analysis/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/dataset_analysis/"/>
@@ -370,7 +370,7 @@
     </url>
     <url>
          <loc>Nonetutorials/dataset_distribution/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/dataset_distribution/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/dataset_distribution/"/>
@@ -378,7 +378,7 @@
     </url>
     <url>
          <loc>Nonetutorials/dataset_download/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/dataset_download/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/dataset_download/"/>
@@ -386,7 +386,7 @@
     </url>
     <url>
          <loc>Nonetutorials/overview/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/overview/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/overview/"/>
@@ -394,7 +394,7 @@
     </url>
     <url>
          <loc>Nonetutorials/visualization/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/visualization/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/visualization/"/>
@@ -402,7 +402,7 @@
     </url>
     <url>
          <loc>Nonetutorials/advanced/dsdl_check/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/advanced/dsdl_check/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/advanced/dsdl_check/"/>
@@ -410,7 +410,7 @@
     </url>
     <url>
          <loc>Nonetutorials/advanced/dsdl_convert/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/advanced/dsdl_convert/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/advanced/dsdl_convert/"/>
@@ -418,7 +418,7 @@
     </url>
     <url>
          <loc>Nonetutorials/advanced/dsdl_dataloader/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/advanced/dsdl_dataloader/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/advanced/dsdl_dataloader/"/>
@@ -426,7 +426,7 @@
     </url>
     <url>
          <loc>Nonetutorials/advanced/dsdl_define/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/advanced/dsdl_define/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/advanced/dsdl_define/"/>
@@ -434,7 +434,7 @@
     </url>
     <url>
          <loc>Nonetutorials/advanced/dsdl_extend/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/advanced/dsdl_extend/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/advanced/dsdl_extend/"/>
@@ -442,7 +442,7 @@
     </url>
     <url>
          <loc>Nonetutorials/advanced/overview/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/advanced/overview/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/advanced/overview/"/>
@@ -450,7 +450,7 @@
     </url>
     <url>
          <loc>Nonetutorials/analysis/result_analysis/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/analysis/result_analysis/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/analysis/result_analysis/"/>
@@ -458,7 +458,7 @@
     </url>
     <url>
          <loc>Nonetutorials/config/location_config/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/config/location_config/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/config/location_config/"/>
@@ -466,7 +466,7 @@
     </url>
     <url>
          <loc>Nonetutorials/train_test/openmmlab/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/train_test/openmmlab/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/train_test/openmmlab/"/>
@@ -474,7 +474,7 @@
     </url>
     <url>
          <loc>Nonetutorials/train_test/pytorch/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/train_test/pytorch/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/train_test/pytorch/"/>
@@ -482,7 +482,7 @@
     </url>
     <url>
          <loc>Nonetutorials/train_test/tensorflow/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/train_test/tensorflow/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/train_test/tensorflow/"/>
@@ -490,7 +490,7 @@
     </url>
     <url>
          <loc>Nonetutorials/transfer/Classification/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/transfer/Classification/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/transfer/Classification/"/>
@@ -498,7 +498,7 @@
     </url>
     <url>
          <loc>Nonetutorials/transfer/Detection/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/transfer/Detection/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/transfer/Detection/"/>
@@ -506,7 +506,7 @@
     </url>
     <url>
          <loc>Nonetutorials/transfer/SDK_doc/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/transfer/SDK_doc/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/transfer/SDK_doc/"/>
@@ -514,7 +514,7 @@
     </url>
     <url>
          <loc>Nonetutorials/transfer/converter_scipt/</loc>
-         <lastmod>2023-05-08</lastmod>
+         <lastmod>2023-05-11</lastmod>
          <changefreq>daily</changefreq>
          <xhtml:link rel="alternate" hreflang="en" href="Noneen/tutorials/transfer/converter_scipt/"/>
          <xhtml:link rel="alternate" hreflang="zh" href="Nonezh/tutorials/transfer/converter_scipt/"/>
