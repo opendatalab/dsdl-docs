@@ -106,7 +106,7 @@ def train_one_epoch(model, optimizer, data_loader, device, image_key = 'Image', 
         optimizer.zero_grad()
 
         outputs = model(inputs.float())
-        loss = criterion(outputs, labels)
+        loss = criterion(outputs, labels.long())
         loss.backward()
         optimizer.step()
         
