@@ -25,6 +25,18 @@ DSDL (Data Set Description Language) is a new generation of AI data set descript
 
 [DSDL Specification and Tutorials](https://opendatalab.github.io/dsdl-docs/)
 
+## Citation
+```bibtex
+@misc{wang2024dsdl,
+      title={DSDL: Data Set Description Language for Bridging Modalities and Tasks in AI Data}, 
+      author={Bin Wang and Linke Ouyang and Fan Wu and Wenchang Ning and Xiao Han and Zhiyuan Zhao and Jiahui Peng and Yiying Jiang and Dahua Lin and Conghui He},
+      year={2024},
+      eprint={2405.18315},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI}
+}
+```
+
 ## License
 
 This project is released under the [Apache 2.0 license](LICENSE)。
