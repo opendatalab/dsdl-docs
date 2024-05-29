@@ -24,6 +24,19 @@ DSDL(Data Set Description Language)是新一代人工智能数据集描述语言
 
 [DSDL入门文档](https://opendatalab.github.io/dsdl-docs/)
 
+## 引用
+
+```bibtex
+@misc{wang2024dsdl,
+      title={DSDL: Data Set Description Language for Bridging Modalities and Tasks in AI Data}, 
+      author={Bin Wang and Linke Ouyang and Fan Wu and Wenchang Ning and Xiao Han and Zhiyuan Zhao and Jiahui Peng and Yiying Jiang and Dahua Lin and Conghui He},
+      year={2024},
+      eprint={2405.18315},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI}
+}
+```
+
 ## 开源许可证
 
 该项目采用 [Apache 2.0 开源许可证](LICENSE)。
